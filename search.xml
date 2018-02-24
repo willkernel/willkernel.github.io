@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2018%2F02%2F24%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    <title><![CDATA[Linux 常用快捷键 命令 设置等操作]]></title>
+    <url>%2F2018%2F02%2F24%2FLinux-%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%2F</url>
+    <content type="text"><![CDATA[常用快捷键 Ctrl+Alt+T 打开终端 Ctrl+L 清空屏幕(功能相当于命令clear) Ctrl+U 剪切文本直到行的起始(可以用于清空行) Ctrl+K 剪切文本直到行的末尾 Ctrl+Y 粘贴最近剪切的文本 Ctrl+C 杀死当前进程(也可以用来清空当前行) Ctrl+D 退出当前Shell(功能相当于命令exit) 或者 删除当前的字符 Ctrl+A 行首 Ctrl+E 行尾 Home/End 行首/行尾 Ctrl+F 向前移动一个字符 Ctrl+B 向后移动一个字符 Ctrl+P 或 Ctrl+N 上下历史记录 上下方向键 上下历史记录 Ctrl+Shift+C 复制 Ctrl+Shift+V 粘贴 还有Tab补全,按住Ctrl键进行块选择. 鼠标中键:粘贴(在gnome-terminal中使用”菜单 键+P”也是可以粘贴的) 设置代理1.通过export http代理使用apt-get（临时有效）在使用apt-get之前，在终端中输入以下命令 12export http_proxy=&quot;&quot;export https_proxy=&quot;&quot; 2.apt.conf文件中配置http代理信息（永久有效） sudo gedit /etc/apt/apt.conf在您的apt.conf文件中加入下面这行1Acquire::http::Proxy &quot;http://proxy_addr:proxy_port&quot;; 3..bashrc文件中配置代理信息(apt-get, wget 等等)（全局有效） gedit ~/.bashrc 在.bashrc文件末尾添加如下内容1export http_proxy=&quot;http://proxy_addr:proxy_port&quot; vi操作 跳到文本的最后一行：按“G”,即“shift+g” 跳到最后一行的最后一个字符 ： 先重复1的操作即按“G”，之后按“$”键，即“shift+4”。 跳到第一行的第一个字符：先按两次“g”， 跳转到当前行的第一个字符：在当前行按“0”。 vi加密。进入vi，输入”:” + “X” 之后就提示你输入两次密码。之后:wq 保存退出。再次进入时就提示你输入密码了。如果你不想要密码了，就:X 提示你输入密码时连续按两次回车 编辑只读文件存在历史，buffer状态等，不能直接修改保存文件，解决方案1:w !sudo tee % 设置环境变量12345678910111213141516vim .bashrc echo $PATH (列出所有环境变量) echo $JAVA_HOME （列出某个环境变量值） source .bashrc (保存并且生效) NDKROOT=&apos;/home/willkernel/Downloads/android-ndk-r15c&apos;export NDKROOTexport PATH=$NDKROOT:$PATHANDROID=&apos;/home/willkernel/Downloads/android-studio/bin&apos;export ANDROIDexport PATH=$ANDROID:$PATHFFMPEG=&apos;/home/willkernel/Downloads/ffmpeg-2.6.9&apos;export FFMPEGexport PATH=$FFMPEG:$PATH 常用命令50 Most Frequently Used UNIX / Linux Commands (With Examples)50个最常用的Unix/Linux命令 其他 install lantern in Ubuntu and launch lanternsudo dpkg -i lantern *.deb]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>技巧</tag>
+      </tags>
   </entry>
 </search>
