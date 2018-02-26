@@ -436,17 +436,22 @@
 <ul>
 <li><p>出现 curl: (22) The requested URL returned error: 404 Not Found Server does not provide clone.bundle; ignoring. 怎么办？无视即可</p>
 </li>
-<li><p>repo的运行过程中会尝试访问官方的git源更新自己，如果想使用tuna的镜像源进行更新，可以将如下内容复制到你的~/.bashrc里<br>export REPO_URL=’<a href="https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/&#39;" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/&#39;</a><br>并重启终端模拟器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- Cygwin 下载源码</span><br></pre></td></tr></table></figure>
+<li><p>repo的运行过程中会尝试访问官方的git源更新自己，如果想使用tuna的镜像源进行更新，可以将如下内容复制到你的~/.bashrc里</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export REPO_URL=&apos;https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/&apos;</span><br><span class="line">并重启终端模拟器</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Cygwin 下载源码</p>
 </li>
 </ul>
-<p>Run as Admin cygwin<br>cd /bin</p>
-<p>下载repo<br>curl <a href="https://storage.googleapis.com/git-repo-downloads/repo" target="_blank" rel="noopener">https://storage.googleapis.com/git-repo-downloads/repo</a> &gt; repo<br>chmod a+x repo<br>cd /e/androidsource<br>初始化同步repo<br>repo init -u <a href="https://aosp.tuna.tsinghua.edu.cn/platform/manifest" target="_blank" rel="noopener">https://aosp.tuna.tsinghua.edu.cn/platform/manifest</a> -b android-5.1.1_r9</p>
-<p>repo sync<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- [Ubuntu 下载源码](https://mirror.tuna.tsinghua.edu.cn/help/AOSP/)</span><br><span class="line">- [start a shell session in a running container](https://stackoverflow.com/questions/17903705/is-it-possible-to-start-a-shell-session-in-a-running-container-without-ssh)</span><br></pre></td></tr></table></figure></p>
-<p>docker exec -it 98e0b4f60ec3 bash</p>
-<p>$ sudo docker attach 665b4a1e17b6 #by ID or<br>$ sudo docker attach loving_heisenberg #by Name<br>$ root@665b4a1e17b6:/#<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- 挂载源码目录到docker容器中</span><br></pre></td></tr></table></figure></p>
-<p>docker run -it -v /e/androidsource:/e/androidsource  imageid /bin/bash</p>
-<p>开始编译源码<br>cd /home/android<br>./build.sh<br>make -j8<br><code>`</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Run as Admin cygwin</span><br><span class="line">cd /bin</span><br><span class="line"></span><br><span class="line">下载repo</span><br><span class="line">curl https://storage.googleapis.com/git-repo-downloads/repo &gt; repo</span><br><span class="line">chmod a+x repo</span><br><span class="line">cd /e/androidsource</span><br><span class="line">初始化同步repo</span><br><span class="line">repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-5.1.1_r9</span><br><span class="line"></span><br><span class="line">repo sync</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://mirror.tuna.tsinghua.edu.cn/help/AOSP/" target="_blank" rel="noopener">Ubuntu 下载源码</a></li>
+<li><a href="https://stackoverflow.com/questions/17903705/is-it-possible-to-start-a-shell-session-in-a-running-container-without-ssh" target="_blank" rel="noopener">start a shell session in a running container</a></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it 98e0b4f60ec3 bash</span><br><span class="line"></span><br><span class="line">$ sudo docker attach 665b4a1e17b6 #by ID or</span><br><span class="line">$ sudo docker attach loving_heisenberg #by Name</span><br><span class="line">$ root@665b4a1e17b6:/#</span><br></pre></td></tr></table></figure>
+<ul>
+<li>挂载源码目录到docker容器中</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -v /e/androidsource:/e/androidsource  imageid /bin/bash</span><br><span class="line"></span><br><span class="line">开始编译源码</span><br><span class="line">cd /home/android</span><br><span class="line">./build.sh</span><br><span class="line">make -j8</span><br></pre></td></tr></table></figure>
 <p>编译一次后，就不想搞第二次了。。你懂的</p>
 
           
