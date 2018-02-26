@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="willkernel">
 <meta property="og:description" content="Windows 安装Docker Cannot install packages inside docker Ubuntu image  1234567891011It is because there is no package cache in the image, you need to run:apt-get -qq updatebefore installing packages, a">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-26T14:54:05.322Z">
+<meta property="og:updated_time" content="2018-02-26T17:29:53.677Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 编译Android源码">
 <meta name="twitter:description" content="Windows 安装Docker Cannot install packages inside docker Ubuntu image  1234567891011It is because there is no package cache in the image, you need to run:apt-get -qq updatebefore installing packages, a">
@@ -403,8 +403,12 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">It is because there is no package cache in the image, you need to run:</span><br><span class="line"></span><br><span class="line">apt-get -qq update</span><br><span class="line">before installing packages, and if your command is in a Dockerfile, you&apos;ll then need:</span><br><span class="line"></span><br><span class="line">apt-get -qq -y install curl</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Always combine RUN apt-get update with apt-get install in the same  RUN statement, for example</span><br><span class="line"></span><br><span class="line">RUN apt-get update &amp;&amp; apt-get install -y package-bar</span><br></pre></td></tr></table></figure>
 <ul>
-<li>参考<a href="http://blog.csdn.net/godiors_163/article/details/59069108" target="_blank" rel="noopener">使用Docker编译Android系统源码</a><br>[Ubuntu14.10 编译 Android5.0 源码]<br>(<a href="http://blog.csdn.net/chouretang/article/details/43769839" target="_blank" rel="noopener">http://blog.csdn.net/chouretang/article/details/43769839</a>)</li>
-<li><a href="https://mirrors.aliyun.com/help/ubuntu" target="_blank" rel="noopener">更换系统镜像源</a></li>
+<li><p>参考<a href="http://blog.csdn.net/godiors_163/article/details/59069108" target="_blank" rel="noopener">使用Docker编译Android系统源码</a></p>
+</li>
+<li><p><a href="http://blog.csdn.net/chouretang/article/details/43769839" target="_blank" rel="noopener">Ubuntu14.10 编译 Android5.0 源码</a></p>
+</li>
+<li><p><a href="https://mirrors.aliyun.com/help/ubuntu" target="_blank" rel="noopener">更换系统镜像源</a></p>
+</li>
 <li>apt-get install wget<ul>
 <li>wget 网址<br>而要让档案自动储存到指令的目录下，则需要借用-P这个参数，可以使用以下的指令</li>
 <li>wget -P 目录 网址<br>举例来说，如果你要放到/root底下，你可以打下列的指令：<br>wget -P /root 网址</li>

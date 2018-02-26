@@ -88,7 +88,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/ViewTree.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/UI.png">
-<meta property="og:updated_time" content="2018-02-25T18:17:05.160Z">
+<meta property="og:updated_time" content="2018-02-26T17:28:24.972Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Notes">
 <meta name="twitter:description" content="Android系统架构 Android系统分四层：Linux内核层，库和运行时，Framework层和应用层。  Linux包括硬件驱动，进程管理，安全系统 Dalvik虚拟机，运行时编译；ART虚拟机安装时编译 Framework ActivityManager BackupManager Bluetooth ContentProviders LocationManger Map librari">
@@ -546,16 +546,63 @@
 <li><p>View的绘制</p>
 <ul>
 <li>重写onDraw(Canvas canvas)<ul>
-<li>Canvas 画板<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">canvas.drawBitmap(bitmap1,0,0,null);</span><br><span class="line">canvas.drawBitmap(bitmap2,0,0,null);</span><br><span class="line">装载画布</span><br><span class="line">Canvas mCanvas=new Canvas(bitmap2);</span><br><span class="line">mCanvas.drawXXX</span><br><span class="line">刷新view的时候，bitmap2发生改变，没有把图形直接绘制在canvas,而是通过改变bitmap2</span><br><span class="line">绘制复杂图形，绘制出拆分小的图形单元</span><br></pre></td></tr></table></figure>
+<li>Canvas 画板<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">canvas.drawBitmap(bitmap1,0,0,null);</span><br><span class="line">canvas.drawBitmap(bitmap2,0,0,null);</span><br><span class="line">装载画布</span><br><span class="line">Canvas mCanvas=new Canvas(bitmap2);</span><br><span class="line">mCanvas.drawXXX</span><br><span class="line">刷新view的时候，bitmap2发生改变，没有把图形直接绘制在canvas,而是通过改变bitmap2</span><br><span class="line">绘制复杂图形，绘制多个拆分的小图形单元</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>ViewGroup的测量</p>
+<li><p>ViewGroup的测量<br>在wrap_content时遍历子View的大小，决定自己的大小，其他模式下通过具体的指定值设置大小。遍历子View，调用子View的Measure方法获得每一个子View 的测量结果，然后遍历子View进行布局Layout,重写onLayout()控制子View显示位置的逻辑，如果支持wrap_content需要重写onMeasure()</p>
 </li>
-<li>ViewGroup的绘制</li>
-<li>自定义View</li>
+<li>ViewGroup的绘制  绘制背景颜色以及遍历子View的绘制</li>
+<li>自定义View比较重要的回调方法<ul>
+<li>onFinishInflate()</li>
+<li>onSizeChanged()</li>
+<li>onMeasure()</li>
+<li>onLayout()</li>
+<li>onDraw()</li>
+<li>onTouchEvent()</li>
+</ul>
+</li>
+<li><p>对原生控件扩展</p>
+<ul>
+<li><p>改变绘制顺序，需要改变画布位置状态时，先保存状态，等改变后，再恢复</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">....</span><br><span class="line">canvas.save();</span><br><span class="line">canvas.translate(10,0);</span><br><span class="line">super.onDraw(canvas);</span><br><span class="line">canvas.restore();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>LinearGradient,Matrix实项文字闪动效果，onSizeChanged()中初始化，根据宽度设置LinearGradient渐变渲染器</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">protected void onSizeChanged(int w,int h,int oldw,int oldh)&#123;</span><br><span class="line">  super.onSizeChanged(w,h,oldw,oldh);</span><br><span class="line">  if(mViewWidth==0)&#123;</span><br><span class="line">      mViewWidth=getMeasureWidth();</span><br><span class="line">  if(mViewWidth&gt;0)&#123;</span><br><span class="line">     //获取Paint,设置LinearGradient</span><br><span class="line">     mPaint=getPaint();</span><br><span class="line">     mLinearGradient=new LinearGradient(0,0,mViewWidth,0,new int[]   &#123;Color.BLUE,Color.RED&#125;,null,Shader.TitleMode.CLAMP);</span><br><span class="line">     //设置着色器 mPaint.setShader(mLinearGradient)</span><br><span class="line">     //平移变换矩阵</span><br><span class="line">     mGradientMatrix=new Matrix();</span><br><span class="line">   &#125;</span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void onDraw(Canvas canvas)&#123;</span><br><span class="line">  if(mGradientMatrix!=null)&#123;</span><br><span class="line">    mTranslate+=mViewWidth/5;</span><br><span class="line">    if(mTranslate&gt;2*mViewWidth)&#123;</span><br><span class="line">      mTranslate=-mViewWidth;</span><br><span class="line">    &#125;</span><br><span class="line">    mGradientMatrix.setTranslate(mTranslate,0);</span><br><span class="line">    mLinearGradient.setLocalMatrix(mGradientMatrix);</span><br><span class="line">    postInvalidateDelayed(100);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>复合控件继承ViewGroup</p>
+<ul>
+<li><p>定义属性 res/value/attrs.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;declare-styleable name=&quot;V&quot;&gt;</span><br><span class="line">  &lt;attr name=&quot;title|size|background&quot; format=&quot;string|dimension| reference|color&quot;/&gt;</span><br><span class="line">&lt;/declare-styleable&gt;</span><br><span class="line"></span><br><span class="line">//获取TypedArray,存储了属性值</span><br><span class="line">TypedArray ta=context.obtainStyledAttributes(attrs,R.styleable.V);</span><br><span class="line">ta.getColor();</span><br><span class="line">ta.getString();</span><br><span class="line">ta.getDrawable();</span><br><span class="line">ta.getDimension();</span><br><span class="line">//资源回收</span><br><span class="line">ta.recycle();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>组合控件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mBtn1=new Button();</span><br><span class="line">mBtn2=new Button();</span><br><span class="line">mTextView=new TextView();</span><br><span class="line">mParams=new LayoutParams();</span><br><span class="line">mParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,true);</span><br><span class="line">addView(mBtn1,mParams);</span><br><span class="line">addView(mBtn2,mParams);</span><br><span class="line">addView(mTextView,mParams);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>定义接口,添加事件</li>
+<li>public method</li>
+<li>include layout</li>
+</ul>
+</li>
+<li><p>重写View</p>
+</li>
+<li><p>比例图 中间圆形加中心文字，外圈一定比例的圆弧 length 正方形边长</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- 圆 </span><br><span class="line">mCircle=length/2；mRadius=length/4; drawCirle()</span><br><span class="line"></span><br><span class="line">- 圆弧</span><br><span class="line">//所处的矩形框</span><br><span class="line">mRect=new Rect(0.1*length,0.1*length,0.9*length,0.9*length);</span><br><span class="line">drawArc(mRect,270,mSweepAngle,false,mArcPaint);</span><br><span class="line">- 文字</span><br><span class="line">drawText();</span><br><span class="line"></span><br><span class="line">setSweepValue(100);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>音频条形图</p>
+<ul>
+<li>onSizeChanged()设置渐变色</li>
+<li>onDraw() 绘制多个小矩形</li>
+<li>postInvalidateDelayed(300)</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
       
