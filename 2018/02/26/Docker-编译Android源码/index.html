@@ -87,10 +87,12 @@
 <meta property="og:site_name" content="willkernel">
 <meta property="og:description" content="Windows 安装Docker Cannot install packages inside docker Ubuntu image  1234567891011It is because there is no package cache in the image, you need to run:apt-get -qq updatebefore installing packages, a">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-26T17:29:53.677Z">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/lunch.png">
+<meta property="og:updated_time" content="2018-02-27T04:32:41.597Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 编译Android源码">
 <meta name="twitter:description" content="Windows 安装Docker Cannot install packages inside docker Ubuntu image  1234567891011It is because there is no package cache in the image, you need to run:apt-get -qq updatebefore installing packages, a">
+<meta name="twitter:image" content="http://p4n1d4izv.bkt.clouddn.com/images/lunch.png">
 
 
 
@@ -416,9 +418,13 @@
 </li>
 </ul>
 <ul>
-<li>下载解压jdk</li>
+<li>安装配置java-7-openjdk</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -P /home/share/ http://download.oracle.com/otn/java/jdk/7u79-b15/jdk-7u79-linux-x64.tar.gz</span><br><span class="line"></span><br><span class="line">tar -xvf ./jdk-7u79-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">wget -P /usr/java/jvm/ http://download.oracle.com/otn/java/jdk/***.tar.gz</span><br><span class="line">tar ***tar.gz</span><br><span class="line"></span><br><span class="line">vim/gedit ~/.bashrc</span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64</span><br><span class="line">export JRE_HOME=$JAVA_HOME/jre</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/bin/tools.jar:$JRE_HOME/bin</span><br><span class="line">export ANDROID_JAVA_HOME=$JAVA_HOME</span><br><span class="line"></span><br><span class="line">export USE_CCACHE=1</span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装其他工具</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">dpkg --print-architecture     # 若支持，输出 amd64</span><br><span class="line">dpkg --print-foreign-architectures    # 若支持，输出 i386</span><br><span class="line">//手动开启支持</span><br><span class="line">dpkg --add-architecture i386</span><br><span class="line">apt-get update</span><br><span class="line"></span><br><span class="line">sudo apt-get install gcc-multilib g++-multilib build-essential</span><br><span class="line">sudo apt-get install git-core gnupg bison flex gperf pngcrush bc zip curl lzop</span><br><span class="line">sudo apt-get install schedtool libxml2 libxml2-utils xsltproc squashfs-tools</span><br><span class="line">sudo apt-get install libesd0-dev libsdl1.2-dev libwxgtk2.8-dev libswitch-perl</span><br><span class="line">sudo apt-get install libssl1.0.0 libssl-dev lib32readline-gplv2-dev libncurses5-dev</span><br><span class="line"></span><br><span class="line">cd /AOSP</span><br><span class="line">export USE_CCACHE=1</span><br><span class="line">export CCACHE_DIR=/&lt;path_of_your_choice&gt;/.ccache</span><br><span class="line">prebuilts/misc/linux-x86/ccache/ccache -M 50G</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>windows 上创建/androidsource</p>
 <ul>
@@ -431,26 +437,34 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import xml.dom.minidom  </span><br><span class="line">import os  </span><br><span class="line">from subprocess import call  </span><br><span class="line"></span><br><span class="line">#downloaded source path  </span><br><span class="line">rootdir = &quot;E:/androidsource&quot;  </span><br><span class="line"></span><br><span class="line">#git program path  </span><br><span class="line">git = &quot;D:/Git/bin/git.exe&quot;</span><br><span class="line">dom = xml.dom.minidom.parse(&quot;E:/androidsource/manifest/default.xml&quot;)  </span><br><span class="line">root = dom.documentElement</span><br><span class="line"></span><br><span class="line">prefix = git + &quot; clone https://aosp.tuna.tsinghua.edu.cn/&quot;  </span><br><span class="line">suffix = &quot;.git&quot;  </span><br><span class="line"></span><br><span class="line">if not os.path.exists(rootdir):  </span><br><span class="line">    os.mkdir(rootdir)  </span><br><span class="line">  </span><br><span class="line">for node in root.getElementsByTagName(&quot;project&quot;):  </span><br><span class="line">    os.chdir(rootdir)  </span><br><span class="line">    d = node.getAttribute(&quot;path&quot;)  </span><br><span class="line">    last = d.rfind(&quot;/&quot;)  </span><br><span class="line">    if last != -1:  </span><br><span class="line">        d = rootdir + &quot;/&quot; + d[:last]  </span><br><span class="line">        if not os.path.exists(d):  </span><br><span class="line">            os.makedirs(d)  </span><br><span class="line">        os.chdir(d)  </span><br><span class="line">    cmd = prefix + node.getAttribute(&quot;name&quot;) + suffix  </span><br><span class="line">    call(cmd)</span><br></pre></td></tr></table></figure>
 <ul>
-<li>设置repo环境变量</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br><span class="line">export PATH=~/bin:$PATH</span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
-<ul>
 <li><p>出现 curl: (22) The requested URL returned error: 404 Not Found Server does not provide clone.bundle; ignoring. 怎么办？无视即可</p>
 </li>
 <li><p>repo的运行过程中会尝试访问官方的git源更新自己，如果想使用tuna的镜像源进行更新，可以将如下内容复制到你的~/.bashrc里</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export REPO_URL=&apos;https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/&apos;</span><br><span class="line">并重启终端模拟器</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Cygwin 下载源码</p>
+<li><p>下载repo</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Run as Admin cygwin</span><br><span class="line">cd /bin</span><br><span class="line"></span><br><span class="line">下载repo</span><br><span class="line">curl https://storage.googleapis.com/git-repo-downloads/repo &gt; repo</span><br><span class="line">chmod a+x repo</span><br><span class="line">cd /e/androidsource</span><br><span class="line">初始化同步repo</span><br><span class="line">repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-5.1.1_r9</span><br><span class="line"></span><br><span class="line">repo sync</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/bin</span><br><span class="line">PATH=~/bin:$PATH</span><br><span class="line">curl https://mirrors.tuna.tsinghua.edu.cn/git/git-repo -o repo</span><br><span class="line">(或者下面的地址)</span><br><span class="line">curl https://storage.googleapis.com/git-repo-downloads/repo &gt; repo</span><br><span class="line">chmod a+x repo</span><br><span class="line">cd /AOSP</span><br><span class="line">初始化同步repo</span><br><span class="line">repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-5.1.1_r9</span><br><span class="line"></span><br><span class="line">repo sync -f -j4</span><br><span class="line">AOSP 未下完成是不显示文件，.repo是隐藏文件夹，ctrl+h显示</span><br><span class="line">有问题时删除缓存文件</span><br><span class="line">rm -rf * -R</span><br></pre></td></tr></table></figure>
+<ul>
+<li>设置repo环境变量</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br><span class="line">export PATH=~/bin:$PATH</span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
 <ul>
 <li><a href="https://mirror.tuna.tsinghua.edu.cn/help/AOSP/" target="_blank" rel="noopener">Ubuntu 下载源码</a></li>
 <li><a href="https://stackoverflow.com/questions/17903705/is-it-possible-to-start-a-shell-session-in-a-running-container-without-ssh" target="_blank" rel="noopener">start a shell session in a running container</a></li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it 98e0b4f60ec3 bash</span><br><span class="line"></span><br><span class="line">$ sudo docker attach 665b4a1e17b6 #by ID or</span><br><span class="line">$ sudo docker attach loving_heisenberg #by Name</span><br><span class="line">$ root@665b4a1e17b6:/#</span><br></pre></td></tr></table></figure>
 <p><a href="https://www.jianshu.com/p/aeaceda41798" target="_blank" rel="noopener">Android系统源代码的下载与编译</a></p>
-<p>未完待续..</p>
+<ul>
+<li><p>初始化源码所需环境变量和参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source build/envsetup.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>lunch 命令选择编译目标</p>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/lunch.png">
+</li>
+</ul>
+<p>出现error build/core/java.mk 33: *** cts/apps/CtsVerifier: Invalid LOCAL_SDK_VERSION ‘current’ Choices are: . prebuilts缺少文件</p>
 
       
     </div>
