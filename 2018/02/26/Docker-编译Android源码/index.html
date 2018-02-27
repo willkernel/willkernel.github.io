@@ -88,7 +88,7 @@
 <meta property="og:description" content="Windows 安装Docker Cannot install packages inside docker Ubuntu image  1234567891011It is because there is no package cache in the image, you need to run:apt-get -qq updatebefore installing packages, a">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/lunch.png">
-<meta property="og:updated_time" content="2018-02-27T15:36:56.139Z">
+<meta property="og:updated_time" content="2018-02-27T15:43:50.600Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 编译Android源码">
 <meta name="twitter:description" content="Windows 安装Docker Cannot install packages inside docker Ubuntu image  1234567891011It is because there is no package cache in the image, you need to run:apt-get -qq updatebefore installing packages, a">
@@ -418,9 +418,9 @@
 </li>
 </ul>
 <ul>
-<li>安装配置java-7-openjdk</li>
+<li>安装配置<a href="http://openjdk.java.net/install/" target="_blank" rel="noopener">openjdk-7-jre</a></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">wget -P /usr/java/jvm/ http://download.oracle.com/otn/java/jdk/***.tar.gz</span><br><span class="line">tar ***tar.gz</span><br><span class="line"></span><br><span class="line">vim/gedit ~/.bashrc</span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64</span><br><span class="line">export JRE_HOME=$JAVA_HOME/jre</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/bin/tools.jar:$JRE_HOME/bin</span><br><span class="line">export ANDROID_JAVA_HOME=$JAVA_HOME</span><br><span class="line"></span><br><span class="line">export USE_CCACHE=1</span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vim/gedit ~/.bashrc</span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64</span><br><span class="line">export JRE_HOME=$JAVA_HOME/jre</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/bin/tools.jar:$JRE_HOME/bin</span><br><span class="line">export ANDROID_JAVA_HOME=$JAVA_HOME</span><br><span class="line"></span><br><span class="line">export USE_CCACHE=1</span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
 <ul>
 <li>安装其他工具</li>
 </ul>
