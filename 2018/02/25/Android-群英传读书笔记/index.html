@@ -88,7 +88,8 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/ViewTree.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/UI.png">
-<meta property="og:updated_time" content="2018-02-26T17:28:24.972Z">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/audiobar.gif">
+<meta property="og:updated_time" content="2018-02-27T16:12:28.828Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Notes">
 <meta name="twitter:description" content="Android系统架构 Android系统分四层：Linux内核层，库和运行时，Framework层和应用层。  Linux包括硬件驱动，进程管理，安全系统 Dalvik虚拟机，运行时编译；ART虚拟机安装时编译 Framework ActivityManager BackupManager Bluetooth ContentProviders LocationManger Map librari">
@@ -600,11 +601,12 @@
 <li>onDraw() 绘制多个小矩形</li>
 <li>postInvalidateDelayed(300)</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void onSizeChanged(int w, int h, int oldw, int oldh) &#123;</span><br><span class="line">    super.onSizeChanged(w, h, oldw, oldh);</span><br><span class="line">    mWidth = getWidth();</span><br><span class="line">    Log.e(&quot;Audio&quot;, &quot;mWidth=&quot; + mWidth + &quot;  w=&quot; + w + &quot;  h=&quot; + h</span><br><span class="line">            + &quot;  oldw=&quot; + oldw + &quot;  oldh=&quot; + oldh);</span><br><span class="line">    mRectHeight = getHeight();</span><br><span class="line">    mRectWidth = (int) (mWidth * 0.6 / mCount);</span><br><span class="line">    mLinearGradient = new LinearGradient(0, 0, mRectWidth, mRectHeight, Color.YELLOW, Color.RED, Shader.TileMode.CLAMP);</span><br><span class="line"></span><br><span class="line">    mMatrix = new Matrix();</span><br><span class="line">    mPaint.setShader(mLinearGradient);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">protected void onDraw(Canvas canvas) &#123;</span><br><span class="line">    super.onDraw(canvas);</span><br><span class="line">    mTranslate += mRectWidth / 5;</span><br><span class="line">    if (mTranslate &gt; 2 * mRectWidth) &#123;</span><br><span class="line">        mTranslate = -mRectWidth;</span><br><span class="line">    &#125;</span><br><span class="line">    mMatrix.setTranslate(mTranslate, 0);</span><br><span class="line">    mLinearGradient.setLocalMatrix(mMatrix);</span><br><span class="line">    for (int i = 0; i &lt; mCount; i++) &#123;</span><br><span class="line">        mCurrentHeight = (float) (mRectHeight * Math.random());</span><br><span class="line">        canvas.drawRect((float) (mWidth * 0.2 + offset + mRectWidth * i), mCurrentHeight,</span><br><span class="line">                (float) (mWidth * 0.2 + mRectWidth * (i + 1)), mRectHeight, mPaint);</span><br><span class="line">    &#125;</span><br><span class="line">    postInvalidateDelayed(300);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ul>
-
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/audiobar.gif">
       
     </div>
     
