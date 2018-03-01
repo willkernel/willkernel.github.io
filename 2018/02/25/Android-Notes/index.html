@@ -82,14 +82,15 @@
 <meta name="description" content="Android系统架构 Android系统分四层：Linux内核层，库和运行时，Framework层和应用层。  Linux包括硬件驱动，进程管理，安全系统 Dalvik虚拟机，运行时编译；ART虚拟机安装时编译 Framework ActivityManager BackupManager Bluetooth ContentProviders LocationManger Map librari">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Notes">
-<meta property="og:url" content="http://willkernel.github.io/2018/02/25/Android-群英传读书笔记/index.html">
+<meta property="og:url" content="http://willkernel.github.io/2018/02/25/Android-Notes/index.html">
 <meta property="og:site_name" content="willkernel">
 <meta property="og:description" content="Android系统架构 Android系统分四层：Linux内核层，库和运行时，Framework层和应用层。  Linux包括硬件驱动，进程管理，安全系统 Dalvik虚拟机，运行时编译；ART虚拟机安装时编译 Framework ActivityManager BackupManager Bluetooth ContentProviders LocationManger Map librari">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/ViewTree.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/UI.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/audiobar.gif">
-<meta property="og:updated_time" content="2018-02-27T16:27:18.973Z">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/scrollstickyview.gif">
+<meta property="og:updated_time" content="2018-03-01T16:22:45.046Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Notes">
 <meta name="twitter:description" content="Android系统架构 Android系统分四层：Linux内核层，库和运行时，Framework层和应用层。  Linux包括硬件驱动，进程管理，安全系统 Dalvik虚拟机，运行时编译；ART虚拟机安装时编译 Framework ActivityManager BackupManager Bluetooth ContentProviders LocationManger Map librari">
@@ -123,7 +124,7 @@
 
 
 
-  <link rel="canonical" href="http://willkernel.github.io/2018/02/25/Android-群英传读书笔记/"/>
+  <link rel="canonical" href="http://willkernel.github.io/2018/02/25/Android-Notes/"/>
 
 
 
@@ -300,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/02/25/Android-群英传读书笔记/">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/02/25/Android-Notes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="willkernel">
@@ -369,7 +370,7 @@
 
           
           
-             <span id="/2018/02/25/Android-群英传读书笔记/" class="leancloud_visitors" data-flag-title="Android Notes">
+             <span id="/2018/02/25/Android-Notes/" class="leancloud_visitors" data-flag-title="Android Notes">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -608,7 +609,38 @@
 </ul>
 <img src="http://p4n1d4izv.bkt.clouddn.com/images/audiobar.gif">
 <ul>
-<li>自定义ViewGroup</li>
+<li><p>自定义ViewGroup</p>
+<ul>
+<li>重写onMeasure() onLayout() onTouchEvent()</li>
+<li><p>自定义ScrollView，滑动后回位到item的起始位置</p>
+<ul>
+<li>遍历的方式通知子View对自身测量</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">private void init() &#123;</span><br><span class="line">     mScroller = new OverScroller(getContext());</span><br><span class="line">     mScreenHeight = getResources().getDisplayMetrics().heightPixels;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> @Override</span><br><span class="line"> protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) &#123;</span><br><span class="line">     super.onMeasure(widthMeasureSpec, heightMeasureSpec);</span><br><span class="line">     int count=getChildCount();</span><br><span class="line">     for (int i = 0; i &lt; count; i++) &#123;</span><br><span class="line">         View child=getChildAt(i);</span><br><span class="line">         measureChild(child,widthMeasureSpec,heightMeasureSpec);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对子View进行位置放置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void onLayout(boolean changed, int l, int t, int r, int b) &#123;</span><br><span class="line">    int childCount = getChildCount();</span><br><span class="line">    int screenHeight = getResources().getDisplayMetrics().heightPixels;</span><br><span class="line">    //获取整个ViewGroup高度</span><br><span class="line">    MarginLayoutParams layoutParams = (MarginLayoutParams) getLayoutParams();</span><br><span class="line">    layoutParams.height = childCount * screenHeight;</span><br><span class="line">    setLayoutParams(layoutParams);</span><br><span class="line">    for (int i = 0; i &lt; childCount; i++) &#123;</span><br><span class="line">        View child = getChildAt(i);</span><br><span class="line">        if (child.getVisibility() != View.GONE) &#123;</span><br><span class="line">            child.layout(l, screenHeight * i, r, screenHeight * (i + 1));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在onTouchEvent()中添加滑动事件，使用scrollBy()</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">  @Override</span><br><span class="line">  public boolean onTouchEvent(MotionEvent event) &#123;</span><br><span class="line">    switch (event.getAction()) &#123;</span><br><span class="line">        case MotionEvent.ACTION_DOWN:</span><br><span class="line">            mLastY =   event.getY();</span><br><span class="line">            //起点</span><br><span class="line">            mStart = getScrollY();</span><br><span class="line">            break;</span><br><span class="line">        case MotionEvent.ACTION_MOVE:</span><br><span class="line">            if (!mScroller.isFinished()) &#123;</span><br><span class="line">                mScroller.abortAnimation();</span><br><span class="line">            &#125;</span><br><span class="line">            float dy = mLastY - event.getY();</span><br><span class="line">            Log.d(&quot;Scroll&quot;, &quot;======&quot; );</span><br><span class="line">            Log.d(&quot;Scroll&quot;, &quot;dy = &quot; + dy);</span><br><span class="line">            Log.d(&quot;Scroll&quot;, &quot;getScrollY() = &quot; + getScrollY());</span><br><span class="line">            Log.d(&quot;Scroll&quot;, &quot;getHeight()  = &quot; + getHeight());</span><br><span class="line">            Log.d(&quot;Scroll&quot;, &quot;mScreenHeight()  = &quot; + mScreenHeight);</span><br><span class="line">            Log.d(&quot;Scroll&quot;, &quot;getHeight() - mScreenHeight = &quot; + (getHeight() - mScreenHeight));</span><br><span class="line">            Log.d(&quot;Scroll&quot;, &quot;mLastY = &quot; + mLastY);</span><br><span class="line">            Log.d(&quot;Scroll&quot;, &quot;mStart = &quot; + mStart);</span><br><span class="line"></span><br><span class="line">            if (getScrollY() &lt; 0) &#123;</span><br><span class="line">                //最顶端，超过0时，不再下拉</span><br><span class="line">                //不设置这个，getScrollY一直是负数</span><br><span class="line">                dy = 0;</span><br><span class="line">            &#125;</span><br><span class="line">            if (getScrollY() &gt; getHeight() - mScreenHeight) &#123;</span><br><span class="line">                //滑到最底端时，不再滑动</span><br><span class="line">                //不设置这个，getScrollY一直是大于getHeight() - mScreenHeight的数</span><br><span class="line">                dy = 0;</span><br><span class="line">            &#125;</span><br><span class="line">            scrollBy(0, (int) dy);</span><br><span class="line">            //不断的设置Y，在滑动的时候子view就会比较顺畅</span><br><span class="line">            mLastY =  event.getY();</span><br><span class="line">            break;</span><br><span class="line">        case MotionEvent.ACTION_UP:</span><br><span class="line">            mEnd = getScrollY();</span><br><span class="line">            int dScrollY = mEnd - mStart;</span><br><span class="line">            //向上，向下滑动，超过1/3屏幕高度，</span><br><span class="line">            //结束滑动时滚动到下个位置，没有超过时复位</span><br><span class="line">            if (dScrollY &gt; 0) &#123;</span><br><span class="line">                if (dScrollY &lt; mScreenHeight / 3) &#123;</span><br><span class="line">                    mScroller.startScroll(0, mEnd,</span><br><span class="line">                            0, -dScrollY, 200);</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    mScroller.startScroll(0, mEnd, 0,</span><br><span class="line">                            mScreenHeight - dScrollY, 200);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                if (-dScrollY &lt; mScreenHeight / 3) &#123;</span><br><span class="line">                    mScroller.startScroll(0, mEnd,</span><br><span class="line">                            0, -dScrollY, 200);</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    mScroller.startScroll(0, mEnd,</span><br><span class="line">                            0, -(mScreenHeight + dScrollY), 200);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">    // 重绘执行computeScroll()</span><br><span class="line">    postInvalidate();</span><br><span class="line">    //需要返回true否则down后无法执行move和up操作</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Scroller只是个计算器，提供插值计算，让滚动过程具有动画属性，</span><br><span class="line"> * 但它并不是UI，也不是滑动辅助UI运动，反而是单纯地为滑动提供计算</span><br><span class="line"> * 需要invalidate()之后才会调用,这个方法在onDraw()中调用</span><br><span class="line"> */</span><br><span class="line">@Override</span><br><span class="line">public void computeScroll() &#123;</span><br><span class="line">    super.computeScroll();</span><br><span class="line">    if (mScroller.computeScrollOffset()) &#123;</span><br><span class="line">        scrollTo(0, mScroller.getCurrY());</span><br><span class="line">        postInvalidate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/scrollstickyview.gif">
+</li>
+</ul>
+</li>
+<li><p>事件拦截机制，涉及触摸事件MotionEvent(),onTouchEvent()，dispatchTouchEvent(),onInterceptTouchEvent(),多个View,ViewGroup之间对事件的处理</p>
+<ul>
+<li><p>ViewGroup A,B</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public boolean dispatchTouchEvent(MotionEvent ev) &#123;</span><br><span class="line">    Log.e(&quot;A&quot;,&quot;dispatchTouchEvent &quot;+ev.getAction());</span><br><span class="line">    return super.dispatchTouchEvent(ev);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public boolean onInterceptTouchEvent(MotionEvent ev) &#123;</span><br><span class="line">    Log.e(&quot;A&quot;,&quot;onInterceptTouchEvent &quot;+ev.getAction());</span><br><span class="line">    return super.onInterceptTouchEvent(ev);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public boolean onTouchEvent(MotionEvent ev) &#123;</span><br><span class="line">    Log.e(&quot;A&quot;,&quot;onTouchEvent &quot;+ev.getAction());</span><br><span class="line">    return super.onTouchEvent(ev);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>View</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">  public boolean dispatchTouchEvent(MotionEvent ev) &#123;</span><br><span class="line">      Log.e(&quot;MyView&quot;,&quot;dispatchTouchEvent &quot;+ev.getAction());</span><br><span class="line">      return super.dispatchTouchEvent(ev);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  public boolean onTouchEvent(MotionEvent ev) &#123;</span><br><span class="line">      Log.e(&quot;MyView&quot;,&quot;onTouchEvent &quot;+ev.getAction());</span><br><span class="line">      return super.onTouchEvent(ev);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>View位置顺序是A最外层，B中间，MyView最底层。传递分发机制是A-&gt;B-&gt;MyView,处理机制时MyView-&gt;B-&gt;A</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">事件传递返回值：True 拦截，不继续传递；False,不拦截，继续传递</span><br><span class="line">事件处理返回值：True 处理了不用传递回上级，False 给上级处理</span><br><span class="line">初始情况都是False</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
 </ul>
 
       
@@ -667,7 +699,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://willkernel.github.io/2018/02/25/Android-群英传读书笔记/" title="Android Notes">http://willkernel.github.io/2018/02/25/Android-群英传读书笔记/</a>
+    <a href="http://willkernel.github.io/2018/02/25/Android-Notes/" title="Android Notes">http://willkernel.github.io/2018/02/25/Android-Notes/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
