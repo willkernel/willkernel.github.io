@@ -88,7 +88,7 @@
 <meta property="og:description" content="Windows 安装Docker Cannot install packages inside docker Ubuntu image  1234567891011It is because there is no package cache in the image, you need to run:apt-get -qq updatebefore installing packages, a">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/lunch.png">
-<meta property="og:updated_time" content="2018-02-27T18:05:35.579Z">
+<meta property="og:updated_time" content="2018-03-02T13:02:11.944Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 编译Android源码">
 <meta name="twitter:description" content="Windows 安装Docker Cannot install packages inside docker Ubuntu image  1234567891011It is because there is no package cache in the image, you need to run:apt-get -qq updatebefore installing packages, a">
@@ -418,9 +418,9 @@
 </li>
 </ul>
 <ul>
-<li>安装配置<a href="http://openjdk.java.net/install/" target="_blank" rel="noopener">openjdk-7-jre</a></li>
+<li>安装配置<a href="http://openjdk.java.net/install/" target="_blank" rel="noopener">openjdk-7-jre</a><br>ubuntu 16 无法安装jdk7解决办法</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vim/gedit ~/.bashrc</span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64</span><br><span class="line">export JRE_HOME=$JAVA_HOME/jre</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/bin/tools.jar:$JRE_HOME/bin</span><br><span class="line">export ANDROID_JAVA_HOME=$JAVA_HOME</span><br><span class="line"></span><br><span class="line">export USE_CCACHE=1</span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:openjdk-r/ppa  </span><br><span class="line">sudo apt-get update   </span><br><span class="line">sudo apt-get install openjdk-7-jdk</span><br><span class="line"></span><br><span class="line">vim/gedit ~/.bashrc</span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64</span><br><span class="line">export JRE_HOME=$JAVA_HOME/jre</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/bin/tools.jar:$JRE_HOME/bin</span><br><span class="line">export ANDROID_JAVA_HOME=$JAVA_HOME</span><br><span class="line"></span><br><span class="line">export USE_CCACHE=1</span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
 <ul>
 <li>安装其他工具</li>
 </ul>
@@ -462,10 +462,9 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source build/envsetup.sh</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>lunch 命令选择编译目标</p>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/lunch.png">
-</li>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/lunch.png"></li>
+<li>make -j16 (nproc 查看cpus)</li>
 </ul>
-<p>出现error build/core/java.mk 33: *** cts/apps/CtsVerifier: Invalid LOCAL_SDK_VERSION ‘current’ Choices are: . prebuilts缺少文件</p>
 
       
     </div>
