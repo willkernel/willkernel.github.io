@@ -296,6 +296,136 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/07/Android-Notes-五/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="willkernel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="willkernel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/07/Android-Notes-五/" itemprop="url">Android Notes(五)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-07T13:30:45+08:00">
+                2018-03-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/07/Android-Notes-五/" class="leancloud_visitors" data-flag-title="Android Notes(五)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="SurfaceView"><a href="#SurfaceView" class="headerlink" title="SurfaceView"></a>SurfaceView</h4>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/07/Android-Notes-四/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -401,8 +531,42 @@
         
           
             <h4 id="Paint"><a href="#Paint" class="headerlink" title="Paint"></a>Paint</h4><ul>
-<li>PorterDuffXfermode 两个图层交集区域显示方式,用的最多是DST_IN,SRC_IN显示圆形图片或圆角图片<img src="http://p4n1d4izv.bkt.clouddn.com/images/porterduffxfermode.png">
+<li>PorterDuffXfermode 两个图层交集区域显示方式,用的最多是DST_IN,SRC_IN显示圆形图片或圆角图片<img src="http://p4n1d4izv.bkt.clouddn.com/images/porterduffxfermode.png"></li>
+<li><p>圆角矩形</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">private void drawRoundRect() &#123;</span><br><span class="line">       ImageView roundRectIv = findViewById(R.id.roundRectIv);</span><br><span class="line">       Bitmap mBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.car3);</span><br><span class="line">       Bitmap mOut = Bitmap.createBitmap(mBitmap.getWidth(), mBitmap.getHeight(), Bitmap.Config.ARGB_8888);</span><br><span class="line">       Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);</span><br><span class="line">       PorterDuffXfermode mXfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);</span><br><span class="line">       Canvas canvas = new Canvas(mOut);</span><br><span class="line">       canvas.drawRoundRect(0, 0, mBitmap.getWidth(), mBitmap.getHeight(), 100, 100, mPaint);</span><br><span class="line">       mPaint.setXfermode(mXfermode);</span><br><span class="line">       canvas.drawBitmap(mBitmap, 0, 0, mPaint);</span><br><span class="line">       roundRectIv.setImageBitmap(mOut);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/roundrectiv.png"></li>
+<li>刮刮卡<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">private void init() &#123;</span><br><span class="line">        bgBmp = BitmapFactory.decodeResource(getResources(), R.mipmap.car3);</span><br><span class="line">        fgBmp = Bitmap.createBitmap(bgBmp.getWidth(), bgBmp.getHeight(), Bitmap.Config.ARGB_8888);</span><br><span class="line">        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);</span><br><span class="line">        //画路径时走透明通道，形成刮刮卡效果</span><br><span class="line">        mPaint.setAlpha(0);</span><br><span class="line">        mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));</span><br><span class="line">        mPaint.setStyle(Paint.Style.STROKE);</span><br><span class="line">        mPaint.setStrokeJoin(Paint.Join.ROUND);</span><br><span class="line">        mPaint.setStrokeCap(Paint.Cap.ROUND);</span><br><span class="line">        mPaint.setStrokeWidth(50);</span><br><span class="line">        mCanvas = new Canvas(fgBmp);</span><br><span class="line">        mCanvas.drawColor(Color.GRAY);</span><br><span class="line">        mPath = new Path();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean onTouchEvent(MotionEvent event) &#123;</span><br><span class="line">        int x = (int) event.getX();</span><br><span class="line">        int y = (int) event.getY();</span><br><span class="line">        switch (event.getAction()) &#123;</span><br><span class="line">            case MotionEvent.ACTION_DOWN:</span><br><span class="line">                mPath.reset();</span><br><span class="line">                mPath.moveTo(x, y);</span><br><span class="line">                break;</span><br><span class="line">            case MotionEvent.ACTION_MOVE:</span><br><span class="line">                mPath.lineTo(x, y);</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">        mCanvas.drawPath(mPath, mPaint);</span><br><span class="line">        invalidate();</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onDraw(Canvas canvas) &#123;</span><br><span class="line">        super.onDraw(canvas);</span><br><span class="line">        canvas.drawBitmap(bgBmp, 0, 0, null);</span><br><span class="line">        canvas.drawBitmap(fgBmp, 0, 0, null);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 </li>
+</ul>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/scratchcard.png">
+<h4 id="Shader-着色器，渲染器"><a href="#Shader-着色器，渲染器" class="headerlink" title="Shader(着色器，渲染器)"></a>Shader(着色器，渲染器)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CLAMP 拉伸图片最后一个像素，不断重复</span><br><span class="line">REPEAT 横向纵向不断重复</span><br><span class="line">MIRROR 横向纵向翻转重复</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>BitmapShader 位图shader</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">圆形图片</span><br><span class="line">private void init() &#123;</span><br><span class="line">        bm = BitmapFactory.decodeResource(getResources(), R.mipmap.car3);</span><br><span class="line">        //图像填充功能</span><br><span class="line">        bitmapShader = new BitmapShader(bm, Shader.TileMode.CLAMP, Shader.TileMode.REPEAT);</span><br><span class="line">        mPaint = new Paint();</span><br><span class="line">        mPaint.setShader(bitmapShader);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> @Override</span><br><span class="line"> protected void onSizeChanged(int w, int h, int oldw, int oldh) &#123;</span><br><span class="line">        super.onSizeChanged(w, h, oldw, oldh);</span><br><span class="line">        mWidth = getMeasuredWidth();</span><br><span class="line">        mHeight = getMeasuredHeight();</span><br><span class="line">        mLinearGradient=new LinearGradient(100,300,300,500, Color.RED,Color.YELLOW, Shader.TileMode.CLAMP);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> @Override</span><br><span class="line"> protected void onDraw(Canvas canvas) &#123;</span><br><span class="line">        super.onDraw(canvas);</span><br><span class="line">        canvas.drawCircle(200, 200, 100, mPaint);</span><br><span class="line">        mPaint.setShader(mLinearGradient);</span><br><span class="line">        canvas.drawRect(100,300,300,500,mPaint);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/bitmapshader.png"></li>
+<li>LinearGradient 线性shader</li>
+<li>RadialGradient 光束shader</li>
+<li>SweepGradient 梯度shader</li>
+<li>ComposeShader 混合shader</li>
+</ul>
+<ul>
+<li><p>图像倒影</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">private void init() &#123;</span><br><span class="line">        mSrcBitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.car3);</span><br><span class="line">        Matrix matrix=new Matrix();</span><br><span class="line">        //实项垂直翻转，(-1,1)实项水平翻转</span><br><span class="line">        matrix.setScale(1,-1);</span><br><span class="line">        mRefBitmap=Bitmap.createBitmap(mSrcBitmap,0,0,</span><br><span class="line">                mSrcBitmap.getWidth(),mSrcBitmap.getHeight(),matrix,true);</span><br><span class="line"></span><br><span class="line">        mPaint=new Paint(Paint.ANTI_ALIAS_FLAG);</span><br><span class="line">        mPaint.setShader(new LinearGradient(0,mSrcBitmap.getHeight(),</span><br><span class="line">                0,mSrcBitmap.getHeight()+mSrcBitmap.getHeight()/4,</span><br><span class="line">                0xdd000000,0x33000000, Shader.TileMode.CLAMP));</span><br><span class="line">        mXferMode=new PorterDuffXfermode(PorterDuff.Mode.DST_IN);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  protected void onDraw(Canvas canvas) &#123;</span><br><span class="line">        super.onDraw(canvas);</span><br><span class="line">        canvas.drawColor(Color.BLACK);</span><br><span class="line">        canvas.drawBitmap(mSrcBitmap,0,0,null);</span><br><span class="line">        canvas.drawBitmap(mRefBitmap,0,mSrcBitmap.getHeight(),null);</span><br><span class="line">        mPaint.setXfermode(mXferMode);</span><br><span class="line">        canvas.drawRect(0,mSrcBitmap.getHeight(),mRefBitmap.getWidth(),</span><br><span class="line">                mSrcBitmap.getHeight()*2,mPaint);</span><br><span class="line">        mPaint.setXfermode(null);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/reflect.png">
+</li>
+</ul>
+<ul>
+<li><p>PathEffect</p>
+<ul>
+<li>ComposePathEffect 先应用一种路径效果，再这个基础上混合另外一种效果</li>
+<li>CornerPathEffect 圆角路径</li>
+<li>DashPathEffect 虚线路径</li>
+<li>DiscretePathEffect 杂点路径</li>
+<li>PathDashPathEffect 设置点的图形路径效果</li>
+<li>SumPathEffect 组合两种路径后再应用到图形上</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">private void init() &#123;</span><br><span class="line">       mEffects=new PathEffect[7];</span><br><span class="line">       mPaint=new Paint(Paint.ANTI_ALIAS_FLAG);</span><br><span class="line">       mPaint.setStyle(Paint.Style.STROKE);</span><br><span class="line">       mPaint.setStrokeWidth(4);</span><br><span class="line">       mPath=new Path();</span><br><span class="line">       mPath.moveTo(0,0);</span><br><span class="line">       for (int i = 0; i &lt;=30; i++) &#123;</span><br><span class="line">           mPath.lineTo(i*35, (float) (Math.random()*100));</span><br><span class="line">       &#125;</span><br><span class="line">       mEffects[0]=null;</span><br><span class="line">       mEffects[1]=new CornerPathEffect(30);</span><br><span class="line">       mEffects[2]=new DiscretePathEffect(5,3);</span><br><span class="line">       mEffects[3]=new DashPathEffect(new float[]&#123;10,20,30,50&#125;,0);</span><br><span class="line">       Path path=new Path();</span><br><span class="line">       path.addRect(0,0,10,10, Path.Direction.CCW);</span><br><span class="line">       mEffects[4]=new PathDashPathEffect(path,12,0, PathDashPathEffect.Style.ROTATE);</span><br><span class="line">       mEffects[5]=new ComposePathEffect(mEffects[3],mEffects[1]);</span><br><span class="line">       mEffects[6]=new SumPathEffect(mEffects[3],mEffects[1]);</span><br><span class="line">       </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   @Override</span><br><span class="line">   protected void onDraw(Canvas canvas) &#123;</span><br><span class="line">       super.onDraw(canvas);</span><br><span class="line">       for (PathEffect mEffect : mEffects) &#123;</span><br><span class="line">           mPaint.setPathEffect(mEffect);</span><br><span class="line">           canvas.drawPath(mPath,mPaint);</span><br><span class="line">           canvas.translate(0,200);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/patheffect.png"></li>
 </ul>
 
           
@@ -2216,7 +2380,7 @@ do
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
