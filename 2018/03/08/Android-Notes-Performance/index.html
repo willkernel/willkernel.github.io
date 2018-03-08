@@ -93,7 +93,14 @@
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/hierarchyviewer2.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/hierarchyviewer3.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/hierarchyviewer4.png">
-<meta property="og:updated_time" content="2018-03-08T10:56:22.717Z">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/traceview1.png">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/traceview2.png">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mat1.png">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mat2.png">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mat3.png">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mat4.png">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mat5.png">
+<meta property="og:updated_time" content="2018-03-08T17:00:32.118Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Notes(Performance)">
 <meta name="twitter:description" content="Performance optimization布局 人眼感觉流畅画面的帧数要达到40-60帧每秒 在Android中，系统通过VSYNC信号触发对UI的渲染，重绘，需要16ms,其实就是1000ms中显示60帧，1000/60=16.67.如果不能在16ms完成绘制，就会丢帧，例如绘制耗时20ms，在16ms有VSYNC信号时无法绘制，该帧被丢弃，等待下次信号才开始绘制，导致16*2ms 都显示">
@@ -433,7 +440,75 @@
 <img src="http://p4n1d4izv.bkt.clouddn.com/images/hierarchyviewer2.png">
 <img src="http://p4n1d4izv.bkt.clouddn.com/images/hierarchyviewer3.png">
 <img src="http://p4n1d4izv.bkt.clouddn.com/images/hierarchyviewer4.png">
-<h5 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h5><h5 id="工具分析优化"><a href="#工具分析优化" class="headerlink" title="工具分析优化"></a>工具分析优化</h5>
+<h5 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h5><ul>
+<li>内存太低出发LMK(Low Memory Killer)</li>
+<li><p>手机内存指RAM，包括</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">寄存器(Registers)  位于处理器内部，速度最快，程序无法控制</span><br><span class="line">栈  存放基本类型的数据和对象的引用，对象本身不存放在栈中，而是存放在堆中</span><br><span class="line">堆  存放对象和数组，堆中分配的内存由Java虚拟机的回收器GC来管理</span><br><span class="line">静态存储区域  存放应用程序运行时一直存在的数据，如静态的数据变量</span><br><span class="line">常量池  常量的有序集合，包括基本类型，String和对其他类型，字段，方法的符合引用</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当定义一个变量，会在栈中分配内存空间，作用域结束后，会立即被用作新的空间分配。当new一个变量，在堆中分配内存空间，该对象作用域结束后，内存也不会立即回收，等待系统GC回收，内存分析就是分析Heap中的内存状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ActivityManager am=getSystemService(Context.ACTIVITY_SERVICE);</span><br><span class="line">int heapSize=am.getLargeMemoryClass();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取系统内存信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell dumpsys procstats</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>内存监视，Settings-Apps-Running</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell dumpsys meminfo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Bitmap优化</p>
+<ul>
+<li>列表页面使用缩略图，低质量图片</li>
+<li>使用完Bitmap，使用bitmap.recycle()释放资源，Android3.0后Bitmap存放在堆内存中，内存由GC管理，不需要进行释放了</li>
+<li>使用内存缓存(LruCache)和硬盘缓存(DiskLruCache)可以更好使用Bitmap</li>
+</ul>
+</li>
+<li>代码优化<ul>
+<li>常量使用static修饰符</li>
+<li>静态方法比普通方法提高15%左右访问速度</li>
+<li>减少不必要的成员变量</li>
+<li>减少不必要的对象，使用基础类型比使用对象更加节省资源</li>
+<li>尽量不适应枚举，少使用迭代器</li>
+<li>对Cursor，Receiver,Sensor,File 非常注意对他们的创建，回收，注册，解注册</li>
+<li>避免使用IOC框架，IOC通常使用注解，反射实现</li>
+<li>使用RenderScript,OpenGL来进行非常复杂的绘图操作</li>
+<li>使用SurfaceView 来代替View进行大量的绘图操作</li>
+<li>尽量使用绘图缓存，而不是inflate()方法解析视图</li>
+</ul>
+</li>
+</ul>
+<h5 id="工具分析优化"><a href="#工具分析优化" class="headerlink" title="工具分析优化"></a>工具分析优化</h5><ul>
+<li>Lint 工具优化代码</li>
+<li>Android Profile 监测CPU，Memory，Network</li>
+<li><p>TraceView 优化App</p>
+<ul>
+<li><p>Debug类开启TarceView</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;</span><br><span class="line">onCreate()-&gt;Debug.startMethodTracing()</span><br><span class="line">onDestory()-&gt;Debug.stopMethodTracing()</span><br><span class="line">adb pull /sdcard/trace_log.trace/local/LOG</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>TraceView日志</p>
+<ul>
+<li>Incl CPU Time 某方法占用CPU的时间</li>
+<li>Excl CPU Time 某方法本身不包括子方法占用CPU的时间</li>
+<li>Incl Real Time 某方法真正执行的时间</li>
+<li>Excl Real Time某方法本身不包括子方法执行的时间</li>
+<li>Calls+RecurCalls 调用次数+递归回调次数</li>
+<li><font color="#ff0000">从Incl CPU Time和Calls+RecurCalls开始进行分析，如果占用时间长，Calls+RecurCalls次数少，就可以是怀疑对象了</font><img src="http://p4n1d4izv.bkt.clouddn.com/images/traceview1.png">
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/traceview2.png"></li>
+</ul>
+</li>
+<li><p><a href="http://mirror.math.princeton.edu/pub/eclipse//mat/1.7/rcp/MemoryAnalyzer-1.7.0.20170613-win32.win32.x86_64.zip" target="_blank" rel="noopener">MAT</a></p>
+<ul>
+<li>手动查看Heap,判断是否有内存泄漏小技巧：不停点击Cause GC,如果data object的total size有明显变化，就可能有内存泄漏<img src="http://p4n1d4izv.bkt.clouddn.com/images/mat1.png"></li>
+<li>点击Dump HPROF File,生成.hprof,然后再使用命令转换<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hprof-conv com.willkernel.app.audiobar.hprof heap.hprof</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/mat2.png">
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/mat3.png">
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/mat4.png">
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/mat5.png"></li>
+<li>Dumpsys分析系统状态<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">activity 显示所有Activity栈的信息</span><br><span class="line">meminfo 内存信息</span><br><span class="line">battery 电池信息</span><br><span class="line">package包信息</span><br><span class="line">wifi WiFi信息</span><br><span class="line">alarm alarm信息</span><br><span class="line">procstats 内存状态</span><br><span class="line">grep,find 在性能优化bug分析时有用</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+
       
     </div>
     
