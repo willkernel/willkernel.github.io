@@ -79,19 +79,17 @@
 
 
 
-<meta name="description" content="Activity，Activity调用栈  onCreate 创建基本元素 初始化资源，或在onPause中释放的资源 onPause/onStop 清除Activity资源，camera，sensor，receivers onDestory 清除线程 activity 在onSaveInstanceState()保存状态到Bundle，在onRestoreInstanceState(),onCr">
+<meta name="description" content="will be kernel">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android Notes(Activity)">
-<meta property="og:url" content="http://willkernel.github.io/2018/03/07/Android-Notes-六/index.html">
+<meta property="og:title" content="Android Notes(Performance)">
+<meta property="og:url" content="http://willkernel.github.io/2018/03/08/Android-Notes-Performance/index.html">
 <meta property="og:site_name" content="willkernel">
-<meta property="og:description" content="Activity，Activity调用栈  onCreate 创建基本元素 初始化资源，或在onPause中释放的资源 onPause/onStop 清除Activity资源，camera，sensor，receivers onDestory 清除线程 activity 在onSaveInstanceState()保存状态到Bundle，在onRestoreInstanceState(),onCr">
+<meta property="og:description" content="will be kernel">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/activity_lifecycle.png">
-<meta property="og:updated_time" content="2018-03-07T17:24:04.100Z">
+<meta property="og:updated_time" content="2018-03-08T08:26:06.160Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android Notes(Activity)">
-<meta name="twitter:description" content="Activity，Activity调用栈  onCreate 创建基本元素 初始化资源，或在onPause中释放的资源 onPause/onStop 清除Activity资源，camera，sensor，receivers onDestory 清除线程 activity 在onSaveInstanceState()保存状态到Bundle，在onRestoreInstanceState(),onCr">
-<meta name="twitter:image" content="http://p4n1d4izv.bkt.clouddn.com/images/activity_lifecycle.png">
+<meta name="twitter:title" content="Android Notes(Performance)">
+<meta name="twitter:description" content="will be kernel">
 
 
 
@@ -121,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://willkernel.github.io/2018/03/07/Android-Notes-六/"/>
+  <link rel="canonical" href="http://willkernel.github.io/2018/03/08/Android-Notes-Performance/"/>
 
 
 
 
 
-  <title>Android Notes(Activity) | willkernel</title>
+  <title>Android Notes(Performance) | willkernel</title>
   
 
 
@@ -298,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/07/Android-Notes-六/">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/08/Android-Notes-Performance/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="willkernel">
@@ -315,7 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Android Notes(Activity)</h1>
+          <h1 class="post-title" itemprop="name headline">Android Notes(Performance)</h1>
         
 
         <div class="post-meta">
@@ -327,8 +325,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-07T22:53:00+08:00">
-                2018-03-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T16:26:04+08:00">
+                2018-03-08
               </time>
             
 
@@ -338,28 +336,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -367,7 +343,7 @@
 
           
           
-             <span id="/2018/03/07/Android-Notes-六/" class="leancloud_visitors" data-flag-title="Android Notes(Activity)">
+             <span id="/2018/03/08/Android-Notes-Performance/" class="leancloud_visitors" data-flag-title="Android Notes(Performance)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -398,46 +374,7 @@
       
 
       
-        <h4 id="Activity，Activity调用栈"><a href="#Activity，Activity调用栈" class="headerlink" title="Activity，Activity调用栈"></a>Activity，Activity调用栈</h4><img src="http://p4n1d4izv.bkt.clouddn.com/images/activity_lifecycle.png">
-<ul>
-<li>onCreate 创建基本元素</li>
-<li>初始化资源，或在onPause中释放的资源</li>
-<li>onPause/onStop 清除Activity资源，camera，sensor，receivers</li>
-<li>onDestory 清除线程</li>
-<li>activity 在onSaveInstanceState()保存状态到Bundle，在onRestoreInstanceState(),onCreate()恢复状态Bundle，已经默认实项了控件的状态保存</li>
-</ul>
-<ul>
-<li>Activity任务栈<ul>
-<li>栈底元素是整个任务栈发起者</li>
-<li>一个任务栈Task,表示若干个Activity集合，可以来自不同的App，一个App的Activity也可以在不同的Task中</li>
-<li>LIFO 后进先出</li>
-<li>启动模式launchmode<ul>
-<li>standard<br>默认启动模式，每次都会创建新的实例</li>
-<li>singleTop<br>栈顶模式，如果栈顶是要启动的Activity，直接引用，如果不是创建新的Activity，例如qq接受多条消息，弹出的消息界面</li>
-<li>singleTask<br>单栈模式，要启动的Activity，如果栈中存在该Activity，将其置于栈顶，并将位于上方的Activity销毁，指同一个App中启动它的Activity，如果其他App以singleTask模式启动这个Activity，将会创建新的Activity。但是如果启动的Activity已经在一个任务栈中处于后台，那所在的任务栈会和要启动的Activity一起回到前台，当已经启动的Activity需要按返回键时，就会先返回Activity所在栈的元素<br>应用：将主Activity设置为singleTask，然后在要退出的Activity中启动主Activity，将他之上的Activity全部销毁,重写onNewIntent(),加上finish(),将最后一个主Activity结束</li>
-<li>singleInstanse<br>栈中只存在该一个Activity，共享实例，不需要重新创建，类似浏览器，电话</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong> <font color="#ff0000">注意：singleTop或singleInstance的Activity A通过startActivityForResult()启动另一个Activity B，直接返回Activity.RESULT_CANCELD ,只能通过Intent绑定数据</font> </strong></p>
-<ul>
-<li>Intent Flag<ul>
-<li>Intent.FLAG_ACTIVITY_NEW_TASK 启动的Activity在新的Task中，使用在Service中启动Activity，因为Service没有任务栈</li>
-<li>Intent.FLAG_ACTIVITY_SINGLE_TOP 存在直接引用，不存在创建新的</li>
-<li>Intent.FLAG_ACTIVITY_CLEAR_TOP 与singleTask相同，存在引用并销毁，不存在创建新的</li>
-<li>Intent.FLAG_ACTIVITY_NO_HISTORY 以这种模式启动的Activity C会消失，A-&gt;B-&gt;C-&gt;D,当前Activity栈中为ABD</li>
-</ul>
-</li>
-<li>清空任务栈<ul>
-<li>clearTaskOnTouch 每次返回该Activity 清除其他Activity，初始化Task，只有一个该Activity</li>
-<li>finishOnTaskLaunch 返回该Activity时，会被finish</li>
-<li>alwaysRetainTaskState 保持当前Task状态，不接受任何清理命令</li>
-</ul>
-</li>
-</ul>
-
+        
       
     </div>
     
@@ -494,7 +431,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://willkernel.github.io/2018/03/07/Android-Notes-六/" title="Android Notes(Activity)">http://willkernel.github.io/2018/03/07/Android-Notes-六/</a>
+    <a href="http://willkernel.github.io/2018/03/08/Android-Notes-Performance/" title="Android Notes(Performance)">http://willkernel.github.io/2018/03/08/Android-Notes-Performance/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -516,8 +453,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/07/Android-Notes-五/" rel="next" title="Android Notes(SurfaceView)">
-                <i class="fa fa-chevron-left"></i> Android Notes(SurfaceView)
+              <a href="/2018/03/08/Android-Notes-System-Info-Manager-Safety-1/" rel="next" title="Android Notes(System Info Manager Safety)">
+                <i class="fa fa-chevron-left"></i> Android Notes(System Info Manager Safety)
               </a>
             
           </div>
@@ -525,10 +462,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/08/Android-Notes-System-Info-Manager-Safety-1/" rel="prev" title="Android Notes(System Info Manager Safety)">
-                Android Notes(System Info Manager Safety) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -585,17 +518,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -671,22 +595,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity，Activity调用栈"><span class="nav-number">1.</span> <span class="nav-text">Activity，Activity调用栈</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

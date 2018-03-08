@@ -89,7 +89,7 @@
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/packagemanager.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/packagesxml1.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/packagesxml2.png">
-<meta property="og:updated_time" content="2018-03-08T05:07:35.211Z">
+<meta property="og:updated_time" content="2018-03-08T08:24:53.144Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Notes(System Info Manager Safety)">
 <meta name="twitter:description" content="Android System Info android.os.Build 12345678910111213141516171819202122Build.BOARD 主板Build.BRAND 系统定制商Build.SUPPORTED_ABIS CPU指令集Build.DEVICE 设备参数Build.DISPLAY 显示屏参数Build.FINGERPRINT 唯一编号Build.SERIAL">
@@ -426,7 +426,32 @@
 <img src="http://p4n1d4izv.bkt.clouddn.com/images/packagesxml1.png">
 <img src="http://p4n1d4izv.bkt.clouddn.com/images/packagesxml2.png">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">codepath apk安装路径</span><br><span class="line">system/app 存放系统或厂商定制apk</span><br><span class="line">data/app 存放第三方apk</span><br></pre></td></tr></table></figure>
-<h4 id="Android安全"><a href="#Android安全" class="headerlink" title="Android安全"></a>Android安全</h4>
+<h4 id="Android安全"><a href="#Android安全" class="headerlink" title="Android安全"></a>Android安全</h4><ul>
+<li>代码混淆proguard，混淆代码，替换命名，压缩代码，优化编译后的字节码</li>
+<li><p>AndroidManifest 权限声明，权限检查</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">检测操作者权限</span><br><span class="line">判断permission名称，如果为空，直接返回DENIED</span><br><span class="line">判断UID，如果为0，则为Root权限，不做权限控制；如果为system server的uid，不做权限控制；如果uid与参数中的请求uid不同，则返回DENIED</span><br><span class="line">PackageManagerService.checkUidPermission()判断uid是否有相应的权限，系统级的platform.xml中进行查找</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数字证书，APP签名文件</p>
+</li>
+<li>Linux内核访问权限控制，System，root用户才有权限访问系统文件</li>
+<li>虚拟机沙箱隔离，每个APP有与之对应的UID</li>
+<li><p>隐患</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">代码漏洞:LaunchAnyWhere,FakeID Bug</span><br><span class="line">Root风险</span><br><span class="line">安全机制不健全</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>反编译工具</p>
+<ul>
+<li><p>apktool</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">反编译 apktool.jar d test.apk</span><br><span class="line">生成test文件夹</span><br><span class="line">重新打包 apktool.jar b test.apk</span><br><span class="line">生成重新打包的apk，在dist文件夹中</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Dex2jar,jd-gui</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dex2jar.bat classes.dex</span><br><span class="line">生成classes.jar文件</span><br><span class="line">使用jd-gui查看源码</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>apk加密</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">buildTypes &#123;</span><br><span class="line">  release&#123;</span><br><span class="line">  minifyEnabled false //以前属性名是runProguard</span><br><span class="line">  proguardFiles getDefaultProguardFile(&apos;proguard-android.txt&apos;), //系统默认</span><br><span class="line">  &apos;proguard-rules.pro&apos; // 项目自定义</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+
       
     </div>
     
@@ -515,6 +540,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/03/08/Android-Notes-Performance/" rel="prev" title="Android Notes(Performance)">
+                Android Notes(Performance) <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -595,7 +624,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
