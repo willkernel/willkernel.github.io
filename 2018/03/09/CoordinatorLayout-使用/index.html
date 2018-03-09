@@ -79,32 +79,20 @@
 
 
 
-<meta name="description" content="Performance optimization布局 人眼感觉流畅画面的帧数要达到40-60帧每秒 在Android中，系统通过VSYNC信号触发对UI的渲染，重绘，需要16ms,其实就是1000ms中显示60帧，1000/60=16.67.如果不能在16ms完成绘制，就会丢帧，例如绘制耗时20ms，在16ms有VSYNC信号时无法绘制，该帧被丢弃，等待下次信号才开始绘制，导致16*2ms 都显示">
+<meta name="description" content="CoordinatorLayout build.gradle 123456789def SUPPORT = &amp;quot;26.1.0&amp;quot;dependencies &amp;#123;  implementation &amp;apos;com.android.support:appcompat-v7:26.1.0&amp;apos;    implementation &amp;apos;com.android.supp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android Notes(Performance)">
-<meta property="og:url" content="http://willkernel.github.io/2018/03/08/Android-Notes-Performance/index.html">
+<meta property="og:title" content="Android Notes(CoordinatorLayout)">
+<meta property="og:url" content="http://willkernel.github.io/2018/03/09/CoordinatorLayout-使用/index.html">
 <meta property="og:site_name" content="willkernel">
-<meta property="og:description" content="Performance optimization布局 人眼感觉流畅画面的帧数要达到40-60帧每秒 在Android中，系统通过VSYNC信号触发对UI的渲染，重绘，需要16ms,其实就是1000ms中显示60帧，1000/60=16.67.如果不能在16ms完成绘制，就会丢帧，例如绘制耗时20ms，在16ms有VSYNC信号时无法绘制，该帧被丢弃，等待下次信号才开始绘制，导致16*2ms 都显示">
+<meta property="og:description" content="CoordinatorLayout build.gradle 123456789def SUPPORT = &amp;quot;26.1.0&amp;quot;dependencies &amp;#123;  implementation &amp;apos;com.android.support:appcompat-v7:26.1.0&amp;apos;    implementation &amp;apos;com.android.supp">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/gpurendering1.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/gpurendering2.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/overdraw1.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/hierarchyviewer1.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/hierarchyviewer2.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/hierarchyviewer3.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/hierarchyviewer4.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/traceview1.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/traceview2.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mat1.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mat2.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mat3.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mat4.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mat5.png">
-<meta property="og:updated_time" content="2018-03-08T17:00:32.118Z">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/coordinatorlayout1.png">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/coordinatorlayout1.gif">
+<meta property="og:updated_time" content="2018-03-09T06:00:14.101Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android Notes(Performance)">
-<meta name="twitter:description" content="Performance optimization布局 人眼感觉流畅画面的帧数要达到40-60帧每秒 在Android中，系统通过VSYNC信号触发对UI的渲染，重绘，需要16ms,其实就是1000ms中显示60帧，1000/60=16.67.如果不能在16ms完成绘制，就会丢帧，例如绘制耗时20ms，在16ms有VSYNC信号时无法绘制，该帧被丢弃，等待下次信号才开始绘制，导致16*2ms 都显示">
-<meta name="twitter:image" content="http://p4n1d4izv.bkt.clouddn.com/images/gpurendering1.png">
+<meta name="twitter:title" content="Android Notes(CoordinatorLayout)">
+<meta name="twitter:description" content="CoordinatorLayout build.gradle 123456789def SUPPORT = &amp;quot;26.1.0&amp;quot;dependencies &amp;#123;  implementation &amp;apos;com.android.support:appcompat-v7:26.1.0&amp;apos;    implementation &amp;apos;com.android.supp">
+<meta name="twitter:image" content="http://p4n1d4izv.bkt.clouddn.com/images/coordinatorlayout1.png">
 
 
 
@@ -134,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://willkernel.github.io/2018/03/08/Android-Notes-Performance/"/>
+  <link rel="canonical" href="http://willkernel.github.io/2018/03/09/CoordinatorLayout-使用/"/>
 
 
 
 
 
-  <title>Android Notes(Performance) | willkernel</title>
+  <title>Android Notes(CoordinatorLayout) | willkernel</title>
   
 
 
@@ -311,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/08/Android-Notes-Performance/">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/CoordinatorLayout-使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="willkernel">
@@ -328,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Android Notes(Performance)</h1>
+          <h1 class="post-title" itemprop="name headline">Android Notes(CoordinatorLayout)</h1>
         
 
         <div class="post-meta">
@@ -340,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T16:26:00+08:00">
-                2018-03-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T10:33:23+08:00">
+                2018-03-09
               </time>
             
 
@@ -351,28 +339,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -380,7 +346,7 @@
 
           
           
-             <span id="/2018/03/08/Android-Notes-Performance/" class="leancloud_visitors" data-flag-title="Android Notes(Performance)">
+             <span id="/2018/03/09/CoordinatorLayout-使用/" class="leancloud_visitors" data-flag-title="Android Notes(CoordinatorLayout)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -411,102 +377,29 @@
       
 
       
-        <h4 id="Performance-optimization"><a href="#Performance-optimization" class="headerlink" title="Performance optimization"></a>Performance optimization</h4><h5 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h5><ul>
-<li>人眼感觉流畅画面的帧数要达到40-60帧每秒</li>
-<li>在Android中，系统通过VSYNC信号触发对UI的渲染，重绘，需要16ms,其实就是1000ms中显示60帧，1000/60=16.67.如果不能在16ms完成绘制，就会丢帧，例如绘制耗时20ms，在16ms有VSYNC信号时无法绘制，该帧被丢弃，等待下次信号才开始绘制，导致16*2ms 都显示同一帧画面</li>
-<li><p>在开发者选项中有Profile GPU Rendering 选中On Screen as bars,中间的绿色横线代表VSYNC时间16ms柱状线包含3个部分</p>
-<ul>
-<li>蓝色代表测量绘制Display List的时间</li>
-<li>红色代表OpenGL渲染Display List的时间</li>
-<li>黄色代表CPU等待GPU处理的时间<br>Android 6.0<img src="http://p4n1d4izv.bkt.clouddn.com/images/gpurendering1.png">
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/gpurendering2.png">
+        <h4 id="CoordinatorLayout"><a href="#CoordinatorLayout" class="headerlink" title="CoordinatorLayout"></a>CoordinatorLayout</h4><ul>
+<li><p>build.gradle</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def SUPPORT = &quot;26.1.0&quot;</span><br><span class="line">dependencies &#123;</span><br><span class="line">  implementation &apos;com.android.support:appcompat-v7:26.1.0&apos;</span><br><span class="line">    implementation &apos;com.android.support.constraint:constraint-layout:1.0.2&apos;</span><br><span class="line">    implementation &quot;com.android.support:design:$SUPPORT&quot;</span><br><span class="line">    implementation &quot;com.android.support:cardview-v7:$SUPPORT&quot;</span><br><span class="line">    implementation &quot;com.android.support:recyclerview-v7:$SUPPORT&quot;</span><br><span class="line">    implementation &apos;de.hdodenhof:circleimageview:1.3.0&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
+<li><p>styles.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;style name=&quot;AppTheme&quot; parent=&quot;Theme.AppCompat.Light.NoActionBar&quot;&gt;</span><br><span class="line">        &lt;!-- Customize your theme here. --&gt;</span><br><span class="line">        &lt;item name=&quot;colorPrimary&quot;&gt;@color/colorAccent&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;colorPrimaryDark&quot;&gt;@color/colorAccent&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;colorAccent&quot;&gt;@color/colorAccent&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:statusBarColor&quot;&gt;@color/colorAccent&lt;/item&gt;</span><br><span class="line">        &lt;!--&lt;item name=&quot;android:windowDrawsSystemBarBackgrounds&quot;&gt;true&lt;/item&gt;--&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowTranslucentStatus&quot;&gt;true&lt;/item&gt;</span><br><span class="line">    &lt;/style&gt;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Overdraw<br>Enable GPU Overdraw 查看当前区域绘制次数，增大蓝色区域，<a href="https://developer.android.com/topic/performance/rendering/overdraw.html" target="_blank" rel="noopener">减少红色区域</a></p>
-<ul>
-<li>移除不需要背景</li>
-<li><p>减少布局层级,降低view树高度，不应超过10层</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;include&gt; 布局中不设置宽高具体值(0dp)</span><br><span class="line">&lt;ViewStub&gt; 延时加载，可以使用setVisibility(),inflate()显示View，之后ViewStub就不存在了，被显示的layout代替，不能inflate两次，而View.GONE会在初始化布局的时候就已经添加在布局树中，相比之下ViewStub更有效率</span><br></pre></td></tr></table></figure>
+<li><p>activity_main.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line">  &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">  &lt;android.support.design.widget.CoordinatorLayout    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:fitsSystemWindows=&quot;true&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    tools:context=&quot;com.willkernel.app.coordinatorlayoutdemo.MainActivity&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.design.widget.AppBarLayout</span><br><span class="line">        android:id=&quot;@+id/appBarLayout&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:fitsSystemWindows=&quot;true&quot;</span><br><span class="line">        app:layout_scrollFlags=&quot;scroll|enterAlways|snap&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;android.support.v7.widget.Toolbar</span><br><span class="line">            android:id=&quot;@+id/main.toolbar&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:fitsSystemWindows=&quot;true&quot;</span><br><span class="line">            android:elevation=&quot;4dp&quot;</span><br><span class="line">            android:minHeight=&quot;?attr/actionBarSize&quot;</span><br><span class="line">            android:theme=&quot;@style/ThemeOverlay.AppCompat.Dark&quot;</span><br><span class="line">            android:title=&quot;@string/app_name&quot;</span><br><span class="line">            app:title=&quot;@string/app_name&quot; /&gt;</span><br><span class="line">            &lt;!--android:background=&quot;?attr/colorPrimary&quot;--&gt;</span><br><span class="line">    &lt;/android.support.design.widget.AppBarLayout&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.v4.widget.NestedScrollView</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        app:layout_behavior=&quot;@string/appbar_scrolling_view_behavior&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;LinearLayout</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:orientation=&quot;vertical&quot;&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            &lt;android.support.v7.widget.CardView</span><br><span class="line">                android:layout_width=&quot;match_parent&quot;</span><br><span class="line">                android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">                android:layout_gravity=&quot;center&quot;</span><br><span class="line">                android:layout_margin=&quot;8dp&quot;</span><br><span class="line">                app:contentPadding=&quot;8dp&quot;&gt;</span><br><span class="line"></span><br><span class="line">                &lt;LinearLayout</span><br><span class="line">                    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">                    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">                    android:orientation=&quot;vertical&quot;&gt;</span><br><span class="line"></span><br><span class="line">                    &lt;TextView</span><br><span class="line">                        android:id=&quot;@+id/main.coordinator.textview&quot;</span><br><span class="line">                        style=&quot;@style/TextItem&quot;</span><br><span class="line">                        android:text=&quot;@string/item_simple_coordinator_example&quot; /&gt;</span><br><span class="line"></span><br><span class="line">                    &lt;TextView</span><br><span class="line">                        android:id=&quot;@+id/main.ioexample.textview&quot;</span><br><span class="line">                        style=&quot;@style/TextItem&quot;</span><br><span class="line">                        android:text=&quot;@string/item_googleio_example&quot; /&gt;</span><br><span class="line"></span><br><span class="line">                    &lt;TextView</span><br><span class="line">                        android:id=&quot;@+id/main.materialup.textview&quot;</span><br><span class="line">                        style=&quot;@style/TextItem&quot;</span><br><span class="line">                        android:text=&quot;@string/item_materialup_example&quot; /&gt;</span><br><span class="line"></span><br><span class="line">                    &lt;TextView</span><br><span class="line">                        android:id=&quot;@+id/main.space.textview&quot;</span><br><span class="line">                        style=&quot;@style/TextItem&quot;</span><br><span class="line">                        android:text=&quot;@string/item_flexible_space_example&quot; /&gt;</span><br><span class="line"></span><br><span class="line">                    &lt;TextView</span><br><span class="line">                        android:id=&quot;@+id/main.swipebehavior.textview&quot;</span><br><span class="line">                        style=&quot;@style/TextItem&quot;</span><br><span class="line">                        android:text=&quot;Swype Behavior example&quot; /&gt;</span><br><span class="line">                &lt;/LinearLayout&gt;</span><br><span class="line">            &lt;/android.support.v7.widget.CardView&gt;</span><br><span class="line">            &lt;android.support.v7.widget.CardView</span><br><span class="line">                android:layout_width=&quot;match_parent&quot;</span><br><span class="line">                android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">                android:layout_gravity=&quot;center&quot;</span><br><span class="line">                android:layout_margin=&quot;8dp&quot;</span><br><span class="line">                app:contentPadding=&quot;8dp&quot;&gt;</span><br><span class="line"></span><br><span class="line">                &lt;TextView</span><br><span class="line">                    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">                    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">                    android:lineSpacingExtra=&quot;6dp&quot;</span><br><span class="line">                    android:text=&quot;@string/about&quot; /&gt;</span><br><span class="line"></span><br><span class="line">            &lt;/android.support.v7.widget.CardView&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/LinearLayout&gt;</span><br><span class="line">    &lt;/android.support.v4.widget.NestedScrollView&gt;</span><br><span class="line"></span><br><span class="line">&lt;/android.support.design.widget.CoordinatorLayout&gt;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>减少使用透明度alpha(会先绘制有颜色，再设置透明度)</p>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/overdraw1.png"></li>
-<li>hierarchy viewer</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;Tools&quot; menu &gt; Android &gt; Android Device Monitor</span><br><span class="line">In ADM: &quot;Window&quot; Menu &gt; Perspective</span><br><span class="line">Click on Hierarchy Viewer.</span><br><span class="line">Profile Node:Obtain layout times  at the top of the Tree View</span><br></pre></td></tr></table></figure>
+<li><p>MaintActivity.java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Toolbar toolbar=findViewById(R.id.main_toolbar);</span><br><span class="line">setSupportActionBar(toolbar);//控制toolbar内部bottom边距</span><br></pre></td></tr></table></figure>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/coordinatorlayout1.png">
 </li>
-</ul>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/hierarchyviewer1.png">
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/hierarchyviewer2.png">
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/hierarchyviewer3.png">
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/hierarchyviewer4.png">
-<h5 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h5><ul>
-<li>内存太低出发LMK(Low Memory Killer)</li>
-<li><p>手机内存指RAM，包括</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">寄存器(Registers)  位于处理器内部，速度最快，程序无法控制</span><br><span class="line">栈  存放基本类型的数据和对象的引用，对象本身不存放在栈中，而是存放在堆中</span><br><span class="line">堆  存放对象和数组，堆中分配的内存由Java虚拟机的回收器GC来管理</span><br><span class="line">静态存储区域  存放应用程序运行时一直存在的数据，如静态的数据变量</span><br><span class="line">常量池  常量的有序集合，包括基本类型，String和对其他类型，字段，方法的符合引用</span><br></pre></td></tr></table></figure>
+<li><p>SimpleAppbarLayout</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;android.support.design.widget.CoordinatorLayout   xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">android:layout_width=&quot;match_parent&quot;</span><br><span class="line">android:layout_height=&quot;match_parent&quot;</span><br><span class="line">android:background=&quot;@android:color/background_light&quot;</span><br><span class="line">android:fitsSystemWindows=&quot;true&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;android.support.design.widget.AppBarLayout</span><br><span class="line">    android:id=&quot;@+id/main.appbar&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;300dp&quot;</span><br><span class="line">    android:fitsSystemWindows=&quot;true&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.design.widget.CollapsingToolbarLayout</span><br><span class="line">        android:id=&quot;@+id/main.collapsing&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;match_parent&quot;</span><br><span class="line">        android:fitsSystemWindows=&quot;true&quot;</span><br><span class="line">        app:contentScrim=&quot;?attr/colorAccent&quot;</span><br><span class="line">        app:expandedTitleMarginEnd=&quot;46dp&quot;</span><br><span class="line">        app:expandedTitleMarginStart=&quot;46dp&quot;</span><br><span class="line">        app:layout_scrollFlags=&quot;scroll|exitUntilCollapsed&quot;</span><br><span class="line">        app:scrimAnimationDuration=&quot;1000&quot;</span><br><span class="line">        app:title=&quot;@string/app_name&quot;</span><br><span class="line">        app:titleEnabled=&quot;true&quot;&gt;</span><br><span class="line">        &lt;!--app:scrimAnimationDuration=&quot;1000&quot; 颜色过度持续时间--&gt;</span><br><span class="line">        &lt;!--  app:expandedTitleMarginStart 展开时标题的内边距--&gt;</span><br><span class="line">        &lt;!--  app:contentScrim=&quot;?attr/colorAccent&quot; 折叠时内容背景颜色--&gt;</span><br><span class="line">        &lt;!--  app:layout_scrollFlags=&quot;scroll|exitUntilCollapsed&quot; 和</span><br><span class="line">        android:minHeight=&quot;200dp&quot; 控制--&gt;</span><br><span class="line">        &lt;ImageView</span><br><span class="line">            android:id=&quot;@+id/main.backdrop&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;match_parent&quot;</span><br><span class="line">            android:fitsSystemWindows=&quot;true&quot;</span><br><span class="line">            android:minHeight=&quot;200dp&quot;</span><br><span class="line">            android:scaleType=&quot;centerCrop&quot;</span><br><span class="line">            android:src=&quot;@mipmap/material_flat&quot;</span><br><span class="line">            app:layout_collapseMode=&quot;parallax&quot;</span><br><span class="line">            app:layout_collapseParallaxMultiplier=&quot;0.7&quot; /&gt;</span><br><span class="line">        &lt;!--   app:layout_collapseParallaxMultiplier=&quot;0.7&quot;</span><br><span class="line">            app:layout_collapseMode=&quot;parallax&quot; 两者结合使用--&gt;</span><br><span class="line">        &lt;android.support.v7.widget.Toolbar</span><br><span class="line">            android:id=&quot;@+id/main.toolbar&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;?attr/actionBarSize&quot;</span><br><span class="line">            android:fitsSystemWindows=&quot;true&quot;</span><br><span class="line">            android:title=&quot;toolbar&quot;</span><br><span class="line">            app:layout_collapseMode=&quot;parallax&quot;</span><br><span class="line">            app:title=&quot;toolbar&quot; /&gt;</span><br><span class="line">        &lt;!--在titleEnabled=true时，app:title=&quot;toolbar&quot;    android:title=&quot;toolbar&quot;设置标题无效&quot;--&gt;</span><br><span class="line">    &lt;/android.support.design.widget.CollapsingToolbarLayout&gt;</span><br><span class="line">&lt;/android.support.design.widget.AppBarLayout&gt;</span><br><span class="line"></span><br><span class="line">&lt;android.support.v4.widget.NestedScrollView</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    android:fitsSystemWindows=&quot;true&quot;</span><br><span class="line">    app:layout_behavior=&quot;@string/appbar_scrolling_view_behavior&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:lineSpacingExtra=&quot;8dp&quot;</span><br><span class="line">        android:padding=&quot;@dimen/activity_horizontal_margin&quot;</span><br><span class="line">        android:text=&quot;@string/about&quot;</span><br><span class="line">        android:textSize=&quot;20sp&quot; /&gt;</span><br><span class="line">&lt;/android.support.v4.widget.NestedScrollView&gt;</span><br><span class="line"></span><br><span class="line">&lt;android.support.design.widget.FloatingActionButton</span><br><span class="line">    android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">    android:layout_margin=&quot;@dimen/activity_horizontal_margin&quot;</span><br><span class="line">    android:src=&quot;@mipmap/ic_launcher&quot;</span><br><span class="line">    app:layout_anchor=&quot;@id/main.appbar&quot;</span><br><span class="line">    app:layout_anchorGravity=&quot;bottom|right|end&quot; /&gt;</span><br><span class="line">&lt;/android.support.design.widget.CoordinatorLayout&gt;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>当定义一个变量，会在栈中分配内存空间，作用域结束后，会立即被用作新的空间分配。当new一个变量，在堆中分配内存空间，该对象作用域结束后，内存也不会立即回收，等待系统GC回收，内存分析就是分析Heap中的内存状态</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ActivityManager am=getSystemService(Context.ACTIVITY_SERVICE);</span><br><span class="line">int heapSize=am.getLargeMemoryClass();</span><br></pre></td></tr></table></figure>
+<li><p>AppBarStateChangeListener</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public abstract class AppBarStateChangeListener implements   AppBarLayout.OnOffsetChangedListener &#123;</span><br><span class="line">  public enum State &#123;</span><br><span class="line">    EXPANDED,</span><br><span class="line">    COLLAPSED,</span><br><span class="line">    IDLE</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private State mCurrentState = State.IDLE;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  public final void onOffsetChanged(AppBarLayout appBarLayout, int i) &#123;</span><br><span class="line">    if (i == 0) &#123;</span><br><span class="line">        if (mCurrentState != State.EXPANDED) &#123;</span><br><span class="line">            onStateChanged(appBarLayout, State.EXPANDED);</span><br><span class="line">        &#125;</span><br><span class="line">        mCurrentState = State.EXPANDED;</span><br><span class="line">    &#125; else if (Math.abs(i) &gt;= appBarLayout.getTotalScrollRange()) &#123;</span><br><span class="line">        if (mCurrentState != State.COLLAPSED) &#123;</span><br><span class="line">            onStateChanged(appBarLayout, State.COLLAPSED);</span><br><span class="line">        &#125;</span><br><span class="line">        mCurrentState = State.COLLAPSED;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        if (mCurrentState != State.IDLE) &#123;</span><br><span class="line">            onStateChanged(appBarLayout, State.IDLE);</span><br><span class="line">        &#125;</span><br><span class="line">        mCurrentState = State.IDLE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">   public abstract void onStateChanged(AppBarLayout appBarLayout, State state);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>获取系统内存信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell dumpsys procstats</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>内存监视，Settings-Apps-Running</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell dumpsys meminfo</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Bitmap优化</p>
-<ul>
-<li>列表页面使用缩略图，低质量图片</li>
-<li>使用完Bitmap，使用bitmap.recycle()释放资源，Android3.0后Bitmap存放在堆内存中，内存由GC管理，不需要进行释放了</li>
-<li>使用内存缓存(LruCache)和硬盘缓存(DiskLruCache)可以更好使用Bitmap</li>
-</ul>
-</li>
-<li>代码优化<ul>
-<li>常量使用static修饰符</li>
-<li>静态方法比普通方法提高15%左右访问速度</li>
-<li>减少不必要的成员变量</li>
-<li>减少不必要的对象，使用基础类型比使用对象更加节省资源</li>
-<li>尽量不适应枚举，少使用迭代器</li>
-<li>对Cursor，Receiver,Sensor,File 非常注意对他们的创建，回收，注册，解注册</li>
-<li>避免使用IOC框架，IOC通常使用注解，反射实现</li>
-<li>使用RenderScript,OpenGL来进行非常复杂的绘图操作</li>
-<li>使用SurfaceView 来代替View进行大量的绘图操作</li>
-<li>尽量使用绘图缓存，而不是inflate()方法解析视图</li>
-</ul>
-</li>
-</ul>
-<h5 id="工具分析优化"><a href="#工具分析优化" class="headerlink" title="工具分析优化"></a>工具分析优化</h5><ul>
-<li>Lint 工具优化代码</li>
-<li>Android Profile 监测CPU，Memory，Network</li>
-<li><p>TraceView 优化App</p>
-<ul>
-<li><p>Debug类开启TarceView</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;</span><br><span class="line">onCreate()-&gt;Debug.startMethodTracing()</span><br><span class="line">onDestory()-&gt;Debug.stopMethodTracing()</span><br><span class="line">adb pull /sdcard/trace_log.trace/local/LOG</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>TraceView日志</p>
-<ul>
-<li>Incl CPU Time 某方法占用CPU的时间</li>
-<li>Excl CPU Time 某方法本身不包括子方法占用CPU的时间</li>
-<li>Incl Real Time 某方法真正执行的时间</li>
-<li>Excl Real Time某方法本身不包括子方法执行的时间</li>
-<li>Calls+RecurCalls 调用次数+递归回调次数</li>
-<li><font color="#ff0000">从Incl CPU Time和Calls+RecurCalls开始进行分析，如果占用时间长，Calls+RecurCalls次数少，就可以是怀疑对象了</font><img src="http://p4n1d4izv.bkt.clouddn.com/images/traceview1.png">
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/traceview2.png"></li>
-</ul>
-</li>
-<li><p><a href="http://mirror.math.princeton.edu/pub/eclipse//mat/1.7/rcp/MemoryAnalyzer-1.7.0.20170613-win32.win32.x86_64.zip" target="_blank" rel="noopener">MAT</a></p>
-<ul>
-<li>手动查看Heap,判断是否有内存泄漏小技巧：不停点击Cause GC,如果data object的total size有明显变化，就可能有内存泄漏<img src="http://p4n1d4izv.bkt.clouddn.com/images/mat1.png"></li>
-<li>点击Dump HPROF File,生成.hprof,然后再使用命令转换<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hprof-conv com.willkernel.app.audiobar.hprof heap.hprof</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/mat2.png">
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/mat3.png">
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/mat4.png">
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/mat5.png"></li>
-<li>Dumpsys分析系统状态<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">activity 显示所有Activity栈的信息</span><br><span class="line">meminfo 内存信息</span><br><span class="line">battery 电池信息</span><br><span class="line">package包信息</span><br><span class="line">wifi WiFi信息</span><br><span class="line">alarm alarm信息</span><br><span class="line">procstats 内存状态</span><br><span class="line">grep,find 在性能优化bug分析时有用</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
+<li><p>SimpleCoordinatorActivity</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//沉浸式状态栏</span><br><span class="line">//        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) &#123;//5.0之上</span><br><span class="line">//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);</span><br><span class="line">//            getWindow().setStatusBarColor(Color.RED);</span><br><span class="line">//        &#125;</span><br><span class="line"></span><br><span class="line">  setContentView(R.layout.activity_simple_coordinator);</span><br><span class="line"></span><br><span class="line">  AppBarLayout main_appbar = findViewById(R.id.main_appbar);</span><br><span class="line">  main_appbar.addOnOffsetChangedListener(stateListener());</span><br><span class="line"></span><br><span class="line">  Toolbar toolbar=findViewById(R.id.main_toolbar);</span><br><span class="line">  setSupportActionBar(toolbar);</span><br><span class="line"></span><br><span class="line">  CollapsingToolbarLayout mCollapsingToolbarLayout = findViewById(R.id.main_collapsing);</span><br><span class="line">  //通过CollapsingToolbarLayout修改字体颜色</span><br><span class="line">  mCollapsingToolbarLayout.setExpandedTitleColor(Color.RED);//设置还没收缩时状态下字体颜色</span><br><span class="line">  mCollapsingToolbarLayout.setCollapsedTitleTextColor(Color.GREEN);//设置收缩后Toolbar上字体的颜色</span><br></pre></td></tr></table></figure>
+ <img src="http://p4n1d4izv.bkt.clouddn.com/images/coordinatorlayout1.gif"></li>
 </ul>
 
       
@@ -565,7 +458,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://willkernel.github.io/2018/03/08/Android-Notes-Performance/" title="Android Notes(Performance)">http://willkernel.github.io/2018/03/08/Android-Notes-Performance/</a>
+    <a href="http://willkernel.github.io/2018/03/09/CoordinatorLayout-使用/" title="Android Notes(CoordinatorLayout)">http://willkernel.github.io/2018/03/09/CoordinatorLayout-使用/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -587,8 +480,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/08/Android-Notes-System-Info-Manager-Safety-1/" rel="next" title="Android Notes(System Info Manager Safety)">
-                <i class="fa fa-chevron-left"></i> Android Notes(System Info Manager Safety)
+              <a href="/2018/03/09/Android-Notes-NDK/" rel="next" title="Android Notes(NDK)">
+                <i class="fa fa-chevron-left"></i> Android Notes(NDK)
               </a>
             
           </div>
@@ -596,10 +489,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/09/Android-Notes-MVVP/" rel="prev" title="Android Notes(MVVP)">
-                Android Notes(MVVP) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -752,7 +641,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Performance-optimization"><span class="nav-number">1.</span> <span class="nav-text">Performance optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#布局"><span class="nav-number">1.1.</span> <span class="nav-text">布局</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#内存"><span class="nav-number">1.2.</span> <span class="nav-text">内存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#工具分析优化"><span class="nav-number">1.3.</span> <span class="nav-text">工具分析优化</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#CoordinatorLayout"><span class="nav-number">1.</span> <span class="nav-text">CoordinatorLayout</span></a></li></ol></div>
             
 
           </div>

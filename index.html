@@ -296,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Android-Notes-Git/">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/CoordinatorLayout-使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="willkernel">
@@ -315,7 +315,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/09/Android-Notes-Git/" itemprop="url">Android Notes(Git)</a></h1>
+                <a class="post-title-link" href="/2018/03/09/CoordinatorLayout-使用/" itemprop="url">Android Notes(CoordinatorLayout)</a></h1>
         
 
         <div class="post-meta">
@@ -327,7 +327,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:04:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T10:33:23+08:00">
                 2018-03-09
               </time>
             
@@ -338,39 +338,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/Git/" itemprop="url" rel="index">
-                    <span itemprop="name">Git</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -378,7 +345,7 @@
 
           
           
-             <span id="/2018/03/09/Android-Notes-Git/" class="leancloud_visitors" data-flag-title="Android Notes(Git)">
+             <span id="/2018/03/09/CoordinatorLayout-使用/" class="leancloud_visitors" data-flag-title="Android Notes(CoordinatorLayout)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -411,7 +378,31 @@
       
         
           
-            
+            <h4 id="CoordinatorLayout"><a href="#CoordinatorLayout" class="headerlink" title="CoordinatorLayout"></a>CoordinatorLayout</h4><ul>
+<li><p>build.gradle</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def SUPPORT = &quot;26.1.0&quot;</span><br><span class="line">dependencies &#123;</span><br><span class="line">  implementation &apos;com.android.support:appcompat-v7:26.1.0&apos;</span><br><span class="line">    implementation &apos;com.android.support.constraint:constraint-layout:1.0.2&apos;</span><br><span class="line">    implementation &quot;com.android.support:design:$SUPPORT&quot;</span><br><span class="line">    implementation &quot;com.android.support:cardview-v7:$SUPPORT&quot;</span><br><span class="line">    implementation &quot;com.android.support:recyclerview-v7:$SUPPORT&quot;</span><br><span class="line">    implementation &apos;de.hdodenhof:circleimageview:1.3.0&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>styles.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;style name=&quot;AppTheme&quot; parent=&quot;Theme.AppCompat.Light.NoActionBar&quot;&gt;</span><br><span class="line">        &lt;!-- Customize your theme here. --&gt;</span><br><span class="line">        &lt;item name=&quot;colorPrimary&quot;&gt;@color/colorAccent&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;colorPrimaryDark&quot;&gt;@color/colorAccent&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;colorAccent&quot;&gt;@color/colorAccent&lt;/item&gt;</span><br><span class="line">        &lt;item name=&quot;android:statusBarColor&quot;&gt;@color/colorAccent&lt;/item&gt;</span><br><span class="line">        &lt;!--&lt;item name=&quot;android:windowDrawsSystemBarBackgrounds&quot;&gt;true&lt;/item&gt;--&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowTranslucentStatus&quot;&gt;true&lt;/item&gt;</span><br><span class="line">    &lt;/style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>activity_main.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line">  &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">  &lt;android.support.design.widget.CoordinatorLayout    xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:fitsSystemWindows=&quot;true&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    tools:context=&quot;com.willkernel.app.coordinatorlayoutdemo.MainActivity&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.design.widget.AppBarLayout</span><br><span class="line">        android:id=&quot;@+id/appBarLayout&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:fitsSystemWindows=&quot;true&quot;</span><br><span class="line">        app:layout_scrollFlags=&quot;scroll|enterAlways|snap&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;android.support.v7.widget.Toolbar</span><br><span class="line">            android:id=&quot;@+id/main.toolbar&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:fitsSystemWindows=&quot;true&quot;</span><br><span class="line">            android:elevation=&quot;4dp&quot;</span><br><span class="line">            android:minHeight=&quot;?attr/actionBarSize&quot;</span><br><span class="line">            android:theme=&quot;@style/ThemeOverlay.AppCompat.Dark&quot;</span><br><span class="line">            android:title=&quot;@string/app_name&quot;</span><br><span class="line">            app:title=&quot;@string/app_name&quot; /&gt;</span><br><span class="line">            &lt;!--android:background=&quot;?attr/colorPrimary&quot;--&gt;</span><br><span class="line">    &lt;/android.support.design.widget.AppBarLayout&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.v4.widget.NestedScrollView</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        app:layout_behavior=&quot;@string/appbar_scrolling_view_behavior&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;LinearLayout</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:orientation=&quot;vertical&quot;&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            &lt;android.support.v7.widget.CardView</span><br><span class="line">                android:layout_width=&quot;match_parent&quot;</span><br><span class="line">                android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">                android:layout_gravity=&quot;center&quot;</span><br><span class="line">                android:layout_margin=&quot;8dp&quot;</span><br><span class="line">                app:contentPadding=&quot;8dp&quot;&gt;</span><br><span class="line"></span><br><span class="line">                &lt;LinearLayout</span><br><span class="line">                    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">                    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">                    android:orientation=&quot;vertical&quot;&gt;</span><br><span class="line"></span><br><span class="line">                    &lt;TextView</span><br><span class="line">                        android:id=&quot;@+id/main.coordinator.textview&quot;</span><br><span class="line">                        style=&quot;@style/TextItem&quot;</span><br><span class="line">                        android:text=&quot;@string/item_simple_coordinator_example&quot; /&gt;</span><br><span class="line"></span><br><span class="line">                    &lt;TextView</span><br><span class="line">                        android:id=&quot;@+id/main.ioexample.textview&quot;</span><br><span class="line">                        style=&quot;@style/TextItem&quot;</span><br><span class="line">                        android:text=&quot;@string/item_googleio_example&quot; /&gt;</span><br><span class="line"></span><br><span class="line">                    &lt;TextView</span><br><span class="line">                        android:id=&quot;@+id/main.materialup.textview&quot;</span><br><span class="line">                        style=&quot;@style/TextItem&quot;</span><br><span class="line">                        android:text=&quot;@string/item_materialup_example&quot; /&gt;</span><br><span class="line"></span><br><span class="line">                    &lt;TextView</span><br><span class="line">                        android:id=&quot;@+id/main.space.textview&quot;</span><br><span class="line">                        style=&quot;@style/TextItem&quot;</span><br><span class="line">                        android:text=&quot;@string/item_flexible_space_example&quot; /&gt;</span><br><span class="line"></span><br><span class="line">                    &lt;TextView</span><br><span class="line">                        android:id=&quot;@+id/main.swipebehavior.textview&quot;</span><br><span class="line">                        style=&quot;@style/TextItem&quot;</span><br><span class="line">                        android:text=&quot;Swype Behavior example&quot; /&gt;</span><br><span class="line">                &lt;/LinearLayout&gt;</span><br><span class="line">            &lt;/android.support.v7.widget.CardView&gt;</span><br><span class="line">            &lt;android.support.v7.widget.CardView</span><br><span class="line">                android:layout_width=&quot;match_parent&quot;</span><br><span class="line">                android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">                android:layout_gravity=&quot;center&quot;</span><br><span class="line">                android:layout_margin=&quot;8dp&quot;</span><br><span class="line">                app:contentPadding=&quot;8dp&quot;&gt;</span><br><span class="line"></span><br><span class="line">                &lt;TextView</span><br><span class="line">                    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">                    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">                    android:lineSpacingExtra=&quot;6dp&quot;</span><br><span class="line">                    android:text=&quot;@string/about&quot; /&gt;</span><br><span class="line"></span><br><span class="line">            &lt;/android.support.v7.widget.CardView&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/LinearLayout&gt;</span><br><span class="line">    &lt;/android.support.v4.widget.NestedScrollView&gt;</span><br><span class="line"></span><br><span class="line">&lt;/android.support.design.widget.CoordinatorLayout&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MaintActivity.java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Toolbar toolbar=findViewById(R.id.main_toolbar);</span><br><span class="line">setSupportActionBar(toolbar);//控制toolbar内部bottom边距</span><br></pre></td></tr></table></figure>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/coordinatorlayout1.png">
+</li>
+<li><p>SimpleAppbarLayout</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;android.support.design.widget.CoordinatorLayout   xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">android:layout_width=&quot;match_parent&quot;</span><br><span class="line">android:layout_height=&quot;match_parent&quot;</span><br><span class="line">android:background=&quot;@android:color/background_light&quot;</span><br><span class="line">android:fitsSystemWindows=&quot;true&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;android.support.design.widget.AppBarLayout</span><br><span class="line">    android:id=&quot;@+id/main.appbar&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;300dp&quot;</span><br><span class="line">    android:fitsSystemWindows=&quot;true&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.design.widget.CollapsingToolbarLayout</span><br><span class="line">        android:id=&quot;@+id/main.collapsing&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;match_parent&quot;</span><br><span class="line">        android:fitsSystemWindows=&quot;true&quot;</span><br><span class="line">        app:contentScrim=&quot;?attr/colorAccent&quot;</span><br><span class="line">        app:expandedTitleMarginEnd=&quot;46dp&quot;</span><br><span class="line">        app:expandedTitleMarginStart=&quot;46dp&quot;</span><br><span class="line">        app:layout_scrollFlags=&quot;scroll|exitUntilCollapsed&quot;</span><br><span class="line">        app:scrimAnimationDuration=&quot;1000&quot;</span><br><span class="line">        app:title=&quot;@string/app_name&quot;</span><br><span class="line">        app:titleEnabled=&quot;true&quot;&gt;</span><br><span class="line">        &lt;!--app:scrimAnimationDuration=&quot;1000&quot; 颜色过度持续时间--&gt;</span><br><span class="line">        &lt;!--  app:expandedTitleMarginStart 展开时标题的内边距--&gt;</span><br><span class="line">        &lt;!--  app:contentScrim=&quot;?attr/colorAccent&quot; 折叠时内容背景颜色--&gt;</span><br><span class="line">        &lt;!--  app:layout_scrollFlags=&quot;scroll|exitUntilCollapsed&quot; 和</span><br><span class="line">        android:minHeight=&quot;200dp&quot; 控制--&gt;</span><br><span class="line">        &lt;ImageView</span><br><span class="line">            android:id=&quot;@+id/main.backdrop&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;match_parent&quot;</span><br><span class="line">            android:fitsSystemWindows=&quot;true&quot;</span><br><span class="line">            android:minHeight=&quot;200dp&quot;</span><br><span class="line">            android:scaleType=&quot;centerCrop&quot;</span><br><span class="line">            android:src=&quot;@mipmap/material_flat&quot;</span><br><span class="line">            app:layout_collapseMode=&quot;parallax&quot;</span><br><span class="line">            app:layout_collapseParallaxMultiplier=&quot;0.7&quot; /&gt;</span><br><span class="line">        &lt;!--   app:layout_collapseParallaxMultiplier=&quot;0.7&quot;</span><br><span class="line">            app:layout_collapseMode=&quot;parallax&quot; 两者结合使用--&gt;</span><br><span class="line">        &lt;android.support.v7.widget.Toolbar</span><br><span class="line">            android:id=&quot;@+id/main.toolbar&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;?attr/actionBarSize&quot;</span><br><span class="line">            android:fitsSystemWindows=&quot;true&quot;</span><br><span class="line">            android:title=&quot;toolbar&quot;</span><br><span class="line">            app:layout_collapseMode=&quot;parallax&quot;</span><br><span class="line">            app:title=&quot;toolbar&quot; /&gt;</span><br><span class="line">        &lt;!--在titleEnabled=true时，app:title=&quot;toolbar&quot;    android:title=&quot;toolbar&quot;设置标题无效&quot;--&gt;</span><br><span class="line">    &lt;/android.support.design.widget.CollapsingToolbarLayout&gt;</span><br><span class="line">&lt;/android.support.design.widget.AppBarLayout&gt;</span><br><span class="line"></span><br><span class="line">&lt;android.support.v4.widget.NestedScrollView</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    android:fitsSystemWindows=&quot;true&quot;</span><br><span class="line">    app:layout_behavior=&quot;@string/appbar_scrolling_view_behavior&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:lineSpacingExtra=&quot;8dp&quot;</span><br><span class="line">        android:padding=&quot;@dimen/activity_horizontal_margin&quot;</span><br><span class="line">        android:text=&quot;@string/about&quot;</span><br><span class="line">        android:textSize=&quot;20sp&quot; /&gt;</span><br><span class="line">&lt;/android.support.v4.widget.NestedScrollView&gt;</span><br><span class="line"></span><br><span class="line">&lt;android.support.design.widget.FloatingActionButton</span><br><span class="line">    android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">    android:layout_margin=&quot;@dimen/activity_horizontal_margin&quot;</span><br><span class="line">    android:src=&quot;@mipmap/ic_launcher&quot;</span><br><span class="line">    app:layout_anchor=&quot;@id/main.appbar&quot;</span><br><span class="line">    app:layout_anchorGravity=&quot;bottom|right|end&quot; /&gt;</span><br><span class="line">&lt;/android.support.design.widget.CoordinatorLayout&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>AppBarStateChangeListener</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public abstract class AppBarStateChangeListener implements   AppBarLayout.OnOffsetChangedListener &#123;</span><br><span class="line">  public enum State &#123;</span><br><span class="line">    EXPANDED,</span><br><span class="line">    COLLAPSED,</span><br><span class="line">    IDLE</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private State mCurrentState = State.IDLE;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  public final void onOffsetChanged(AppBarLayout appBarLayout, int i) &#123;</span><br><span class="line">    if (i == 0) &#123;</span><br><span class="line">        if (mCurrentState != State.EXPANDED) &#123;</span><br><span class="line">            onStateChanged(appBarLayout, State.EXPANDED);</span><br><span class="line">        &#125;</span><br><span class="line">        mCurrentState = State.EXPANDED;</span><br><span class="line">    &#125; else if (Math.abs(i) &gt;= appBarLayout.getTotalScrollRange()) &#123;</span><br><span class="line">        if (mCurrentState != State.COLLAPSED) &#123;</span><br><span class="line">            onStateChanged(appBarLayout, State.COLLAPSED);</span><br><span class="line">        &#125;</span><br><span class="line">        mCurrentState = State.COLLAPSED;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        if (mCurrentState != State.IDLE) &#123;</span><br><span class="line">            onStateChanged(appBarLayout, State.IDLE);</span><br><span class="line">        &#125;</span><br><span class="line">        mCurrentState = State.IDLE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">   public abstract void onStateChanged(AppBarLayout appBarLayout, State state);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>SimpleCoordinatorActivity</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//沉浸式状态栏</span><br><span class="line">//        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) &#123;//5.0之上</span><br><span class="line">//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);</span><br><span class="line">//            getWindow().setStatusBarColor(Color.RED);</span><br><span class="line">//        &#125;</span><br><span class="line"></span><br><span class="line">  setContentView(R.layout.activity_simple_coordinator);</span><br><span class="line"></span><br><span class="line">  AppBarLayout main_appbar = findViewById(R.id.main_appbar);</span><br><span class="line">  main_appbar.addOnOffsetChangedListener(stateListener());</span><br><span class="line"></span><br><span class="line">  Toolbar toolbar=findViewById(R.id.main_toolbar);</span><br><span class="line">  setSupportActionBar(toolbar);</span><br><span class="line"></span><br><span class="line">  CollapsingToolbarLayout mCollapsingToolbarLayout = findViewById(R.id.main_collapsing);</span><br><span class="line">  //通过CollapsingToolbarLayout修改字体颜色</span><br><span class="line">  mCollapsingToolbarLayout.setExpandedTitleColor(Color.RED);//设置还没收缩时状态下字体颜色</span><br><span class="line">  mCollapsingToolbarLayout.setCollapsedTitleTextColor(Color.GREEN);//设置收缩后Toolbar上字体的颜色</span><br></pre></td></tr></table></figure>
+ <img src="http://p4n1d4izv.bkt.clouddn.com/images/coordinatorlayout1.gif"></li>
+</ul>
+
           
         
       
@@ -531,6 +522,169 @@
           
           
              <span id="/2018/03/09/Android-Notes-NDK/" class="leancloud_visitors" data-flag-title="Android Notes(NDK)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Android-Notes-Git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="willkernel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="willkernel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/09/Android-Notes-Git/" itemprop="url">Android Notes(Git)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:04:00+08:00">
+                2018-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/09/Android-Notes-Git/" class="leancloud_visitors" data-flag-title="Android Notes(Git)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1797,196 +1951,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/07/Android-Notes-四/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="willkernel">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="willkernel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/07/Android-Notes-四/" itemprop="url">Android Notes(Paint Shader)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-07T00:17:00+08:00">
-                2018-03-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/03/07/Android-Notes-四/" class="leancloud_visitors" data-flag-title="Android Notes(Paint Shader)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="Paint"><a href="#Paint" class="headerlink" title="Paint"></a>Paint</h4><ul>
-<li>PorterDuffXfermode 两个图层交集区域显示方式,用的最多是DST_IN,SRC_IN显示圆形图片或圆角图片<img src="http://p4n1d4izv.bkt.clouddn.com/images/porterduffxfermode.png"></li>
-<li><p>圆角矩形</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">private void drawRoundRect() &#123;</span><br><span class="line">       ImageView roundRectIv = findViewById(R.id.roundRectIv);</span><br><span class="line">       Bitmap mBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.car3);</span><br><span class="line">       Bitmap mOut = Bitmap.createBitmap(mBitmap.getWidth(), mBitmap.getHeight(), Bitmap.Config.ARGB_8888);</span><br><span class="line">       Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);</span><br><span class="line">       PorterDuffXfermode mXfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);</span><br><span class="line">       Canvas canvas = new Canvas(mOut);</span><br><span class="line">       canvas.drawRoundRect(0, 0, mBitmap.getWidth(), mBitmap.getHeight(), 100, 100, mPaint);</span><br><span class="line">       mPaint.setXfermode(mXfermode);</span><br><span class="line">       canvas.drawBitmap(mBitmap, 0, 0, mPaint);</span><br><span class="line">       roundRectIv.setImageBitmap(mOut);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/roundrectiv.png"></li>
-<li>刮刮卡<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">private void init() &#123;</span><br><span class="line">        bgBmp = BitmapFactory.decodeResource(getResources(), R.mipmap.car3);</span><br><span class="line">        fgBmp = Bitmap.createBitmap(bgBmp.getWidth(), bgBmp.getHeight(), Bitmap.Config.ARGB_8888);</span><br><span class="line">        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);</span><br><span class="line">        //画路径时走透明通道，形成刮刮卡效果</span><br><span class="line">        mPaint.setAlpha(0);</span><br><span class="line">        mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));</span><br><span class="line">        mPaint.setStyle(Paint.Style.STROKE);</span><br><span class="line">        mPaint.setStrokeJoin(Paint.Join.ROUND);</span><br><span class="line">        mPaint.setStrokeCap(Paint.Cap.ROUND);</span><br><span class="line">        mPaint.setStrokeWidth(50);</span><br><span class="line">        mCanvas = new Canvas(fgBmp);</span><br><span class="line">        mCanvas.drawColor(Color.GRAY);</span><br><span class="line">        mPath = new Path();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean onTouchEvent(MotionEvent event) &#123;</span><br><span class="line">        int x = (int) event.getX();</span><br><span class="line">        int y = (int) event.getY();</span><br><span class="line">        switch (event.getAction()) &#123;</span><br><span class="line">            case MotionEvent.ACTION_DOWN:</span><br><span class="line">                mPath.reset();</span><br><span class="line">                mPath.moveTo(x, y);</span><br><span class="line">                break;</span><br><span class="line">            case MotionEvent.ACTION_MOVE:</span><br><span class="line">                mPath.lineTo(x, y);</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">        mCanvas.drawPath(mPath, mPaint);</span><br><span class="line">        invalidate();</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onDraw(Canvas canvas) &#123;</span><br><span class="line">        super.onDraw(canvas);</span><br><span class="line">        canvas.drawBitmap(bgBmp, 0, 0, null);</span><br><span class="line">        canvas.drawBitmap(fgBmp, 0, 0, null);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/scratchcard.png">
-<h4 id="Shader-着色器，渲染器"><a href="#Shader-着色器，渲染器" class="headerlink" title="Shader(着色器，渲染器)"></a>Shader(着色器，渲染器)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CLAMP 拉伸图片最后一个像素，不断重复</span><br><span class="line">REPEAT 横向纵向不断重复</span><br><span class="line">MIRROR 横向纵向翻转重复</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>BitmapShader 位图shader</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">圆形图片</span><br><span class="line">private void init() &#123;</span><br><span class="line">        bm = BitmapFactory.decodeResource(getResources(), R.mipmap.car3);</span><br><span class="line">        //图像填充功能</span><br><span class="line">        bitmapShader = new BitmapShader(bm, Shader.TileMode.CLAMP, Shader.TileMode.REPEAT);</span><br><span class="line">        mPaint = new Paint();</span><br><span class="line">        mPaint.setShader(bitmapShader);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> @Override</span><br><span class="line"> protected void onSizeChanged(int w, int h, int oldw, int oldh) &#123;</span><br><span class="line">        super.onSizeChanged(w, h, oldw, oldh);</span><br><span class="line">        mWidth = getMeasuredWidth();</span><br><span class="line">        mHeight = getMeasuredHeight();</span><br><span class="line">        mLinearGradient=new LinearGradient(100,300,300,500, Color.RED,Color.YELLOW, Shader.TileMode.CLAMP);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> @Override</span><br><span class="line"> protected void onDraw(Canvas canvas) &#123;</span><br><span class="line">        super.onDraw(canvas);</span><br><span class="line">        canvas.drawCircle(200, 200, 100, mPaint);</span><br><span class="line">        mPaint.setShader(mLinearGradient);</span><br><span class="line">        canvas.drawRect(100,300,300,500,mPaint);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/bitmapshader.png"></li>
-<li>LinearGradient 线性shader</li>
-<li>RadialGradient 光束shader</li>
-<li>SweepGradient 梯度shader</li>
-<li>ComposeShader 混合shader</li>
-</ul>
-<ul>
-<li><p>图像倒影</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">private void init() &#123;</span><br><span class="line">        mSrcBitmap= BitmapFactory.decodeResource(getResources(), R.mipmap.car3);</span><br><span class="line">        Matrix matrix=new Matrix();</span><br><span class="line">        //实项垂直翻转，(-1,1)实项水平翻转</span><br><span class="line">        matrix.setScale(1,-1);</span><br><span class="line">        mRefBitmap=Bitmap.createBitmap(mSrcBitmap,0,0,</span><br><span class="line">                mSrcBitmap.getWidth(),mSrcBitmap.getHeight(),matrix,true);</span><br><span class="line"></span><br><span class="line">        mPaint=new Paint(Paint.ANTI_ALIAS_FLAG);</span><br><span class="line">        mPaint.setShader(new LinearGradient(0,mSrcBitmap.getHeight(),</span><br><span class="line">                0,mSrcBitmap.getHeight()+mSrcBitmap.getHeight()/4,</span><br><span class="line">                0xdd000000,0x33000000, Shader.TileMode.CLAMP));</span><br><span class="line">        mXferMode=new PorterDuffXfermode(PorterDuff.Mode.DST_IN);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  protected void onDraw(Canvas canvas) &#123;</span><br><span class="line">        super.onDraw(canvas);</span><br><span class="line">        canvas.drawColor(Color.BLACK);</span><br><span class="line">        canvas.drawBitmap(mSrcBitmap,0,0,null);</span><br><span class="line">        canvas.drawBitmap(mRefBitmap,0,mSrcBitmap.getHeight(),null);</span><br><span class="line">        mPaint.setXfermode(mXferMode);</span><br><span class="line">        canvas.drawRect(0,mSrcBitmap.getHeight(),mRefBitmap.getWidth(),</span><br><span class="line">                mSrcBitmap.getHeight()*2,mPaint);</span><br><span class="line">        mPaint.setXfermode(null);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/reflect.png">
-</li>
-</ul>
-<ul>
-<li><p>PathEffect</p>
-<ul>
-<li>ComposePathEffect 先应用一种路径效果，再这个基础上混合另外一种效果</li>
-<li>CornerPathEffect 圆角路径</li>
-<li>DashPathEffect 虚线路径</li>
-<li>DiscretePathEffect 杂点路径</li>
-<li>PathDashPathEffect 设置点的图形路径效果</li>
-<li>SumPathEffect 组合两种路径后再应用到图形上</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">private void init() &#123;</span><br><span class="line">       mEffects=new PathEffect[7];</span><br><span class="line">       mPaint=new Paint(Paint.ANTI_ALIAS_FLAG);</span><br><span class="line">       mPaint.setStyle(Paint.Style.STROKE);</span><br><span class="line">       mPaint.setStrokeWidth(4);</span><br><span class="line">       mPath=new Path();</span><br><span class="line">       mPath.moveTo(0,0);</span><br><span class="line">       for (int i = 0; i &lt;=30; i++) &#123;</span><br><span class="line">           mPath.lineTo(i*35, (float) (Math.random()*100));</span><br><span class="line">       &#125;</span><br><span class="line">       mEffects[0]=null;</span><br><span class="line">       mEffects[1]=new CornerPathEffect(30);</span><br><span class="line">       mEffects[2]=new DiscretePathEffect(5,3);</span><br><span class="line">       mEffects[3]=new DashPathEffect(new float[]&#123;10,20,30,50&#125;,0);</span><br><span class="line">       Path path=new Path();</span><br><span class="line">       path.addRect(0,0,10,10, Path.Direction.CCW);</span><br><span class="line">       mEffects[4]=new PathDashPathEffect(path,12,0, PathDashPathEffect.Style.ROTATE);</span><br><span class="line">       mEffects[5]=new ComposePathEffect(mEffects[3],mEffects[1]);</span><br><span class="line">       mEffects[6]=new SumPathEffect(mEffects[3],mEffects[1]);</span><br><span class="line">       </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   @Override</span><br><span class="line">   protected void onDraw(Canvas canvas) &#123;</span><br><span class="line">       super.onDraw(canvas);</span><br><span class="line">       for (PathEffect mEffect : mEffects) &#123;</span><br><span class="line">           mPaint.setPathEffect(mEffect);</span><br><span class="line">           canvas.drawPath(mPath,mPaint);</span><br><span class="line">           canvas.translate(0,200);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/patheffect.png"></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2037,7 +2001,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
