@@ -327,7 +327,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T10:33:23+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T10:33:00+08:00">
                 2018-03-09
               </time>
             
@@ -337,6 +337,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -400,161 +422,41 @@
 </li>
 <li><p>SimpleCoordinatorActivity</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//沉浸式状态栏</span><br><span class="line">//        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) &#123;//5.0之上</span><br><span class="line">//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);</span><br><span class="line">//            getWindow().setStatusBarColor(Color.RED);</span><br><span class="line">//        &#125;</span><br><span class="line"></span><br><span class="line">  setContentView(R.layout.activity_simple_coordinator);</span><br><span class="line"></span><br><span class="line">  AppBarLayout main_appbar = findViewById(R.id.main_appbar);</span><br><span class="line">  main_appbar.addOnOffsetChangedListener(stateListener());</span><br><span class="line"></span><br><span class="line">  Toolbar toolbar=findViewById(R.id.main_toolbar);</span><br><span class="line">  setSupportActionBar(toolbar);</span><br><span class="line"></span><br><span class="line">  CollapsingToolbarLayout mCollapsingToolbarLayout = findViewById(R.id.main_collapsing);</span><br><span class="line">  //通过CollapsingToolbarLayout修改字体颜色</span><br><span class="line">  mCollapsingToolbarLayout.setExpandedTitleColor(Color.RED);//设置还没收缩时状态下字体颜色</span><br><span class="line">  mCollapsingToolbarLayout.setCollapsedTitleTextColor(Color.GREEN);//设置收缩后Toolbar上字体的颜色</span><br></pre></td></tr></table></figure>
- <img src="http://p4n1d4izv.bkt.clouddn.com/images/coordinatorlayout1.gif"></li>
+ <img src="http://p4n1d4izv.bkt.clouddn.com/images/coordinatorlayout1.gif">
+</li>
 </ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Android-Notes-NDK/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="willkernel">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="willkernel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/09/Android-Notes-NDK/" itemprop="url">Android Notes(NDK)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:04:00+08:00">
-                2018-03-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/03/09/Android-Notes-NDK/" class="leancloud_visitors" data-flag-title="Android Notes(NDK)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
+<ul>
+<li><p>Title+Subtitle+NavigationIcon,Toolbar固定并在图片下方</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.design.widget.CoordinatorLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">android:layout_width=&quot;match_parent&quot;</span><br><span class="line">android:layout_height=&quot;match_parent&quot;</span><br><span class="line">&gt;</span><br><span class="line"></span><br><span class="line">&lt;android.support.design.widget.AppBarLayout</span><br><span class="line">    android:id=&quot;@+id/io.appbar&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;300dp&quot;</span><br><span class="line">    android:theme=&quot;@style/ThemeOverlay.AppCompat.Dark.ActionBar&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.design.widget.CollapsingToolbarLayout</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;match_parent&quot;</span><br><span class="line">        app:contentScrim=&quot;?attr/colorPrimary&quot;</span><br><span class="line">        app:expandedTitleMarginEnd=&quot;64dp&quot;</span><br><span class="line">        app:expandedTitleMarginStart=&quot;48dp&quot;</span><br><span class="line">        app:layout_scrollFlags=&quot;scroll|exitUntilCollapsed&quot;&gt;</span><br><span class="line">        &lt;!--app:contentScrim=&quot;?attr/colorPrimary&quot; 没有标题时也要设置背景颜色，不然在滚动的时候有toolbar缺失上半部--&gt;</span><br><span class="line">        &lt;ImageView</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;match_parent&quot;</span><br><span class="line">            android:scaleType=&quot;centerCrop&quot;</span><br><span class="line">            android:src=&quot;@mipmap/material_flat&quot;</span><br><span class="line">            app:layout_collapseMode=&quot;parallax&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/android.support.design.widget.CollapsingToolbarLayout&gt;</span><br><span class="line">&lt;/android.support.design.widget.AppBarLayout&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;android.support.v4.widget.NestedScrollView</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    app:layout_behavior=&quot;@string/appbar_scrolling_view_behavior&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_marginTop=&quot;56dp&quot;</span><br><span class="line">        android:lineSpacingExtra=&quot;8dp&quot;</span><br><span class="line">        android:text=&quot;@string/about&quot; /&gt;</span><br><span class="line">&lt;/android.support.v4.widget.NestedScrollView&gt;</span><br><span class="line"></span><br><span class="line">&lt;android.support.v7.widget.Toolbar</span><br><span class="line">    android:id=&quot;@+id/io.toolbar&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;112dp&quot;</span><br><span class="line">    android:background=&quot;?attr/colorAccent&quot;</span><br><span class="line">    android:elevation=&quot;4dp&quot;</span><br><span class="line">    android:theme=&quot;@style/ThemeOverlay.AppCompat.Light&quot;</span><br><span class="line">    app:layout_anchor=&quot;@id/io.appbar&quot;</span><br><span class="line">    app:layout_anchorGravity=&quot;bottom&quot;</span><br><span class="line">    android:paddingTop=&quot;16dp&quot;</span><br><span class="line">    app:layout_collapseMode=&quot;pin&quot;</span><br><span class="line">    app:navigationIcon=&quot;@drawable/abc_ic_ab_back_material&quot;</span><br><span class="line">    app:subtitle=&quot;subtitle&quot;</span><br><span class="line">    app:theme=&quot;@style/ThemeOverlay.AppCompat.Light&quot;</span><br><span class="line">    app:title=&quot;@string/app_name&quot;&gt;</span><br><span class="line">    &lt;!--android:elevation=&quot;4dp&quot; 增加阴影，边界过度更自然--&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--&lt;LinearLayout--&gt;</span><br><span class="line">    &lt;!--android:layout_width=&quot;match_parent&quot;--&gt;</span><br><span class="line">    &lt;!--android:layout_height=&quot;wrap_content&quot;--&gt;</span><br><span class="line">    &lt;!--android:layout_gravity=&quot;bottom&quot;--&gt;</span><br><span class="line">    &lt;!--android:layout_marginBottom=&quot;8dp&quot;--&gt;</span><br><span class="line">    &lt;!--android:minHeight=&quot;?android:attr/actionBarSize&quot;--&gt;</span><br><span class="line">    &lt;!--android:orientation=&quot;vertical&quot;&gt;--&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--&lt;TextView--&gt;</span><br><span class="line">    &lt;!--android:layout_width=&quot;match_parent&quot;--&gt;</span><br><span class="line">    &lt;!--android:layout_height=&quot;wrap_content&quot;--&gt;</span><br><span class="line">    &lt;!--android:text=&quot;@string/app_name&quot;--&gt;</span><br><span class="line">    &lt;!--android:textAppearance=&quot;@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse&quot; /&gt;--&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--&lt;TextView--&gt;</span><br><span class="line">    &lt;!--android:layout_width=&quot;match_parent&quot;--&gt;</span><br><span class="line">    &lt;!--android:layout_height=&quot;wrap_content&quot;--&gt;</span><br><span class="line">    &lt;!--android:layout_marginTop=&quot;4dp&quot;--&gt;</span><br><span class="line">    &lt;!--android:text=&quot;subtitle&quot;--&gt;</span><br><span class="line">    &lt;!--android:textAppearance=&quot;@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle.Inverse&quot; /&gt;--&gt;</span><br><span class="line">    &lt;!--&lt;/LinearLayout&gt;--&gt;</span><br><span class="line">&lt;/android.support.v7.widget.Toolbar&gt;</span><br><span class="line">&lt;/android.support.design.widget.CoordinatorLayout&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">toolbar.setNavigationOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onClick(View v) &#123;</span><br><span class="line">            onBackPressed();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/coordinatorlayout2.gif">
+<ul>
+<li><p>Navigation+TabLayout+ViewPager+CircleImage</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;android.support.design.widget.CoordinatorLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">android:layout_width=&quot;match_parent&quot;</span><br><span class="line">android:layout_height=&quot;match_parent&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;android.support.design.widget.AppBarLayout</span><br><span class="line">    android:id=&quot;@+id/profile.appbar&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">    android:theme=&quot;@style/ThemeOverlay.AppCompat.Dark.ActionBar&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.design.widget.CollapsingToolbarLayout</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;200dp&quot;</span><br><span class="line">        app:contentScrim=&quot;?attr/colorAccent&quot;</span><br><span class="line">        app:expandedTitleMarginEnd=&quot;64dp&quot;</span><br><span class="line">        app:expandedTitleMarginStart=&quot;48dp&quot;</span><br><span class="line">        app:layout_scrollFlags=&quot;scroll|snap&quot;&gt;</span><br><span class="line">        &lt;!--app:contentScrim=&quot;?attr/colorPrimary&quot; 没有标题时也要设置背景颜色，不然在滚动的时候有toolbar缺失上半部--&gt;</span><br><span class="line">        &lt;ImageView</span><br><span class="line">            android:id=&quot;@+id/profile.image&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;match_parent&quot;</span><br><span class="line">            android:scaleType=&quot;centerCrop&quot;</span><br><span class="line">            android:src=&quot;@mipmap/material_flat&quot;</span><br><span class="line">            app:layout_collapseMode=&quot;parallax&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/android.support.design.widget.CollapsingToolbarLayout&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.v7.widget.Toolbar</span><br><span class="line">        android:id=&quot;@+id/profile.toolbar&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:background=&quot;?attr/colorAccent&quot;</span><br><span class="line">        android:minHeight=&quot;?attr/actionBarSize&quot;</span><br><span class="line">        android:paddingTop=&quot;16dp&quot;</span><br><span class="line">        app:layout_scrollFlags=&quot;scroll|enterAlways|snap&quot;</span><br><span class="line">        app:navigationIcon=&quot;@drawable/abc_ic_ab_back_material&quot;</span><br><span class="line">        app:theme=&quot;@style/ThemeOverlay.AppCompat.Light&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/android.support.v7.widget.Toolbar&gt;</span><br><span class="line"></span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:id=&quot;@+id/profile.title&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:gravity=&quot;center&quot;</span><br><span class="line">        android:orientation=&quot;vertical&quot;</span><br><span class="line">        android:paddingTop=&quot;@dimen/activity_horizontal_margin&quot;</span><br><span class="line">        app:layout_scrollFlags=&quot;scroll|enterAlways|snap&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;TextView</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:gravity=&quot;center&quot;</span><br><span class="line">            android:text=&quot;@string/app_name&quot;</span><br><span class="line">            android:textAppearance=&quot;@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse&quot; /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;TextView</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            android:layout_marginTop=&quot;4dp&quot;</span><br><span class="line">            android:gravity=&quot;center&quot;</span><br><span class="line">            android:text=&quot;subtitle&quot;</span><br><span class="line">            android:textAppearance=&quot;@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle.Inverse&quot; /&gt;</span><br><span class="line">    &lt;/LinearLayout&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.design.widget.TabLayout</span><br><span class="line">        android:id=&quot;@+id/profile.tablayout&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;?android:attr/actionBarSize&quot;</span><br><span class="line">        android:paddingTop=&quot;24dp&quot;</span><br><span class="line">        app:tabIndicatorColor=&quot;?android:attr/textColorPrimaryInverse&quot;</span><br><span class="line">        app:tabIndicatorHeight=&quot;4dp&quot;</span><br><span class="line">        app:tabSelectedTextColor=&quot;?android:attr/textColorPrimaryInverse&quot; /&gt;</span><br><span class="line">&lt;/android.support.design.widget.AppBarLayout&gt;</span><br><span class="line"></span><br><span class="line">&lt;android.support.v4.view.ViewPager</span><br><span class="line">    android:id=&quot;@+id/profile.viewpager&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    app:layout_behavior=&quot;@string/appbar_scrolling_view_behavior&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;android.support.design.widget.FloatingActionButton</span><br><span class="line">    android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">    android:layout_gravity=&quot;bottom|right|end&quot;</span><br><span class="line">    android:layout_margin=&quot;16dp&quot;</span><br><span class="line">    android:elevation=&quot;8dp&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;de.hdodenhof.circleimageview.CircleImageView</span><br><span class="line">    android:id=&quot;@+id/profile.avatar&quot;</span><br><span class="line">    android:layout_width=&quot;96dp&quot;</span><br><span class="line">    android:layout_height=&quot;96dp&quot;</span><br><span class="line">    android:layout_gravity=&quot;center_horizontal&quot;</span><br><span class="line">    android:elevation=&quot;8dp&quot;</span><br><span class="line">    android:src=&quot;@mipmap/user_avatar&quot;</span><br><span class="line">    app:border_color=&quot;#FFF&quot;</span><br><span class="line">    app:border_width=&quot;2dp&quot;</span><br><span class="line">    app:layout_anchor=&quot;@id/profile.title&quot;</span><br><span class="line">    app:layout_anchorGravity=&quot;center_horizontal|top&quot;</span><br><span class="line">    app:layout_scrollFlags=&quot;scroll&quot; /&gt;&lt;/android.support.design.widget.CoordinatorLayout&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ProfileActivity.java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    profile_avatar = findViewById(R.id.profile_avatar);</span><br><span class="line"></span><br><span class="line">    TabLayout tabLayout = findViewById(R.id.profile_tablayout);</span><br><span class="line">    ViewPager viewPager = findViewById(R.id.profile_viewpager);</span><br><span class="line">    AppBarLayout appBarLayout = findViewById(R.id.profile_appbar);</span><br><span class="line">    appBarLayout.addOnOffsetChangedListener(this);</span><br><span class="line">    mMaxScrollSize = appBarLayout.getTotalScrollRange();</span><br><span class="line"></span><br><span class="line">    viewPager.setAdapter(new TabsAdapter(getSupportFragmentManager()));</span><br><span class="line">    tabLayout.setupWithViewPager(viewPager);</span><br><span class="line"></span><br><span class="line">    Toolbar toolbar = findViewById(R.id.profile_toolbar);</span><br><span class="line">    toolbar.setNavigationOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onClick(View v) &#123;</span><br><span class="line">            onBackPressed();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void start(Context c) &#123;</span><br><span class="line">    c.startActivity(new Intent(c, MaterialUpConceptActivity.class));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public void onOffsetChanged(AppBarLayout appBarLayout, int i) &#123;</span><br><span class="line">    if (mMaxScrollSize == 0) &#123;</span><br><span class="line">        mMaxScrollSize = appBarLayout.getTotalScrollRange();</span><br><span class="line">    &#125;</span><br><span class="line">    int percent = Math.abs(i) * 100 / mMaxScrollSize;</span><br><span class="line"></span><br><span class="line">    if (percent &gt;= PERCENTAGE_TO_ANIMATE_AVATAR &amp;&amp; mIsAvatarShown) &#123;</span><br><span class="line">        mIsAvatarShown = false;</span><br><span class="line">        profile_avatar.animate().scaleX(0).scaleY(0).setDuration(200).start();</span><br><span class="line">    &#125;</span><br><span class="line">    if (percent &lt;= PERCENTAGE_TO_ANIMATE_AVATAR &amp;&amp; !mIsAvatarShown) &#123;</span><br><span class="line">        mIsAvatarShown = true;</span><br><span class="line">        profile_avatar.animate().scaleX(1).scaleY(1).setDuration(200).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private class TabsAdapter extends FragmentPagerAdapter &#123;</span><br><span class="line">    private static final int TAB_COUNT = 2;</span><br><span class="line"></span><br><span class="line">    public TabsAdapter(FragmentManager fm) &#123;</span><br><span class="line">        super(fm);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Fragment getItem(int position) &#123;</span><br><span class="line">        return MyFragment.newInstance();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public int getCount() &#123;</span><br><span class="line">        return TAB_COUNT;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public CharSequence getPageTitle(int position) &#123;</span><br><span class="line">        return &quot;Tab&quot; + position;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MyFragment</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">private RecyclerView rootView;</span><br><span class="line"></span><br><span class="line">    public static MyFragment newInstance() &#123;</span><br><span class="line">        return new MyFragment();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Nullable</span><br><span class="line">    @Override</span><br><span class="line">    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">        rootView = (RecyclerView) inflater.inflate(R.layout.fragment_page, container, false);</span><br><span class="line">        return rootView;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void onActivityCreated(@Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onActivityCreated(savedInstanceState);</span><br><span class="line">        initRecyclerView();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void initRecyclerView() &#123;</span><br><span class="line">        rootView.setAdapter(new MyPageAdapter(10));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private class MyPageAdapter extends RecyclerView.Adapter&lt;MyVH&gt; &#123;</span><br><span class="line">        private final int count;</span><br><span class="line"></span><br><span class="line">        public MyPageAdapter(int count) &#123;</span><br><span class="line">            this.count = count;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public MyVH onCreateViewHolder(ViewGroup parent, int viewType) &#123;</span><br><span class="line">            View item = LayoutInflater.from(parent.getContext())</span><br><span class="line">                    .inflate(R.layout.list_item_card, parent, false);</span><br><span class="line">            return new MyVH(item);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void onBindViewHolder(MyVH holder, int position) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public int getItemCount() &#123;</span><br><span class="line">            return count;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private class MyVH extends RecyclerView.ViewHolder &#123;</span><br><span class="line">        public MyVH(View itemView) &#123;</span><br><span class="line">            super(itemView);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>fragment_page.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.v7.widget.RecyclerView xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">xmlns:tools=&quot;http://schemas.android.com/tools&quot;</span><br><span class="line">android:id=&quot;@+id/recycler_view&quot;</span><br><span class="line">android:layout_width=&quot;match_parent&quot;</span><br><span class="line">android:layout_height=&quot;match_parent&quot;</span><br><span class="line">android:scrollbars=&quot;vertical&quot;</span><br><span class="line">app:layoutManager=&quot;android.support.v7.widget.LinearLayoutManager&quot;</span><br><span class="line">tools:listitem=&quot;@layout/list_item_card&quot; /&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/coordinatorlayout3.gif">
+<ul>
+<li><p>图片被内容覆盖一部分，形成上下两层，FAB跟随AppbarLayout放大缩小</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;android.support.design.widget.CoordinatorLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">android:layout_width=&quot;match_parent&quot;</span><br><span class="line">android:layout_height=&quot;match_parent&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;android.support.design.widget.AppBarLayout</span><br><span class="line">    android:id=&quot;@+id/flex.appbar&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">    android:theme=&quot;@style/ThemeOverlay.AppCompat.Dark.ActionBar&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;android.support.design.widget.CollapsingToolbarLayout</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        app:contentScrim=&quot;?attr/colorAccent&quot;</span><br><span class="line">        app:expandedTitleMarginBottom=&quot;90dp&quot;</span><br><span class="line">        app:expandedTitleMarginStart=&quot;32dp&quot;</span><br><span class="line">        app:layout_scrollFlags=&quot;scroll|snap|exitUntilCollapsed&quot;</span><br><span class="line">        app:title=&quot;flex&quot;&gt;</span><br><span class="line">        &lt;!--app:expandedTitleMarginBottom=&quot;90dp&quot; 被遮挡后需要设置底部内边距--&gt;</span><br><span class="line">        &lt;ImageView</span><br><span class="line">            android:id=&quot;@+id/flex.image&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;match_parent&quot;</span><br><span class="line">            android:scaleType=&quot;centerCrop&quot;</span><br><span class="line">            android:src=&quot;@mipmap/material_flat&quot;</span><br><span class="line">            app:layout_collapseMode=&quot;parallax&quot; /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;android.support.v7.widget.Toolbar</span><br><span class="line">            android:id=&quot;@+id/flex.toolbar&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;?android:attr/actionBarSize&quot;</span><br><span class="line">            android:layout_marginTop=&quot;@dimen/activity_horizontal_margin&quot;</span><br><span class="line">            android:background=&quot;@null&quot;</span><br><span class="line">            app:layout_collapseMode=&quot;pin&quot;</span><br><span class="line">            app:layout_scrollFlags=&quot;scroll|enterAlways|snap&quot;</span><br><span class="line">            app:navigationIcon=&quot;@drawable/abc_ic_ab_back_material&quot;</span><br><span class="line">            app:theme=&quot;@style/ThemeOverlay.AppCompat.Light&quot; /&gt;</span><br><span class="line">    &lt;/android.support.design.widget.CollapsingToolbarLayout&gt;</span><br><span class="line">&lt;/android.support.design.widget.AppBarLayout&gt;</span><br><span class="line"></span><br><span class="line">&lt;android.support.v4.widget.NestedScrollView</span><br><span class="line">    android:id=&quot;@+id/flex.scroll&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    app:behavior_overlapTop=&quot;78dp&quot;</span><br><span class="line">    app:layout_behavior=&quot;@string/appbar_scrolling_view_behavior&quot;&gt;</span><br><span class="line">    &lt;!--app:behavior_overlapTop=&quot;78dp&quot; 图片被可滚动的ScrollView覆盖内容--&gt;</span><br><span class="line">    &lt;android.support.v7.widget.CardView</span><br><span class="line">        android:id=&quot;@+id/flex.cardview&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_margin=&quot;8dp&quot;</span><br><span class="line">        app:cardBackgroundColor=&quot;@android:color/white&quot;</span><br><span class="line">        app:cardCornerRadius=&quot;4dp&quot;</span><br><span class="line">        app:cardElevation=&quot;4dp&quot;</span><br><span class="line">        app:contentPaddingBottom=&quot;16dp&quot;</span><br><span class="line">        app:contentPaddingLeft=&quot;16dp&quot;</span><br><span class="line">        app:contentPaddingRight=&quot;16dp&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;TextView</span><br><span class="line">            android:id=&quot;@+id/flex.text&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;match_parent&quot;</span><br><span class="line">            android:text=&quot;@string/about&quot; /&gt;</span><br><span class="line">    &lt;/android.support.v7.widget.CardView&gt;</span><br><span class="line">&lt;/android.support.v4.widget.NestedScrollView&gt;</span><br><span class="line"></span><br><span class="line">&lt;android.support.design.widget.FloatingActionButton</span><br><span class="line">    android:id=&quot;@+id/flex.fab&quot;</span><br><span class="line">    android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">    android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">    android:layout_margin=&quot;16dp&quot;</span><br><span class="line">    android:elevation=&quot;8dp&quot;</span><br><span class="line">    app:layout_anchor=&quot;@id/flex.cardview&quot;</span><br><span class="line">    app:layout_anchorGravity=&quot;end|right&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/android.support.design.widget.CoordinatorLayout&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>FlexActivity.java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">private static final int PERCENTAGE_TO_SHOW_IMAGE = 20;</span><br><span class="line">appBarLayout.addOnOffsetChangedListener(this);</span><br><span class="line">    mFab = findViewById(R.id.flex_fab);</span><br><span class="line">    Toolbar toolbar = findViewById(R.id.flex_toolbar);</span><br><span class="line">    toolbar.setNavigationOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onClick(View v) &#123;</span><br><span class="line">            onBackPressed();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public void onOffsetChanged(AppBarLayout appBarLayout, int i) &#123;</span><br><span class="line">    if (mMaxScrollSize == 0) &#123;</span><br><span class="line">        mMaxScrollSize = appBarLayout.getTotalScrollRange();</span><br><span class="line">    &#125;</span><br><span class="line">    if (mMaxScrollSize == 0) return;</span><br><span class="line">    int currentScrollPercentage = (Math.abs(i)) * 100</span><br><span class="line">            / mMaxScrollSize;</span><br><span class="line">    if (currentScrollPercentage &gt;= PERCENTAGE_TO_SHOW_IMAGE &amp;&amp; !mIsImageHidden) &#123;</span><br><span class="line">        mIsImageHidden = true;</span><br><span class="line">        mFab.animate().scaleX(0).scaleY(0).start();</span><br><span class="line">    &#125;</span><br><span class="line">    if (currentScrollPercentage &lt; PERCENTAGE_TO_SHOW_IMAGE &amp;&amp; mIsImageHidden) &#123;</span><br><span class="line">        mIsImageHidden = false;</span><br><span class="line">        mFab.animate().scaleX(1).scaleY(1).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/coordinatorlayout4.gif"></li>
+<li>设置CardView在CoordinatorLayout中的滑动移除Behavior<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">SwipeDismissBehavior swipeDismissBehavior = new SwipeDismissBehavior();</span><br><span class="line">    swipeDismissBehavior.setSwipeDirection(SwipeDismissBehavior.SWIPE_DIRECTION_ANY);</span><br><span class="line">    swipeDismissBehavior.setListener(new SwipeDismissBehavior.OnDismissListener() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onDismiss(View view) &#123;</span><br><span class="line">            Toast.makeText(SwipeBehaviorExampleActivity.this,</span><br><span class="line">                    &quot;Card swiped !!&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void onDragStateChanged(int state) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">CardView cardView = findViewById(R.id.swipe_card);</span><br><span class="line">LayoutParams layoutParams = (LayoutParams) cardView.getLayoutParams();</span><br><span class="line">layoutParams.setBehavior(swipeDismissBehavior);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/coordinatorlayout5.gif">
           
         
       
@@ -685,6 +587,158 @@
           
           
              <span id="/2018/03/09/Android-Notes-Git/" class="leancloud_visitors" data-flag-title="Android Notes(Git)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Android-Notes-NDK/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="willkernel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="willkernel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/09/Android-Notes-NDK/" itemprop="url">Android Notes(NDK)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:04:00+08:00">
+                2018-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/09/Android-Notes-NDK/" class="leancloud_visitors" data-flag-title="Android Notes(NDK)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
