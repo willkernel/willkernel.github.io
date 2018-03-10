@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Android Notes(ConstraintLayout)]]></title>
     <url>%2F2018%2F03%2F10%2FAndroid-Notes-ConstraintLayout%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[引入constraint-layout 12345678910allprojects &#123; repositories &#123; jcenter() maven &#123; url &apos;https://maven.google.com&apos; &#125; &#125;&#125;compile &apos;com.android.support.constraint:constraint-layout:1.1.0-beta5&apos; 属性 1234567891011121314151617181920212223layout_constraintLeft_toLeftOf左对齐layout_constraintLeft_toRightOf左边和约束控件的右边对齐layout_constraintRight_toLeftOf右边在某组件的左边layout_constraintRight_toRightOf右边在某组件的右边layout_constraintTop_toTopOf上边和某组件的上边对其layout_constraintTop_toBottomOf上边在某组件的下边layout_constraintBottom_toTopOf下边在某组件的上边layout_constraintBottom_toBottomOf下边在某组件的下边layout_constraintBaseline_toBaselineOf组件的基线位置和某组件的基线位置对其（很少用）layout_constraintStart_toEndOflayout_constraintStart_toStartOflayout_constraintEnd_toStartOflayout_constraintEnd_toEndOf属性的值有两种，一种是同层级组件ID，还有就是parent，当值为parent时即是相对于父布局进行定位 偏移设置为0～1之间的值，需要设置上面的水平或垂直相对位置，相应属性： 123456789101112layout_constraintHorizontal_bias // 水平偏移layout_constraintVertical_bias // 垂直偏移设置一个float值，表示宽高比app:layout_constraintDimensionRatio=&quot;2&quot;使用比值app:layout_constraintDimensionRatio=&quot;16:9&quot;或者app:layout_constraintDimensionRatio=&quot;w,16:9&quot;app:layout_constraintDimensionRatio=&quot;h,16:9&quot;这种方式，如果没有前缀就代表是宽高比，如果加了前缀H代表比值的第一个数字是高度，W是宽度 add chain autoconnect guideline 距parent默认margin是16dp change margin,adjust bias,达到铺满屏幕效果，不能用match_parent，设置0dp-&gt;match_constraint 设置基线约束 packtool 铺满view所在方向的可用空间 Infer Constraints tool 通过计算，给所有元素增加约束，而AutoConnect只针对selected element to the element’s parent. 设置View比例 设置Barrier，修改barrier direction1Barriers start with their barrierDirection set to left. Make sure you update your barrierDirection to right or end. 添加chains,设置margin为0 1234The modes are, in order:Packed: The elements are packed together, as shown above.Spread: The elements are spread out over the available space.Spread inside: Similar to Spread, but the endpoints of the chain are not spread out.]]></content>
       <categories>
         <category>Android</category>
       </categories>
@@ -17,17 +17,6 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[Android Notes(NDK)]]></title>
-    <url>%2F2018%2F03%2F09%2FAndroid-Notes-NDK%2F</url>
-    <content type="text"></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>NDK</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Android Notes(Git)]]></title>
     <url>%2F2018%2F03%2F09%2FAndroid-Notes-Git%2F</url>
     <content type="text"></content>
@@ -37,6 +26,17 @@
       </categories>
       <tags>
         <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Android Notes(NDK)]]></title>
+    <url>%2F2018%2F03%2F09%2FAndroid-Notes-NDK%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>NDK</tag>
       </tags>
   </entry>
   <entry>
