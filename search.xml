@@ -17,6 +17,17 @@
       </categories>
   </entry>
   <entry>
+    <title><![CDATA[Android Notes(NDK)]]></title>
+    <url>%2F2018%2F03%2F09%2FAndroid-Notes-NDK%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>NDK</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Android Notes(Git)]]></title>
     <url>%2F2018%2F03%2F09%2FAndroid-Notes-Git%2F</url>
     <content type="text"></content>
@@ -29,17 +40,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Android Notes(NDK)]]></title>
-    <url>%2F2018%2F03%2F09%2FAndroid-Notes-NDK%2F</url>
-    <content type="text"></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>NDK</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Android Notes(Kotlin)]]></title>
     <url>%2F2018%2F03%2F09%2FAndroid-Notes-Kotlin%2F</url>
     <content type="text"></content>
@@ -47,7 +47,7 @@
   <entry>
     <title><![CDATA[Android Notes(MVP)]]></title>
     <url>%2F2018%2F03%2F09%2FAndroid-Notes-MVP%2F</url>
-    <content type="text"><![CDATA[View视图层,包含各种界面相关功能，例如Activity，Fragment，View,Adapter,专注于交互，一般持有Presenter的引用，或者通过依赖注入(Dagger)方式获得Presenter实例，将非UI逻辑操作委托给Presenter Presenter逻辑控制层，充当中间人，隔离View层，Model层，接收View层的数据请求，分发给Model层处理，监听Model处理结果，将结果反馈给View，实项界面的刷新 Model封装网络数据请求，本地数据请求，对Presenter提供简单易用的接口 MVP，MVC区别 MVP中Presenter和View，Model通过接口进行通信，通常Presenter与View是一一对应，复杂的可能有多个Presenter MVC中Model,View直接通信的，Controller基于行为，可以被多个View共享 android-architecture-todo-mvp BaseView 123public interface BaseView&lt;T&gt; &#123; void setPresenter(T presenter);&#125; BasePresenter 123public interface BasePresenter &#123; void start();&#125; TaskActivity 1234567891011TasksFragment tasksFragment =(TasksFragment)getSupportFragmentManager().findFragmentById(R.id.contentFrame);if (tasksFragment == null) &#123; // Create the fragment tasksFragment = TasksFragment.newInstance(); ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), tasksFragment, R.id.contentFrame);&#125;// Create the presentermTasksPresenter = new TasksPresenter(Injection.provideTasksRepository(getApplicationContext()), tasksFragment);//set filtermTasksPresenter.setFiltering(currentFiltering);]]></content>
+    <content type="text"><![CDATA[View视图层,包含各种界面相关功能，例如Activity，Fragment，View,Adapter,专注于交互，一般持有Presenter的引用，或者通过依赖注入(Dagger)方式获得Presenter实例，将非UI逻辑操作委托给Presenter Presenter逻辑控制层，充当中间人，隔离View层，Model层，接收View层的数据请求，分发给Model层处理，监听Model处理结果，将结果反馈给View，实项界面的刷新 Model封装网络数据请求，本地数据请求，对Presenter提供简单易用的接口 MVP，MVC区别 MVP中Presenter和View，Model通过接口进行通信，通常Presenter与View是一一对应，复杂的可能有多个Presenter MVC中Model,View直接通信的，Controller基于行为，可以被多个View共享 android-architecture-todo-mvp BaseView 123public interface BaseView&lt;T&gt; &#123; void setPresenter(T presenter);&#125; BasePresenter 123public interface BasePresenter &#123; void start();&#125; TaskContract接口包装Presenter,View 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657interface View extends BaseView&lt;Presenter&gt; &#123; void setLoadingIndicator(boolean active); void showTasks(List&lt;Task&gt; tasks); void showAddTask(); void showTaskDetailsUi(String taskId); void showTaskMarkedComplete(); void showTaskMarkedActive(); void showCompletedTasksCleared(); void showLoadingTasksError(); void showNoTasks(); void showActiveFilterLabel(); void showCompletedFilterLabel(); void showAllFilterLabel(); void showNoActiveTasks(); void showNoCompletedTasks(); void showSuccessfullySavedMessage(); boolean isActive(); void showFilteringPopUpMenu(); &#125; interface Presenter extends BasePresenter &#123; void result(int requestCode, int resultCode); void loadTasks(boolean forceUpdate); void addNewTask(); void openTaskDetails(@NonNull Task requestedTask); void completeTask(@NonNull Task completedTask); void activateTask(@NonNull Task activeTask); void clearCompletedTasks(); void setFiltering(TasksFilterType requestType); TasksFilterType getFiltering(); &#125; TaskPresenter 实现TaskContract.Presenter,持有TaskContract.View对象，在Activity中初始化并传入View，Model 12345678910public class TasksPresenter implements TasksContract.Presenter &#123; private final TasksRepository mTasksRepository; private final TasksContract.View mTasksView; public TasksPresenter(@NonNull TasksRepository tasksRepository, @NonNull TasksContract.View tasksView) &#123; mTasksRepository = checkNotNull(tasksRepository, &quot;tasksRepository cannot be null&quot;); mTasksView = checkNotNull(tasksView, &quot;tasksView cannot be null!&quot;); //View必须实现TasksContract.View mTasksView.setPresenter(this); &#125; TasksFragment 持有TasksContract.Presenter对象,并实现TasksContract.View,Fragment实例化后在Presenter中taskView.setPresenter(this),在taskView中通过Presenter获取数据,并在Presenter中刷新内容，在taskView中响应 1234567public class TasksFragment extends Fragment implements TasksContract.Viewprivate TasksContract.Presenter mPresenter;@Overridepublic void setPresenter(@NonNull TasksContract.Presenter presenter) &#123; mPresenter = checkNotNull(presenter);&#125; TaskActivity 1234567891011TasksFragment tasksFragment =(TasksFragment)getSupportFragmentManager().findFragmentById(R.id.contentFrame);if (tasksFragment == null) &#123; // Create the fragment tasksFragment = TasksFragment.newInstance(); ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), tasksFragment, R.id.contentFrame);&#125;// Create the presentermTasksPresenter = new TasksPresenter(Injection.provideTasksRepository(getApplicationContext()), tasksFragment);//set filtermTasksPresenter.setFiltering(currentFiltering);]]></content>
   </entry>
   <entry>
     <title><![CDATA[Android Notes(MVVP)]]></title>
