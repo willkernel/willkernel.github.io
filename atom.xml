@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>willkernel</title>
+  
+  <subtitle>will be kernel</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://willkernel.github.io/"/>
+  <updated>2018-03-10T09:07:04.320Z</updated>
+  <id>http://willkernel.github.io/</id>
+  
+  <author>
+    <name>willkernel</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android Notes(ConstraintLayout)</title>
+    <link href="http://willkernel.github.io/2018/03/10/Android-Notes-ConstraintLayout/"/>
+    <id>http://willkernel.github.io/2018/03/10/Android-Notes-ConstraintLayout/</id>
+    <published>2018-03-09T18:16:00.000Z</published>
+    <updated>2018-03-10T09:07:04.320Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;引入constraint-layout&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Android Notes(CoordinatorLayout)</title>
+    <link href="http://willkernel.github.io/2018/03/09/CoordinatorLayout/"/>
+    <id>http://willkernel.github.io/2018/03/09/CoordinatorLayout/</id>
+    <published>2018-03-09T02:33:00.000Z</published>
+    <updated>2018-03-09T18:17:07.419Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;CoordinatorLayout&quot;&gt;&lt;a href=&quot;#CoordinatorLayout&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Android Notes(NDK)</title>
+    <link href="http://willkernel.github.io/2018/03/09/Android-Notes-NDK/"/>
+    <id>http://willkernel.github.io/2018/03/09/Android-Notes-NDK/</id>
+    <published>2018-03-08T17:04:00.000Z</published>
+    <updated>2018-03-08T17:10:02.378Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android Notes(Git)</title>
+    <link href="http://willkernel.github.io/2018/03/09/Android-Notes-Git/"/>
+    <id>http://willkernel.github.io/2018/03/09/Android-Notes-Git/</id>
+    <published>2018-03-08T17:04:00.000Z</published>
+    <updated>2018-03-08T17:09:40.495Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+      <category term="Git" scheme="http://willkernel.github.io/categories/Android/Git/"/>
+    
+    
+      <category term="Git" scheme="http://willkernel.github.io/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android Notes(Kotlin)</title>
+    <link href="http://willkernel.github.io/2018/03/09/Android-Notes-Kotlin/"/>
+    <id>http://willkernel.github.io/2018/03/09/Android-Notes-Kotlin/</id>
+    <published>2018-03-08T17:03:49.000Z</published>
+    <updated>2018-03-08T17:03:49.446Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Android Notes(MVP)</title>
+    <link href="http://willkernel.github.io/2018/03/09/Android-Notes-MVP/"/>
+    <id>http://willkernel.github.io/2018/03/09/Android-Notes-MVP/</id>
+    <published>2018-03-08T17:03:12.000Z</published>
+    <updated>2018-03-11T15:41:30.283Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;View&lt;br&gt;视图层,包含各种界面相关功能，例如Activity，Fragment，View,Adapter,专注于交互，一般持有Presenter的引用，或者通过依赖注入(Dagger)方式获得Presenter实例，将非UI逻辑操作委托给Presenter
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Android Notes(MVVP)</title>
+    <link href="http://willkernel.github.io/2018/03/09/Android-Notes-MVVP/"/>
+    <id>http://willkernel.github.io/2018/03/09/Android-Notes-MVVP/</id>
+    <published>2018-03-08T17:02:33.000Z</published>
+    <updated>2018-03-08T17:02:41.560Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Android Notes(Performance)</title>
+    <link href="http://willkernel.github.io/2018/03/08/Android-Notes-Performance/"/>
+    <id>http://willkernel.github.io/2018/03/08/Android-Notes-Performance/</id>
+    <published>2018-03-08T08:26:00.000Z</published>
+    <updated>2018-03-08T17:00:32.118Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;Performance-optimization&quot;&gt;&lt;a href=&quot;#Performance-optimization&quot; class=&quot;headerlink&quot; title=&quot;Performance optimization&quot;&gt;&lt;/a&gt;Performance
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Android Notes(System Info Manager Safety)</title>
+    <link href="http://willkernel.github.io/2018/03/08/Android-Notes-System-Info-Manager-Safety-1/"/>
+    <id>http://willkernel.github.io/2018/03/08/Android-Notes-System-Info-Manager-Safety-1/</id>
+    <published>2018-03-07T17:29:00.000Z</published>
+    <updated>2018-03-08T08:42:56.846Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;Android-System-Info&quot;&gt;&lt;a href=&quot;#Android-System-Info&quot; class=&quot;headerlink&quot; title=&quot;Android System Info&quot;&gt;&lt;/a&gt;Android System
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Android Notes(Activity)</title>
+    <link href="http://willkernel.github.io/2018/03/07/Android-Notes-%E5%85%AD/"/>
+    <id>http://willkernel.github.io/2018/03/07/Android-Notes-六/</id>
+    <published>2018-03-07T14:53:00.000Z</published>
+    <updated>2018-03-07T17:24:04.100Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;Activity，Activity调用栈&quot;&gt;&lt;a href=&quot;#Activity，Activity调用栈&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Android Notes(SurfaceView)</title>
+    <link href="http://willkernel.github.io/2018/03/07/Android-Notes-%E4%BA%94/"/>
+    <id>http://willkernel.github.io/2018/03/07/Android-Notes-五/</id>
+    <published>2018-03-07T05:30:00.000Z</published>
+    <updated>2018-03-07T17:24:14.646Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;SurfaceView&quot;&gt;&lt;a href=&quot;#SurfaceView&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Android Notes(Paint Shader)</title>
+    <link href="http://willkernel.github.io/2018/03/07/Android-Notes-%E5%9B%9B/"/>
+    <id>http://willkernel.github.io/2018/03/07/Android-Notes-四/</id>
+    <published>2018-03-06T16:17:00.000Z</published>
+    <updated>2018-03-07T17:24:47.738Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;Paint&quot;&gt;&lt;a href=&quot;#Paint&quot; class=&quot;headerlink&quot; title=&quot;Paint&quot;&gt;&lt;/a&gt;Paint&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;PorterDuffXfermode
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Android Notes(View)</title>
+    <link href="http://willkernel.github.io/2018/03/05/Android-Notes-%E4%B8%89/"/>
+    <id>http://willkernel.github.io/2018/03/05/Android-Notes-三/</id>
+    <published>2018-03-05T09:03:00.000Z</published>
+    <updated>2018-03-07T17:25:14.796Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;Android-绘图机制处理&quot;&gt;&lt;a href=&quot;#Android-绘图机制处理&quot; class=&quot;headerlink&quot; title=&quot;Android 绘图机制处理&quot;&gt;&lt;/a&gt;Android
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Android Notes (ListView Scroller)</title>
+    <link href="http://willkernel.github.io/2018/03/02/Android-Notes-%E4%BA%8C/"/>
+    <id>http://willkernel.github.io/2018/03/02/Android-Notes-二/</id>
+    <published>2018-03-01T16:32:00.000Z</published>
+    <updated>2018-03-07T17:25:41.043Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;ListView使用技巧&quot;&gt;&lt;a href=&quot;#ListView使用技巧&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Docker 编译Android源码</title>
+    <link href="http://willkernel.github.io/2018/02/26/Docker-%E7%BC%96%E8%AF%91Android%E6%BA%90%E7%A0%81/"/>
+    <id>http://willkernel.github.io/2018/02/26/Docker-编译Android源码/</id>
+    <published>2018-02-26T02:50:00.000Z</published>
+    <updated>2018-03-02T13:02:11.944Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://store.docker.com/editions/community/docker-ce-desktop-windows&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Windows
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+      <category term="Docker" scheme="http://willkernel.github.io/tags/Docker/"/>
+    
+      <category term="源码" scheme="http://willkernel.github.io/tags/%E6%BA%90%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法 c++</title>
+    <link href="http://willkernel.github.io/2018/02/26/%E7%AE%97%E6%B3%95-c/"/>
+    <id>http://willkernel.github.io/2018/02/26/算法-c/</id>
+    <published>2018-02-25T18:40:00.000Z</published>
+    <updated>2018-03-01T17:13:16.497Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;排序算法&lt;/p&gt;
+
+        
+      
+    
+    </summary>
+    
+      <category term="C" scheme="http://willkernel.github.io/categories/C/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Android Notes (System ADB UI)</title>
+    <link href="http://willkernel.github.io/2018/02/25/Android-Notes/"/>
+    <id>http://willkernel.github.io/2018/02/25/Android-Notes/</id>
+    <published>2018-02-25T11:41:00.000Z</published>
+    <updated>2018-03-07T17:26:54.586Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;Android系统架构&quot;&gt;&lt;a href=&quot;#Android系统架构&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>sh 简单程序</title>
+    <link href="http://willkernel.github.io/2018/02/24/sh-%E7%AE%80%E5%8D%95%E7%A8%8B%E5%BA%8F/"/>
+    <id>http://willkernel.github.io/2018/02/24/sh-简单程序/</id>
+    <published>2018-02-24T09:09:00.000Z</published>
+    <updated>2018-02-24T09:16:20.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;a href=&quot;https://github.com/willkernel/sh-demo&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sh-demo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;直接执行命令&lt;br&gt;&lt;figure class=&quot;highlight
+        
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://willkernel.github.io/categories/Linux/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Linux 常用快捷键 命令 设置等操作</title>
+    <link href="http://willkernel.github.io/2018/02/24/Linux-%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    <id>http://willkernel.github.io/2018/02/24/Linux-常用快捷键/</id>
+    <published>2018-02-24T06:58:00.000Z</published>
+    <updated>2018-02-26T08:15:33.593Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;常用快捷键&quot;&gt;&lt;a href=&quot;#常用快捷键&quot; class=&quot;headerlink&quot; title=&quot;常用快捷键&quot;&gt;&lt;/a&gt;常用快捷键&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Ctrl+Alt+T 打开终端&lt;/li&gt;
+&lt;li&gt;Ctrl+L
+        
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://willkernel.github.io/categories/Linux/"/>
+    
+    
+      <category term="Skills" scheme="http://willkernel.github.io/tags/Skills/"/>
+    
+  </entry>
+  
+</feed>
