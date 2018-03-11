@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="will be kernel">
+<meta name="description" content="View视图层,包含各种界面相关功能，例如Activity，Fragment，View,Adapter,专注于交互，一般持有Presenter的引用，或者通过依赖注入(Dagger)方式获得Presenter实例，将非UI逻辑操作委托给Presenter Presenter逻辑控制层，充当中间人，隔离View层，Model层，接收View层的数据请求，分发给Model层处理，监听Model处理结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Notes(MVP)">
 <meta property="og:url" content="http://willkernel.github.io/2018/03/09/Android-Notes-MVP/index.html">
 <meta property="og:site_name" content="willkernel">
-<meta property="og:description" content="will be kernel">
+<meta property="og:description" content="View视图层,包含各种界面相关功能，例如Activity，Fragment，View,Adapter,专注于交互，一般持有Presenter的引用，或者通过依赖注入(Dagger)方式获得Presenter实例，将非UI逻辑操作委托给Presenter Presenter逻辑控制层，充当中间人，隔离View层，Model层，接收View层的数据请求，分发给Model层处理，监听Model处理结">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-08T17:05:55.261Z">
+<meta property="og:updated_time" content="2018-03-11T02:05:21.283Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Notes(MVP)">
-<meta name="twitter:description" content="will be kernel">
+<meta name="twitter:description" content="View视图层,包含各种界面相关功能，例如Activity，Fragment，View,Adapter,专注于交互，一般持有Presenter的引用，或者通过依赖注入(Dagger)方式获得Presenter实例，将非UI逻辑操作委托给Presenter Presenter逻辑控制层，充当中间人，隔离View层，Model层，接收View层的数据请求，分发给Model层处理，监听Model处理结">
 
 
 
@@ -374,7 +374,17 @@
       
 
       
-        
+        <ul>
+<li>View<br><br>视图层,包含各种界面相关功能，例如Activity，Fragment，View,Adapter,专注于交互，一般持有Presenter的引用，或者通过依赖注入(Dagger)方式获得Presenter实例，将非UI逻辑操作委托给Presenter</li>
+<li>Presenter<br><br>逻辑控制层，充当中间人，隔离View层，Model层，接收View层的数据请求，分发给Model层处理，监听Model处理结果，将结果反馈给View，实项界面的刷新</li>
+<li>Model<br><br>封装网络数据请求，本地数据请求，对Presenter提供简单易用的接口</li>
+<li>MVP，MVC区别<ul>
+<li>Presenter和View，Model通过接口进行通信，通常Presenter与View是一一对应，复杂的可能有多个Presenter</li>
+<li>Model,View直接通信的，Controller基于行为，可以被多个View共享</li>
+</ul>
+</li>
+</ul>
+
       
     </div>
     

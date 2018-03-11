@@ -17,6 +17,17 @@
       </categories>
   </entry>
   <entry>
+    <title><![CDATA[Android Notes(NDK)]]></title>
+    <url>%2F2018%2F03%2F09%2FAndroid-Notes-NDK%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>NDK</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Android Notes(Git)]]></title>
     <url>%2F2018%2F03%2F09%2FAndroid-Notes-Git%2F</url>
     <content type="text"></content>
@@ -29,17 +40,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Android Notes(NDK)]]></title>
-    <url>%2F2018%2F03%2F09%2FAndroid-Notes-NDK%2F</url>
-    <content type="text"></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>NDK</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Android Notes(Kotlin)]]></title>
     <url>%2F2018%2F03%2F09%2FAndroid-Notes-Kotlin%2F</url>
     <content type="text"></content>
@@ -47,7 +47,7 @@
   <entry>
     <title><![CDATA[Android Notes(MVP)]]></title>
     <url>%2F2018%2F03%2F09%2FAndroid-Notes-MVP%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[View视图层,包含各种界面相关功能，例如Activity，Fragment，View,Adapter,专注于交互，一般持有Presenter的引用，或者通过依赖注入(Dagger)方式获得Presenter实例，将非UI逻辑操作委托给Presenter Presenter逻辑控制层，充当中间人，隔离View层，Model层，接收View层的数据请求，分发给Model层处理，监听Model处理结果，将结果反馈给View，实项界面的刷新 Model封装网络数据请求，本地数据请求，对Presenter提供简单易用的接口 MVP，MVC区别 Presenter和View，Model通过接口进行通信，通常Presenter与View是一一对应，复杂的可能有多个Presenter Model,View直接通信的，Controller基于行为，可以被多个View共享]]></content>
   </entry>
   <entry>
     <title><![CDATA[Android Notes(MVVP)]]></title>
