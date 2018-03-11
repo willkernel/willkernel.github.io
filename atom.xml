@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://willkernel.github.io/"/>
-  <updated>2018-03-10T09:07:04.320Z</updated>
+  <updated>2018-03-11T16:53:28.074Z</updated>
   <id>http://willkernel.github.io/</id>
   
   <author>
@@ -21,19 +21,18 @@
     <link href="http://willkernel.github.io/2018/03/10/Android-Notes-ConstraintLayout/"/>
     <id>http://willkernel.github.io/2018/03/10/Android-Notes-ConstraintLayout/</id>
     <published>2018-03-09T18:16:00.000Z</published>
-    <updated>2018-03-10T09:07:04.320Z</updated>
+    <updated>2018-03-11T16:53:28.074Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;ul&gt;
+      &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;引入constraint-layout&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span
-        
-      
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;allprojects &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    repositories &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        jcenter()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        maven &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            url &amp;apos;https://maven.google.com&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;compile &amp;apos;com.android.support.constraint:constraint-layout:1.1.0-beta5&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;属性&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;layout_constraintLeft_toLeftOf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;左对齐&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;layout_constraintLeft_toRightOf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;左边和约束控件的右边对齐&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;layout_constraintRight_toLeftOf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;右边在某组件的左边&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;layout_constraintRight_toRightOf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;右边在某组件的右边&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;layout_constraintTop_toTopOf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;上边和某组件的上边对其&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;layout_constraintTop_toBottomOf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;上边在某组件的下边&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;layout_constraintBottom_toTopOf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;下边在某组件的上边&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;layout_constraintBottom_toBottomOf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;下边在某组件的下边&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;layout_constraintBaseline_toBaselineOf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;组件的基线位置和某组件的基线位置对其（很少用）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;layout_constraintStart_toEndOf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;layout_constraintStart_toStartOf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;layout_constraintEnd_toStartOf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;layout_constraintEnd_toEndOf&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;属性的值有两种，一种是同层级组件ID，还有就是parent，当值为parent时即是相对于父布局进行定位&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
