@@ -25,6 +25,17 @@
       </categories>
   </entry>
   <entry>
+    <title><![CDATA[Android Notes(NDK)]]></title>
+    <url>%2F2018%2F03%2F09%2FAndroid-Notes-NDK%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>NDK</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Android Notes(Git)]]></title>
     <url>%2F2018%2F03%2F09%2FAndroid-Notes-Git%2F</url>
     <content type="text"></content>
@@ -34,17 +45,6 @@
       </categories>
       <tags>
         <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Android Notes(NDK)]]></title>
-    <url>%2F2018%2F03%2F09%2FAndroid-Notes-NDK%2F</url>
-    <content type="text"></content>
-      <categories>
-        <category>Android</category>
-      </categories>
-      <tags>
-        <tag>NDK</tag>
       </tags>
   </entry>
   <entry>
