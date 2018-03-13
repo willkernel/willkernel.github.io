@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="willkernel">
 <meta property="og:description" content="Dagger依赖注入（Dependency Injection），简称DI，又叫控制反转（Inversion of Control），简称IOC当一个类的实例需要另一个类的实例，在传统的设计中，通常由调用者来创建被调用者的实例，然而依赖注入的方式，创建被调用者不再由调用者创建实例，创建被调用者的实例的工作由IOC容器来完成，然后注入到调用者。因此也被称为依赖注入  github-dagger-de">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-13T12:37:46.959Z">
+<meta property="og:updated_time" content="2018-03-13T17:58:36.281Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Notes(Dagger)">
 <meta name="twitter:description" content="Dagger依赖注入（Dependency Injection），简称DI，又叫控制反转（Inversion of Control），简称IOC当一个类的实例需要另一个类的实例，在传统的设计中，通常由调用者来创建被调用者的实例，然而依赖注入的方式，创建被调用者不再由调用者创建实例，创建被调用者的实例的工作由IOC容器来完成，然后注入到调用者。因此也被称为依赖注入  github-dagger-de">
@@ -179,7 +179,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">will be kernel</p>
+        <p class="site-subtitle">Lifelong learning</p>
       
   </div>
 
@@ -424,7 +424,7 @@
 <li><p>@Provides 可以满足上面的依赖性，但是必须属于一个Module,有一个惯例方法前缀加provide，类后缀加Module</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> @Module</span><br><span class="line">class DripCoffeeModule &#123;</span><br><span class="line">  @Provides static Heater provideHeater() &#123;</span><br><span class="line">    return new ElectricHeater();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Provides static Pump providePump(Thermosiphon pump) &#123;</span><br><span class="line">    return pump;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>@Component 在接口中，传入Module，完成接口和类的注入，将CoffeeShop 通过DripCoffeeModule注入到MainActivity中</p>
+<li><p>@Component 在接口中，传入Module，完成接口和类的注入，将CoffeeShop 通过DripCoffeeModule注入到MainActivity中<br>@Component中使用modules，表明该Component在哪些注入的Module中查找依赖<br>@Component中使用dependencie，表明该Component在哪些注入的Component中查找依赖<br>添加注入方法，一般使用inject<br>可以声明方法，提供注入的实例</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> @Component(modules = DripCoffeeModule.class)</span><br><span class="line">interface CoffeeShop &#123;</span><br><span class="line">  CoffeeMaker maker();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">CoffeeShop coffeeShop = DaggerCoffeeShop.builder()</span><br><span class="line">    .dripCoffeeModule(new DripCoffeeModule())</span><br><span class="line">    .build();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//如果@Component不是在类的上方，生成组件时需要添加下划线</span><br><span class="line">class Foo &#123;</span><br><span class="line">  static class Bar &#123;</span><br><span class="line">    @Component</span><br><span class="line">    interface BazComponent &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">DaggerFoo_Bar_BazComponent</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>如果所有的依赖关系都可以在不需要实例对象的情况下创建，那么可以使用builder(),也可以使用crete()创建实例，对于所有的@Provides方法都是静态的Module，可以不需要考虑builder</p>
@@ -435,7 +435,24 @@
 </li>
 </ul>
 <ul>
-<li><font color="#ff0000">@Module需要和@Provide是需要一起使用的时候才具有作用的，并且@Component也需要指定了Module<br>@Module是告诉Component，可以从这里获取依赖对象。Component就会去找被@Provide标注的方法，相当于构造器的@Inject，可以提供依赖,@Component可以指定多个@Module的</font></li>
+<li><font color="#ff0000">@Module需要和@Provide是需要一起使用的时候才具有作用的，并且@Component也需要指定了Module<br>@Module是告诉Component，可以从这里获取依赖对象。Component就会去找被@Provide标注的方法，相当于构造器的@Inject可以提供依赖,@Component可以指定多个@Module的</font></li>
+<li><p>Component可以包含多个Module或者Component，这样Component获取依赖时候会自动从多个Module中查找获取，但是，Module间不能有重复方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">在Component中的modules属性中注入多个Module</span><br><span class="line"></span><br><span class="line">@Component(modules=&#123;ModuleA.class,ModuleB.class,...&#125;)</span><br><span class="line">public interface FruitComponent&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">在Component中的dependencies属性中注入多个依赖的Component</span><br><span class="line"></span><br><span class="line">@Component(dependencies=&#123;ComponentA.class,ComponentB.class,...&#125;) </span><br><span class="line">public interface FruitComponent&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">在Module中注入多个Module</span><br><span class="line"></span><br><span class="line">@Module(includes=&#123;ModuleA.class,ModuleB.class,...&#125;)</span><br><span class="line">public class FruitModule&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注入的Module，不管是属于Component本身还是注入的Module的依赖，如果其构造函数为有参构造函数，必须进行初始化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DaggerFruitComponent.builder()</span><br><span class="line">    .orangeModule(new OrangeModule(new OrangeBean(&quot;贡菊&quot;, 6.88, &quot;江西南昌&quot;)))</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>依赖规则：<br>步骤1：查找Module中是否存在创建该类的方法。</p>
+</li>
+</ul>
+<p>步骤2：若存在创建类方法，查看该方法是否存在参数<br>步骤2.1：若存在参数，则按从步骤1开始依次初始化每个参数<br>步骤2.2：若不存在参数，则直接初始化该类实例，一次依赖注入结束</p>
+<p>步骤3：若不存在创建类方法，则查找Inject注解的构造函数，看构造函数是否存在参数<br>步骤3.1：若存在参数，则从步骤1开始依次初始化每个参数<br>步骤3.2：若不存在参数，则直接初始化该类实例，一次依赖注入结束</p>
+<ul>
+<li><p>在Component中，可以声明方法，比如makeApple()，直接提供注入对象实例。DaggerFruitComponent针对每一个@Provides方法创建Provider\&lt;T>实例。在调用makeApple()方法时，实际上是调用的相应Provider的get()方法，获取相应的实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public AppleBean makeApple() &#123;</span><br><span class="line">    return provideAppleProvider.get();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>依赖对象的注入源应该是有两个，一是Module中的@Provides方法，二是使用@Inject注解的构造函数</p>
+</li>
 <li><p>单例@Singleton,可以做文档注释，提醒是线程安全</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> @Provides @Singleton static Heater provideHeater() &#123;</span><br><span class="line">  return new ElectricHeater();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
@@ -469,13 +486,19 @@
 <li><p>Component和SubComponent区别</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Component dependencies 能单独使用，而Subcomponent必须由Component调用方法获取。</span><br><span class="line">Component dependencies 可以很清楚的得知他依赖哪个Component， 而Subcomponent不确定</span><br><span class="line">使用上的区别，Subcomponent就像这样DaggerAppComponent.plus(new SharePreferenceModule());</span><br><span class="line">使用Dependence可能是这样DaggerAppComponent.sharePreferenceComponent(SharePreferenceComponent.create())</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>使用上的总结</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Component dependencies和Subcomponent使用上的总结</span><br><span class="line">Component Dependencies：</span><br><span class="line">你想保留独立的想个组件（Flower可以单独使用注入，Pot也可以）</span><br><span class="line">要明确的显示该组件所使用的其他依赖</span><br><span class="line">Subcomponent：</span><br><span class="line">两个组件之间的关系紧密</span><br><span class="line">你只关心Component，而Subcomponent只是作为Component的拓展，可以通过Component.xxx调用</span><br></pre></td></tr></table></figure>
-</li>
 </ul>
 </li>
-<li><p>@Scope和@Singleton<br>@Scope管理依赖的生命周期，自定义注解，而@Singleton是@Scope默认实现</p>
+<li><p>@Scope和@Singleton<br>@Scope管理依赖的生命周期，@Scope对某类注解后，其作用的核心应该是注入器的控制，注入实例时，控制注入器调用缓存的实例还是重新实例,自定义注解，而@Singleton是@Scope默认实现<br>如果有类注入实例的类被@Scope注解，那么其Component必须被相同的Scope注解</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Scope</span><br><span class="line">@Documented</span><br><span class="line">@Retention(RUNTIME)</span><br><span class="line">public @interface Singleton &#123;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>依赖实例的注入来源是@Provides方法时，@Provides方法必须被@Scope注解；如果依赖实例的注入来源是@Inject注解的构造函数时，实例类必须被@Scope注解。这样@Scope注解才会有效。也就是说，@Scope实际上是对注入器的控制</p>
+<ul>
+<li><p>Scope控制的实例的注入器是当前Component之内的实例注入器，而不会影响其他的Component中的实例注入器</p>
+</li>
+<li><p>更好的管理Component之间的组织方式，用自定义的Scope注解标注这些Component，检查有依赖关系或包含关系的Component，若发现Component没有用自定义Scope注解标注，则会报错</p>
+</li>
+<li>编译器会检查 Component管理的Modules，标注Component的自定义Scope注解与Modules中的标注创建类实例方法的注解不一样会报错</li>
+</ul>
 </li>
 <li><p>单例实例</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@Inject</span><br><span class="line">Car car1;</span><br><span class="line">//可以注入多个Car,但是重新创建了一个依赖</span><br><span class="line">@Inject</span><br><span class="line">Car car2;</span><br><span class="line">//使用单例，@Singleton</span><br><span class="line">@Module</span><br><span class="line">public class CarModule &#123;</span><br><span class="line">    @Provides</span><br><span class="line">    @Singleton</span><br><span class="line">    Car provideCar(@CoolQualifier Water water)&#123;</span><br><span class="line">        return new Car(water);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Singleton</span><br><span class="line">@Component(modules = CarModule.class, dependencies = WaterComponent.class)</span><br><span class="line">public interface CarComponent &#123;</span><br><span class="line">    Car getCar();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -499,8 +522,10 @@
 <li><p>MapKey</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">@Component(modules = MapKeyModule.class)</span><br><span class="line">public interface MapComponent &#123;</span><br><span class="line">    Map&lt;String, String&gt; mapkey();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Module</span><br><span class="line">public class MapKeyModule &#123;</span><br><span class="line">    @Provides</span><br><span class="line">    @IntoMap</span><br><span class="line">    @TestKey(&quot;foo&quot;)</span><br><span class="line">    String provideFooKey() &#123;</span><br><span class="line">        return &quot;foo value&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Provides</span><br><span class="line">    @IntoMap</span><br><span class="line">    @TestKey(&quot;bar&quot;)</span><br><span class="line">    String provideBarKey() &#123;</span><br><span class="line">        return &quot;bar value&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@MapKey(unwrapValue = true)</span><br><span class="line">public @interface TestKey &#123;</span><br><span class="line">    String value();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Map&lt;String, String&gt; map = DaggerMapComponent.create().mapkey();</span><br><span class="line">        Log.e(TAG, &quot;map &quot; + map.toString());</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Lazy<br>通过Lazy提供的实例，在@Inject的时候并不初始化，而是使用的时候，主动调用其get方法来获取实例</p>
+<li><p>Lazy<br>通过Lazy提供的实例，在@Inject的时候并不初始化，而是使用的时候，主动调用其get方法来获取实例，并且会缓存该对象</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Inject</span><br><span class="line">Lazy&lt;Car&gt; carLazy;</span><br><span class="line"></span><br><span class="line">Car carL = carLazy.get();</span><br><span class="line">Log.e(TAG, &quot;carL &quot; + carL.show());</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Provider<t><br>有时您需要注入多个实例列表，而不是注入单个值。可以注入一个Provider <t>，而不只是T。<br>当Provider<t> 每次调用get()方法时，都会执行绑定逻辑并创建一个新的实例，地址不一样，但@Scope注解的类地址是一样的</t></t></t></p>
 </li>
 </ul>
 <h4 id="Dagger-2-11"><a href="#Dagger-2-11" class="headerlink" title="Dagger 2.11"></a>Dagger 2.11</h4><ul>
@@ -516,7 +541,7 @@
 <ul>
 <li>@ContributesAndroidInjector<br>为其注解的方法生成返回值对应的AndroidInjector。该注射器是 dagger.Subcomponent的实现，而且是dagger.Module 的子Component</li>
 </ul>
-<p>此注释必须应用于返回具体的Android框架类型(例如:FooActivity、BarFragment、MyService等）的dagger.Module中的抽象方法。<br>该抽象方法没有参数</p>
+<p>此注释必须应用于返回具体的Android框架类型(例如:FooActivity、BarFragment、MyService等）的dagger.Module中的抽象方法<br>该抽象方法没有参数</p>
 
       
     </div>
@@ -682,7 +707,7 @@
                 alt="willkernel" />
             
               <p class="site-author-name" itemprop="name">willkernel</p>
-              <p class="site-description motion-element" itemprop="description">will be kernel</p>
+              <p class="site-description motion-element" itemprop="description">Lifelong learning</p>
           </div>
 
           <nav class="site-state motion-element">
