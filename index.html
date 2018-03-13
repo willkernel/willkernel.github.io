@@ -431,11 +431,11 @@
 <li><p>@Component 在接口中，传入Module，完成接口和类的注入，将CoffeeShop 通过DripCoffeeModule注入到MainActivity中</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> @Component(modules = DripCoffeeModule.class)</span><br><span class="line">interface CoffeeShop &#123;</span><br><span class="line">  CoffeeMaker maker();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">CoffeeShop coffeeShop = DaggerCoffeeShop.builder()</span><br><span class="line">    .dripCoffeeModule(new DripCoffeeModule())</span><br><span class="line">    .build();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//如果@Component不是在类的上方，生成组件时需要添加下划线</span><br><span class="line">class Foo &#123;</span><br><span class="line">  static class Bar &#123;</span><br><span class="line">    @Component</span><br><span class="line">    interface BazComponent &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">DaggerFoo_Bar_BazComponent</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>实例化公开可访问的无参构造函数，可以不使用builder</p>
+<li><p>如果所有的依赖关系都可以在不需要实例对象的情况下创建，那么可以使用builder(),也可以使用crete()创建实例，对于所有的@Provides方法都是静态的Module，可以不需要考虑builder</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CoffeeShop coffeeShop = DaggerCoffeeShop.create();</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>针对在MainActivity中的依赖注入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"> public class Car &#123;</span><br><span class="line">   @Inject</span><br><span class="line">   public Car() &#123;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public String show() &#123;</span><br><span class="line">        return String.valueOf(1);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> @Component</span><br><span class="line">public interface MainActivityComponent &#123;</span><br><span class="line">    void inject(MainActivity activity);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">    @Inject</span><br><span class="line">    Car car;</span><br><span class="line">    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        // 这个类是重新编译后Dagger2自动生成的，所以写这行代码之前要先编译一次</span><br><span class="line">        // Build --&gt; Rebuild Project</span><br><span class="line">        DaggerMainActivityComponent.create().inject(this);</span><br><span class="line">        String show = car.show();</span><br><span class="line">        Toast.makeText(MainActivity.this, show, Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">   //Water 抽象类，@Inject无法提供实例</span><br><span class="line">    @Inject</span><br><span class="line">    public Car(Water water) &#123;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">   //清除子类@Inject</span><br><span class="line">   //@Inject</span><br><span class="line">    public HotWater()&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">   //    @Inject</span><br><span class="line">    public CoolWater()&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">/**</span><br><span class="line"> *@Module标记在类上面</span><br><span class="line"> *@Provodes标记在方法上</span><br><span class="line"> *表示可以通过这个方法获取依赖</span><br><span class="line"> */</span><br><span class="line">@Module</span><br><span class="line">public class WaterModule &#123;</span><br><span class="line">    @Provides</span><br><span class="line">    Water provideWater()&#123;</span><br><span class="line">        return new HotWater();</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 在Component中指定Module</span><br><span class="line"> */</span><br><span class="line">@Component(modules = WaterModule.class)</span><br><span class="line">public interface MainActivityComponent &#123;</span><br><span class="line">    void inject(MainActivity mainActivity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"> public class Car &#123;</span><br><span class="line">   @Inject</span><br><span class="line">   public Car() &#123;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   public String show() &#123;</span><br><span class="line">        return String.valueOf(1);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> @Component</span><br><span class="line">public interface MainActivityComponent &#123;</span><br><span class="line">    void inject(MainActivity activity);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">    @Inject</span><br><span class="line">    Car car;</span><br><span class="line">    protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        // 先编译一次crtl+F9</span><br><span class="line">        DaggerMainActivityComponent.create().inject(this);</span><br><span class="line">        String show = car.show();</span><br><span class="line">        Toast.makeText(MainActivity.this, show, Toast.LENGTH_SHORT).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">   //Water 抽象类，@Inject无法提供实例</span><br><span class="line">    @Inject</span><br><span class="line">    public Car(Water water) &#123;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">   //清除子类@Inject</span><br><span class="line">   //@Inject</span><br><span class="line">    public HotWater()&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">   //    @Inject</span><br><span class="line">    public CoolWater()&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">/**</span><br><span class="line"> *@Module标记在类上面</span><br><span class="line"> *@Provodes标记在方法上</span><br><span class="line"> *表示可以通过这个方法获取依赖</span><br><span class="line"> */</span><br><span class="line">@Module</span><br><span class="line">public class WaterModule &#123;</span><br><span class="line">    @Provides</span><br><span class="line">    Water provideWater()&#123;</span><br><span class="line">        return new HotWater();</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 在Component中指定Module</span><br><span class="line"> */</span><br><span class="line">@Component(modules = WaterModule.class)</span><br><span class="line">public interface MainActivityComponent &#123;</span><br><span class="line">    void inject(MainActivity mainActivity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
@@ -504,8 +504,23 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">@Component(modules = MapKeyModule.class)</span><br><span class="line">public interface MapComponent &#123;</span><br><span class="line">    Map&lt;String, String&gt; mapkey();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Module</span><br><span class="line">public class MapKeyModule &#123;</span><br><span class="line">    @Provides</span><br><span class="line">    @IntoMap</span><br><span class="line">    @TestKey(&quot;foo&quot;)</span><br><span class="line">    String provideFooKey() &#123;</span><br><span class="line">        return &quot;foo value&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Provides</span><br><span class="line">    @IntoMap</span><br><span class="line">    @TestKey(&quot;bar&quot;)</span><br><span class="line">    String provideBarKey() &#123;</span><br><span class="line">        return &quot;bar value&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@MapKey(unwrapValue = true)</span><br><span class="line">public @interface TestKey &#123;</span><br><span class="line">    String value();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Map&lt;String, String&gt; map = DaggerMapComponent.create().mapkey();</span><br><span class="line">        Log.e(TAG, &quot;map &quot; + map.toString());</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Lazy<br>通过Lazy提供的实例，在@Inject的时候并不初始化，而是使用的时候，主动调用其get方法来获取实例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Inject</span><br><span class="line">Lazy&lt;Car&gt; carLazy;</span><br><span class="line"></span><br><span class="line">Car carL = carLazy.get();</span><br><span class="line">Log.e(TAG, &quot;carL &quot; + carL.show());</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Inject</span><br><span class="line">Lazy&lt;Car&gt; carLazy;</span><br><span class="line"></span><br><span class="line">Car carL = carLazy.get();</span><br><span class="line">Log.e(TAG, &quot;carL &quot; + carL.show());</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
+<h4 id="Dagger-2-11"><a href="#Dagger-2-11" class="headerlink" title="Dagger 2.11"></a>Dagger 2.11</h4><ul>
+<li><p>@Binds<br>注解委托绑定模块的抽象方法，例如绑定Random到SecureRandom模块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Binds abstract Random bindRandom(SecureRandom secureRandom);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>是@Provides的替代方法，更高效</li>
+<li>@Binds method<br>必须是抽象方法<br>必须是一个可以转换为返回值类型的参数，参数是返回值类型的子类或实现类，将返回值类绑定到参数类,将参数暴露为返回值类型，不需要实例化参数对象<br>可以有限定符@Qualified和作用域@Scoped</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Documented</span><br><span class="line">@Retention(RUNTIME)</span><br><span class="line">@Target(METHOD)</span><br><span class="line">public @interface Binds &#123;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>@ContributesAndroidInjector<br>为其注解的方法生成返回值对应的AndroidInjector。该注射器是 dagger.Subcomponent的实现，而且是dagger.Module 的子Component</li>
+</ul>
+<p>此注释必须应用于返回具体的Android框架类型(例如:FooActivity、BarFragment、MyService等）的dagger.Module中的抽象方法。<br>该抽象方法没有参数</p>
 
           
         
@@ -926,158 +941,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Android-Notes-NDK/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="willkernel">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="willkernel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/09/Android-Notes-NDK/" itemprop="url">Android Notes(NDK)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:04:00+08:00">
-                2018-03-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/03/09/Android-Notes-NDK/" class="leancloud_visitors" data-flag-title="Android Notes(NDK)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Android-Notes-Git/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1161,6 +1024,158 @@
           
           
              <span id="/2018/03/09/Android-Notes-Git/" class="leancloud_visitors" data-flag-title="Android Notes(Git)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Android-Notes-NDK/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="willkernel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="willkernel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/09/Android-Notes-NDK/" itemprop="url">Android Notes(NDK)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:04:00+08:00">
+                2018-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/09/Android-Notes-NDK/" class="leancloud_visitors" data-flag-title="Android Notes(NDK)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
