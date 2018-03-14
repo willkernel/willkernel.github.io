@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://willkernel.github.io/"/>
-  <updated>2018-03-14T13:49:19.926Z</updated>
+  <updated>2018-03-14T16:50:25.374Z</updated>
   <id>http://willkernel.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android Notes(Data Binding)</title>
+    <link href="http://willkernel.github.io/2018/03/14/ndroid-Notes-Data-Binding/"/>
+    <id>http://willkernel.github.io/2018/03/14/ndroid-Notes-Data-Binding/</id>
+    <published>2018-03-14T15:25:40.000Z</published>
+    <updated>2018-03-14T16:50:25.374Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h5 id=&quot;Data-Binding-Library&quot;&gt;&lt;a href=&quot;#Data-Binding-Library&quot; class=&quot;headerlink&quot; title=&quot;Data Binding Library&quot;&gt;&lt;/a&gt;Data Binding
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Android Notes(Dagger)</title>
@@ -90,24 +112,6 @@
   </entry>
   
   <entry>
-    <title>Android Notes(NDK)</title>
-    <link href="http://willkernel.github.io/2018/03/09/Android-Notes-NDK/"/>
-    <id>http://willkernel.github.io/2018/03/09/Android-Notes-NDK/</id>
-    <published>2018-03-08T17:04:00.000Z</published>
-    <updated>2018-03-08T17:10:02.378Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-    
-      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Android Notes(Git)</title>
     <link href="http://willkernel.github.io/2018/03/09/Android-Notes-Git/"/>
     <id>http://willkernel.github.io/2018/03/09/Android-Notes-Git/</id>
@@ -124,6 +128,24 @@
     
     
       <category term="Git" scheme="http://willkernel.github.io/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android Notes(NDK)</title>
+    <link href="http://willkernel.github.io/2018/03/09/Android-Notes-NDK/"/>
+    <id>http://willkernel.github.io/2018/03/09/Android-Notes-NDK/</id>
+    <published>2018-03-08T17:04:00.000Z</published>
+    <updated>2018-03-08T17:10:02.378Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
     
   </entry>
   
@@ -168,9 +190,17 @@
     <link href="http://willkernel.github.io/2018/03/09/Android-Notes-MVVM/"/>
     <id>http://willkernel.github.io/2018/03/09/Android-Notes-MVVM/</id>
     <published>2018-03-08T17:02:00.000Z</published>
-    <updated>2018-03-14T13:52:24.137Z</updated>
+    <updated>2018-03-14T15:25:00.156Z</updated>
     
     <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h5 id=&quot;Todo-mvvm-databinding&quot;&gt;&lt;a href=&quot;#Todo-mvvm-databinding&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -448,34 +478,6 @@
     
       <category term="Linux" scheme="http://willkernel.github.io/categories/Linux/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Linux 常用快捷键 命令 设置等操作</title>
-    <link href="http://willkernel.github.io/2018/02/24/Linux-%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
-    <id>http://willkernel.github.io/2018/02/24/Linux-常用快捷键/</id>
-    <published>2018-02-24T06:58:00.000Z</published>
-    <updated>2018-02-26T08:15:33.593Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h4 id=&quot;常用快捷键&quot;&gt;&lt;a href=&quot;#常用快捷键&quot; class=&quot;headerlink&quot; title=&quot;常用快捷键&quot;&gt;&lt;/a&gt;常用快捷键&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;Ctrl+Alt+T 打开终端&lt;/li&gt;
-&lt;li&gt;Ctrl+L
-        
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://willkernel.github.io/categories/Linux/"/>
-    
-    
-      <category term="Skills" scheme="http://willkernel.github.io/tags/Skills/"/>
     
   </entry>
   
