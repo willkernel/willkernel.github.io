@@ -90,6 +90,24 @@
   </entry>
   
   <entry>
+    <title>Android Notes(NDK)</title>
+    <link href="http://willkernel.github.io/2018/03/09/Android-Notes-NDK/"/>
+    <id>http://willkernel.github.io/2018/03/09/Android-Notes-NDK/</id>
+    <published>2018-03-08T17:04:00.000Z</published>
+    <updated>2018-03-08T17:10:02.378Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Android Notes(Git)</title>
     <link href="http://willkernel.github.io/2018/03/09/Android-Notes-Git/"/>
     <id>http://willkernel.github.io/2018/03/09/Android-Notes-Git/</id>
@@ -106,24 +124,6 @@
     
     
       <category term="Git" scheme="http://willkernel.github.io/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android Notes(NDK)</title>
-    <link href="http://willkernel.github.io/2018/03/09/Android-Notes-NDK/"/>
-    <id>http://willkernel.github.io/2018/03/09/Android-Notes-NDK/</id>
-    <published>2018-03-08T17:04:00.000Z</published>
-    <updated>2018-03-08T17:10:02.378Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-    
-      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
     
   </entry>
   
@@ -205,10 +205,10 @@
   
   <entry>
     <title>Android Notes(System Info Manager Safety)</title>
-    <link href="http://willkernel.github.io/2018/03/08/Android-Notes-System-Info-Manager-Safety-SystemInfo/"/>
-    <id>http://willkernel.github.io/2018/03/08/Android-Notes-System-Info-Manager-Safety-SystemInfo/</id>
+    <link href="http://willkernel.github.io/2018/03/08/Android-Notes-System-Info-Manager-Safety/"/>
+    <id>http://willkernel.github.io/2018/03/08/Android-Notes-System-Info-Manager-Safety/</id>
     <published>2018-03-07T17:29:00.000Z</published>
-    <updated>2018-03-14T13:51:51.044Z</updated>
+    <updated>2018-03-14T14:02:00.779Z</updated>
     
     <summary type="html">
     
