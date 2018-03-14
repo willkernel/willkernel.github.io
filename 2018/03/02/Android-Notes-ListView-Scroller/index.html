@@ -88,19 +88,25 @@
 
 
 
-<meta name="description" content="SurfaceView View适用于主动刷新，SurfaceView适用于被动刷新，例如频繁刷新 View在主线程中对画面进行刷新，SurfaceView通常会在子线程进行页面刷新 View绘制时没有使用双缓冲机制，SurfaceView在底层机制中实项了双缓冲机制正弦曲线，绘画板1234567891011121314151617181920212223242526272829303132333">
+<meta name="description" content="ListView使用技巧 优化技巧  ViewHolder-ListView 视图缓存机制 设置分割线divider=”@null”透明 取消点击效果，listSelector smoothScrollBy/ToPosition() 处理空ListView,listView.setEmptyView(ImageView) 滑动监听，onTouchListener,onScrollListener,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android Notes(SurfaceView)">
-<meta property="og:url" content="http://willkernel.github.io/2018/03/07/Android-Notes-五/index.html">
+<meta property="og:title" content="Android Notes (ListView Scroller)">
+<meta property="og:url" content="http://willkernel.github.io/2018/03/02/Android-Notes-ListView-Scroller/index.html">
 <meta property="og:site_name" content="willkernel">
-<meta property="og:description" content="SurfaceView View适用于主动刷新，SurfaceView适用于被动刷新，例如频繁刷新 View在主线程中对画面进行刷新，SurfaceView通常会在子线程进行页面刷新 View绘制时没有使用双缓冲机制，SurfaceView在底层机制中实项了双缓冲机制正弦曲线，绘画板1234567891011121314151617181920212223242526272829303132333">
+<meta property="og:description" content="ListView使用技巧 优化技巧  ViewHolder-ListView 视图缓存机制 设置分割线divider=”@null”透明 取消点击效果，listSelector smoothScrollBy/ToPosition() 处理空ListView,listView.setEmptyView(ImageView) 滑动监听，onTouchListener,onScrollListener,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sinpaintboard.png">
-<meta property="og:updated_time" content="2018-03-07T17:24:14.646Z">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/overscrolllist.gif">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/coordinate.png">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/view_coordinate.png">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/drag.gif">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/drag_scrollby.gif">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/scrollby_to.gif">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/viewdraghelper.gif">
+<meta property="og:updated_time" content="2018-03-14T13:50:25.262Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android Notes(SurfaceView)">
-<meta name="twitter:description" content="SurfaceView View适用于主动刷新，SurfaceView适用于被动刷新，例如频繁刷新 View在主线程中对画面进行刷新，SurfaceView通常会在子线程进行页面刷新 View绘制时没有使用双缓冲机制，SurfaceView在底层机制中实项了双缓冲机制正弦曲线，绘画板1234567891011121314151617181920212223242526272829303132333">
-<meta name="twitter:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sinpaintboard.png">
+<meta name="twitter:title" content="Android Notes (ListView Scroller)">
+<meta name="twitter:description" content="ListView使用技巧 优化技巧  ViewHolder-ListView 视图缓存机制 设置分割线divider=”@null”透明 取消点击效果，listSelector smoothScrollBy/ToPosition() 处理空ListView,listView.setEmptyView(ImageView) 滑动监听，onTouchListener,onScrollListener,">
+<meta name="twitter:image" content="http://p4n1d4izv.bkt.clouddn.com/images/overscrolllist.gif">
 
 
 
@@ -130,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://willkernel.github.io/2018/03/07/Android-Notes-五/"/>
+  <link rel="canonical" href="http://willkernel.github.io/2018/03/02/Android-Notes-ListView-Scroller/"/>
 
 
 
 
 
-  <title>Android Notes(SurfaceView) | willkernel</title>
+  <title>Android Notes (ListView Scroller) | willkernel</title>
   
 
 
@@ -307,7 +313,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/07/Android-Notes-五/">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/02/Android-Notes-ListView-Scroller/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="willkernel">
@@ -324,7 +330,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Android Notes(SurfaceView)</h1>
+          <h1 class="post-title" itemprop="name headline">Android Notes (ListView Scroller)</h1>
         
 
         <div class="post-meta">
@@ -336,8 +342,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-07T13:30:00+08:00">
-                2018-03-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-02T00:32:00+08:00">
+                2018-03-02
               </time>
             
 
@@ -376,7 +382,7 @@
 
           
           
-             <span id="/2018/03/07/Android-Notes-五/" class="leancloud_visitors" data-flag-title="Android Notes(SurfaceView)">
+             <span id="/2018/03/02/Android-Notes-ListView-Scroller/" class="leancloud_visitors" data-flag-title="Android Notes (ListView Scroller)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -407,13 +413,97 @@
       
 
       
-        <h4 id="SurfaceView"><a href="#SurfaceView" class="headerlink" title="SurfaceView"></a>SurfaceView</h4><ul>
-<li>View适用于主动刷新，SurfaceView适用于被动刷新，例如频繁刷新</li>
-<li>View在主线程中对画面进行刷新，SurfaceView通常会在子线程进行页面刷新</li>
-<li>View绘制时没有使用双缓冲机制，SurfaceView在底层机制中实项了双缓冲机制<h5 id="正弦曲线，绘画板"><a href="#正弦曲线，绘画板" class="headerlink" title="正弦曲线，绘画板"></a>正弦曲线，绘画板</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line">   private void init() &#123;</span><br><span class="line">        mSurfaceHolder = getHolder();</span><br><span class="line">        mSurfaceHolder.addCallback(this);</span><br><span class="line">        setFocusable(true);</span><br><span class="line">        setFocusableInTouchMode(true);</span><br><span class="line">        setKeepScreenOn(true);</span><br><span class="line">//        mSurfaceHolder.setFormat(PixelFormat.OPAQUE);</span><br><span class="line"></span><br><span class="line">        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);</span><br><span class="line">        mPaint.setColor(Color.RED);</span><br><span class="line">        mPaint.setStyle(Paint.Style.STROKE);</span><br><span class="line">        mPath = new Path();</span><br><span class="line"></span><br><span class="line">        mDrawPaint = new Paint(Paint.ANTI_ALIAS_FLAG);</span><br><span class="line">        mDrawPaint.setColor(Color.RED);</span><br><span class="line">        mDrawPaint.setStyle(Paint.Style.STROKE);</span><br><span class="line">        mDrawPaint.setStrokeCap(Paint.Cap.ROUND);</span><br><span class="line">        mDrawPaint.setStrokeWidth(5);</span><br><span class="line">        mDrawPaint.setStrokeJoin(Paint.Join.ROUND);</span><br><span class="line">        mDrawPath = new Path();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onSizeChanged(int w, int h, int oldw, int oldh) &#123;</span><br><span class="line">        super.onSizeChanged(w, h, oldw, oldh);</span><br><span class="line">        mPath.moveTo(0, getHeight() / 2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void surfaceCreated(SurfaceHolder holder) &#123;</span><br><span class="line">        mIsDrawing = true;</span><br><span class="line">        Log.e(&quot;surfaceCreated&quot;, Thread.currentThread().getName());</span><br><span class="line">        new Thread(this).start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void surfaceDestroyed(SurfaceHolder holder) &#123;</span><br><span class="line">        mIsDrawing = false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean onTouchEvent(MotionEvent event) &#123;</span><br><span class="line">        int x = (int) event.getX();</span><br><span class="line">        int y = (int) event.getY();</span><br><span class="line">        switch (event.getAction()) &#123;</span><br><span class="line">            case MotionEvent.ACTION_DOWN:</span><br><span class="line">                mDrawPath.moveTo(x, y);</span><br><span class="line">                break;</span><br><span class="line">            case MotionEvent.ACTION_MOVE:</span><br><span class="line">                mDrawPath.lineTo(x, y);</span><br><span class="line">                break;</span><br><span class="line">            case MotionEvent.ACTION_UP:</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        while (mIsDrawing) &#123;</span><br><span class="line">            long start = System.currentTimeMillis();</span><br><span class="line">            draw();</span><br><span class="line">            long end = System.currentTimeMillis();</span><br><span class="line">            //100是经验值，取值范围50-100ms</span><br><span class="line">            if (end - start &lt; 100) &#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    Thread.sleep(100 - (end - start));</span><br><span class="line">                &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            x += 1;</span><br><span class="line">            y = (int) (100 * Math.sin(x * 2 * Math.PI / 180) + 100);</span><br><span class="line">            mPath.lineTo(x, y);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void draw() &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            //获得canvas图像</span><br><span class="line">            mCanvas = mSurfaceHolder.lockCanvas();</span><br><span class="line">            //surfaceview 背景</span><br><span class="line">            mCanvas.drawColor(Color.WHITE);</span><br><span class="line">            //绘制路径</span><br><span class="line">            mCanvas.drawPath(mPath, mPaint);</span><br><span class="line">            mCanvas.drawPath(mDrawPath, mDrawPaint);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            //保证每次内容的提交</span><br><span class="line">            if (mCanvas != null) mSurfaceHolder.unlockCanvasAndPost(mCanvas);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+        <h4 id="ListView使用技巧"><a href="#ListView使用技巧" class="headerlink" title="ListView使用技巧"></a>ListView使用技巧</h4><ul>
+<li><p>优化技巧</p>
+<ul>
+<li>ViewHolder-ListView 视图缓存机制</li>
+<li>设置分割线divider=”@null”透明</li>
+<li>取消点击效果，listSelector</li>
+<li>smoothScrollBy/ToPosition()</li>
+<li>处理空ListView,listView.setEmptyView(ImageView)</li>
+<li>滑动监听，onTouchListener,onScrollListener,GestureDetector手势识别,VelocityTracker滑动速度检测</li>
+</ul>
+</li>
+<li><p>拓展</p>
+<ul>
+<li><p>滚动到顶部，底部时有个弹性距离可以继续滑动，松开后回弹</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">private void init()&#123;</span><br><span class="line">    mMaxOverDistance= (int) (getResources().getDisplayMetrics().density*mMaxOverDistance);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">protected boolean overScrollBy(int deltaX, int deltaY, int scrollX, int scrollY, int scrollRangeX, int scrollRangeY, int maxOverScrollX, int maxOverScrollY, boolean isTouchEvent) &#123;</span><br><span class="line">    Log.e(&quot;overscroll&quot;,&quot;by &quot;+mMaxOverDistance);</span><br><span class="line">    return super.overScrollBy(deltaX, deltaY, scrollX, scrollY, scrollRangeX, scrollRangeY, maxOverScrollX, mMaxOverDistance, isTouchEvent);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/overscrolllist.gif">
 </li>
 </ul>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/sinpaintboard.png">
+</li>
+<li><p>聊天ListView</p>
+<ul>
+<li>getItemViewType(position)-&gt; mData.get(position).getType()</li>
+<li>getViewTypeCount()-&gt;2</li>
+<li>getView()区分type，实例化不同布局添加内容</li>
+</ul>
+</li>
+<li><p>listview选中未选中状态: 在getView()中判断，点击选中的item的position和当前position是否相同，添加不同的布局</p>
+</li>
+</ul>
+<h4 id="Android-Scroll"><a href="#Android-Scroll" class="headerlink" title="Android Scroll"></a>Android Scroll</h4><p>滑动效果是触摸事件不断改变View的坐标，移动位置，来达到滑动效果<br><img src="http://p4n1d4izv.bkt.clouddn.com/images/coordinate.png"></p>
+<ul>
+<li>触摸事件类型</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"> //单点触摸按下</span><br><span class="line"> public static final int ACTION_DOWN= 0;</span><br><span class="line"> //单点触摸离开</span><br><span class="line"> public static final int ACTION_UP= 1;</span><br><span class="line"> //触摸点移动</span><br><span class="line"> public static final int ACTION_MOVE= 2;</span><br><span class="line"> //触摸动作取消</span><br><span class="line"> public static final int ACTION_CANCEL= 3;</span><br><span class="line"> //触摸动作超出边界</span><br><span class="line"> public static final int ACTION_OUTSIDE= 4;</span><br><span class="line"> //多点触摸按下</span><br><span class="line"> public static final int ACTION_POINTER_DOWN= 5;</span><br><span class="line"> //多点触摸离开</span><br><span class="line"> public static final int ACTION_POINTER_UP= 6;</span><br><span class="line"> </span><br><span class="line">int x = (int) event.getX();</span><br><span class="line">int y = (int) event.getY();</span><br><span class="line">switch (event.getAction()) &#123;</span><br><span class="line">  case MotionEvent.ACTION_DOWN:</span><br><span class="line">  break;</span><br><span class="line">  case MotionEvent.ACTION_UP:</span><br><span class="line">  break;</span><br><span class="line">  case MotionEvent.ACTION_MOVE:</span><br><span class="line">  break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/view_coordinate.png">
+<ul>
+<li><p>实项滑动的七种方法</p>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/drag.gif">
+<ul>
+<li><p>layout()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">相对于视图坐标系的获取坐标getX,getY,而lastX,lastY不需要重新设置坐标,因为相对于视图坐标，点击屏幕获取到的坐标会重新设置</span><br><span class="line">对于Android屏幕坐标系，getRawX,getRawY,lastRawX,lastRawY需要重新设置，获取准确的偏移量，第一次坐标位置getRawX,getRawY在(10,10),在移动到(20,20)，偏移量为10，此时不重新设置，下个点是(50,50),偏移量是50-10=40,而实际正确的偏移量为50-20=30</span><br><span class="line">@Override</span><br><span class="line">    public boolean onTouchEvent(MotionEvent event) &#123;</span><br><span class="line">        int x = (int) event.getX();</span><br><span class="line">        int y = (int) event.getY();</span><br><span class="line">        int rx = (int) event.getRawX();</span><br><span class="line">        int ry = (int) event.getRawY();</span><br><span class="line">        switch (event.getAction()) &#123;</span><br><span class="line">            case MotionEvent.ACTION_DOWN:</span><br><span class="line">                lastX = x;</span><br><span class="line">                lastY = y;</span><br><span class="line">                lastrX = rx;</span><br><span class="line">                lastrY = ry;</span><br><span class="line">                break;</span><br><span class="line">            case MotionEvent.ACTION_MOVE:</span><br><span class="line">                int dx = x - lastX;</span><br><span class="line">                int dy = y - lastY;</span><br><span class="line">                int rdx = rx - lastrX;</span><br><span class="line">                int rdy = ry - lastrY;</span><br><span class="line">                Log.e(&quot;drag&quot;, &quot;x=&quot; + x + &quot; y=&quot; + y</span><br><span class="line">                        + &quot; lastX=&quot; + lastX + &quot; lastY=&quot; + lastY);</span><br><span class="line">                Log.e(&quot;drag&quot;, &quot;rx=&quot; + rx + &quot; ry=&quot; + ry</span><br><span class="line">                        + &quot; lastrX=&quot; + lastrX + &quot; lastrY=&quot; + lastrY);</span><br><span class="line">                Log.e(&quot;drag&quot;, &quot;dx=&quot; + dx + &quot; dy=&quot; + dy</span><br><span class="line">                        + &quot; rdx=&quot; + rdx + &quot; rdy=&quot; + rdy);</span><br><span class="line">                layout(getLeft() + dx, getTop() + dy,</span><br><span class="line">                        getRight() + dx, getBottom() + dy);</span><br><span class="line">//                lastrX = x;</span><br><span class="line">//                lastrY = y;</span><br><span class="line">                break;</span><br><span class="line">            case MotionEvent.ACTION_UP:</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>offsetLeftAndrRight(),offsetTopAndBottom()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">offsetLeftAndRight(dx);</span><br><span class="line">offsetTopAndBottom(dy);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>LayoutParams(),ViewGroup.MarginLayoutParams</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">FrameLayout.LayoutParams layoutParams= (FrameLayout.LayoutParams) getLayoutParams();</span><br><span class="line">layoutParams.leftMargin=getLeft()+dx;</span><br><span class="line">layoutParams.topMargin=getTop()+dy;</span><br><span class="line">setLayoutParams(layoutParams);</span><br><span class="line"></span><br><span class="line">ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) getLayoutParams();</span><br><span class="line">layoutParams.leftMargin = getLeft() + dx;</span><br><span class="line">layoutParams.topMargin = getTop() + dy;</span><br><span class="line">setLayoutParams(layoutParams);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ScrollTo(x,y)/ScrollBy(dx,dy)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> ViewGroup 移动的是子View</span><br><span class="line"> View移动的是内容</span><br><span class="line"> </span><br><span class="line"> //移动的是屏幕下方画布，会造成内容向相反方向移动</span><br><span class="line"> //scrollBy(dx,dy);</span><br><span class="line"> //所以移动父视图，并且值为负，相反方向scrollby才有正确的效果</span><br><span class="line">case MotionEvent.ACTION_DOWN:</span><br><span class="line">    lastX = x;</span><br><span class="line">    lastY = y;</span><br><span class="line">    if (!isScroll) &#123;</span><br><span class="line">      lastrX = rx;</span><br><span class="line">      lastrY = ry;</span><br><span class="line">    &#125;</span><br><span class="line">    break;</span><br><span class="line">case MotionEvent.ACTION_MOVE:</span><br><span class="line">    int dx = x - lastX;</span><br><span class="line">    int dy = y - lastY;</span><br><span class="line">  //移动的是屏幕下方画布，会造成内容向相反方向移动</span><br><span class="line">  //  scrollBy(dx,dy);</span><br><span class="line">  //((View) getParent()).scrollBy(-dx, -dy);</span><br><span class="line">     ((View) getParent()).scrollTo(-(int) event.getRawX() + lastrX, -(int) event.getRawY() + lastrY);</span><br><span class="line">    isScroll = true;</span><br><span class="line">    break;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/drag_scrollby.gif">
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/scrollby_to.gif">
+</li>
+<li><p>Scroller 实现平移滑动</p>
+<ul>
+<li><p>初始化Scroller</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mScroller=new Scroller(context);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重写computeScroll()模拟滑动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> @Override</span><br><span class="line"> public void computeScroll() &#123;</span><br><span class="line">    super.computeScroll();</span><br><span class="line">    //判断Scroll是否执行完毕，true 没有执行完</span><br><span class="line">    if(mScroller.computeScrollOffset())&#123;</span><br><span class="line"> ((View)getParent()).scrollTo(mScroller.getCurrX(),mScroller.getCurrY());</span><br><span class="line">    //只能通过invalidate()—&gt;draw()-&gt;computeScroll()间接调用computeScroll()，</span><br><span class="line">    //结束后computeScrollOffset()返回false，中断循环</span><br><span class="line">    postInvalidate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>startScroll 开始模拟滑动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line"> public boolean onTouchEvent(MotionEvent event) &#123;</span><br><span class="line">     int x = (int) event.getX();</span><br><span class="line">     int y = (int) event.getY();</span><br><span class="line">     int rx = (int) event.getRawX();</span><br><span class="line">     int ry = (int) event.getRawY();</span><br><span class="line">     switch (event.getAction()) &#123;</span><br><span class="line">         case MotionEvent.ACTION_DOWN:</span><br><span class="line">             lastX = x;</span><br><span class="line">             lastY = y;</span><br><span class="line">             lastRx = rx;</span><br><span class="line">             lastRy = ry;</span><br><span class="line">             break;</span><br><span class="line">         case MotionEvent.ACTION_MOVE:</span><br><span class="line">             ((View) getParent()).scrollTo(-rx + lastRx, -ry + lastRy);</span><br><span class="line">             break;</span><br><span class="line">         case MotionEvent.ACTION_UP:</span><br><span class="line">             View parent = (View) getParent();</span><br><span class="line">             //模拟滑动，起始坐标和偏移量，滑动偏移为滑动距离的负数，相反方向滑动</span><br><span class="line">             mScroller.startScroll(parent.getScrollX(), parent.getScrollY(),</span><br><span class="line">                     -parent.getScrollX(), -parent.getScrollY());</span><br><span class="line">             //通知重绘</span><br><span class="line">             invalidate();</span><br><span class="line">             break;</span><br><span class="line">     &#125;</span><br><span class="line">     return true;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>ViewDragHelper实项Drawlayout菜单侧滑 <a href="http://flavienlaurent.com/blog/2013/08/28/each-navigation-drawer-hides-a-viewdraghelper/" target="_blank" rel="noopener">youtubelayout</a></p>
+<ul>
+<li><p>回调</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">  private ViewDragHelper.Callback callback = new ViewDragHelper.Callback() &#123;</span><br><span class="line">         /**重写tryCaptureView,何时开始检测触摸事件，</span><br><span class="line">         * 当前触摸的是MainView时开始检测*/</span><br><span class="line">        @Override</span><br><span class="line">        public boolean tryCaptureView(View child, int pointerId) &#123;</span><br><span class="line">            return mMainView == child;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /**水平垂直方向上的滑动,默认返回0，不滑动*/</span><br><span class="line">        @Override</span><br><span class="line">        public int clampViewPositionHorizontal(View child, int left, int dx) &#123;</span><br><span class="line">//            return super.clampViewPositionHorizontal(child, left, dx);</span><br><span class="line">            return left;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public int clampViewPositionVertical(View child, int top, int dy) &#123;</span><br><span class="line">//            return super.clampViewPositionVertical(child, top, dy);</span><br><span class="line">            return top;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /**拖动结束后调用，自动滑动打开或关闭菜单*/</span><br><span class="line">        @Override</span><br><span class="line">        public void onViewReleased(View releasedChild, float xvel, float yvel) &#123;</span><br><span class="line">            super.onViewReleased(releasedChild, xvel, yvel);</span><br><span class="line">            if (mMainView.getTop() &gt; mHeight / 2) &#123;</span><br><span class="line">                mViewDragHelper.smoothSlideViewTo(mMainView, 0, (int) (mHeight * 1.2f));</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                if (mMainView.getLeft() &lt; mWidth / 2) &#123;</span><br><span class="line">                    //关闭菜单</span><br><span class="line">                    mViewDragHelper.smoothSlideViewTo(mMainView, 0, 0);</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    mViewDragHelper.smoothSlideViewTo(mMainView, (int) (mWidth * 1.2f), 0);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            ViewCompat.postInvalidateOnAnimation(ViewDragHelperView.this);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /**更改scale进行缩放*/</span><br><span class="line">        @Override</span><br><span class="line">        public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) &#123;</span><br><span class="line">            super.onViewPositionChanged(changedView, left, top, dx, dy);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /**状态改变*/</span><br><span class="line">        @Override</span><br><span class="line">        public void onViewDragStateChanged(int state) &#123;</span><br><span class="line">            super.onViewDragStateChanged(state);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /**触摸后回调*/</span><br><span class="line">        @Override</span><br><span class="line">        public void onViewCaptured(View capturedChild, int activePointerId) &#123;</span><br><span class="line">            super.onViewCaptured(capturedChild, activePointerId);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取宽度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">   protected void onSizeChanged(int w, int h, int oldw, int oldh) &#123;</span><br><span class="line">       super.onSizeChanged(w, h, oldw, oldh);</span><br><span class="line">       mWidth = mMenuView.getMeasuredWidth();</span><br><span class="line">       mHeight = mMenuView.getMeasuredHeight();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取MenuView,MainView</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void onFinishInflate() &#123;</span><br><span class="line">     super.onFinishInflate();</span><br><span class="line">     mMenuView = getChildAt(0);</span><br><span class="line">     mMainView = getChildAt(1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>触摸事件拦截，并传递给VieDragHelper</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 触摸事件传递给ViewDragHelper,必须写</span><br><span class="line"> */</span><br><span class="line">@Override</span><br><span class="line">public boolean onTouchEvent(MotionEvent event) &#123;</span><br><span class="line">    mViewDragHelper.processTouchEvent(event);</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 重写事件拦截方法，把事件传递给ViewDragHelper</span><br><span class="line"> */</span><br><span class="line">@Override</span><br><span class="line">public boolean onInterceptTouchEvent(MotionEvent ev) &#123;</span><br><span class="line">    return mViewDragHelper.shouldInterceptTouchEvent(ev);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重写computeScroll()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 平滑移动</span><br><span class="line"> */</span><br><span class="line">@Override</span><br><span class="line">public void computeScroll() &#123;</span><br><span class="line">    super.computeScroll();</span><br><span class="line">    if (mViewDragHelper.continueSettling(true)) &#123;</span><br><span class="line">        ViewCompat.postInvalidateOnAnimation(this);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/viewdraghelper.gif">
       
     </div>
     
@@ -470,7 +560,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://willkernel.github.io/2018/03/07/Android-Notes-五/" title="Android Notes(SurfaceView)">http://willkernel.github.io/2018/03/07/Android-Notes-五/</a>
+    <a href="http://willkernel.github.io/2018/03/02/Android-Notes-ListView-Scroller/" title="Android Notes (ListView Scroller)">http://willkernel.github.io/2018/03/02/Android-Notes-ListView-Scroller/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -492,8 +582,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/07/Android-Notes-四/" rel="next" title="Android Notes(Paint Shader)">
-                <i class="fa fa-chevron-left"></i> Android Notes(Paint Shader)
+              <a href="/2018/02/26/Docker-编译Android源码/" rel="next" title="Docker 编译Android源码">
+                <i class="fa fa-chevron-left"></i> Docker 编译Android源码
               </a>
             
           </div>
@@ -502,8 +592,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/07/Android-Notes-六/" rel="prev" title="Android Notes(Activity)">
-                Android Notes(Activity) <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/05/Android-Notes-View/" rel="prev" title="Android Notes(View)">
+                Android Notes(View) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -728,7 +818,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#SurfaceView"><span class="nav-number">1.</span> <span class="nav-text">SurfaceView</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#正弦曲线，绘画板"><span class="nav-number">1.1.</span> <span class="nav-text">正弦曲线，绘画板</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#ListView使用技巧"><span class="nav-number">1.</span> <span class="nav-text">ListView使用技巧</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android-Scroll"><span class="nav-number">2.</span> <span class="nav-text">Android Scroll</span></a></li></ol></div>
             
 
           </div>

@@ -411,8 +411,6 @@
           
             <h5 id="Dagger"><a href="#Dagger" class="headerlink" title="Dagger"></a>Dagger</h5><p>依赖注入（Dependency Injection），简称DI，又叫控制反转（Inversion of Control），简称IOC<br>当一个类的实例需要另一个类的实例，在传统的设计中，通常由调用者来创建被调用者的实例，然而依赖注入的方式，创建被调用者不再由调用者创建实例，创建被调用者的实例的工作由IOC容器来完成，然后注入到调用者。因此也被称为依赖注入</p>
 <ul>
-<li><p><a href="https://github.com/willkernel/DaggerDemo" target="_blank" rel="noopener">github-dagger-demo</a></p>
-</li>
 <li><p>API</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public @interface Component &#123;</span><br><span class="line">    Class&lt;?&gt;[] modules() default &#123;&#125;;</span><br><span class="line">    Class&lt;?&gt;[] dependencies() default &#123;&#125;;</span><br><span class="line">    @Target(TYPE)</span><br><span class="line">    @Documented</span><br><span class="line">    @interface Builder &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public @interface Subcomponent &#123;</span><br><span class="line">    Class&lt;?&gt;[] modules() default &#123;&#125;;</span><br><span class="line">    @Target(TYPE)</span><br><span class="line">    @Documented</span><br><span class="line">    @interface Builder &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public @interface Module &#123;</span><br><span class="line">    Class&lt;?&gt;[] includes() default &#123;&#125;;</span><br><span class="line">    @Beta</span><br><span class="line">    Class&lt;?&gt;[] subcomponents() default &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public @interface Provides &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public @interface MapKey &#123;</span><br><span class="line">    boolean unwrapValue() default true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public interface Lazy&lt;T&gt; &#123;</span><br><span class="line">    T get();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
@@ -652,14 +650,15 @@
 <li><p>注入实例<br>由于DispatchingAndroidInjector在运行时由类查找相应的AndroidInjector.Factory，那么，在基类中，实现HasActivityInjector/HasFragmentInjector接口，在相应的声明周期(onCreate()或者onAttach())内调用AndroidInjection.inject()方法，注入相应的实例。所有每个子类都需要做的是绑定相应的@Subcomponent，从而没有必要在每个实例类中调用AndroidInjection.inject()方法。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">@Beta</span><br><span class="line">public abstract class DaggerActivity extends Activity implements HasFragmentInjector &#123;</span><br><span class="line"></span><br><span class="line">  @Inject DispatchingAndroidInjector&lt;Fragment&gt; fragmentInjector;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">    AndroidInjection.inject(this);</span><br><span class="line">    super.onCreate(savedInstanceState);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  public AndroidInjector&lt;Fragment&gt; fragmentInjector() &#123;</span><br><span class="line">    return fragmentInjector;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>在dagger.android库中，有一些基本类型,对于Appliaction是DaggerApplication，只需重写applicationInjectoer()方法来返回AndroidInjector\&lt;XxApplication><br>Dagger提供的基本类型：<br>DaggerActivity<br>DaggerFragment<br>DaggerService<br>DaggerIntentService<br>DaggerBroadcastReceiver<br>DaggerContentProvider</p>
-</li>
-<li><p><a href="http://blog.csdn.net/io_field/article/details/70947365" target="_blank" rel="noopener">Dagger 2从浅到深</a></p>
-</li>
-<li><a href="https://google.github.io/dagger/multibindings" target="_blank" rel="noopener">Dagger2</a></li>
-<li><a href="https://www.jianshu.com/p/24af4c102f62" target="_blank" rel="noopener">Dagger2 最清晰的使用教程</a></li>
+<li>在dagger.android库中，有一些基本类型,对于Appliaction是DaggerApplication，只需重写applicationInjectoer()方法来返回AndroidInjector\&lt;XxApplication><br>Dagger提供的基本类型：<br>DaggerActivity<br>DaggerFragment<br>DaggerService<br>DaggerIntentService<br>DaggerBroadcastReceiver<br>DaggerContentProvider</li>
 </ul>
 </li>
+</ul>
+<ul>
+<li><a href="https://github.com/willkernel/DaggerDemo" target="_blank" rel="noopener">github-dagger-demo</a></li>
+<li><a href="http://blog.csdn.net/io_field/article/details/70947365" target="_blank" rel="noopener">Dagger 2从浅到深</a></li>
+<li><a href="https://google.github.io/dagger/multibindings" target="_blank" rel="noopener">Dagger2</a></li>
+<li><a href="https://www.jianshu.com/p/24af4c102f62" target="_blank" rel="noopener">Dagger2 最清晰的使用教程</a></li>
 </ul>
 
           
@@ -1759,7 +1758,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Android-Notes-MVVP/">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Android-Notes-MVVM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="willkernel">
@@ -1778,7 +1777,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/09/Android-Notes-MVVP/" itemprop="url">Android Notes(MVVM)</a></h1>
+                <a class="post-title-link" href="/2018/03/09/Android-Notes-MVVM/" itemprop="url">Android Notes(MVVM)</a></h1>
         
 
         <div class="post-meta">
@@ -1830,7 +1829,7 @@
 
           
           
-             <span id="/2018/03/09/Android-Notes-MVVP/" class="leancloud_visitors" data-flag-title="Android Notes(MVVM)">
+             <span id="/2018/03/09/Android-Notes-MVVM/" class="leancloud_visitors" data-flag-title="Android Notes(MVVM)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2160,7 +2159,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/08/Android-Notes-System-Info-Manager-Safety-1/">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/08/Android-Notes-System-Info-Manager-Safety-SystemInfo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="willkernel">
@@ -2179,7 +2178,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/08/Android-Notes-System-Info-Manager-Safety-1/" itemprop="url">Android Notes(System Info Manager Safety)</a></h1>
+                <a class="post-title-link" href="/2018/03/08/Android-Notes-System-Info-Manager-Safety-SystemInfo/" itemprop="url">Android Notes(System Info Manager Safety)</a></h1>
         
 
         <div class="post-meta">
@@ -2231,7 +2230,7 @@
 
           
           
-             <span id="/2018/03/08/Android-Notes-System-Info-Manager-Safety-1/" class="leancloud_visitors" data-flag-title="Android Notes(System Info Manager Safety)">
+             <span id="/2018/03/08/Android-Notes-System-Info-Manager-Safety-SystemInfo/" class="leancloud_visitors" data-flag-title="Android Notes(System Info Manager Safety)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
