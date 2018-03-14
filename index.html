@@ -583,8 +583,57 @@
 <li><p>Set或Map多重绑定可以声明任意次数而不会发生错误。Dagger从不实现或调用任何@Multibinds方法<br>添加返回空集合的@ElementsIntoSet方法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Module</span><br><span class="line">class MyEmptySetModule &#123;</span><br><span class="line">  @Provides @ElementsIntoSet</span><br><span class="line">  static Set&lt;Foo&gt; primeEmptyFooSet() &#123;</span><br><span class="line">    return Collections.emptySet();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>添加子组件方式</p>
+<ul>
+<li><p>@Component的dependencies属性依赖父组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> @Component(modules = OrangeModule.class, dependencies = FruitComponent.class)</span><br><span class="line">public interface OrangeComponent &#123;</span><br><span class="line">    ***</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>@Module的Subcomponents添加子组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> @Module(subcomponents = AppleSubcomponent.class)</span><br><span class="line">public class FruitModule &#123;</span><br><span class="line"></span><br><span class="line">    ***</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<h4 id="Dagger-2-11"><a href="#Dagger-2-11" class="headerlink" title="Dagger 2.11"></a>Dagger 2.11</h4><ul>
+</li>
+<li><p>@SubComponent声明子组件，需要提供@Subcomponent.Builder接口的Builder,build()来构建子组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Subcomponent(modules = RequestModule.class)</span><br><span class="line">interface RequestComponent &#123;</span><br><span class="line">  RequestHandler requestHandler();</span><br><span class="line"></span><br><span class="line">  @Subcomponent.Builder</span><br><span class="line">  interface Builder &#123;</span><br><span class="line">    Builder requestModule(RequestModule module);</span><br><span class="line">    RequestComponent build();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加子组件到父组件，添加子组件类到父组件的@Module的subcomponents属性,然后父组件调用子组件的builder方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Module(subcomponents = RequestComponent.class)</span><br><span class="line">class ServerModule &#123;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>父组件的注入器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">@Singleton</span><br><span class="line">@Component(modules = ServerModule.class)</span><br><span class="line">interface ServerComponent &#123;</span><br><span class="line">  RequestRouter requestRouter();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">子组件实例注入</span><br><span class="line">@Singleton</span><br><span class="line">class RequestRouter &#123;</span><br><span class="line">  @Inject RequestRouter(</span><br><span class="line">      Provider&lt;RequestComponent.Builder&gt; requestComponentProvider) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  void dataReceived(Data data) &#123;</span><br><span class="line">    RequestComponent requestComponent =</span><br><span class="line">        requestComponentProvider.get()</span><br><span class="line">            .data(data)</span><br><span class="line">            .build();</span><br><span class="line">    requestComponent.requestHandler()</span><br><span class="line">        .writeResponse(200, &quot;hello, world&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>子组件和作用域，如果没有作用域的绑定，每次注入都会重新创建独立的对象，但是如果有作用域绑定的对象，在作用域生命周期中绑定的对象实例是同一个</p>
+</li>
+<li><p>子组件和父组件的作用域不能相同，比父组件的生命周期短，两个子组件有不同的作用域实例，即使他们的作用域注解相同</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">@Singleton @Component</span><br><span class="line">interface RootComponent &#123;</span><br><span class="line">  SessionComponent.Builder sessionComponent();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@SessionScope @Subcomponent</span><br><span class="line">interface SessionComponent &#123;</span><br><span class="line">  FooRequestComponent.Builder fooRequestComponent();</span><br><span class="line">  BarRequestComponent.Builder barRequestComponent();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@RequestScope @Subcomponent</span><br><span class="line">interface FooRequestComponent &#123;...&#125;</span><br><span class="line"></span><br><span class="line">@RequestScope @Subcomponent</span><br><span class="line">interface BarRequestComponent &#123;...&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>封装子组件<br>在不同Service,不同界面，共享某些绑定，但是这些绑定中也有不需要的绑定实例，这时就需要使用子组件，对绑定实例进行细分</p>
+<ul>
+<li><p>应用ApplicationComponent,注入数据库实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">   @Singleton</span><br><span class="line">   @Component(modules =  DatabaseModule.class)</span><br><span class="line">interface ApplicationComponent &#123;</span><br><span class="line">  Database database();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数据库模块，子组件为DatabaseComponent</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> @Module(subcomponents = DatabaseComponent.class)</span><br><span class="line">class DatabaseModule &#123;</span><br><span class="line">  @Provides</span><br><span class="line">  @Singleton </span><br><span class="line">  Database provideDatabase(</span><br><span class="line">      @NumberOfCores int numberOfCores,</span><br><span class="line">      DatabaseComponent.Builder databaseComponentBuilder) &#123;</span><br><span class="line">    return databaseComponentBuilder</span><br><span class="line">        .databaseImplModule(new DatabaseImplModule(numberOfCores / 2))</span><br><span class="line">        .build()</span><br><span class="line">        .database();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数据库实现类模块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> @Module</span><br><span class="line">class DatabaseImplModule &#123;</span><br><span class="line">  DatabaseImplModule(int concurrencyLevel) &#123;&#125;</span><br><span class="line">  @Provides DatabaseConnectionPool provideDatabaseConnectionPool() &#123;&#125;</span><br><span class="line">  @Provides DatabaseSchema provideDatabaseSchema() &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>子组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> @Subcomponent(modules = DatabaseImplModule.class)</span><br><span class="line">interface DatabaseComponent &#123;</span><br><span class="line">  @PrivateToDatabase Database database();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>抽象工厂方法定义子组件</p>
+<ul>
+<li>扩展多重绑定<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">@Subcomponent(modules = DatabaseImplModule.class)</span><br><span class="line">interface DatabaseComponent &#123;</span><br><span class="line">  @PrivateToDatabase Database database();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Module</span><br><span class="line">class ParentModule &#123;</span><br><span class="line">  @Provides @IntoMap</span><br><span class="line">  @StringKey(&quot;one&quot;) static int one() &#123;</span><br><span class="line">    return 1;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Provides @IntoMap</span><br><span class="line">  @StringKey(&quot;two&quot;) static int two() &#123;</span><br><span class="line">    return 2;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Provides @IntoSet</span><br><span class="line">  static String a() &#123;</span><br><span class="line">    return &quot;a&quot;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Provides @IntoSet</span><br><span class="line">  static String b() &#123;</span><br><span class="line">    return &quot;b&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Subcomponent(modules = ChildModule.class)</span><br><span class="line">interface Child &#123;</span><br><span class="line">  Map&lt;String, Integer&gt; map();</span><br><span class="line">  Set&lt;String&gt; set();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Module</span><br><span class="line">class ChildModule &#123;</span><br><span class="line">  @Provides @IntoMap</span><br><span class="line">  @StringKey(&quot;three&quot;) static int three() &#123;</span><br><span class="line">    return 3;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Provides @IntoMap</span><br><span class="line">  @StringKey(&quot;four&quot;) static int four() &#123;</span><br><span class="line">    return 4;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Provides @IntoSet</span><br><span class="line">  static String c() &#123;</span><br><span class="line">    return &quot;c&quot;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Provides @IntoSet</span><br><span class="line">  static String d() &#123;</span><br><span class="line">    return &quot;d&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Parent parent = DaggerParent.create();</span><br><span class="line">Child child = parent.child();</span><br><span class="line">assertThat(parent.map().keySet()).containsExactly(&quot;one&quot;, &quot;two&quot;);</span><br><span class="line">assertThat(child.map().keySet()).containsExactly(&quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;);</span><br><span class="line">assertThat(parent.set()).containsExactly(&quot;a&quot;, &quot;b&quot;);</span><br><span class="line">assertThat(child.set()).containsExactly(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>模块Module作为工厂方法的参数会在编译时报错，重复模块Module在依赖注入获取对象时引用是运行时错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">@Component(modules = &#123;RepeatedModule.class, ...&#125;)</span><br><span class="line">interface ComponentOne &#123;</span><br><span class="line">  ComponentTwo componentTwo(RepeatedModule repeatedModule); // COMPILE ERROR!</span><br><span class="line">  ComponentThree.Builder componentThreeBuilder();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Subcomponent(modules = &#123;RepeatedModule.class, ...&#125;)</span><br><span class="line">interface ComponentTwo &#123; ... &#125;</span><br><span class="line"></span><br><span class="line">@Subcomponent(modules = &#123;RepeatedModule.class, ...&#125;)</span><br><span class="line">interface ComponentThree &#123;</span><br><span class="line">  @Subcomponent.Builder</span><br><span class="line">  interface Builder &#123;</span><br><span class="line">    Builder repeatedModule(RepeatedModule repeatedModule);</span><br><span class="line">    ComponentThree build();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">DaggerComponentOne.create().componentThreeBuilder()</span><br><span class="line">    .repeatedModule(new RepeatedModule()) // UnsupportedOperationException!</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="Dagger-Android"><a href="#Dagger-Android" class="headerlink" title="Dagger Android"></a>Dagger Android</h5><ul>
 <li><p>@Binds<br>注解委托绑定模块的抽象方法，例如绑定Random到SecureRandom模块</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Binds abstract Random bindRandom(SecureRandom secureRandom);</span><br></pre></td></tr></table></figure>
 <ul>
@@ -595,9 +644,18 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Documented</span><br><span class="line">@Retention(RUNTIME)</span><br><span class="line">@Target(METHOD)</span><br><span class="line">public @interface Binds &#123;&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>@ContributesAndroidInjector<br>为其注解的方法生成返回值对应的AndroidInjector。该注射器是 dagger.Subcomponent的实现，而且是dagger.Module 的子Component</li>
+<li>@ContributesAndroidInjector<br>注解的方法生成的返回值对应的AndroidInjector。该注入器是 dagger.Subcomponent的实现，而且是dagger.Module 的子Component</li>
 </ul>
-<p>此注释必须应用于返回具体的Android框架类型(例如:FooActivity、BarFragment、MyService等）的dagger.Module中的抽象方法<br>该抽象方法没有参数</p>
+<p>用于注解返回具体的Android框架类型(例如:FooActivity、BarFragment、MyService等）的dagger.Module中的无参抽象方法</p>
+<ul>
+<li><p>BindsInstance 标识组件或子组件的Builder方法，绑定对象到组件中的类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Documented</span><br><span class="line">@Retention(RUNTIME)</span><br><span class="line">@Target(METHOD)</span><br><span class="line">@Beta</span><br><span class="line">public @interface BindsInstance &#123;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注入实例<br>由于DispatchingAndroidInjector在运行时由类查找相应的AndroidInjector.Factory，那么，在基类中，实现HasActivityInjector/HasFragmentInjector接口，在相应的声明周期(onCreate()或者onAttach())内调用AndroidInjection.inject()方法，注入相应的实例。所有每个子类都需要做的是绑定相应的@Subcomponent，从而没有必要在每个实例类中调用AndroidInjection.inject()方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">@Beta</span><br><span class="line">public abstract class DaggerActivity extends Activity implements HasFragmentInjector &#123;</span><br><span class="line"></span><br><span class="line">  @Inject DispatchingAndroidInjector&lt;Fragment&gt; fragmentInjector;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">    AndroidInjection.inject(this);</span><br><span class="line">    super.onCreate(savedInstanceState);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  public AndroidInjector&lt;Fragment&gt; fragmentInjector() &#123;</span><br><span class="line">    return fragmentInjector;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在dagger.android库中，有一些基本类型,对于Appliaction是DaggerApplication，继承其后，只需重写applicationInjectoer()方法来返回AndroidInjector\<xxapplication>.<br>Dagger提供的基本类型：<br>DaggerActivity<br>DaggerFragment<br>DaggerService<br>DaggerIntentService<br>DaggerBroadcastReceiver<br>DaggerContentProvider</xxapplication></p>
 <ul>
 <li><a href="http://blog.csdn.net/io_field/article/details/70947365" target="_blank" rel="noopener">Dagger 2从浅到深</a></li>
 <li><a href="https://google.github.io/dagger/multibindings" target="_blank" rel="noopener">Dagger2</a></li>
@@ -1580,21 +1638,304 @@
 <li><p>TaskActivity</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">TasksFragment tasksFragment =(TasksFragment)getSupportFragmentManager().findFragmentById(R.id.contentFrame);</span><br><span class="line">if (tasksFragment == null) &#123;</span><br><span class="line">    // Create the fragment</span><br><span class="line">    tasksFragment = TasksFragment.newInstance();</span><br><span class="line">    ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), tasksFragment, R.id.contentFrame);</span><br><span class="line">&#125;</span><br><span class="line">// Create the presenter</span><br><span class="line">mTasksPresenter = new TasksPresenter(Injection.provideTasksRepository(getApplicationContext()), tasksFragment);</span><br><span class="line"></span><br><span class="line">//set filter</span><br><span class="line">mTasksPresenter.setFiltering(currentFiltering);</span><br></pre></td></tr></table></figure>
 <img src="http://p4n1d4izv.bkt.clouddn.com/images/mvp.png">
+<ul>
+<li>ToDoDatabase<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> /**</span><br><span class="line"> * The Room Database that contains the Task table.</span><br><span class="line"> */</span><br><span class="line">@Database(entities = &#123;Task.class&#125;, version = 1)</span><br><span class="line">public abstract class ToDoDatabase extends RoomDatabase &#123;</span><br><span class="line"></span><br><span class="line">    public abstract TasksDao taskDao();</span><br><span class="line">&#125;</span><br><span class="line">- TasksDao</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h5 id="mvp-loader"><a href="#mvp-loader" class="headerlink" title="mvp-loader"></a>mvp-loader</h5><ul>
-<li><p>Presenter中持有View，Loader，LoaderManager(提供异步加载)，Repository,当数据发生变化时，Loader自动刷新View</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class TasksPresenter implements TasksContract.Presenter,</span><br><span class="line">        LoaderManager.LoaderCallbacks&lt;List&lt;Task&gt;&gt; &#123;</span><br><span class="line"></span><br><span class="line">    private final static int TASKS_QUERY = 1;</span><br><span class="line"></span><br><span class="line">    private final TasksRepository mTasksRepository;</span><br><span class="line"></span><br><span class="line">    private final TasksContract.View mTasksView;</span><br><span class="line"></span><br><span class="line">    private final TasksLoader mLoader;</span><br><span class="line"></span><br><span class="line">    private final LoaderManager mLoaderManager;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>TaskRepository,在MVP中需要回调刷新View，而在Loader机制中自动刷新</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">private final TasksDataSource mTasksRemoteDataSource;</span><br><span class="line">private final TasksDataSource mTasksLocalDataSource;</span><br><span class="line">private List&lt;TasksRepositoryObserver&gt; mObservers = new ArrayList&lt;TasksRepositoryObserver&gt;();</span><br><span class="line">// Update the UI</span><br><span class="line">notifyContentObserver();</span><br><span class="line">···</span><br><span class="line"></span><br><span class="line">//从缓存Map中获取数据</span><br><span class="line">Map&lt;String, Task&gt; mCachedTasks;</span><br><span class="line">public List&lt;Task&gt; getCachedTasks() &#123;</span><br><span class="line">    return mCachedTasks == null ? null : new ArrayList&lt;&gt;(mCachedTasks.values());</span><br><span class="line">&#125;</span><br><span class="line">public Task getCachedTask(String taskId) &#123;</span><br><span class="line">    return mCachedTasks.get(taskId);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//获取任务</span><br><span class="line">@Nullable</span><br><span class="line">@Override</span><br><span class="line">public List&lt;Task&gt; getTasks() &#123;</span><br><span class="line">    List&lt;Task&gt; tasks = null;</span><br><span class="line">    if (!mCacheIsDirty) &#123;</span><br><span class="line">        // Respond immediately with cache if available and not dirty</span><br><span class="line">        if (mCachedTasks != null) &#123;</span><br><span class="line">            tasks = getCachedTasks();</span><br><span class="line">            return tasks;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            // Query the local storage if available.</span><br><span class="line">            tasks = mTasksLocalDataSource.getTasks();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    // To simplify, we&apos;ll consider the local data source fresh when it has data.</span><br><span class="line">    if (tasks == null || tasks.isEmpty()) &#123;</span><br><span class="line">        // Grab remote data if cache is dirty or local data not available.</span><br><span class="line">        tasks = mTasksRemoteDataSource.getTasks();</span><br><span class="line">        // We copy the data to the device so we don&apos;t need to query the network next time</span><br><span class="line">        saveTasksInLocalDataSource(tasks);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    processLoadedTasks(tasks);</span><br><span class="line">    return getCachedTasks();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Fragment中涉及Loader加载数据，自动刷新流程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"> //在Activity中对Loader,LoaderManager,Presenter实例化</span><br><span class="line">  // Create the presenter</span><br><span class="line">       TasksRepository repository = Injection.provideTasksRepository(getApplicationContext());</span><br><span class="line">       TasksLoader tasksLoader = new TasksLoader(getApplicationContext(), repository);</span><br><span class="line">       mTasksPresenter = new TasksPresenter(</span><br><span class="line">               tasksLoader,</span><br><span class="line">               getSupportLoaderManager(),</span><br><span class="line">               repository,</span><br><span class="line">               tasksFragment</span><br><span class="line">       );</span><br><span class="line"></span><br><span class="line"> //FragmentManager的performStart()中也有回调LoadFinished()针对有缓存数据时刷新View</span><br><span class="line"> void performStart() &#123;</span><br><span class="line">    ···</span><br><span class="line">     onStart();</span><br><span class="line">    ···</span><br><span class="line">     if (mLoaderManager != null) &#123;</span><br><span class="line">       mLoaderManager.doReportStart();</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"> //Fragment的onResume()对LoadManager进行初始化</span><br><span class="line"> @Override</span><br><span class="line"> public void onResume() &#123;</span><br><span class="line">   super.onResume();</span><br><span class="line">   mPresenter.start();</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> //Presenter初始化</span><br><span class="line"> @Override</span><br><span class="line"> public void start() &#123;</span><br><span class="line">       mLoaderManager.initLoader(TASK_QUERY, null, this);</span><br><span class="line"> &#125;</span><br><span class="line"> //LoadManager开始加载</span><br><span class="line"> void start()&#123;</span><br><span class="line">    mLoader.startLoading();</span><br><span class="line"> &#125;</span><br><span class="line"> //LoaderManager中加载完成后回调callOnLoadFinished</span><br><span class="line"> void finishRetain() &#123;</span><br><span class="line">          ···</span><br><span class="line">         callOnLoadFinished(mLoader, mData);</span><br><span class="line"> &#125;</span><br><span class="line">       </span><br><span class="line"> void reportStart() &#123;</span><br><span class="line">        if (mStarted) &#123;  </span><br><span class="line">            if (mReportNextStart) &#123;</span><br><span class="line">                mReportNextStart = false;</span><br><span class="line">                 if (mHaveData &amp;&amp; !mRetaining) &#123;</span><br><span class="line">                    callOnLoadFinished(mLoader, mData);</span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   </span><br><span class="line"> //Presenter加载数据</span><br><span class="line">  public void loadTasks(boolean forceUpdate) &#123;</span><br><span class="line">       if (forceUpdate || mFirstLoad) &#123;</span><br><span class="line">           mFirstLoad = false;</span><br><span class="line">           mTasksRepository.refreshTasks();</span><br><span class="line">       &#125; else &#123;</span><br><span class="line">           showFilteredTasks();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line"> //加载完成后</span><br><span class="line"> @Override</span><br><span class="line">   public void onLoadFinished(Loader&lt;List&lt;Task&gt;&gt; loader, List&lt;Task&gt; data) &#123;</span><br><span class="line">       mTasksView.setLoadingIndicator(false);</span><br><span class="line"></span><br><span class="line">       mCurrentTasks = data;</span><br><span class="line">       if (mCurrentTasks == null) &#123;</span><br><span class="line">           mTasksView.showLoadingTasksError();</span><br><span class="line">       &#125; else &#123;</span><br><span class="line">           showFilteredTasks();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line"> //Presenter处理数据返回结果</span><br><span class="line"> private void processTasks(List&lt;Task&gt; tasks) &#123;</span><br><span class="line">       if (tasks.isEmpty()) &#123;</span><br><span class="line">           // Show a message indicating there are no tasks for that filter type.</span><br><span class="line">           processEmptyTasks();</span><br><span class="line">       &#125; else &#123;</span><br><span class="line">           // Show the list of tasks</span><br><span class="line">           mTasksView.showTasks(tasks);</span><br><span class="line">           // Set the filter label&apos;s text.</span><br><span class="line">           showFilterLabel();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> </span><br><span class="line">//Fragment显示数据</span><br><span class="line">@Override</span><br><span class="line">   public void showTasks(List&lt;Task&gt; tasks) &#123;</span><br><span class="line">       mListAdapter.replaceData(tasks);</span><br><span class="line"></span><br><span class="line">       mTasksView.setVisibility(View.VISIBLE);</span><br><span class="line">       mNoTasksView.setVisibility(View.GONE);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/mvp-loader.png">
 </li>
 </ul>
-<h5 id="mvp-dagger"><a href="#mvp-dagger" class="headerlink" title="mvp-dagger"></a>mvp-dagger</h5><p><a href="https://willkernel.github.io/2018/03/13/Android-Notes-Dagger/">Dagger可以参考另一篇文章</a></p>
+<p>@Dao<br>public interface TasksDao {</p>
+<pre><code>/**
+ * Select all tasks from the tasks table.
+ *
+ * @return all tasks.
+ */
+@Query(&quot;SELECT * FROM Tasks&quot;)
+List&lt;Task&gt; getTasks();
+
+/**
+ * Select a task by id.
+ *
+ * @param taskId the task id.
+ * @return the task with taskId.
+ */
+@Query(&quot;SELECT * FROM Tasks WHERE entryid = :taskId&quot;)
+Task getTaskById(String taskId);
+
+/**
+ * Insert a task in the database. If the task already exists, replace it.
+ *
+ * @param task the task to be inserted.
+ */
+@Insert(onConflict = OnConflictStrategy.REPLACE)
+void insertTask(Task task);
+
+/**
+ * Update a task.
+ *
+ * @param task task to be updated
+ * @return the number of tasks updated. This should always be 1.
+ */
+@Update
+int updateTask(Task task);
+
+/**
+ * Update the complete status of a task
+ *
+ * @param taskId    id of the task
+ * @param completed status to be updated
+ */
+@Query(&quot;UPDATE tasks SET completed = :completed WHERE entryid = :taskId&quot;)
+void updateCompleted(String taskId, boolean completed);
+
+/**
+ * Delete a task by id.
+ *
+ * @return the number of tasks deleted. This should always be 1.
+ */
+@Query(&quot;DELETE FROM Tasks WHERE entryid = :taskId&quot;)
+int deleteTaskById(String taskId);
+
+/**
+ * Delete all tasks.
+ */
+@Query(&quot;DELETE FROM Tasks&quot;)
+void deleteTasks();
+
+/**
+ * Delete all completed tasks from the table.
+ *
+ * @return the number of tasks deleted.
+ */
+@Query(&quot;DELETE FROM Tasks WHERE completed = 1&quot;)
+int deleteCompletedTasks();
+</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- TasksLocalDataSource</span><br></pre></td></tr></table></figure>
+<p>@Override<br>    public void saveTask(@NonNull final Task task) {<br>        checkNotNull(task);<br>        Runnable saveRunnable = new Runnable() {<br>            @Override<br>            public void run() {<br>                mTasksDao.insertTask(task);<br>            }<br>        };<br>        mAppExecutors.diskIO().execute(saveRunnable);<br>    }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- 保存数据</span><br></pre></td></tr></table></figure></p>
+<p> mTasksRepository.saveTask(new Task(title, description, mTaskId));<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- DiskIOThreadExecutor</span><br></pre></td></tr></table></figure></p>
+<p>public class DiskIOThreadExecutor implements Executor {</p>
+<pre><code>private final Executor mDiskIO;
+
+public DiskIOThreadExecutor() {
+    mDiskIO = Executors.newSingleThreadExecutor();
+}
+
+@Override
+public void execute(@NonNull Runnable command) {
+    mDiskIO.execute(command);
+}
+</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">##### mvp-loader</span><br><span class="line">- Presenter中持有View，Loader，LoaderManager(提供异步加载)，Repository,当数据发生变化时，Loader自动刷新View</span><br></pre></td></tr></table></figure>
+<p>public class TasksPresenter implements TasksContract.Presenter,<br>        LoaderManager.LoaderCallbacks&lt;List<task>&gt; {</task></p>
+<pre><code>private final static int TASKS_QUERY = 1;
+
+private final TasksRepository mTasksRepository;
+
+private final TasksContract.View mTasksView;
+
+private final TasksLoader mLoader;
+
+private final LoaderManager mLoaderManager;
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- TaskRepository,在MVP中需要回调刷新View，而在Loader机制中自动刷新</span><br></pre></td></tr></table></figure>
+<pre><code>private final TasksDataSource mTasksRemoteDataSource;
+private final TasksDataSource mTasksLocalDataSource;
+private List&lt;TasksRepositoryObserver&gt; mObservers = new ArrayList&lt;TasksRepositoryObserver&gt;();
+// Update the UI
+notifyContentObserver();
+···
+
+//从缓存Map中获取数据
+Map&lt;String, Task&gt; mCachedTasks;
+public List&lt;Task&gt; getCachedTasks() {
+    return mCachedTasks == null ? null : new ArrayList&lt;&gt;(mCachedTasks.values());
+}
+public Task getCachedTask(String taskId) {
+    return mCachedTasks.get(taskId);
+}
+
+//获取任务
+@Nullable
+@Override
+public List&lt;Task&gt; getTasks() {
+    List&lt;Task&gt; tasks = null;
+    if (!mCacheIsDirty) {
+        // Respond immediately with cache if available and not dirty
+        if (mCachedTasks != null) {
+            tasks = getCachedTasks();
+            return tasks;
+        } else {
+            // Query the local storage if available.
+            tasks = mTasksLocalDataSource.getTasks();
+        }
+    }
+    // To simplify, we&apos;ll consider the local data source fresh when it has data.
+    if (tasks == null || tasks.isEmpty()) {
+        // Grab remote data if cache is dirty or local data not available.
+        tasks = mTasksRemoteDataSource.getTasks();
+        // We copy the data to the device so we don&apos;t need to query the network next time
+        saveTasksInLocalDataSource(tasks);
+    }
+
+    processLoadedTasks(tasks);
+    return getCachedTasks();
+
+}
+</code></pre>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- Fragment中涉及Loader加载数据，自动刷新流程</span><br></pre></td></tr></table></figure>
+<p>  //在Activity中对Loader,LoaderManager,Presenter实例化<br>   // Create the presenter<br>        TasksRepository repository = Injection.provideTasksRepository(getApplicationContext());<br>        TasksLoader tasksLoader = new TasksLoader(getApplicationContext(), repository);<br>        mTasksPresenter = new TasksPresenter(<br>                tasksLoader,<br>                getSupportLoaderManager(),<br>                repository,<br>                tasksFragment<br>        );</p>
+<p>  //FragmentManager的performStart()中也有回调LoadFinished()针对有缓存数据时刷新View<br>  void performStart() {<br>     ···<br>      onStart();<br>     ···<br>      if (mLoaderManager != null) {<br>        mLoaderManager.doReportStart();<br>      }<br>    }</p>
+<p>  //Fragment的onResume()对LoadManager进行初始化<br>  @Override<br>  public void onResume() {<br>    super.onResume();<br>    mPresenter.start();<br>  }</p>
+<p>  //Presenter初始化<br>  @Override<br>  public void start() {<br>        mLoaderManager.initLoader(TASK_QUERY, null, this);<br>  }<br>  //LoadManager开始加载<br>  void start(){<br>     mLoader.startLoading();<br>  }<br>  //LoaderManager中加载完成后回调callOnLoadFinished<br>  void finishRetain() {<br>           ···<br>          callOnLoadFinished(mLoader, mData);<br>  }</p>
+<p>  void reportStart() {<br>         if (mStarted) {<br>             if (mReportNextStart) {<br>                 mReportNextStart = false;<br>                  if (mHaveData &amp;&amp; !mRetaining) {<br>                     callOnLoadFinished(mLoader, mData);<br>                  }<br>              }<br>         }<br>      }</p>
+<p>  //Presenter加载数据<br>   public void loadTasks(boolean forceUpdate) {<br>        if (forceUpdate || mFirstLoad) {<br>            mFirstLoad = false;<br>            mTasksRepository.refreshTasks();<br>        } else {<br>            showFilteredTasks();<br>        }<br>    }</p>
+<p>  //加载完成后<br>  @Override<br>    public void onLoadFinished(Loader&lt;List<task>&gt; loader, List<task> data) {<br>        mTasksView.setLoadingIndicator(false);</task></task></p>
+<pre><code>    mCurrentTasks = data;
+    if (mCurrentTasks == null) {
+        mTasksView.showLoadingTasksError();
+    } else {
+        showFilteredTasks();
+    }
+}
+</code></pre><p>  //Presenter处理数据返回结果<br>  private void processTasks(List<task> tasks) {<br>        if (tasks.isEmpty()) {<br>            // Show a message indicating there are no tasks for that filter type.<br>            processEmptyTasks();<br>        } else {<br>            // Show the list of tasks<br>            mTasksView.showTasks(tasks);<br>            // Set the filter label’s text.<br>            showFilterLabel();<br>        }<br>    }</task></p>
+<p> //Fragment显示数据<br> @Override<br>    public void showTasks(List<task> tasks) {<br>        mListAdapter.replaceData(tasks);</task></p>
+<pre><code>    mTasksView.setVisibility(View.VISIBLE);
+    mNoTasksView.setVisibility(View.GONE);
+}
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> &#123;% qnimg mvp-loader.png %&#125;</span><br><span class="line"></span><br><span class="line">##### mvp-dagger</span><br><span class="line">[Dagger可以参考另一篇文章](https://willkernel.github.io/2018/03/13/Android-Notes-Dagger/)</span><br><span class="line">- DaggerApplication 注入Activity,Fragment,Service,BroadService,ContentProvider等成员,并在相应类中的onCreate()/onAttach()/onCreate()/onReceive()/onCreate()注入</span><br></pre></td></tr></table></figure>
+<p>  AndroidInjection.inject(this);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- DaggerApplication</span><br></pre></td></tr></table></figure>
+<p>public abstract class DaggerApplication extends Application<br>    implements HasActivityInjector,<br>        HasFragmentInjector,<br>        HasServiceInjector,<br>        HasBroadcastReceiverInjector,<br>        HasContentProviderInjector {</p>
+<p>  @Inject DispatchingAndroidInjector<activity> activityInjector;<br>  @Inject DispatchingAndroidInjector<broadcastreceiver> broadcastReceiverInjector;<br>  @Inject DispatchingAndroidInjector<fragment> fragmentInjector;<br>  @Inject DispatchingAndroidInjector<service> serviceInjector;<br>  @Inject DispatchingAndroidInjector<contentprovider> contentProviderInjector;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- ToDoApplication</span><br></pre></td></tr></table></figure></contentprovider></service></fragment></broadcastreceiver></activity></p>
+<p>public class ToDoApplication extends DaggerApplication {<br>    @Inject<br>    TasksRepository tasksRepository;</p>
+<pre><code>@Override
+protected AndroidInjector&lt;? extends DaggerApplication&gt; applicationInjector() {
+    return DaggerAppComponent.builder().application(this).build();
+}
+
+@VisibleForTesting
+public TasksRepository getTasksRepository() {
+    return tasksRepository;
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- ApplicationModule 通过AppComponent依赖注入，提供给子组件Context实例</span><br></pre></td></tr></table></figure></p>
+<p>@Module<br>public abstract class ApplicationModule {<br>    //expose Application as an injectable context<br>    @Binds<br>    abstract Context bindContext(Application application);<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- AppComponent 在Dagger.Android中自动生成并定位子组件</span><br></pre></td></tr></table></figure>
+<p>@Singleton<br>@Component(modules = {TasksRepositoryModule.class,<br>        ApplicationModule.class,<br>        ActivityBindingModule.class,<br>        AndroidSupportInjectionModule.class})<br>public interface AppComponent extends AndroidInjector<todoapplication> {</todoapplication></p>
+<pre><code>TasksRepository getTasksRepository();
+
+// Gives us syntactic sugar. we can then do DaggerAppComponent.builder().application(this).build().inject(this);
+// never having to instantiate any modules or say which module we are passing the application to.
+// Application will just be provided into our app graph now.
+@Component.Builder
+interface Builder {
+
+    @BindsInstance
+    AppComponent.Builder application(Application application);
+
+    AppComponent build();
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- TasksRepositoryModule</span><br></pre></td></tr></table></figure></p>
+<p>@Module<br>abstract public class TasksRepositoryModule {</p>
+<pre><code>private static final int THREAD_COUNT = 3;
+
+@Singleton
+@Binds
+@Local
+abstract TasksDataSource provideTasksLocalDataSource(TasksLocalDataSource dataSource);
+
+@Singleton
+@Binds
+@Remote
+abstract TasksDataSource provideTasksRemoteDataSource(FakeTasksRemoteDataSource dataSource);
+
+@Singleton
+@Provides
+static ToDoDatabase provideDb(Application context) {
+    return Room.databaseBuilder(context.getApplicationContext(), ToDoDatabase.class, &quot;Tasks.db&quot;)
+            .build();
+}
+
+@Singleton
+@Provides
+static TasksDao provideTasksDao(ToDoDatabase db) {
+    return db.taskDao();
+}
+
+@Singleton
+@Provides
+static AppExecutors provideAppExecutors() {
+    return new AppExecutors(new DiskIOThreadExecutor(),
+            Executors.newFixedThreadPool(THREAD_COUNT),
+            new AppExecutors.MainThreadExecutor());
+}
+</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- AppExecutors</span><br></pre></td></tr></table></figure>
+<p>@Singleton<br>public class AppExecutors {</p>
+<pre><code>private static final int THREAD_COUNT = 3;
+
+private final Executor diskIO;
+
+private final Executor networkIO;
+
+private final Executor mainThread;
+
+public AppExecutors(Executor diskIO, Executor networkIO, Executor mainThread) {
+    this.diskIO = diskIO;
+    this.networkIO = networkIO;
+    this.mainThread = mainThread;
+}
+
+public Executor diskIO() {
+    return diskIO;
+}
+
+public Executor networkIO() {
+    return networkIO;
+}
+
+public Executor mainThread() {
+    return mainThread;
+}
+
+public static class MainThreadExecutor implements Executor {
+    private Handler mainThreadHandler = new Handler(Looper.getMainLooper());
+
+    @Override
+    public void execute(@NonNull Runnable command) {
+        mainThreadHandler.post(command);
+    }
+}
+</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- TasksModule中的Presenter和View注入到TasksActivity,提供实例</span><br></pre></td></tr></table></figure>
+<p>@Module<br>public abstract class TasksModule {<br>    @FragmentScoped<br>    @ContributesAndroidInjector<br>    abstract TasksFragment tasksFragment();</p>
+<pre><code>@ActivityScoped
+@Binds abstract TasksContract.Presenter taskPresenter(TasksPresenter presenter);
+</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- ActivityBindingModule,Android 注解处理器自动通过指定的模块生成子组件，并绑定AppComponent父组件，不需要告诉父组件子组件有哪些，也不需要告诉子组件谁是父组件</span><br></pre></td></tr></table></figure>
+<p>@Module<br>public abstract class ActivityBindingModule {<br>    @ActivityScoped<br>    @ContributesAndroidInjector(modules = TasksModule.class)<br>    abstract TasksActivity tasksActivity();</p>
+<pre><code>@ActivityScoped
+@ContributesAndroidInjector(modules = AddEditTaskModule.class)
+abstract AddEditTaskActivity addEditTaskActivity();
+
+@ActivityScoped
+@ContributesAndroidInjector(modules = StatisticsModule.class)
+abstract StatisticsActivity statisticsActivity();
+
+@ActivityScoped
+@ContributesAndroidInjector(modules = TaskDetailPresenterModule.class)
+abstract TaskDetailActivity taskDetailActivity();
+</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- TasksActivity</span><br></pre></td></tr></table></figure>
+<p>public class TasksActivity extends DaggerAppCompatActivity {<br>    @Inject<br>    TasksPresenter mTasksPresenter;<br>    @Inject<br>    Lazy<tasksfragment> taskFragmentProvider;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- TasksFragment</span><br></pre></td></tr></table></figure></tasksfragment></p>
+<p>@ActivityScoped<br>public class TasksFragment extends DaggerFragment implements TasksContract.View {<br>    @Inject<br>    TasksContract.Presenter mPresenter;</p>
+<p>@Inject<br>public TasksFragment() {<br>  // Requires empty public constructor<br>    }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- TasksPresenter</span><br></pre></td></tr></table></figure></p>
+<p>@ActivityScoped<br>final class TasksPresenter implements TasksContract.Presenter {<br>    private final TasksRepository mTasksRepository;<br>    @Nullable<br>    private TasksContract.View mTasksView;</p>
+<pre><code>@Inject
+TasksPresenter(TasksRepository tasksRepository) {
+    mTasksRepository = tasksRepository;
+}
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- TasksRepository</span><br></pre></td></tr></table></figure>
+<p>@Singleton<br>public class TasksRepository implements TasksDataSource {<br>    @Inject<br>    TasksRepository(@Remote TasksDataSource<br>    tasksRemoteDataSource,<br>            @Local TasksDataSource tasksLocalDataSource) {<br>        mTasksRemoteDataSource = tasksRemoteDataSource;<br>        mTasksLocalDataSource = tasksLocalDataSource;<br>    }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- 在TasksActivity中通过依赖注入@Inject,TasksPresenter,TasksRepository,TasksFragment已经实例化</span><br><span class="line">- ActivityScope,FragmentScope</span><br></pre></td></tr></table></figure></p>
+<p>@Documented<br>@Scope<br>@Retention(RetentionPolicy.RUNTIME)<br>public @interface ActivityScoped {<br>}</p>
+<p>@Scope<br>@Retention(RetentionPolicy.RUNTIME)<br>@Target({ElementType.TYPE, ElementType.METHOD})<br>public @interface FragmentScoped {}<br><code>`</code></p>
 
           
         
