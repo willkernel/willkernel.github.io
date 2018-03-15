@@ -454,7 +454,28 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;import type=&quot;android.view.View&quot;/&gt;</span><br><span class="line">&lt;import type=&quot;com.example.real.estate.View&quot;</span><br><span class="line">        alias=&quot;Vista&quot;/&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>导入类可以设置变量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;data&gt;</span><br><span class="line">    &lt;import type=&quot;com.example.User&quot;/&gt;</span><br><span class="line">    &lt;import type=&quot;java.util.List&quot;/&gt;</span><br><span class="line">    &lt;variable name=&quot;user&quot; type=&quot;User&quot;/&gt;</span><br><span class="line">    &lt;variable name=&quot;userList&quot; type=&quot;List&amp;lt;User&amp;gt;&quot;/&gt;</span><br><span class="line">&lt;/data&gt;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;data&gt;</span><br><span class="line">    &lt;import type=&quot;com.example.User&quot;/&gt;</span><br><span class="line">    &lt;import type=&quot;java.util.List&quot;/&gt;</span><br><span class="line">    &lt;variable name=&quot;user&quot; type=&quot;User&quot;/&gt;</span><br><span class="line">    &lt;variable name=&quot;userList&quot; type=&quot;List&amp;lt;User&amp;gt;&quot;/&gt;</span><br><span class="line">&lt;/data&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引用静态变量和方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;data&gt;</span><br><span class="line">    &lt;import type=&quot;com.example.MyStringUtils&quot;/&gt;</span><br><span class="line">    &lt;variable name=&quot;user&quot; type=&quot;com.example.User&quot;/&gt;</span><br><span class="line">&lt;/data&gt;</span><br><span class="line">…</span><br><span class="line">&lt;TextView</span><br><span class="line">   android:text=&quot;@&#123;MyStringUtils.capitalize(user.lastName)&#125;&quot;</span><br><span class="line">   android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">   android:layout_height=&quot;wrap_content&quot;/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重命名Binding对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;data class=&quot;MainAty&quot;&gt;</span><br><span class="line"> MainAty binding = DataBindingUtil.setContentView(this, R.layout.activity_main);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置Binding包名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">当前应用包名</span><br><span class="line"> &lt;data class=&quot;.MainAty&quot;&gt;</span><br><span class="line"> 重新设置完整的包名</span><br><span class="line"> &lt;data class=&quot;com.main.MainAty&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>include 绑定变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;include layout=&quot;@layout/contact&quot;</span><br><span class="line">      bind:user=&quot;@&#123;user&#125;&quot;/&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>include布局元素不能作为merge的子元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">not supported:</span><br><span class="line"></span><br><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;layout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">        xmlns:bind=&quot;http://schemas.android.com/apk/res-auto&quot;&gt;</span><br><span class="line">   &lt;data&gt;</span><br><span class="line">       &lt;variable name=&quot;user&quot; type=&quot;com.example.User&quot;/&gt;</span><br><span class="line">   &lt;/data&gt;</span><br><span class="line">   &lt;merge&gt;</span><br><span class="line">       &lt;include layout=&quot;@layout/name&quot;</span><br><span class="line">           bind:user=&quot;@&#123;user&#125;&quot;/&gt;</span><br><span class="line">       &lt;include layout=&quot;@layout/contact&quot;</span><br><span class="line">           bind:user=&quot;@&#123;user&#125;&quot;/&gt;</span><br><span class="line">   &lt;/merge&gt;</span><br><span class="line">&lt;/layout&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表达式语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">数学运算 + - / * %</span><br><span class="line">字符串拼接 +</span><br><span class="line">逻辑运算 &amp;&amp; ||</span><br><span class="line">二进制运算 &amp; | ^</span><br><span class="line">一元运算 + - ! ~</span><br><span class="line">位移 &gt;&gt; &gt;&gt;&gt; &lt;&lt;</span><br><span class="line">比较 == &gt; &lt; &gt;= &lt;=</span><br><span class="line">是否为某个实例对象 instanceof</span><br><span class="line">聚合 Grouping ()</span><br><span class="line">字符 - character, String, numeric, null</span><br><span class="line">转型 Cast</span><br><span class="line">Method calls</span><br><span class="line">Field access</span><br><span class="line">Array access []</span><br><span class="line">三元运算 ?:</span><br><span class="line"></span><br><span class="line">exapmples:</span><br><span class="line">android:text=&quot;@&#123;String.valueOf(index + 1)&#125;&quot;</span><br><span class="line">android:visibility=&quot;@&#123;age &lt; 13 ? View.GONE : View.VISIBLE&#125;&quot;</span><br><span class="line">android:transitionName=&apos;@&#123;&quot;image_&quot; + id&#125;&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>非空判断 ??</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">android:text=&quot;@&#123;user.displayName ?? user.lastName&#125;&quot;</span><br><span class="line">android:text=&quot;@&#123;user.displayName != null ? user.displayName : user.lastName&#125;&quot;</span><br></pre></td></tr></table></figure></li>
 </ul>
 
           
@@ -1279,6 +1300,158 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Android-Notes-NDK/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="willkernel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="willkernel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/09/Android-Notes-NDK/" itemprop="url">Android Notes(NDK)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:04:00+08:00">
+                2018-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/09/Android-Notes-NDK/" class="leancloud_visitors" data-flag-title="Android Notes(NDK)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Android-Notes-Git/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1362,158 +1535,6 @@
           
           
              <span id="/2018/03/09/Android-Notes-Git/" class="leancloud_visitors" data-flag-title="Android Notes(Git)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Android-Notes-NDK/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="willkernel">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="willkernel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/09/Android-Notes-NDK/" itemprop="url">Android Notes(NDK)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:04:00+08:00">
-                2018-03-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/03/09/Android-Notes-NDK/" class="leancloud_visitors" data-flag-title="Android Notes(NDK)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
