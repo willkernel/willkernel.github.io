@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://willkernel.github.io/"/>
-  <updated>2018-03-16T06:03:42.424Z</updated>
+  <updated>2018-03-16T13:09:01.798Z</updated>
   <id>http://willkernel.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://willkernel.github.io/2018/03/16/Android-Notes-Data-Binding/"/>
     <id>http://willkernel.github.io/2018/03/16/Android-Notes-Data-Binding/</id>
     <published>2018-03-16T05:38:00.000Z</published>
-    <updated>2018-03-16T06:03:42.424Z</updated>
+    <updated>2018-03-16T13:09:01.798Z</updated>
     
     <summary type="html">
     
@@ -114,6 +114,24 @@
   </entry>
   
   <entry>
+    <title>Android Notes(NDK)</title>
+    <link href="http://willkernel.github.io/2018/03/09/Android-Notes-NDK/"/>
+    <id>http://willkernel.github.io/2018/03/09/Android-Notes-NDK/</id>
+    <published>2018-03-08T17:04:00.000Z</published>
+    <updated>2018-03-08T17:10:02.378Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Android Notes(Git)</title>
     <link href="http://willkernel.github.io/2018/03/09/Android-Notes-Git/"/>
     <id>http://willkernel.github.io/2018/03/09/Android-Notes-Git/</id>
@@ -130,24 +148,6 @@
     
     
       <category term="Git" scheme="http://willkernel.github.io/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android Notes(NDK)</title>
-    <link href="http://willkernel.github.io/2018/03/09/Android-Notes-NDK/"/>
-    <id>http://willkernel.github.io/2018/03/09/Android-Notes-NDK/</id>
-    <published>2018-03-08T17:04:00.000Z</published>
-    <updated>2018-03-08T17:10:02.378Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-    
-      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
     
   </entry>
   
