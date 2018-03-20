@@ -88,17 +88,19 @@
 
 
 
-<meta name="description" content="Todo-mvvm-databinding">
+<meta name="description" content="Todo-mvvm-databinding Model: 内存，本地，网络数据的实现与获取 View: 对应Activity,Fragment,负责View的绘制，与用户交互，在xml中编写databinding对model层数据的引用绑定，ViewModelHolder&amp;lt;VH&amp;gt;作为非UI的Fragment持有ViewModel，并绑定到Activity的生命周期 ViewModel:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Notes(MVVM)">
 <meta property="og:url" content="http://willkernel.github.io/2018/03/09/Android-Notes-MVVM/index.html">
 <meta property="og:site_name" content="willkernel">
-<meta property="og:description" content="Todo-mvvm-databinding">
+<meta property="og:description" content="Todo-mvvm-databinding Model: 内存，本地，网络数据的实现与获取 View: 对应Activity,Fragment,负责View的绘制，与用户交互，在xml中编写databinding对model层数据的引用绑定，ViewModelHolder&amp;lt;VH&amp;gt;作为非UI的Fragment持有ViewModel，并绑定到Activity的生命周期 ViewModel:">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-14T15:25:00.156Z">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mvvm-databinding.png">
+<meta property="og:updated_time" content="2018-03-20T04:47:34.324Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Notes(MVVM)">
-<meta name="twitter:description" content="Todo-mvvm-databinding">
+<meta name="twitter:description" content="Todo-mvvm-databinding Model: 内存，本地，网络数据的实现与获取 View: 对应Activity,Fragment,负责View的绘制，与用户交互，在xml中编写databinding对model层数据的引用绑定，ViewModelHolder&amp;lt;VH&amp;gt;作为非UI的Fragment持有ViewModel，并绑定到Activity的生命周期 ViewModel:">
+<meta name="twitter:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mvvm-databinding.png">
 
 
 
@@ -405,7 +407,372 @@
       
 
       
-        <h5 id="Todo-mvvm-databinding"><a href="#Todo-mvvm-databinding" class="headerlink" title="Todo-mvvm-databinding"></a>Todo-mvvm-databinding</h5>
+        <h5 id="Todo-mvvm-databinding"><a href="#Todo-mvvm-databinding" class="headerlink" title="Todo-mvvm-databinding"></a>Todo-mvvm-databinding</h5><ul>
+<li>Model: 内存，本地，网络数据的实现与获取</li>
+<li>View: 对应Activity,Fragment,负责View的绘制，与用户交互，在xml中编写databinding对model层数据的引用绑定，<code>ViewModelHolder&lt;VH&gt;</code>作为非UI的Fragment持有ViewModel，并绑定到Activity的生命周期</li>
+<li>ViewModel: databinding框架绑定ViewModel，ViewModel持有View中引用的变量observable fields，以及数据管理类TasksRepository，数据或属性发生变化时，databinding自动更新UI<img src="http://p4n1d4izv.bkt.clouddn.com/images/mvvm-databinding.png">
+<h5 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h5></li>
+<li><p>TasksActivity,绑定TasksFragment以及ViewModelHolder(持有ViewModel的非UI的Fragment,绑定到Activity的生命周期)</p>
+<ul>
+<li><p>获取TasksViewModel,并绑定到Activity</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">private TasksViewModel findOrCreateViewModel() &#123;</span><br><span class="line">       @SuppressWarnings(&quot;unchecked&quot;)</span><br><span class="line">       ViewModelHolder&lt;TasksViewModel&gt; retainedViewModel =</span><br><span class="line">               (ViewModelHolder&lt;TasksViewModel&gt;) getSupportFragmentManager()</span><br><span class="line">                       .findFragmentByTag(TASKS_VIEWMODEL_TAG);</span><br><span class="line"></span><br><span class="line">       if (retainedViewModel != null &amp;&amp; retainedViewModel.getViewmodel() != null) &#123;</span><br><span class="line">           // If the model was retained, return it.</span><br><span class="line">           return retainedViewModel.getViewmodel();</span><br><span class="line">       &#125; else &#123;</span><br><span class="line">           // There is no ViewModel yet, create it.</span><br><span class="line">           TasksViewModel viewModel = new TasksViewModel(</span><br><span class="line">                   Injection.provideTasksRepository(getApplicationContext()),</span><br><span class="line">                   getApplicationContext());</span><br><span class="line">           // and bind it to this Activity&apos;s lifecycle using the Fragment Manager.</span><br><span class="line">           ActivityUtils.addFragmentToActivity(</span><br><span class="line">                   getSupportFragmentManager(),</span><br><span class="line">                   ViewModelHolder.createContainer(viewModel),</span><br><span class="line">                   TASKS_VIEWMODEL_TAG);</span><br><span class="line">           return viewModel;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>绑定Fragment和View,设置Activity的跳转</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> public interface TasksNavigator &#123;</span><br><span class="line"></span><br><span class="line">    void addNewTask();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> mViewModel = findOrCreateViewModel();</span><br><span class="line"> mViewModel.setNavigator(this);</span><br><span class="line"></span><br><span class="line"> // Link View and ViewModel</span><br><span class="line"> tasksFragment.setViewModel(mViewModel);</span><br><span class="line">  </span><br><span class="line">TasksViewModel</span><br><span class="line">void setNavigator(TasksNavigator navigator) &#123;</span><br><span class="line">        mNavigator = navigator;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>onDestory()</code>回收设置的跳转接口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> @Override</span><br><span class="line"> protected void onDestroy() &#123;</span><br><span class="line">     mViewModel.onActivityDestroyed();</span><br><span class="line">     super.onDestroy();</span><br><span class="line"> &#125;</span><br><span class="line">    </span><br><span class="line">TasksViewModel</span><br><span class="line">void onActivityDestroyed() &#123;</span><br><span class="line">     // Clear references to avoid potential memory leaks.</span><br><span class="line">     mNavigator = null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>TasksFragment,持有TasksViewModel,TasksFragBinding，TasksAdapter中持有TaskItemViewModel</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> @Override</span><br><span class="line"> public void onResume() &#123;</span><br><span class="line">     super.onResume();</span><br><span class="line">     mTasksViewModel.start();</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> @Nullable</span><br><span class="line"> @Override</span><br><span class="line"> public View onCreateView(LayoutInflater inflater, ViewGroup container,</span><br><span class="line">                             Bundle savedInstanceState) &#123;</span><br><span class="line">      mTasksFragBinding = TasksFragBinding.inflate(inflater, container, false);</span><br><span class="line"></span><br><span class="line">      mTasksFragBinding.setView(this);</span><br><span class="line"></span><br><span class="line">      mTasksFragBinding.setViewmodel(mTasksViewModel);</span><br><span class="line"></span><br><span class="line">      setHasOptionsMenu(true);</span><br><span class="line"></span><br><span class="line">      View root = mTasksFragBinding.getRoot();</span><br><span class="line"></span><br><span class="line">      return root;</span><br><span class="line"> &#125;</span><br><span class="line">``` </span><br><span class="line"> - 设置SnackBar text属性的监听回调，属性改变时显示SnackBar，在onDestory()中移除回调</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>private void setupSnackbar() {</p>
+<pre><code>mSnackbarCallback = new Observable.OnPropertyChangedCallback() {
+    @Override
+    public void onPropertyChanged(Observable observable, int i) {
+        SnackbarUtils.showSnackbar(getView(), mTasksViewModel.getSnackbarText());
+    }
+};
+mTasksViewModel.snackbarText.addOnPropertyChangedCallback(mSnackbarCallback);
+</code></pre><p>  }</p>
+</li>
+</ul>
+<p>@Override<br>public void onDestroy() {<br>     mListAdapter.onDestroy();<br>     if (mSnackbarCallback != null) {<br>            mTasksViewModel.snackbarText.removeOnPropertyChangedCallback(mSnackbarCallback);<br>     }<br>     super.onDestroy();<br> }<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- 单个任务的抽象类TaskViewModel,暴露Task的观察者，设置标题，描述，Task，以及SnackBarText</span><br></pre></td></tr></table></figure></p>
+<p> public abstract class TaskViewModel extends BaseObservable<br>        implements TasksDataSource.GetTaskCallback {</p>
+<pre><code>public final ObservableField&lt;String&gt; snackbarText = new ObservableField&lt;&gt;();
+
+public final ObservableField&lt;String&gt; title = new ObservableField&lt;&gt;();
+
+public final ObservableField&lt;String&gt; description = new ObservableField&lt;&gt;();
+
+private final ObservableField&lt;Task&gt; mTaskObservable = new ObservableField&lt;&gt;();
+
+private final TasksRepository mTasksRepository;
+
+private final Context mContext;
+
+private boolean mIsDataLoading;
+
+public TaskViewModel(Context context, TasksRepository tasksRepository) {
+    mContext = context.getApplicationContext(); // Force use of Application Context.
+    mTasksRepository = tasksRepository;
+
+    // Exposed observables depend on the mTaskObservable observable:
+    mTaskObservable.addOnPropertyChangedCallback(new OnPropertyChangedCallback() {
+        @Override
+        public void onPropertyChanged(Observable observable, int i) {
+            Task task = mTaskObservable.get();
+            if (task != null) {
+                title.set(task.getTitle());
+                description.set(task.getDescription());
+            } else {
+                title.set(mContext.getString(R.string.no_data));
+                description.set(mContext.getString(R.string.no_data_description));
+            }
+        }
+    });
+}
+
+public void start(String taskId) {
+    if (taskId != null) {
+        mIsDataLoading = true;
+        mTasksRepository.getTask(taskId, this);
+    }
+}
+
+public void setTask(Task task) {
+    mTaskObservable.set(task);
+}
+
+// &quot;completed&quot; is two-way bound, so in order to intercept the new value, use a @Bindable
+// annotation and process it in the setter.
+@Bindable
+public boolean getCompleted() {
+    Task task = mTaskObservable.get();
+    return task != null &amp;&amp; task.isCompleted();
+}
+
+public void setCompleted(boolean completed) {
+    if (mIsDataLoading) {
+        return;
+    }
+    Task task = mTaskObservable.get();
+
+    // Notify repository and user
+    if (completed) {
+        mTasksRepository.completeTask(task);
+        snackbarText.set(mContext.getResources().getString(R.string.task_marked_complete));
+    } else {
+        mTasksRepository.activateTask(task);
+        snackbarText.set(mContext.getResources().getString(R.string.task_marked_active));
+    }
+}
+
+@Bindable
+public boolean isDataAvailable() {
+    return mTaskObservable.get() != null;
+}
+
+@Bindable
+public boolean isDataLoading() {
+    return mIsDataLoading;
+}
+
+// This could be an observable, but we save a call to Task.getTitleForList() if not needed.
+@Bindable
+public String getTitleForList() {
+    if (mTaskObservable.get() == null) {
+        return &quot;No data&quot;;
+    }
+    return mTaskObservable.get().getTitleForList();
+}
+
+@Override
+public void onTaskLoaded(Task task) {
+    mTaskObservable.set(task);
+    mIsDataLoading = false;
+    notifyChange(); // For the @Bindable properties
+}
+
+@Override
+public void onDataNotAvailable() {
+    mTaskObservable.set(null);
+    mIsDataLoading = false;
+}
+
+public void deleteTask() {
+    if (mTaskObservable.get() != null) {
+        mTasksRepository.deleteTask(mTaskObservable.get().getId());
+    }
+}
+
+public void onRefresh() {
+    if (mTaskObservable.get() != null) {
+        start(mTaskObservable.get().getId());
+    }
+}
+
+public String getSnackbarText() {
+    return snackbarText.get();
+}
+
+@Nullable
+protected String getTaskId() {
+    return mTaskObservable.get().getId();
+}
+</code></pre><p>}<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- TasksItemViewModel,持有Navigator的弱引用，在task_item.xml中,绑定点击事件`android:onClick=&quot;@&#123;() -&gt; viewmodel.taskClicked()&#125;&quot;`，以及Task激活状态` android:checked=&quot;@=&#123;viewmodel.completed&#125;&quot;`，标题`android:text=&quot;@&#123;viewmodel.titleForList&#125;&quot;`</span><br></pre></td></tr></table></figure></p>
+<p> public class TaskItemViewModel extends TaskViewModel {</p>
+<pre><code>// This navigator is s wrapped in a WeakReference to avoid leaks because it has references to an
+// activity. There&apos;s no straightforward way to clear it for each item in a list adapter.
+@Nullable
+private WeakReference&lt;TaskItemNavigator&gt; mNavigator;
+
+public TaskItemViewModel(Context context, TasksRepository tasksRepository) {
+    super(context, tasksRepository);
+}
+
+public void setNavigator(TaskItemNavigator navigator) {
+    mNavigator = new WeakReference&lt;&gt;(navigator);
+}
+
+/**
+ * Called by the Data Binding library when the row is clicked.
+ */
+public void taskClicked() {
+    String taskId = getTaskId();
+    if (taskId == null) {
+        // Click happened before task was loaded, no-op.
+        return;
+    }
+    if (mNavigator != null &amp;&amp; mNavigator.get() != null) {
+        mNavigator.get().openTaskDetails(taskId);
+    }
+}
+</code></pre><p>}<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- TasksViewModel,主要是任务列表的数据加载，UI更新</span><br></pre></td></tr></table></figure></p>
+<p>public class TasksViewModel extends BaseObservable {</p>
+<pre><code>// These observable fields will update Views automatically
+public final ObservableList&lt;Task&gt; items = new ObservableArrayList&lt;&gt;();
+
+public final ObservableBoolean dataLoading = new ObservableBoolean(false);
+
+public final ObservableField&lt;String&gt; currentFilteringLabel = new ObservableField&lt;&gt;();
+
+public final ObservableField&lt;String&gt; noTasksLabel = new ObservableField&lt;&gt;();
+
+public final ObservableField&lt;Drawable&gt; noTaskIconRes = new ObservableField&lt;&gt;();
+
+public final ObservableBoolean tasksAddViewVisible = new ObservableBoolean();
+
+final ObservableField&lt;String&gt; snackbarText = new ObservableField&lt;&gt;();
+
+private TasksFilterType mCurrentFiltering = TasksFilterType.ALL_TASKS;
+
+private final TasksRepository mTasksRepository;
+
+private final ObservableBoolean mIsDataLoadingError = new ObservableBoolean(false);
+
+private Context mContext; // To avoid leaks, this must be an Application Context.
+
+private TasksNavigator mNavigator;
+
+public TasksViewModel(
+        TasksRepository repository,
+        Context context) {
+    mContext = context.getApplicationContext(); // Force use of Application Context.
+    mTasksRepository = repository;
+
+    // Set initial state
+    setFiltering(TasksFilterType.ALL_TASKS);
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- tasks_frag.xml中绑定TasksFragment,TasksViewModel</span><br></pre></td></tr></table></figure></p>
+<p> <data></data></p>
+<pre><code>    &lt;import type=&quot;android.view.View&quot; /&gt;
+
+    &lt;variable
+        name=&quot;view&quot;
+        type=&quot;com.example.android.architecture.blueprints.todoapp.tasks.TasksFragment&quot; /&gt;
+
+    &lt;variable
+        name=&quot;viewmodel&quot;
+        type=&quot;com.example.android.architecture.blueprints.todoapp.tasks.TasksViewModel&quot; /&gt;
+
+&lt;/data&gt;
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- 自定义设置可滑动子View</span><br></pre></td></tr></table></figure>
+<p>ublic class ScrollChildSwipeRefreshLayout extends SwipeRefreshLayout {</p>
+<pre><code>private View mScrollUpChild;
+
+public ScrollChildSwipeRefreshLayout(Context context) {
+    super(context);
+}
+
+public ScrollChildSwipeRefreshLayout(Context context, AttributeSet attrs) {
+    super(context, attrs);
+}
+
+@Override
+public boolean canChildScrollUp() {
+    if (mScrollUpChild != null) {
+         return mScrollUpChild.canScrollVertically(-1);
+</code></pre><p>//            return ViewCompat.canScrollVertically(mScrollUpChild, -1);<br>        }<br>        return super.canChildScrollUp();<br>    }</p>
+<pre><code>public void setScrollUpChild(View view) {
+    mScrollUpChild = view;
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- ScrollChildSwipeRefreshLayout刷新时加载方法`android:onRefresh=&quot;@&#123;viewmodel&#125;&quot;`，自定义setter</span><br></pre></td></tr></table></figure></p>
+<p>public class SwipeRefreshLayoutDataBinding {</p>
+<pre><code>/**
+ * Reloads the data when the pull-to-refresh is triggered.
+ * &lt;p&gt;
+ * Creates the {@code android:onRefresh} for a {@link SwipeRefreshLayout}.
+ */
+@BindingAdapter(&quot;android:onRefresh&quot;)
+public static void setSwipeRefreshLayoutOnRefreshListener(ScrollChildSwipeRefreshLayout view,
+        final TasksViewModel viewModel) {
+    view.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            viewModel.loadTasks(true);
+        }
+    });
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- 替换ListView的`app:items=&quot;@&#123;viewmodel.items&#125;&quot;`</span><br></pre></td></tr></table></figure></p>
+<p>public class TasksListBindings {</p>
+<pre><code>@SuppressWarnings(&quot;unchecked&quot;)
+@BindingAdapter(&quot;app:items&quot;)
+public static void setItems(ListView listView, List&lt;Task&gt; items) {
+    TasksFragment.TasksAdapter adapter = (TasksFragment.TasksAdapter) listView.getAdapter();
+    if (adapter != null)
+    {
+        adapter.replaceData(items);
+    }
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- TasksAapter，TasksItemBinding绑定ViewModel,ListView优化策略达到重复利用Binding，在item的snackbarText发生改变时，改变TasksViewModel的snackbarText,然后显示SnackBar的提示信息</span><br></pre></td></tr></table></figure></p>
+<p>public static class TasksAdapter extends BaseAdapter {</p>
+<pre><code>    @Nullable private TaskItemNavigator mTaskItemNavigator;
+
+    private final TasksViewModel mTasksViewModel;
+
+    private List&lt;Task&gt; mTasks;
+
+    private TasksRepository mTasksRepository;
+
+    public TasksAdapter(List&lt;Task&gt; tasks, TasksActivity taskItemNavigator,
+                        TasksRepository tasksRepository,
+                        TasksViewModel tasksViewModel) {
+        mTaskItemNavigator = taskItemNavigator;
+        mTasksRepository = tasksRepository;
+        mTasksViewModel = tasksViewModel;
+        setList(tasks);
+
+    }
+
+    public void onDestroy() {
+        mTaskItemNavigator = null;
+    }
+
+    public void replaceData(List&lt;Task&gt; tasks) {
+        setList(tasks);
+    }
+
+    @Override
+    public int getCount() {
+        return mTasks != null ? mTasks.size() : 0;
+    }
+
+    @Override
+    public Task getItem(int i) {
+        return mTasks.get(i);
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return i;
+    }
+
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        Task task = getItem(i);
+        TaskItemBinding binding;
+        if (view == null) {
+            // Inflate
+            LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
+
+            // Create the binding
+            binding = TaskItemBinding.inflate(inflater, viewGroup, false);
+        } else {
+            // Recycling view
+            binding = DataBindingUtil.getBinding(view);
+        }
+
+        final TaskItemViewModel viewmodel = new TaskItemViewModel(
+                viewGroup.getContext().getApplicationContext(),
+                mTasksRepository
+        );
+
+        viewmodel.setNavigator(mTaskItemNavigator);
+
+        binding.setViewmodel(viewmodel);
+        // To save on PropertyChangedCallbacks, wire the item&apos;s snackbar text observable to the
+        // fragment&apos;s.
+        viewmodel.snackbarText.addOnPropertyChangedCallback(
+                new Observable.OnPropertyChangedCallback() {
+            @Override
+            public void onPropertyChanged(Observable observable, int i) {
+                mTasksViewModel.snackbarText.set(viewmodel.getSnackbarText());
+            }
+        });
+        viewmodel.setTask(task);
+
+        return binding.getRoot();
+    }
+
+
+    private void setList(List&lt;Task&gt; tasks) {
+        mTasks = tasks;
+        notifyDataSetChanged();
+    }
+}
+</code></pre><p><code>`</code></p>
+
       
     </div>
     
@@ -720,7 +1087,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Todo-mvvm-databinding"><span class="nav-number">1.</span> <span class="nav-text">Todo-mvvm-databinding</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Todo-mvvm-databinding"><span class="nav-number">1.</span> <span class="nav-text">Todo-mvvm-databinding</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#代码分析"><span class="nav-number">2.</span> <span class="nav-text">代码分析</span></a></li></ol></div>
             
 
           </div>

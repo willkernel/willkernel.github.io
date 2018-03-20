@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://willkernel.github.io/2018/03/09/Android-Notes-MVVM/</loc>
+    
+    <lastmod>2018-03-20T04:47:34.324Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://willkernel.github.io/2018/03/16/Android-Notes-Data-Binding/</loc>
     
-    <lastmod>2018-03-19T09:05:37.505Z</lastmod>
+    <lastmod>2018-03-20T01:52:56.836Z</lastmod>
     
   </url>
   
@@ -19,13 +26,6 @@
     <loc>http://willkernel.github.io/2018/03/13/Android-Notes-Dagger/</loc>
     
     <lastmod>2018-03-16T05:33:05.626Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://willkernel.github.io/2018/03/09/Android-Notes-MVVM/</loc>
-    
-    <lastmod>2018-03-14T15:25:00.156Z</lastmod>
     
   </url>
   
