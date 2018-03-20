@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/16/Android-Notes-Data-Binding/">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/20/Java/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="willkernel">
@@ -324,7 +324,198 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/16/Android-Notes-Data-Binding/" itemprop="url">Android Notes(Data Binding)</a></h1>
+                <a class="post-title-link" href="/2018/03/20/Java/" itemprop="url">RxJava2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-20T15:14:00+08:00">
+                2018-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/20/Java/" class="leancloud_visitors" data-flag-title="RxJava2">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="RxJava2"><a href="#RxJava2" class="headerlink" title="RxJava2"></a>RxJava2</h5><p>RxJava是Java VM响应式编程扩展的实现，扩展了观察者模式，通过操作符对数据事件流操作，来编写异步和基于事件的程序，从而不用关心同步，线程安全并发等问题</p>
+<ul>
+<li>特点<ul>
+<li>依赖单个项目：<a href="https://github.com/reactive-streams/reactive-streams-jvm" target="_blank" rel="noopener">Reactive-Streams</a></li>
+<li>支持Java 6+和Android2.3+</li>
+<li>相对于1.x,性能提升</li>
+<li>支持Java 8 lambda API</li>
+<li>不需要在意线程并发来源</li>
+<li>支持同步异步执行</li>
+</ul>
+</li>
+<li><p>依赖四个接口,在<code>org.reactivestreams</code>包中</p>
+<ul>
+<li><p>Publisher</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface Publisher&lt;T&gt; &#123;</span><br><span class="line">     public void subscribe(Subscriber&lt;? super T&gt; s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Subscriber 在调用 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> public interface Subscriber&lt;T&gt; &#123;</span><br><span class="line">    public void onSubscribe(Subscription s);</span><br><span class="line">    public void onNext(T t);</span><br><span class="line">    public void onError(Throwable t);</span><br><span class="line">    public void onComplete();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Subscription</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> public interface Subscription &#123;</span><br><span class="line">    public void request(long n);</span><br><span class="line">    public void cancel();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Processor</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> public interface Processor&lt;T, R&gt; extends Subscriber&lt;T&gt;, Publisher&lt;R&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>app/build.gradle</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">implementation &apos;io.reactivex.rxjava2:rxjava:2.1.9&apos;</span><br><span class="line">implementation &apos;io.reactivex.rxjava2:rxandroid:2.0.2&apos;</span><br><span class="line"></span><br><span class="line">//retrofit</span><br><span class="line">implementation &apos;com.squareup.retrofit2:retrofit:2.3.0&apos;</span><br><span class="line">//Gson converter</span><br><span class="line">implementation &apos;com.squareup.retrofit2:converter-gson:2.3.0&apos;</span><br><span class="line">//RxJava2 Adapter</span><br><span class="line">implementation &apos;com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0&apos;</span><br><span class="line">//okhttp</span><br><span class="line">implementation &apos;com.squareup.okhttp3:okhttp:3.8.1&apos;</span><br><span class="line">implementation &apos;com.squareup.okhttp3:logging-interceptor:3.6.0&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>事件流向<br>RxJava中的上下游对应被观察者Observable(发布事件)和观察者Observer(接收事件并处理),建立连接<code>observable.subscribe(observer);</code>后才开始发送事件<br>普通方法使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">private void test1() &#123;</span><br><span class="line">        Observable&lt;Integer&gt; observable = Observable.create(emitter -&gt; &#123;</span><br><span class="line">            emitter.onNext(1);</span><br><span class="line">            emitter.onNext(2);</span><br><span class="line">            emitter.onNext(3);</span><br><span class="line">            emitter.onComplete();</span><br><span class="line">        &#125;);</span><br><span class="line">        Observer&lt;Integer&gt; observer = new Observer&lt;Integer&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onSubscribe(Disposable d) &#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onNext(Integer value) &#123;</span><br><span class="line">                Log.d(TAG, &quot;&quot; + value);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onError(Throwable e) &#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onComplete() &#123;</span><br><span class="line">                Log.d(TAG, &quot;complete&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        observable.subscribe(observer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">03-20 07:04:33.424 2357-2357 D/MainActivity: 1</span><br><span class="line">03-20 07:04:33.424 2357-2357 D/MainActivity: 2</span><br><span class="line">03-20 07:04:33.424 2357-2357 D/MainActivity: 3</span><br><span class="line">03-20 07:04:33.424 2357-2357 D/MainActivity: complete</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Lambda 链式调用，后面的例子都用这种调用方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Observable.create(emitter -&gt; &#123;</span><br><span class="line">            emitter.onNext(1);</span><br><span class="line">            emitter.onNext(&quot;2&quot;);</span><br><span class="line">            emitter.onNext(3);</span><br><span class="line">        &#125;).subscribe(object -&gt; Log.d(TAG, String.valueOf(object)),</span><br><span class="line">                throwable -&gt; Log.e(TAG, throwable.getMessage()),</span><br><span class="line">                () -&gt; Log.d(TAG, &quot;onComplete&quot;));</span><br><span class="line"></span><br><span class="line">Observable.create((ObservableOnSubscribe&lt;Integer&gt;) emitter -&gt; &#123;</span><br><span class="line">            emitter.onNext(1);</span><br><span class="line">            emitter.onNext(2);</span><br><span class="line">            emitter.onNext(3);</span><br><span class="line">        &#125;).subscribe(integer -&gt; Log.e(TAG, String.valueOf(integer)),</span><br><span class="line">                throwable -&gt; Log.e(TAG, throwable.getMessage()),</span><br><span class="line">                () -&gt; Log.d(TAG, &quot;onComplete&quot;));</span><br><span class="line"></span><br><span class="line">上述两种打印结果相同</span><br><span class="line">03-20 07:17:59.873 2682-2682 D/MainActivity: 1</span><br><span class="line">03-20 07:17:59.873 2682-2682 D/MainActivity: 2</span><br><span class="line">03-20 07:17:59.873 2682-2682 D/MainActivity: 3</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参考<br><a href="https://www.jianshu.com/p/464fa025229e" target="_blank" rel="noopener">给初学者的RxJava2.0教程</a><br><a href="http://blog.csdn.net/johnny901114/article/details/51524470" target="_blank" rel="noopener">RxJava2操作符系列</a><br><a href="https://github.com/amitshekhariitbhu/RxJava2-Android-Samples" target="_blank" rel="noopener">RxJava2-Android-Samples</a><br><a href="http://www.10tiao.com/html/169/201709/2650823932/1.html" target="_blank" rel="noopener">RxJava学习</a></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/16/Data-Binding/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="willkernel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="willkernel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/16/Data-Binding/" itemprop="url">Data Binding</a></h1>
         
 
         <div class="post-meta">
@@ -376,7 +567,7 @@
 
           
           
-             <span id="/2018/03/16/Android-Notes-Data-Binding/" class="leancloud_visitors" data-flag-title="Android Notes(Data Binding)">
+             <span id="/2018/03/16/Data-Binding/" class="leancloud_visitors" data-flag-title="Data Binding">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -653,7 +844,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/13/Android-Notes-Dagger/">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/13/Dagger/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="willkernel">
@@ -672,7 +863,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/13/Android-Notes-Dagger/" itemprop="url">Android Notes(Dagger)</a></h1>
+                <a class="post-title-link" href="/2018/03/13/Dagger/" itemprop="url">Dagger</a></h1>
         
 
         <div class="post-meta">
@@ -724,7 +915,7 @@
 
           
           
-             <span id="/2018/03/13/Android-Notes-Dagger/" class="leancloud_visitors" data-flag-title="Android Notes(Dagger)">
+             <span id="/2018/03/13/Dagger/" class="leancloud_visitors" data-flag-title="Dagger">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1003,6 +1194,7 @@
 </li>
 </ul>
 <ul>
+<li>参考</li>
 <li><a href="https://github.com/willkernel/DaggerDemo" target="_blank" rel="noopener">github-dagger-demo</a></li>
 <li><a href="http://blog.csdn.net/io_field/article/details/70947365" target="_blank" rel="noopener">Dagger 2从浅到深</a></li>
 <li><a href="https://google.github.io/dagger/multibindings" target="_blank" rel="noopener">Dagger2</a></li>
@@ -1056,7 +1248,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/10/Android-Notes-ConstraintLayout/">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/10/ConstraintLayout/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="willkernel">
@@ -1075,7 +1267,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/10/Android-Notes-ConstraintLayout/" itemprop="url">Android Notes(ConstraintLayout)</a></h1>
+                <a class="post-title-link" href="/2018/03/10/ConstraintLayout/" itemprop="url">ConstraintLayout</a></h1>
         
 
         <div class="post-meta">
@@ -1127,7 +1319,7 @@
 
           
           
-             <span id="/2018/03/10/Android-Notes-ConstraintLayout/" class="leancloud_visitors" data-flag-title="Android Notes(ConstraintLayout)">
+             <span id="/2018/03/10/ConstraintLayout/" class="leancloud_visitors" data-flag-title="ConstraintLayout">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1169,7 +1361,7 @@
 </ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/03/10/Android-Notes-ConstraintLayout/#more" rel="contents">
+            <a class="btn" href="/2018/03/10/ConstraintLayout/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1220,7 +1412,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Android-Notes-CoordinatorLayout/">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/CoordinatorLayout/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="willkernel">
@@ -1239,7 +1431,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/09/Android-Notes-CoordinatorLayout/" itemprop="url">Android Notes(CoordinatorLayout)</a></h1>
+                <a class="post-title-link" href="/2018/03/09/CoordinatorLayout/" itemprop="url">CoordinatorLayout</a></h1>
         
 
         <div class="post-meta">
@@ -1291,7 +1483,7 @@
 
           
           
-             <span id="/2018/03/09/Android-Notes-CoordinatorLayout/" class="leancloud_visitors" data-flag-title="Android Notes(CoordinatorLayout)">
+             <span id="/2018/03/09/CoordinatorLayout/" class="leancloud_visitors" data-flag-title="CoordinatorLayout">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1428,7 +1620,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Android-Notes-NDK/">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Git/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="willkernel">
@@ -1447,159 +1639,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/09/Android-Notes-NDK/" itemprop="url">Android Notes(NDK)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:04:00+08:00">
-                2018-03-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/03/09/Android-Notes-NDK/" class="leancloud_visitors" data-flag-title="Android Notes(NDK)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Android-Notes-Git/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="willkernel">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="willkernel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/09/Android-Notes-Git/" itemprop="url">Android Notes(Git)</a></h1>
+                <a class="post-title-link" href="/2018/03/09/Git/" itemprop="url">Git</a></h1>
         
 
         <div class="post-meta">
@@ -1662,7 +1702,7 @@
 
           
           
-             <span id="/2018/03/09/Android-Notes-Git/" class="leancloud_visitors" data-flag-title="Android Notes(Git)">
+             <span id="/2018/03/09/Git/" class="leancloud_visitors" data-flag-title="Git">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1743,7 +1783,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Android-Notes-Kotlin/">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/NDK/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="willkernel">
@@ -1762,7 +1802,159 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/09/Android-Notes-Kotlin/" itemprop="url">Android Notes(Kotlin)</a></h1>
+                <a class="post-title-link" href="/2018/03/09/NDK/" itemprop="url">NDK</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:04:00+08:00">
+                2018-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/09/NDK/" class="leancloud_visitors" data-flag-title="NDK">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Kotlin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="willkernel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="willkernel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/09/Kotlin/" itemprop="url">Kotlin</a></h1>
         
 
         <div class="post-meta">
@@ -1792,7 +1984,7 @@
 
           
           
-             <span id="/2018/03/09/Android-Notes-Kotlin/" class="leancloud_visitors" data-flag-title="Android Notes(Kotlin)">
+             <span id="/2018/03/09/Kotlin/" class="leancloud_visitors" data-flag-title="Kotlin">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1873,7 +2065,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Android-Notes-MVP/">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/MVP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="willkernel">
@@ -1892,7 +2084,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/09/Android-Notes-MVP/" itemprop="url">Android Notes(MVP)</a></h1>
+                <a class="post-title-link" href="/2018/03/09/MVP/" itemprop="url">MVP</a></h1>
         
 
         <div class="post-meta">
@@ -1922,7 +2114,7 @@
 
           
           
-             <span id="/2018/03/09/Android-Notes-MVP/" class="leancloud_visitors" data-flag-title="Android Notes(MVP)">
+             <span id="/2018/03/09/MVP/" class="leancloud_visitors" data-flag-title="MVP">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2110,7 +2302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Android-Notes-MVVM/">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/MVVM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="willkernel">
@@ -2129,7 +2321,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/09/Android-Notes-MVVM/" itemprop="url">Android Notes(MVVM)</a></h1>
+                <a class="post-title-link" href="/2018/03/09/MVVM/" itemprop="url">MVVM</a></h1>
         
 
         <div class="post-meta">
@@ -2181,7 +2373,7 @@
 
           
           
-             <span id="/2018/03/09/Android-Notes-MVVM/" class="leancloud_visitors" data-flag-title="Android Notes(MVVM)">
+             <span id="/2018/03/09/MVVM/" class="leancloud_visitors" data-flag-title="MVVM">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -4553,289 +4745,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/02/24/sh-简单程序/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="willkernel">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="willkernel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/24/sh-简单程序/" itemprop="url">sh 简单程序</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-24T17:09:00+08:00">
-                2018-02-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/02/24/sh-简单程序/" class="leancloud_visitors" data-flag-title="sh 简单程序">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://github.com/willkernel/sh-demo" target="_blank" rel="noopener">sh-demo</a></p>
-<p>直接执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">date</span><br><span class="line"></span><br><span class="line">who</span><br></pre></td></tr></table></figure></p>
-<p>创建变量，如果是字符串的话，有空格的一定要用双引号，否则会被解析成命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NDK=10</span><br><span class="line"></span><br><span class="line">text=&quot;i love you&quot;</span><br></pre></td></tr></table></figure></p>
-<p>命令的执行结果作为变量的值，例如以当前时间作为文件名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">text1=date</span><br><span class="line"></span><br><span class="line">text2=$(who)</span><br></pre></td></tr></table></figure></p>
-<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">echo $NDK</span><br><span class="line"></span><br><span class="line">echo $text</span><br><span class="line"></span><br><span class="line">echo $text1</span><br><span class="line"></span><br><span class="line">echo $text2</span><br></pre></td></tr></table></figure></p>
-<p>字符串拼接，同理：有空格需要用双引号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;$text very much&quot;</span><br></pre></td></tr></table></figure></p>
-<p>如果需要输出$的话，需要使用转义字符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;$&quot;</span><br></pre></td></tr></table></figure></p>
-<p>运行两种方式</p>
-<p>1  ./bash.sh</p>
-<p>2  sh bash.sh</p>
-<p>如果sh command not found 或者 sh cannot open file</p>
-<p>程序中的/r/n 换行符限制</p>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/sh1.png">
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/sh2.png">
-<p>命令退出的状态</p>
-<p>命令执行退出的状态：</p>
-<ol>
-<li>0 成功</li>
-<li>127 没有找到命令</li>
-<li>1 未知错误</li>
-<li>126 命令不可执行</li>
-</ol>
-<p>查看与退出状态指定：</p>
-<p>查看上一次命令的执行状态echo $?在shell脚本中，自己指定退出的状态exit 状态码</p>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/sh3.png">
-<p>grep命令是查找命令，例如查找test文本在test.txt中所在的行数：grep -n test test.txt</p>
-<p>可以结合test命令，如果条件成立，test命令以状态为0退出，if条件成立。</p>
-<p>test命令简单形式，用中括号，注意空格要加上</p>
-<p> a -gt b 要加上空格,程序才能运行</p>
-<p>比较大小：</p>
-<pre><code>#!/bin/bash
-
-a=10b=5
-
-test命令简单形式
-
-if [ a -gt b ]
-
-then    
-
-    echo &quot;a  greater than  b&quot;
-
-else    
-
-    echo &quot;a  smaller  than  b&quot;
-
-fi
-</code></pre><p>test数值比较：</p>
-<ol>
-<li>-gt 大于</li>
-<li>-eq 等于</li>
-<li>-le 小于</li>
-<li>-ne 不等于</li>
-</ol>
-<p>判空：</p>
-<p>#!/bin/bash</p>
-<p>str1=””if [ str1 = “” ]                                                           </p>
-<p>then    </p>
-<pre><code>echo &quot;有内容&quot;else    echo &quot;没内容&quot;fi
-</code></pre><p>test字符串比较：</p>
-<ol>
-<li>str1 == str2</li>
-<li>str1 != str2</li>
-<li>str1 &lt; str2</li>
-<li>-n str1 长度是否非0</li>
-<li>-z str1 长度是否为0</li>
-</ol>
-<p>检查目录是否存在：</p>
-<pre><code>#!/bin/bash
-
-mydir=/usr/jason
-
--d检查目录是否存在
-
-if [ -d $mydir ]
-
-then    
-
-    echo &quot;$mydir exist&quot;    
-
-    cd $mydir    
-
-    ls
-
-else    echo &quot;mydir not exist&quot;
-
-fi
-</code></pre><p>test文件比较：</p>
-<ol>
-<li>-d 检查是否存在，并且是一个目录</li>
-<li>-e 检查file是否存在</li>
-<li>-f 检查是否存在，并且是一个文件</li>
-<li>-r 检查是否存在，并且可读，余此类推：-w、-x</li>
-<li>file1 -nt file2 file1比file2新</li>
-<li>file1 -ot file2 file1比file2旧</li>
-</ol>
-<p>case语句</p>
-<p>基本格式是：</p>
-<p>case命令case 变量 inpattern1) 命令;;pattern2) 命令;;*) 默认命令;;esac</p>
-<p>例子：</p>
-<pre><code>#!/bin/bash
-
-testuser=rose
-
-case $testuser in
-
-rose)    echo &quot;hi,$testuser&quot;;;
-
-ricky)    echo &quot;hello, ricky&quot;;;
-
-*)    echo &quot;defaults&quot;;;
-
-esac
-</code></pre><img src="http://p4n1d4izv.bkt.clouddn.com/images/sh4.png">
-<p>While循环</p>
-<p>基本格式：</p>
-<p>while test command（或者[]）do    命令done</p>
-<p>例子：</p>
-<pre><code>#!/bin/bash
-
-a=10
-
-while [ $a -gt 0 ]
-
-do    
-
-    echo &quot;num:$a&quot;    
-
-    赋值不用使用$符号    
-
-    a=[ a - 1 ]done
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -4892,7 +4801,7 @@ do
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -4914,7 +4823,7 @@ do
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

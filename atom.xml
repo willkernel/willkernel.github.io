@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://willkernel.github.io/"/>
-  <updated>2018-03-20T01:52:56.836Z</updated>
+  <updated>2018-03-20T11:28:06.239Z</updated>
   <id>http://willkernel.github.io/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Android Notes(Data Binding)</title>
-    <link href="http://willkernel.github.io/2018/03/16/Android-Notes-Data-Binding/"/>
-    <id>http://willkernel.github.io/2018/03/16/Android-Notes-Data-Binding/</id>
+    <title>RxJava2</title>
+    <link href="http://willkernel.github.io/2018/03/20/Java/"/>
+    <id>http://willkernel.github.io/2018/03/20/Java/</id>
+    <published>2018-03-20T07:14:00.000Z</published>
+    <updated>2018-03-20T11:28:06.239Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h5 id=&quot;RxJava2&quot;&gt;&lt;a href=&quot;#RxJava2&quot; class=&quot;headerlink&quot; title=&quot;RxJava2&quot;&gt;&lt;/a&gt;RxJava2&lt;/h5&gt;&lt;p&gt;RxJava是Java
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+      <category term="RxJava2" scheme="http://willkernel.github.io/tags/RxJava2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Data Binding</title>
+    <link href="http://willkernel.github.io/2018/03/16/Data-Binding/"/>
+    <id>http://willkernel.github.io/2018/03/16/Data-Binding/</id>
     <published>2018-03-16T05:38:00.000Z</published>
-    <updated>2018-03-20T01:52:56.836Z</updated>
+    <updated>2018-03-20T07:11:43.441Z</updated>
     
     <summary type="html">
     
@@ -41,11 +67,11 @@
   </entry>
   
   <entry>
-    <title>Android Notes(Dagger)</title>
-    <link href="http://willkernel.github.io/2018/03/13/Android-Notes-Dagger/"/>
-    <id>http://willkernel.github.io/2018/03/13/Android-Notes-Dagger/</id>
+    <title>Dagger</title>
+    <link href="http://willkernel.github.io/2018/03/13/Dagger/"/>
+    <id>http://willkernel.github.io/2018/03/13/Dagger/</id>
     <published>2018-03-12T16:12:00.000Z</published>
-    <updated>2018-03-16T05:33:05.626Z</updated>
+    <updated>2018-03-20T11:30:05.399Z</updated>
     
     <summary type="html">
     
@@ -65,11 +91,11 @@
   </entry>
   
   <entry>
-    <title>Android Notes(ConstraintLayout)</title>
-    <link href="http://willkernel.github.io/2018/03/10/Android-Notes-ConstraintLayout/"/>
-    <id>http://willkernel.github.io/2018/03/10/Android-Notes-ConstraintLayout/</id>
+    <title>ConstraintLayout</title>
+    <link href="http://willkernel.github.io/2018/03/10/ConstraintLayout/"/>
+    <id>http://willkernel.github.io/2018/03/10/ConstraintLayout/</id>
     <published>2018-03-09T18:16:00.000Z</published>
-    <updated>2018-03-11T16:53:28.074Z</updated>
+    <updated>2018-03-20T07:12:15.997Z</updated>
     
     <summary type="html">
     
@@ -90,11 +116,11 @@
   </entry>
   
   <entry>
-    <title>Android Notes(CoordinatorLayout)</title>
-    <link href="http://willkernel.github.io/2018/03/09/Android-Notes-CoordinatorLayout/"/>
-    <id>http://willkernel.github.io/2018/03/09/Android-Notes-CoordinatorLayout/</id>
+    <title>CoordinatorLayout</title>
+    <link href="http://willkernel.github.io/2018/03/09/CoordinatorLayout/"/>
+    <id>http://willkernel.github.io/2018/03/09/CoordinatorLayout/</id>
     <published>2018-03-09T02:33:00.000Z</published>
-    <updated>2018-03-16T05:35:41.529Z</updated>
+    <updated>2018-03-20T07:12:27.960Z</updated>
     
     <summary type="html">
     
@@ -114,29 +140,11 @@
   </entry>
   
   <entry>
-    <title>Android Notes(NDK)</title>
-    <link href="http://willkernel.github.io/2018/03/09/Android-Notes-NDK/"/>
-    <id>http://willkernel.github.io/2018/03/09/Android-Notes-NDK/</id>
+    <title>Git</title>
+    <link href="http://willkernel.github.io/2018/03/09/Git/"/>
+    <id>http://willkernel.github.io/2018/03/09/Git/</id>
     <published>2018-03-08T17:04:00.000Z</published>
-    <updated>2018-03-08T17:10:02.378Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-    
-      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android Notes(Git)</title>
-    <link href="http://willkernel.github.io/2018/03/09/Android-Notes-Git/"/>
-    <id>http://willkernel.github.io/2018/03/09/Android-Notes-Git/</id>
-    <published>2018-03-08T17:04:00.000Z</published>
-    <updated>2018-03-08T17:09:40.495Z</updated>
+    <updated>2018-03-20T07:12:53.663Z</updated>
     
     <summary type="html">
     
@@ -152,11 +160,29 @@
   </entry>
   
   <entry>
-    <title>Android Notes(Kotlin)</title>
-    <link href="http://willkernel.github.io/2018/03/09/Android-Notes-Kotlin/"/>
-    <id>http://willkernel.github.io/2018/03/09/Android-Notes-Kotlin/</id>
+    <title>NDK</title>
+    <link href="http://willkernel.github.io/2018/03/09/NDK/"/>
+    <id>http://willkernel.github.io/2018/03/09/NDK/</id>
+    <published>2018-03-08T17:04:00.000Z</published>
+    <updated>2018-03-20T07:12:42.178Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kotlin</title>
+    <link href="http://willkernel.github.io/2018/03/09/Kotlin/"/>
+    <id>http://willkernel.github.io/2018/03/09/Kotlin/</id>
     <published>2018-03-08T17:03:49.000Z</published>
-    <updated>2018-03-08T17:03:49.446Z</updated>
+    <updated>2018-03-20T07:13:04.231Z</updated>
     
     <summary type="html">
     
@@ -166,11 +192,11 @@
   </entry>
   
   <entry>
-    <title>Android Notes(MVP)</title>
-    <link href="http://willkernel.github.io/2018/03/09/Android-Notes-MVP/"/>
-    <id>http://willkernel.github.io/2018/03/09/Android-Notes-MVP/</id>
+    <title>MVP</title>
+    <link href="http://willkernel.github.io/2018/03/09/MVP/"/>
+    <id>http://willkernel.github.io/2018/03/09/MVP/</id>
     <published>2018-03-08T17:03:12.000Z</published>
-    <updated>2018-03-14T14:57:59.322Z</updated>
+    <updated>2018-03-20T07:13:16.654Z</updated>
     
     <summary type="html">
     
@@ -188,11 +214,11 @@
   </entry>
   
   <entry>
-    <title>Android Notes(MVVM)</title>
-    <link href="http://willkernel.github.io/2018/03/09/Android-Notes-MVVM/"/>
-    <id>http://willkernel.github.io/2018/03/09/Android-Notes-MVVM/</id>
+    <title>MVVM</title>
+    <link href="http://willkernel.github.io/2018/03/09/MVVM/"/>
+    <id>http://willkernel.github.io/2018/03/09/MVVM/</id>
     <published>2018-03-08T17:02:00.000Z</published>
-    <updated>2018-03-20T05:00:44.963Z</updated>
+    <updated>2018-03-20T07:13:28.243Z</updated>
     
     <summary type="html">
     
@@ -216,7 +242,7 @@
     <link href="http://willkernel.github.io/2018/03/08/Android-Notes-Performance/"/>
     <id>http://willkernel.github.io/2018/03/08/Android-Notes-Performance/</id>
     <published>2018-03-08T08:26:00.000Z</published>
-    <updated>2018-03-14T13:52:12.576Z</updated>
+    <updated>2018-03-20T07:13:47.719Z</updated>
     
     <summary type="html">
     
@@ -454,31 +480,6 @@
     </summary>
     
       <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>sh 简单程序</title>
-    <link href="http://willkernel.github.io/2018/02/24/sh-%E7%AE%80%E5%8D%95%E7%A8%8B%E5%BA%8F/"/>
-    <id>http://willkernel.github.io/2018/02/24/sh-简单程序/</id>
-    <published>2018-02-24T09:09:00.000Z</published>
-    <updated>2018-02-24T09:16:20.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;a href=&quot;https://github.com/willkernel/sh-demo&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;sh-demo&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;直接执行命令&lt;br&gt;&lt;figure class=&quot;highlight
-        
-      
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://willkernel.github.io/categories/Linux/"/>
     
     
   </entry>

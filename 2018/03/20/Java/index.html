@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hello, willkernel" />
+  <meta name="keywords" content="RxJava2," />
 
 
 
@@ -88,17 +88,18 @@
 
 
 
-<meta name="description" content="Lifelong learning">
+<meta name="description" content="RxJava2RxJava是Java VM响应式编程扩展的实现，扩展了观察者模式，通过操作符对数据事件流操作，来编写异步和基于事件的程序，从而不用关心同步，线程安全并发等问题  特点 依赖单个项目：Reactive-Streams 支持Java 6+和Android2.3+ 相对于1.x,性能提升 支持Java 8 lambda API 不需要在意线程并发来源 支持同步异步执行   依赖四个接口,">
+<meta name="keywords" content="RxJava2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android Notes(Kotlin)">
-<meta property="og:url" content="http://willkernel.github.io/2018/03/09/Android-Notes-Kotlin/index.html">
+<meta property="og:title" content="RxJava2">
+<meta property="og:url" content="http://willkernel.github.io/2018/03/20/Java/index.html">
 <meta property="og:site_name" content="willkernel">
-<meta property="og:description" content="Lifelong learning">
+<meta property="og:description" content="RxJava2RxJava是Java VM响应式编程扩展的实现，扩展了观察者模式，通过操作符对数据事件流操作，来编写异步和基于事件的程序，从而不用关心同步，线程安全并发等问题  特点 依赖单个项目：Reactive-Streams 支持Java 6+和Android2.3+ 相对于1.x,性能提升 支持Java 8 lambda API 不需要在意线程并发来源 支持同步异步执行   依赖四个接口,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-08T17:03:49.446Z">
+<meta property="og:updated_time" content="2018-03-20T11:28:06.239Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android Notes(Kotlin)">
-<meta name="twitter:description" content="Lifelong learning">
+<meta name="twitter:title" content="RxJava2">
+<meta name="twitter:description" content="RxJava2RxJava是Java VM响应式编程扩展的实现，扩展了观察者模式，通过操作符对数据事件流操作，来编写异步和基于事件的程序，从而不用关心同步，线程安全并发等问题  特点 依赖单个项目：Reactive-Streams 支持Java 6+和Android2.3+ 相对于1.x,性能提升 支持Java 8 lambda API 不需要在意线程并发来源 支持同步异步执行   依赖四个接口,">
 
 
 
@@ -128,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://willkernel.github.io/2018/03/09/Android-Notes-Kotlin/"/>
+  <link rel="canonical" href="http://willkernel.github.io/2018/03/20/Java/"/>
 
 
 
 
 
-  <title>Android Notes(Kotlin) | willkernel</title>
+  <title>RxJava2 | willkernel</title>
   
 
 
@@ -305,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Android-Notes-Kotlin/">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/20/Java/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="willkernel">
@@ -322,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Android Notes(Kotlin)</h1>
+          <h1 class="post-title" itemprop="name headline">RxJava2</h1>
         
 
         <div class="post-meta">
@@ -334,8 +335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:03:49+08:00">
-                2018-03-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-20T15:14:00+08:00">
+                2018-03-20
               </time>
             
 
@@ -345,6 +346,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -352,7 +375,7 @@
 
           
           
-             <span id="/2018/03/09/Android-Notes-Kotlin/" class="leancloud_visitors" data-flag-title="Android Notes(Kotlin)">
+             <span id="/2018/03/20/Java/" class="leancloud_visitors" data-flag-title="RxJava2">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -383,7 +406,46 @@
       
 
       
-        
+        <h5 id="RxJava2"><a href="#RxJava2" class="headerlink" title="RxJava2"></a>RxJava2</h5><p>RxJava是Java VM响应式编程扩展的实现，扩展了观察者模式，通过操作符对数据事件流操作，来编写异步和基于事件的程序，从而不用关心同步，线程安全并发等问题</p>
+<ul>
+<li>特点<ul>
+<li>依赖单个项目：<a href="https://github.com/reactive-streams/reactive-streams-jvm" target="_blank" rel="noopener">Reactive-Streams</a></li>
+<li>支持Java 6+和Android2.3+</li>
+<li>相对于1.x,性能提升</li>
+<li>支持Java 8 lambda API</li>
+<li>不需要在意线程并发来源</li>
+<li>支持同步异步执行</li>
+</ul>
+</li>
+<li><p>依赖四个接口,在<code>org.reactivestreams</code>包中</p>
+<ul>
+<li><p>Publisher</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface Publisher&lt;T&gt; &#123;</span><br><span class="line">     public void subscribe(Subscriber&lt;? super T&gt; s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Subscriber 在调用 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> public interface Subscriber&lt;T&gt; &#123;</span><br><span class="line">    public void onSubscribe(Subscription s);</span><br><span class="line">    public void onNext(T t);</span><br><span class="line">    public void onError(Throwable t);</span><br><span class="line">    public void onComplete();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Subscription</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> public interface Subscription &#123;</span><br><span class="line">    public void request(long n);</span><br><span class="line">    public void cancel();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Processor</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> public interface Processor&lt;T, R&gt; extends Subscriber&lt;T&gt;, Publisher&lt;R&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>app/build.gradle</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">implementation &apos;io.reactivex.rxjava2:rxjava:2.1.9&apos;</span><br><span class="line">implementation &apos;io.reactivex.rxjava2:rxandroid:2.0.2&apos;</span><br><span class="line"></span><br><span class="line">//retrofit</span><br><span class="line">implementation &apos;com.squareup.retrofit2:retrofit:2.3.0&apos;</span><br><span class="line">//Gson converter</span><br><span class="line">implementation &apos;com.squareup.retrofit2:converter-gson:2.3.0&apos;</span><br><span class="line">//RxJava2 Adapter</span><br><span class="line">implementation &apos;com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0&apos;</span><br><span class="line">//okhttp</span><br><span class="line">implementation &apos;com.squareup.okhttp3:okhttp:3.8.1&apos;</span><br><span class="line">implementation &apos;com.squareup.okhttp3:logging-interceptor:3.6.0&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>事件流向<br>RxJava中的上下游对应被观察者Observable(发布事件)和观察者Observer(接收事件并处理),建立连接<code>observable.subscribe(observer);</code>后才开始发送事件<br>普通方法使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">private void test1() &#123;</span><br><span class="line">        Observable&lt;Integer&gt; observable = Observable.create(emitter -&gt; &#123;</span><br><span class="line">            emitter.onNext(1);</span><br><span class="line">            emitter.onNext(2);</span><br><span class="line">            emitter.onNext(3);</span><br><span class="line">            emitter.onComplete();</span><br><span class="line">        &#125;);</span><br><span class="line">        Observer&lt;Integer&gt; observer = new Observer&lt;Integer&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onSubscribe(Disposable d) &#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onNext(Integer value) &#123;</span><br><span class="line">                Log.d(TAG, &quot;&quot; + value);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onError(Throwable e) &#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onComplete() &#123;</span><br><span class="line">                Log.d(TAG, &quot;complete&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        observable.subscribe(observer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">03-20 07:04:33.424 2357-2357 D/MainActivity: 1</span><br><span class="line">03-20 07:04:33.424 2357-2357 D/MainActivity: 2</span><br><span class="line">03-20 07:04:33.424 2357-2357 D/MainActivity: 3</span><br><span class="line">03-20 07:04:33.424 2357-2357 D/MainActivity: complete</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Lambda 链式调用，后面的例子都用这种调用方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Observable.create(emitter -&gt; &#123;</span><br><span class="line">            emitter.onNext(1);</span><br><span class="line">            emitter.onNext(&quot;2&quot;);</span><br><span class="line">            emitter.onNext(3);</span><br><span class="line">        &#125;).subscribe(object -&gt; Log.d(TAG, String.valueOf(object)),</span><br><span class="line">                throwable -&gt; Log.e(TAG, throwable.getMessage()),</span><br><span class="line">                () -&gt; Log.d(TAG, &quot;onComplete&quot;));</span><br><span class="line"></span><br><span class="line">Observable.create((ObservableOnSubscribe&lt;Integer&gt;) emitter -&gt; &#123;</span><br><span class="line">            emitter.onNext(1);</span><br><span class="line">            emitter.onNext(2);</span><br><span class="line">            emitter.onNext(3);</span><br><span class="line">        &#125;).subscribe(integer -&gt; Log.e(TAG, String.valueOf(integer)),</span><br><span class="line">                throwable -&gt; Log.e(TAG, throwable.getMessage()),</span><br><span class="line">                () -&gt; Log.d(TAG, &quot;onComplete&quot;));</span><br><span class="line"></span><br><span class="line">上述两种打印结果相同</span><br><span class="line">03-20 07:17:59.873 2682-2682 D/MainActivity: 1</span><br><span class="line">03-20 07:17:59.873 2682-2682 D/MainActivity: 2</span><br><span class="line">03-20 07:17:59.873 2682-2682 D/MainActivity: 3</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参考<br><a href="https://www.jianshu.com/p/464fa025229e" target="_blank" rel="noopener">给初学者的RxJava2.0教程</a><br><a href="http://blog.csdn.net/johnny901114/article/details/51524470" target="_blank" rel="noopener">RxJava2操作符系列</a><br><a href="https://github.com/amitshekhariitbhu/RxJava2-Android-Samples" target="_blank" rel="noopener">RxJava2-Android-Samples</a><br><a href="http://www.10tiao.com/html/169/201709/2650823932/1.html" target="_blank" rel="noopener">RxJava学习</a></p>
+</li>
+</ul>
+
       
     </div>
     
@@ -440,7 +502,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://willkernel.github.io/2018/03/09/Android-Notes-Kotlin/" title="Android Notes(Kotlin)">http://willkernel.github.io/2018/03/09/Android-Notes-Kotlin/</a>
+    <a href="http://willkernel.github.io/2018/03/20/Java/" title="RxJava2">http://willkernel.github.io/2018/03/20/Java/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -453,6 +515,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/RxJava2/" rel="tag"># RxJava2</a>
+          
+        </div>
+      
 
       
       
@@ -462,8 +530,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/09/Android-Notes-MVP/" rel="next" title="Android Notes(MVP)">
-                <i class="fa fa-chevron-left"></i> Android Notes(MVP)
+              <a href="/2018/03/16/Data-Binding/" rel="next" title="Data Binding">
+                <i class="fa fa-chevron-left"></i> Data Binding
               </a>
             
           </div>
@@ -471,10 +539,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/09/Android-Notes-Git/" rel="prev" title="Android Notes(Git)">
-                Android Notes(Git) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -533,8 +597,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -553,7 +626,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -575,7 +648,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -679,6 +752,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#RxJava2"><span class="nav-number">1.</span> <span class="nav-text">RxJava2</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
