@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/20/Java/">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/20/RxJava2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="willkernel">
@@ -324,7 +324,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/20/Java/" itemprop="url">RxJava2</a></h1>
+                <a class="post-title-link" href="/2018/03/20/RxJava2/" itemprop="url">RxJava2</a></h1>
         
 
         <div class="post-meta">
@@ -376,7 +376,7 @@
 
           
           
-             <span id="/2018/03/20/Java/" class="leancloud_visitors" data-flag-title="RxJava2">
+             <span id="/2018/03/20/RxJava2/" class="leancloud_visitors" data-flag-title="RxJava2">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -411,31 +411,6 @@
           
             <h5 id="RxJava2"><a href="#RxJava2" class="headerlink" title="RxJava2"></a>RxJava2</h5><p>RxJava是Java VM响应式编程扩展的实现，扩展了观察者模式，通过操作符对数据事件流操作，来编写异步和基于事件的程序，从而不用关心同步，线程安全并发等问题</p>
 <ul>
-<li>特点<ul>
-<li>依赖单个项目：<a href="https://github.com/reactive-streams/reactive-streams-jvm" target="_blank" rel="noopener">Reactive-Streams</a></li>
-<li>支持Java 6+和Android2.3+</li>
-<li>相对于1.x,性能提升</li>
-<li>支持Java 8 lambda API</li>
-<li>不需要在意线程并发来源</li>
-<li>支持同步异步执行</li>
-</ul>
-</li>
-<li><p>依赖四个接口,在<code>org.reactivestreams</code>包中</p>
-<ul>
-<li><p>Publisher</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface Publisher&lt;T&gt; &#123;</span><br><span class="line">     public void subscribe(Subscriber&lt;? super T&gt; s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Subscriber 在调用 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> public interface Subscriber&lt;T&gt; &#123;</span><br><span class="line">    public void onSubscribe(Subscription s);</span><br><span class="line">    public void onNext(T t);</span><br><span class="line">    public void onError(Throwable t);</span><br><span class="line">    public void onComplete();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Subscription</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> public interface Subscription &#123;</span><br><span class="line">    public void request(long n);</span><br><span class="line">    public void cancel();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Processor</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> public interface Processor&lt;T, R&gt; extends Subscriber&lt;T&gt;, Publisher&lt;R&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
 <li><p>app/build.gradle</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">implementation &apos;io.reactivex.rxjava2:rxjava:2.1.9&apos;</span><br><span class="line">implementation &apos;io.reactivex.rxjava2:rxandroid:2.0.2&apos;</span><br><span class="line"></span><br><span class="line">//retrofit</span><br><span class="line">implementation &apos;com.squareup.retrofit2:retrofit:2.3.0&apos;</span><br><span class="line">//Gson converter</span><br><span class="line">implementation &apos;com.squareup.retrofit2:converter-gson:2.3.0&apos;</span><br><span class="line">//RxJava2 Adapter</span><br><span class="line">implementation &apos;com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0&apos;</span><br><span class="line">//okhttp</span><br><span class="line">implementation &apos;com.squareup.okhttp3:okhttp:3.8.1&apos;</span><br><span class="line">implementation &apos;com.squareup.okhttp3:logging-interceptor:3.6.0&apos;</span><br></pre></td></tr></table></figure>
 </li>
@@ -472,7 +447,7 @@
 <li><p>map操作符，可以将上游发来的事件转换为任意的类型, 可以是一个Object, 也可以是一个集合</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Observable.create((ObservableOnSubscribe&lt;Integer&gt;) e -&gt; &#123;</span><br><span class="line">            e.onNext(1);</span><br><span class="line">            e.onNext(2);</span><br><span class="line">            e.onNext(3);</span><br><span class="line">            e.onComplete();</span><br><span class="line">        &#125;).map(integer -&gt; &quot;result &quot; + integer)</span><br><span class="line">                .subscribe(string -&gt; Log.e(TAG, &quot;map &quot; + string),</span><br><span class="line">                        throwable -&gt; Log.e(TAG, throwable.getMessage()),</span><br><span class="line">                        () -&gt; Log.e(TAG, &quot;onComplete&quot;));</span><br><span class="line">                        </span><br><span class="line">E/MainActivity: map result 1</span><br><span class="line">E/MainActivity: map result 2</span><br><span class="line">E/MainActivity: map result 3</span><br><span class="line">E/MainActivity: onComplete</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>FlatMap将一个发送事件的上游Observable变换为多个发送事件的Observables，然后将它们发送的事件合并成一个单独的Observable.flatMap并不保证事件的顺序，如果需要保证顺序则需要使用concatMap，下面例子flatmap更好为concatMap</p>
+<li><p>FlatMap将一个发送事件的上游Observable变换为多个发送事件的Observables，然后将它们发送的事件合并成一个单独的Observable.flatMap并不保证事件的顺序，如果需要保证顺序则需要使用concatMap，下面例子flatmap可以改为concatMap</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Observable.create((ObservableOnSubscribe&lt;Integer&gt;) emitter -&gt; &#123;</span><br><span class="line">            emitter.onNext(1);</span><br><span class="line">            emitter.onNext(2);</span><br><span class="line">            emitter.onNext(3);</span><br><span class="line">            emitter.onComplete();</span><br><span class="line">        &#125;).flatMap(integer -&gt; &#123;</span><br><span class="line">            List&lt;String&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">            for (int i = 0; i &lt; 3; i++) &#123;</span><br><span class="line">                list.add(&quot;I am value &quot; + integer);</span><br><span class="line">            &#125;</span><br><span class="line">            return Observable.fromIterable(list).delay(1, TimeUnit.SECONDS);</span><br><span class="line">        &#125;).subscribe(string -&gt; Log.e(TAG, string),</span><br><span class="line">                throwable -&gt; Log.e(TAG, throwable.getMessage()),</span><br><span class="line">                () -&gt; Log.e(TAG, &quot;onComplete&quot;));</span><br><span class="line">                </span><br><span class="line">E/MainActivity: I am value 1</span><br><span class="line">E/MainActivity: I am value 1</span><br><span class="line">E/MainActivity: I am value 1</span><br><span class="line">E/MainActivity: I am value 2</span><br><span class="line">E/MainActivity: I am value 3</span><br><span class="line">E/MainActivity: I am value 2</span><br><span class="line">E/MainActivity: I am value 2</span><br><span class="line">E/MainActivity: I am value 3</span><br><span class="line">E/MainActivity: I am value 3</span><br><span class="line">E/MainActivity: onComplete</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>嵌套请求，注册登陆</p>
@@ -511,8 +486,52 @@
 </li>
 </ul>
 </li>
-<li><p>参考<br><a href="https://www.jianshu.com/p/464fa025229e" target="_blank" rel="noopener">给初学者的RxJava2.0教程</a><br><a href="http://blog.csdn.net/johnny901114/article/details/51524470" target="_blank" rel="noopener">RxJava2操作符系列</a><br><a href="https://github.com/amitshekhariitbhu/RxJava2-Android-Samples" target="_blank" rel="noopener">RxJava2-Android-Samples</a><br><a href="http://www.10tiao.com/html/169/201709/2650823932/1.html" target="_blank" rel="noopener">RxJava学习</a></p>
+<li><p>Flowable,上游是Flowable,下游是Subscriber,两者之间通过subscribe()连接,当第二个参数为<code>BackpressureStrategy.ERROR</code>,上下游不均衡时抛出MissingBackpressureException</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">Flowable.create((FlowableOnSubscribe&lt;Integer&gt;) emitter -&gt; &#123;</span><br><span class="line">            emitter.onNext(1);</span><br><span class="line">            emitter.onNext(2);</span><br><span class="line">            emitter.onNext(3);</span><br><span class="line">            emitter.onComplete();</span><br><span class="line">        &#125;, BackpressureStrategy.ERROR)</span><br><span class="line">                .subscribe(new Subscriber&lt;Integer&gt;() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void onSubscribe(Subscription s) &#123;</span><br><span class="line">                        Log.d(TAG, &quot;onSubscribe &quot;);</span><br><span class="line">                        s.request(3);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onNext(Integer integer) &#123;</span><br><span class="line">                        Log.d(TAG, &quot;&quot; + integer);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onError(Throwable t) &#123;</span><br><span class="line">                        Log.d(TAG, t.getMessage());</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onComplete() &#123;</span><br><span class="line">                        Log.e(TAG, &quot;onComplete&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line"></span><br><span class="line">D/MainActivity: onSubscribe </span><br><span class="line">D/MainActivity: 1</span><br><span class="line">D/MainActivity: 2</span><br><span class="line">D/MainActivity: 3</span><br><span class="line">E/MainActivity: onComplete</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>Subscription 同Disposable类似，可以调用<code>Subscription.cancel()</code>取消事件的执行,增加一个<code>void request(long n)</code>, 如果下游没有调用request, 上游就认为下游没有处理事件的能力,而这又是一个同步的订阅,会造成上游等待处理界面卡死,直接抛异常.所以下游调用request(Long.MAX_VALUE)或者根据上游发送事件的数量request(3)</p>
+</li>
+<li><p>当上下游不在同一个线程，因为在Flowable里默认有一个大小为128的水缸, 当上下游工作在不同的线程中时,上游就会先把事件发送到这个水缸中,因此, 下游虽然没有调用request,但是上游在水缸中保存着这些事件, 只有当下游调用request时, 才从水缸里取出事件发给下游.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">Flowable.create((FlowableOnSubscribe&lt;Integer&gt;) e -&gt; &#123;</span><br><span class="line">            for (int i = 0; i &lt; 129; i++) &#123;</span><br><span class="line">                Log.d(TAG, &quot;emit &quot; + i);</span><br><span class="line">                e.onNext(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, BackpressureStrategy.ERROR)</span><br><span class="line">                .subscribeOn(Schedulers.io())</span><br><span class="line">                .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">                .subscribe(new Subscriber&lt;Integer&gt;() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void onSubscribe(Subscription s) &#123;</span><br><span class="line">                        Log.e(TAG, &quot;onSubscribe&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onNext(Integer integer) &#123;</span><br><span class="line">                        Log.e(TAG, &quot;onNext: &quot; + integer);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onError(Throwable t) &#123;</span><br><span class="line">                        Log.e(TAG, &quot;onError: &quot; + t);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onComplete() &#123;</span><br><span class="line">                        Log.e(TAG, &quot;onComplete &quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更改背压策略<code>BackpressureStrategy.BUFFER</code>,事件发送处理类似Observable,Observer,但是当无限发送事件，内存会OOM，需要采用其他策略</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">Flowable.create((FlowableOnSubscribe&lt;Integer&gt;) e -&gt; &#123;</span><br><span class="line">            for (int i = 0; i &lt; 1000; i++) &#123;</span><br><span class="line">                Log.d(TAG, &quot;emit &quot; + i);</span><br><span class="line">                e.onNext(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, BackpressureStrategy.BUFFER)</span><br><span class="line">                .subscribeOn(Schedulers.io())</span><br><span class="line">                .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">                .subscribe(new Subscriber&lt;Integer&gt;() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void onSubscribe(Subscription s) &#123;</span><br><span class="line">                        Log.e(TAG, &quot;onSubscribe&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onNext(Integer integer) &#123;</span><br><span class="line">                        Log.e(TAG, &quot;onNext: &quot; + integer);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onError(Throwable t) &#123;</span><br><span class="line">                        Log.e(TAG, &quot;onError: &quot; + t);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onComplete() &#123;</span><br><span class="line">                        Log.e(TAG, &quot;onComplete &quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更改为<code>BackpressureStrategy.DROP</code>丢弃存不下的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">Flowable.create((FlowableOnSubscribe&lt;Integer&gt;) e -&gt; &#123;</span><br><span class="line">            for (int i = 0; ; i++) &#123;</span><br><span class="line">                e.onNext(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, BackpressureStrategy.DROP)</span><br><span class="line">                .subscribeOn(Schedulers.io())</span><br><span class="line">                .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">                .subscribe(new Subscriber&lt;Integer&gt;() &#123;</span><br><span class="line">                    Subscription mSubscription;</span><br><span class="line">                    Runnable runnable = new Runnable() &#123;</span><br><span class="line">                        @Override</span><br><span class="line">                        public void run() &#123;</span><br><span class="line">                            mSubscription.request(128);</span><br><span class="line">                            text.postDelayed(runnable, 2000);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onSubscribe(Subscription s) &#123;</span><br><span class="line">                        Log.d(TAG, &quot;onSubscribe&quot;);</span><br><span class="line">                        mSubscription = s;</span><br><span class="line">                        text.postDelayed(runnable, 2000);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onNext(Integer integer) &#123;</span><br><span class="line">                        Log.d(TAG, &quot;onNext: &quot; + integer);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onError(Throwable t) &#123;</span><br><span class="line">                        Log.w(TAG, &quot;onError: &quot;, t);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onComplete() &#123;</span><br><span class="line">                        Log.d(TAG, &quot;onComplete&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更改为<code>BackpressureStrategy.LATEST</code>保存最新的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">Flowable.create((FlowableOnSubscribe&lt;Integer&gt;) e -&gt; &#123;</span><br><span class="line">            for (int i = 0; ; i++) &#123;</span><br><span class="line">                e.onNext(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, BackpressureStrategy.LATEST)</span><br><span class="line">                .subscribeOn(Schedulers.io())</span><br><span class="line">                .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">                .subscribe(new Subscriber&lt;Integer&gt;() &#123;</span><br><span class="line">                    Subscription mSubscription;</span><br><span class="line">                    Runnable runnable = new Runnable() &#123;</span><br><span class="line">                        @Override</span><br><span class="line">                        public void run() &#123;</span><br><span class="line">                            mSubscription.request(128);</span><br><span class="line">                            text.postDelayed(runnable, 2000);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onSubscribe(Subscription s) &#123;</span><br><span class="line">                        Log.d(TAG, &quot;onSubscribe&quot;);</span><br><span class="line">                        mSubscription = s;</span><br><span class="line">                        text.postDelayed(runnable, 2000);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onNext(Integer integer) &#123;</span><br><span class="line">                        Log.d(TAG, &quot;onNext: &quot; + integer);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onError(Throwable t) &#123;</span><br><span class="line">                        Log.w(TAG, &quot;onError: &quot;, t);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onComplete() &#123;</span><br><span class="line">                        Log.d(TAG, &quot;onComplete&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>interval操作符发送Long型的数据，下面的例子，每隔一毫秒发送事件，下游一秒处理一个事件，直接发送会抛异常，解决办法加背压策略</p>
+<ul>
+<li>onBackpressureBuffer()</li>
+<li>onBackpressureDrop()</li>
+<li>onBackpressureLatest()<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"> Flowable.interval(1, TimeUnit.MICROSECONDS)</span><br><span class="line">//                .onBackpressureDrop()</span><br><span class="line">                .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">                .subscribe(new Subscriber&lt;Long&gt;() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void onSubscribe(Subscription s) &#123;</span><br><span class="line">                        Log.d(TAG, &quot;onSubscribe&quot;);</span><br><span class="line">                        s.request(Long.MAX_VALUE);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onNext(Long aLong) &#123;</span><br><span class="line">                        Log.e(TAG, &quot;onNext: &quot; + aLong);</span><br><span class="line">                        try &#123;</span><br><span class="line">                            Thread.sleep(1000);</span><br><span class="line">                        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onError(Throwable t) &#123;</span><br><span class="line">                        Log.e(TAG, &quot;onError: &quot;, t);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onComplete() &#123;</span><br><span class="line">                        Log.d(TAG, &quot;onComplete&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>FlowableEmiiter 源码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public interface FlowableEmitter&lt;T&gt; extends Emitter&lt;T&gt; &#123;</span><br><span class="line">    void setDisposable(@Nullable Disposable s);</span><br><span class="line">    void setCancellable(@Nullable Cancellable c);</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * The current outstanding request amount.</span><br><span class="line">     * &lt;p&gt;This method is thread-safe.</span><br><span class="line">     * @return the current outstanding request amount</span><br><span class="line">     */</span><br><span class="line">    long requested();</span><br><span class="line">    </span><br><span class="line">    boolean isCancelled();</span><br><span class="line"></span><br><span class="line">    @NonNull</span><br><span class="line">    FlowableEmitter&lt;T&gt; serialize();</span><br><span class="line"></span><br><span class="line">    @Experimental</span><br><span class="line">    boolean tryOnError(@NonNull Throwable t);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>requested为当前下游处理能力</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Flowable.create((FlowableOnSubscribe&lt;Integer&gt;) e -&gt;</span><br><span class="line">                        Log.e(TAG, &quot;current request=&quot; + e.requested()),</span><br><span class="line">                BackpressureStrategy.ERROR)</span><br><span class="line">                .subscribe(new Subscriber&lt;Integer&gt;() &#123;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onSubscribe(Subscription s) &#123;</span><br><span class="line">                        Log.e(TAG, &quot;onSubscribe&quot;);</span><br><span class="line">                        s.request(10);</span><br><span class="line">                        s.request(100);// current request 110;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onNext(Integer integer) &#123;</span><br><span class="line">                        Log.d(TAG, &quot;onNext: &quot; + integer);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onError(Throwable t) &#123;</span><br><span class="line">                        Log.e(TAG, &quot;onError: &quot;, t);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onComplete() &#123;</span><br><span class="line">                        Log.e(TAG, &quot;onComplete&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下游处理完一个事件，requested-1,complete和error事件不会消耗requested,当requested=0,上游继续发送事件，会抛异常</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">Flowable.create((FlowableOnSubscribe&lt;Integer&gt;) e -&gt; &#123;</span><br><span class="line">            Log.e(TAG, &quot;current request=&quot; + e.requested());</span><br><span class="line">            Log.e(TAG, &quot;emitter 1&quot;);</span><br><span class="line">            e.onNext(1);</span><br><span class="line">            Log.e(TAG, &quot;current request=&quot; + e.requested());</span><br><span class="line"></span><br><span class="line">            Log.e(TAG, &quot;emitter 2&quot;);</span><br><span class="line">            e.onNext(2);</span><br><span class="line">            Log.e(TAG, &quot;current request=&quot; + e.requested());</span><br><span class="line"></span><br><span class="line">            Log.e(TAG, &quot;emitter 3&quot;);</span><br><span class="line">            e.onNext(3);</span><br><span class="line">            Log.e(TAG, &quot;current request=&quot; + e.requested());</span><br><span class="line"></span><br><span class="line">            e.onComplete();</span><br><span class="line">        &#125;, BackpressureStrategy.ERROR)</span><br><span class="line">                .subscribe(new Subscriber&lt;Integer&gt;() &#123;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onSubscribe(Subscription s) &#123;</span><br><span class="line">                        Log.e(TAG, &quot;onSubscribe&quot;);</span><br><span class="line">                        s.request(10);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onNext(Integer integer) &#123;</span><br><span class="line">                        Log.d(TAG, &quot;onNext: &quot; + integer);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onError(Throwable t) &#123;</span><br><span class="line">                        Log.e(TAG, &quot;onError: &quot;, t);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onComplete() &#123;</span><br><span class="line">                        Log.e(TAG, &quot;onComplete&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当上下游工作在不同的线程里时，每一个线程里都有一个requested，而我们调用request（1000）时，实际上改变的是下游主线程中的requested，而上游中的requested的值是由RxJava内部调用request(n)去设置的，这个调用会在合适的时候自动触发</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">Flowable</span><br><span class="line">                .create((FlowableOnSubscribe&lt;Integer&gt;) emitter -&gt; &#123;</span><br><span class="line">                    Log.d(TAG, &quot;current requested: &quot; + emitter.requested());//还是128</span><br><span class="line">                &#125;, BackpressureStrategy.ERROR)</span><br><span class="line">                .subscribeOn(Schedulers.io())</span><br><span class="line">                .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">                .subscribe(new Subscriber&lt;Integer&gt;() &#123;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onSubscribe(Subscription s) &#123;</span><br><span class="line">                        Log.d(TAG, &quot;onSubscribe&quot;);</span><br><span class="line">                        s.request(1000);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onNext(Integer integer) &#123;</span><br><span class="line">                        Log.d(TAG, &quot;onNext: &quot; + integer);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onError(Throwable t) &#123;</span><br><span class="line">                        Log.w(TAG, &quot;onError: &quot;, t);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onComplete() &#123;</span><br><span class="line">                        Log.d(TAG, &quot;onComplete&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上游发送完128个事件，下游处理完96个事件后，上游继续发送128个事件，下游继续处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">Flowable.create((FlowableOnSubscribe&lt;Integer&gt;) emitter -&gt; &#123;</span><br><span class="line">            Log.d(TAG, &quot;First requested = &quot; + emitter.requested());</span><br><span class="line">            boolean flag;</span><br><span class="line">            for (int i = 0; ; i++) &#123;</span><br><span class="line">                flag = false;</span><br><span class="line">                while (emitter.requested() == 0) &#123;</span><br><span class="line">                    if (!flag) &#123;</span><br><span class="line">                        Log.d(TAG, &quot;Oh no! I can&apos;t emit value!&quot;);</span><br><span class="line">                        flag = true;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                emitter.onNext(i);</span><br><span class="line">                Log.d(TAG, &quot;emit &quot; + i + &quot; , requested = &quot; + emitter.requested());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, BackpressureStrategy.ERROR)</span><br><span class="line">                .subscribeOn(Schedulers.io())</span><br><span class="line">                .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">                .subscribe(new Subscriber&lt;Integer&gt;() &#123;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onSubscribe(final Subscription s) &#123;</span><br><span class="line">                        Log.d(TAG, &quot;onSubscribe&quot;);</span><br><span class="line">                        text.postDelayed(() -&gt; &#123;</span><br><span class="line">                            //在处理完96个事件后，上游可以继续发送emit 128-223 共96个</span><br><span class="line">                            //95s时，上游不发送事件</span><br><span class="line">                            s.request(95);</span><br><span class="line">                        &#125;, 1000);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onNext(Integer integer) &#123;</span><br><span class="line">                        Log.d(TAG, &quot;onNext: &quot; + integer);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onError(Throwable t) &#123;</span><br><span class="line">                        Log.w(TAG, &quot;onError: &quot;, t);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onComplete() &#123;</span><br><span class="line">                        Log.d(TAG, &quot;onComplete&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一行一行读取文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">Flowable.create((FlowableOnSubscribe&lt;String&gt;) e -&gt; &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">//                    URL url=getClass().getResource(&quot;test.txt&quot;);</span><br><span class="line">//                    Log.e(TAG,&quot;url=&quot;+url);</span><br><span class="line">//                    FileReader reader =new FileReader(url.getFile());</span><br><span class="line">//                    FileReader reader =new FileReader(&quot;file:///android_asset/test.txt&quot;);</span><br><span class="line">                InputStream inputStream = getResources().getAssets().open(&quot;test.txt&quot;);</span><br><span class="line">                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);</span><br><span class="line">                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);</span><br><span class="line">                String str;</span><br><span class="line">                while ((str = bufferedReader.readLine()) != null &amp;&amp; !e.isCancelled()) &#123;</span><br><span class="line">                    while (e.requested() == 0) &#123;</span><br><span class="line">                        if (e.isCancelled()) break;</span><br><span class="line">                    &#125;</span><br><span class="line">                    e.onNext(str);</span><br><span class="line">                &#125;</span><br><span class="line">                bufferedReader.close();</span><br><span class="line">                inputStreamReader.close();</span><br><span class="line">                inputStream.close();</span><br><span class="line">                e.onComplete();</span><br><span class="line">            &#125; catch (IOException e1) &#123;</span><br><span class="line">                e1.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, BackpressureStrategy.ERROR)</span><br><span class="line">                .subscribeOn(Schedulers.io())</span><br><span class="line">                .observeOn(Schedulers.newThread())</span><br><span class="line">                .subscribe(new Subscriber&lt;String&gt;() &#123;</span><br><span class="line">                    Subscription mSubscription;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onSubscribe(Subscription s) &#123;</span><br><span class="line">                        mSubscription = s;</span><br><span class="line">                        s.request(1);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onNext(String s) &#123;</span><br><span class="line">                        Log.e(TAG, &quot;onNext=&quot; + s);</span><br><span class="line">                        try &#123;</span><br><span class="line">                            Thread.sleep(2000);</span><br><span class="line">                            mSubscription.request(1);</span><br><span class="line">                        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onError(Throwable t) &#123;</span><br><span class="line">                        System.out.println(t);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    @Override</span><br><span class="line">                    public void onComplete() &#123;</span><br><span class="line"></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">                </span><br><span class="line">E/MainActivity: onNext=AAAAAAAAAAAA</span><br><span class="line">E/MainActivity: onNext=BBBBBBBB</span><br><span class="line">E/MainActivity: onNext=CCCCCCC</span><br><span class="line">E/MainActivity: onNext=DDDDD</span><br><span class="line">E/MainActivity: onNext=EE</span><br><span class="line">E/MainActivity: onNext=F</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="RxJava操作符"><a href="#RxJava操作符" class="headerlink" title="RxJava操作符"></a>RxJava操作符</h5><ul>
+<li>参考<br><a href="https://www.jianshu.com/p/464fa025229e" target="_blank" rel="noopener">给初学者的RxJava2.0教程</a><br><a href="http://blog.csdn.net/johnny901114/article/details/51524470" target="_blank" rel="noopener">RxJava2操作符系列</a><br><a href="https://github.com/amitshekhariitbhu/RxJava2-Android-Samples" target="_blank" rel="noopener">RxJava2-Android-Samples</a><br><a href="http://www.10tiao.com/html/169/201709/2650823932/1.html" target="_blank" rel="noopener">RxJava学习</a></li>
 </ul>
 
           
@@ -1686,158 +1705,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/NDK/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="willkernel">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="willkernel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/09/NDK/" itemprop="url">NDK</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:04:00+08:00">
-                2018-03-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/03/09/NDK/" class="leancloud_visitors" data-flag-title="NDK">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Git/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1921,6 +1788,158 @@
           
           
              <span id="/2018/03/09/Git/" class="leancloud_visitors" data-flag-title="Git">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/NDK/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="willkernel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="willkernel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/09/NDK/" itemprop="url">NDK</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:04:00+08:00">
+                2018-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/09/NDK/" class="leancloud_visitors" data-flag-title="NDK">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
