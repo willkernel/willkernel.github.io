@@ -88,18 +88,22 @@
 
 
 
-<meta name="description" content="Lifelong learning">
+<meta name="description" content="入门 .git 的隐藏目录是你的本地仓库（Local Repository） git log  commit 的 SHA-1 校验和commit 8cf88cf35ce40cb91488e7d9b12cf46463fedc2f   git status  untracked files （未追踪的文件）   使用 git add git.txt 来开始追踪文件  从 “Untracked file">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git">
 <meta property="og:url" content="http://willkernel.github.io/2018/03/09/Git/index.html">
 <meta property="og:site_name" content="willkernel">
-<meta property="og:description" content="Lifelong learning">
+<meta property="og:description" content="入门 .git 的隐藏目录是你的本地仓库（Local Repository） git log  commit 的 SHA-1 校验和commit 8cf88cf35ce40cb91488e7d9b12cf46463fedc2f   git status  untracked files （未追踪的文件）   使用 git add git.txt 来开始追踪文件  从 “Untracked file">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-20T07:12:53.663Z">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/gitlog.png">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/gitstatus.png">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/gitaddstatus.png">
+<meta property="og:updated_time" content="2018-03-21T20:22:06.788Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git">
-<meta name="twitter:description" content="Lifelong learning">
+<meta name="twitter:description" content="入门 .git 的隐藏目录是你的本地仓库（Local Repository） git log  commit 的 SHA-1 校验和commit 8cf88cf35ce40cb91488e7d9b12cf46463fedc2f   git status  untracked files （未追踪的文件）   使用 git add git.txt 来开始追踪文件  从 “Untracked file">
+<meta name="twitter:image" content="http://p4n1d4izv.bkt.clouddn.com/images/gitlog.png">
 
 
 
@@ -417,7 +421,46 @@
       
 
       
-        
+        <h4 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h4><ul>
+<li>.git 的隐藏目录是你的本地仓库（Local Repository）</li>
+<li><code>git log</code><img src="http://p4n1d4izv.bkt.clouddn.com/images/gitlog.png">
+<ul>
+<li>commit 的 SHA-1 校验和<br><code>commit 8cf88cf35ce40cb91488e7d9b12cf46463fedc2f</code></li>
+</ul>
+</li>
+<li><code>git status</code><img src="http://p4n1d4izv.bkt.clouddn.com/images/gitstatus.png">
+<ul>
+<li>untracked files （未追踪的文件）</li>
+</ul>
+</li>
+<li>使用 <code>git add git.txt</code> 来开始追踪文件<img src="http://p4n1d4izv.bkt.clouddn.com/images/gitaddstatus.png">
+<ul>
+<li>从 “Untracked files” 变成了 “Changes to be commited”，该文件变成已暂存staged,被记录到 staging area（暂存区）</li>
+<li><code>git commit -m &quot;add git.txt&quot;</code>提交代码到本地仓库</li>
+</ul>
+</li>
+<li>缓存GitHub密码,在设置了SSH key后，<code>git config --global credential.helper wincred</code></li>
+<li><code>git push</code>到远端仓库</li>
+<li><code>git pull</code>将远端仓库代码同步到本地仓库</li>
+<li>push冲突，由于 GitHub 的远端仓库上含有本地仓库没有的内容，所以这次 push 被拒绝，解决办法：先用 pull 把远端仓库上的新内容取回到本地和本地合并，合并后的代码会自动提交，然后再把合并后的本地仓库向远端仓库推送</li>
+</ul>
+<h4 id="HEAD、master、branch"><a href="#HEAD、master、branch" class="headerlink" title="HEAD、master、branch"></a>HEAD、master、branch</h4><ul>
+<li>commit 后面括号里的 HEAD -&gt; master, origin/master, origin/HEAD ，是指向这个 commit 的引用,也可以使用SHA-1指代commit</li>
+</ul>
+<h5 id="HEAD-当前-commit-的引用"><a href="#HEAD-当前-commit-的引用" class="headerlink" title="HEAD 当前 commit 的引用"></a>HEAD 当前 commit 的引用</h5><ul>
+<li>当前工作目录对应的commit,checkout/reset会改变当前commit</li>
+</ul>
+<h5 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h5><ul>
+<li>HEAD 除了可以指向 commit，还可以指向一个 branch，HEAD指向分支master，间接指向对应的commit，当<code>git commit</code>有新的提交时，HEAD会和master一起指向新的commit</li>
+<li>master 默认的主分支，和其他分支平等，分支可以理解为初始commit到当前分支指向的commit的路径</li>
+<li>branch 的创建、切换和删除<ul>
+<li>创建 branch <code>git branch feature1</code></li>
+<li>切换分支<code>git checkout feature1</code> HEAD 就会指向新建的 branch，执行<code>git checkout -b feature1</code>是上述两个合并执行</li>
+<li>删除分支<code>git branch -d feature1</code>,HEAD 指向的 branch 不能删除。如果要删除 HEAD 指向的 branch，需要先用 checkout 把 HEAD 指向其他分支，没有被合并到 master 过的 branch 在删除时会失败，确认删除使用<code>git branch -D feature1</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="push"><a href="#push" class="headerlink" title="push"></a>push</h4><h5 id="push：把-branch-上传到远端仓库"><a href="#push：把-branch-上传到远端仓库" class="headerlink" title="push：把 branch 上传到远端仓库"></a>push：把 branch 上传到远端仓库</h5>
       
     </div>
     
@@ -502,8 +545,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/09/NDK/" rel="next" title="NDK">
-                <i class="fa fa-chevron-left"></i> NDK
+              <a href="/2018/03/09/Kotlin/" rel="next" title="Kotlin">
+                <i class="fa fa-chevron-left"></i> Kotlin
               </a>
             
           </div>
@@ -512,8 +555,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/09/CoordinatorLayout/" rel="prev" title="CoordinatorLayout">
-                CoordinatorLayout <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/09/NDK/" rel="prev" title="NDK">
+                NDK <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -573,8 +616,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -719,6 +771,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#入门"><span class="nav-number">1.</span> <span class="nav-text">入门</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HEAD、master、branch"><span class="nav-number">2.</span> <span class="nav-text">HEAD、master、branch</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HEAD-当前-commit-的引用"><span class="nav-number">2.1.</span> <span class="nav-text">HEAD 当前 commit 的引用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#branch"><span class="nav-number">2.2.</span> <span class="nav-text">branch</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#push"><span class="nav-number">3.</span> <span class="nav-text">push</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#push：把-branch-上传到远端仓库"><span class="nav-number">3.1.</span> <span class="nav-text">push：把 branch 上传到远端仓库</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

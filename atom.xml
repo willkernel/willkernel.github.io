@@ -136,26 +136,6 @@
   </entry>
   
   <entry>
-    <title>Git</title>
-    <link href="http://willkernel.github.io/2018/03/09/Git/"/>
-    <id>http://willkernel.github.io/2018/03/09/Git/</id>
-    <published>2018-03-08T17:04:00.000Z</published>
-    <updated>2018-03-20T07:12:53.663Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-      <category term="Git" scheme="http://willkernel.github.io/categories/Android/Git/"/>
-    
-    
-      <category term="Git" scheme="http://willkernel.github.io/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
     <title>NDK</title>
     <link href="http://willkernel.github.io/2018/03/09/NDK/"/>
     <id>http://willkernel.github.io/2018/03/09/NDK/</id>
@@ -170,6 +150,36 @@
     
     
       <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git</title>
+    <link href="http://willkernel.github.io/2018/03/09/Git/"/>
+    <id>http://willkernel.github.io/2018/03/09/Git/</id>
+    <published>2018-03-08T17:04:00.000Z</published>
+    <updated>2018-03-21T20:22:06.788Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;入门&quot;&gt;&lt;a href=&quot;#入门&quot; class=&quot;headerlink&quot; title=&quot;入门&quot;&gt;&lt;/a&gt;入门&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;.git 的隐藏目录是你的本地仓库（Local Repository）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+      <category term="Git" scheme="http://willkernel.github.io/categories/Android/Git/"/>
+    
+    
+      <category term="Git" scheme="http://willkernel.github.io/tags/Git/"/>
     
   </entry>
   

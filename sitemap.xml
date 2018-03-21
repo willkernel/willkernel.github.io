@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://willkernel.github.io/2018/03/09/Git/</loc>
+    
+    <lastmod>2018-03-21T20:22:06.788Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://willkernel.github.io/2018/02/24/Linux-%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</loc>
     
     <lastmod>2018-03-21T18:17:30.298Z</lastmod>
@@ -124,13 +131,6 @@
     <loc>http://willkernel.github.io/2018/03/09/Kotlin/</loc>
     
     <lastmod>2018-03-20T07:13:04.231Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://willkernel.github.io/2018/03/09/Git/</loc>
-    
-    <lastmod>2018-03-20T07:12:53.663Z</lastmod>
     
   </url>
   

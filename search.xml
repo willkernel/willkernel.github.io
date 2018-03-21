@@ -44,18 +44,6 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[Git]]></title>
-    <url>%2F2018%2F03%2F09%2FGit%2F</url>
-    <content type="text"></content>
-      <categories>
-        <category>Android</category>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[NDK]]></title>
     <url>%2F2018%2F03%2F09%2FNDK%2F</url>
     <content type="text"></content>
@@ -64,6 +52,18 @@
       </categories>
       <tags>
         <tag>NDK</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Git]]></title>
+    <url>%2F2018%2F03%2F09%2FGit%2F</url>
+    <content type="text"><![CDATA[入门 .git 的隐藏目录是你的本地仓库（Local Repository） git log commit 的 SHA-1 校验和commit 8cf88cf35ce40cb91488e7d9b12cf46463fedc2f git status untracked files （未追踪的文件） 使用 git add git.txt 来开始追踪文件 从 “Untracked files” 变成了 “Changes to be commited”，该文件变成已暂存staged,被记录到 staging area（暂存区） git commit -m &quot;add git.txt&quot;提交代码到本地仓库 缓存GitHub密码,在设置了SSH key后，git config --global credential.helper wincred git push到远端仓库 git pull将远端仓库代码同步到本地仓库 push冲突，由于 GitHub 的远端仓库上含有本地仓库没有的内容，所以这次 push 被拒绝，解决办法：先用 pull 把远端仓库上的新内容取回到本地和本地合并，合并后的代码会自动提交，然后再把合并后的本地仓库向远端仓库推送 HEAD、master、branch commit 后面括号里的 HEAD -&gt; master, origin/master, origin/HEAD ，是指向这个 commit 的引用,也可以使用SHA-1指代commit HEAD 当前 commit 的引用 当前工作目录对应的commit,checkout/reset会改变当前commit branch HEAD 除了可以指向 commit，还可以指向一个 branch，HEAD指向分支master，间接指向对应的commit，当git commit有新的提交时，HEAD会和master一起指向新的commit master 默认的主分支，和其他分支平等，分支可以理解为初始commit到当前分支指向的commit的路径 branch 的创建、切换和删除 创建 branch git branch feature1 切换分支git checkout feature1 HEAD 就会指向新建的 branch，执行git checkout -b feature1是上述两个合并执行 删除分支git branch -d feature1,HEAD 指向的 branch 不能删除。如果要删除 HEAD 指向的 branch，需要先用 checkout 把 HEAD 指向其他分支，没有被合并到 master 过的 branch 在删除时会失败，确认删除使用git branch -D feature1 pushpush：把 branch 上传到远端仓库]]></content>
+      <categories>
+        <category>Android</category>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
