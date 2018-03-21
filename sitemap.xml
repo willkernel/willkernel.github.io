@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://willkernel.github.io/2018/03/09/MVP/</loc>
+    
+    <lastmod>2018-03-21T18:01:24.920Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://willkernel.github.io/2018/03/20/RxJava2/</loc>
     
     <lastmod>2018-03-21T17:07:52.939Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>http://willkernel.github.io/2018/03/09/MVVM/</loc>
     
     <lastmod>2018-03-20T07:13:28.243Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://willkernel.github.io/2018/03/09/MVP/</loc>
-    
-    <lastmod>2018-03-20T07:13:16.654Z</lastmod>
     
   </url>
   

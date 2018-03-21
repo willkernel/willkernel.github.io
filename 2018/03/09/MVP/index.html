@@ -90,16 +90,16 @@
 
 <meta name="description" content="MVP概念 View视图层,包含各种界面相关功能，例如Activity，Fragment，View,Adapter,专注于交互，一般持有Presenter的引用，或者通过依赖注入(Dagger)方式获得Presenter实例，将非UI逻辑操作委托给Presenter Presenter逻辑控制层，充当中间人，隔离View层，Model层，接收View层的数据请求，分发给Model层处理，监听Mod">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MVP">
+<meta property="og:title" content="MVP(loader&#x2F;dagger&#x2F;rxjava2)">
 <meta property="og:url" content="http://willkernel.github.io/2018/03/09/MVP/index.html">
 <meta property="og:site_name" content="willkernel">
 <meta property="og:description" content="MVP概念 View视图层,包含各种界面相关功能，例如Activity，Fragment，View,Adapter,专注于交互，一般持有Presenter的引用，或者通过依赖注入(Dagger)方式获得Presenter实例，将非UI逻辑操作委托给Presenter Presenter逻辑控制层，充当中间人，隔离View层，Model层，接收View层的数据请求，分发给Model层处理，监听Mod">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mvp.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mvp-loader.png">
-<meta property="og:updated_time" content="2018-03-20T07:13:16.654Z">
+<meta property="og:updated_time" content="2018-03-21T18:01:24.920Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MVP">
+<meta name="twitter:title" content="MVP(loader&#x2F;dagger&#x2F;rxjava2)">
 <meta name="twitter:description" content="MVP概念 View视图层,包含各种界面相关功能，例如Activity，Fragment，View,Adapter,专注于交互，一般持有Presenter的引用，或者通过依赖注入(Dagger)方式获得Presenter实例，将非UI逻辑操作委托给Presenter Presenter逻辑控制层，充当中间人，隔离View层，Model层，接收View层的数据请求，分发给Model层处理，监听Mod">
 <meta name="twitter:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mvp.png">
 
@@ -137,7 +137,7 @@
 
 
 
-  <title>MVP | willkernel</title>
+  <title>MVP(loader/dagger/rxjava2) | willkernel</title>
   
 
 
@@ -325,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MVP</h1>
+          <h1 class="post-title" itemprop="name headline">MVP(loader/dagger/rxjava2)</h1>
         
 
         <div class="post-meta">
@@ -355,7 +355,7 @@
 
           
           
-             <span id="/2018/03/09/MVP/" class="leancloud_visitors" data-flag-title="MVP">
+             <span id="/2018/03/09/MVP/" class="leancloud_visitors" data-flag-title="MVP(loader/dagger/rxjava2)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -491,7 +491,37 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Documented</span><br><span class="line">@Scope</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">public @interface ActivityScoped &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Scope</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Target(&#123;ElementType.TYPE, ElementType.METHOD&#125;)</span><br><span class="line">public @interface FragmentScoped &#123;&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>ToDoDatabase</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Database(entities = &#123;Task.class&#125;, version = 1)</span><br><span class="line">public abstract class ToDoDatabase extends RoomDatabase &#123;</span><br><span class="line">      public abstract TasksDao taskDao();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Database(entities = &#123;Task.class&#125;, version = 1)</span><br><span class="line">public abstract class ToDoDatabase extends RoomDatabase &#123;</span><br><span class="line">      public abstract TasksDao taskDao();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="mvp-rxjava2"><a href="#mvp-rxjava2" class="headerlink" title="mvp-rxjava2"></a>mvp-<a href="https://willkernel.github.io/2018/03/20/RxJava2/">rxjava2</a></h5><ul>
+<li><p>BaseView</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface BaseView&lt;T&gt; &#123;</span><br><span class="line">     void setPresenter(T presenter);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>BasePresenter</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public interface BasePresenter &#123;</span><br><span class="line">    void subscribe();</span><br><span class="line">    void unsubscribe();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>同样，在TasksActivity中持有TasksPresenter</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// Create the presenter</span><br><span class="line">       mTasksPresenter = new TasksPresenter(</span><br><span class="line">               Injection.provideTasksRepository(getApplicationContext()),</span><br><span class="line">               tasksFragment,</span><br><span class="line">               Injection.provideSchedulerProvider());</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>TasksPresenter 持有<code>TasksFragment</code>对象<code>mTasksView</code>,网络请求等任务的集合<code>CompositeDisposable</code>,用于取消任务，避免内存泄漏</p>
+<ul>
+<li><p>TasksPresenter</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">    public void subscribe() &#123;</span><br><span class="line">        loadTasks(false);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">    public void unsubscribe() &#123;</span><br><span class="line">        mCompositeDisposable.clear();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对应的在TasksFragment</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void onResume() &#123;</span><br><span class="line">     super.onResume();</span><br><span class="line">     mPresenter.subscribe();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public void onPause() &#123;</span><br><span class="line">     super.onPause();</span><br><span class="line">     mPresenter.unsubscribe();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">用于关联View，Presenter</span><br><span class="line">mTasksView.setPresenter(tasksPresenter);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>TasksRepository获取Tasks</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public Flowable&lt;List&lt;Task&gt;&gt; getTasks() &#123;</span><br><span class="line">        // Respond immediately with cache if available and not dirty</span><br><span class="line">        if (mCachedTasks != null &amp;&amp; !mCacheIsDirty) &#123;</span><br><span class="line">            return Flowable.fromIterable(mCachedTasks.values()).toList().toFlowable();</span><br><span class="line">        &#125; else if (mCachedTasks == null) &#123;</span><br><span class="line">            mCachedTasks = new LinkedHashMap&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Flowable&lt;List&lt;Task&gt;&gt; remoteTasks = getAndSaveRemoteTasks();</span><br><span class="line"></span><br><span class="line">        if (mCacheIsDirty) &#123;</span><br><span class="line">            return remoteTasks;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            // Query the local storage if available. If not, query the network.</span><br><span class="line">            Flowable&lt;List&lt;Task&gt;&gt; localTasks = getAndCacheLocalTasks();</span><br><span class="line">            return Flowable.concat(localTasks, remoteTasks)</span><br><span class="line">                    .filter(tasks -&gt; !tasks.isEmpty())</span><br><span class="line">                    .firstOrError()</span><br><span class="line">                    .toFlowable();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>TasksPresenter中获取数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">mCompositeDisposable.clear();</span><br><span class="line">Disposable disposable = mTasksRepository</span><br><span class="line">                .getTasks()</span><br><span class="line">                .flatMap(Flowable::fromIterable)</span><br><span class="line">                .filter(task -&gt; &#123;</span><br><span class="line">                    switch (mCurrentFiltering) &#123;</span><br><span class="line">                        case ACTIVE_TASKS:</span><br><span class="line">                            return task.isActive();</span><br><span class="line">                        case COMPLETED_TASKS:</span><br><span class="line">                            return task.isCompleted();</span><br><span class="line">                        case ALL_TASKS:</span><br><span class="line">                        default:</span><br><span class="line">                            return true;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">                .toList()</span><br><span class="line">                .subscribeOn(mSchedulerProvider.io())</span><br><span class="line">                .observeOn(mSchedulerProvider.ui())</span><br><span class="line">                .doFinally(() -&gt; &#123;</span><br><span class="line">                    if (!EspressoIdlingResource.getIdlingResource().isIdleNow()) &#123;</span><br><span class="line">                        EspressoIdlingResource.decrement(); // Set app as idle.</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">                .subscribe(</span><br><span class="line">                        // onNext</span><br><span class="line">                        tasks -&gt; &#123;</span><br><span class="line">                            processTasks(tasks);</span><br><span class="line">                            mTasksView.setLoadingIndicator(false);</span><br><span class="line">                        &#125;,</span><br><span class="line">                        // onError</span><br><span class="line">                        throwable -&gt; mTasksView.showLoadingTasksError());</span><br><span class="line"></span><br><span class="line">        mCompositeDisposable.add(disposable);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>处理返回数据，更新UI</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">TasksPresenter.java</span><br><span class="line">private void processTasks(@NonNull List&lt;Task&gt; tasks) &#123;</span><br><span class="line">        if (tasks.isEmpty()) &#123;</span><br><span class="line">            // Show a message indicating there are no tasks for that filter type.</span><br><span class="line">            processEmptyTasks();</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            // Show the list of tasks</span><br><span class="line">            mTasksView.showTasks(tasks);</span><br><span class="line">            // Set the filter label&apos;s text.</span><br><span class="line">            showFilterLabel();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">TasksFragment.java</span><br><span class="line">@Override</span><br><span class="line">public void showTasks(List&lt;Task&gt; tasks) &#123;</span><br><span class="line">     mListAdapter.replaceData(tasks);</span><br><span class="line">     mTasksView.setVisibility(View.VISIBLE);</span><br><span class="line">     mNoTasksView.setVisibility(View.GONE);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
@@ -550,7 +580,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://willkernel.github.io/2018/03/09/MVP/" title="MVP">http://willkernel.github.io/2018/03/09/MVP/</a>
+    <a href="http://willkernel.github.io/2018/03/09/MVP/" title="MVP(loader/dagger/rxjava2)">http://willkernel.github.io/2018/03/09/MVP/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -808,7 +838,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#MVP概念"><span class="nav-number">1.</span> <span class="nav-text">MVP概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mvp"><span class="nav-number">2.</span> <span class="nav-text">mvp</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mvp-loader"><span class="nav-number">3.</span> <span class="nav-text">mvp-loader</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mvp-dagger"><span class="nav-number">4.</span> <span class="nav-text">mvp-dagger</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#MVP概念"><span class="nav-number">1.</span> <span class="nav-text">MVP概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mvp"><span class="nav-number">2.</span> <span class="nav-text">mvp</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mvp-loader"><span class="nav-number">3.</span> <span class="nav-text">mvp-loader</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mvp-dagger"><span class="nav-number">4.</span> <span class="nav-text">mvp-dagger</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mvp-rxjava2"><span class="nav-number">5.</span> <span class="nav-text">mvp-rxjava2</span></a></li></ol></div>
             
 
           </div>

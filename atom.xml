@@ -140,6 +140,24 @@
   </entry>
   
   <entry>
+    <title>NDK</title>
+    <link href="http://willkernel.github.io/2018/03/09/NDK/"/>
+    <id>http://willkernel.github.io/2018/03/09/NDK/</id>
+    <published>2018-03-08T17:04:00.000Z</published>
+    <updated>2018-03-20T07:12:42.178Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Git</title>
     <link href="http://willkernel.github.io/2018/03/09/Git/"/>
     <id>http://willkernel.github.io/2018/03/09/Git/</id>
@@ -160,24 +178,6 @@
   </entry>
   
   <entry>
-    <title>NDK</title>
-    <link href="http://willkernel.github.io/2018/03/09/NDK/"/>
-    <id>http://willkernel.github.io/2018/03/09/NDK/</id>
-    <published>2018-03-08T17:04:00.000Z</published>
-    <updated>2018-03-20T07:12:42.178Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-    
-      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Kotlin</title>
     <link href="http://willkernel.github.io/2018/03/09/Kotlin/"/>
     <id>http://willkernel.github.io/2018/03/09/Kotlin/</id>
@@ -192,11 +192,11 @@
   </entry>
   
   <entry>
-    <title>MVP</title>
+    <title>MVP(loader/dagger/rxjava2)</title>
     <link href="http://willkernel.github.io/2018/03/09/MVP/"/>
     <id>http://willkernel.github.io/2018/03/09/MVP/</id>
     <published>2018-03-08T17:03:12.000Z</published>
-    <updated>2018-03-20T07:13:16.654Z</updated>
+    <updated>2018-03-21T18:01:24.920Z</updated>
     
     <summary type="html">
     
