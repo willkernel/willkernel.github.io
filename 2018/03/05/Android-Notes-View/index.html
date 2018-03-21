@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/colormatrix2.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/pixels.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/flagview.gif">
-<meta property="og:updated_time" content="2018-03-14T13:50:41.877Z">
+<meta property="og:updated_time" content="2018-03-21T18:15:55.159Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Notes(View)">
 <meta name="twitter:description" content="Android 绘图机制处理 系统屏幕密度，密度值，分辨率对应关系 1ldpi=120(240*320),mdpi=160(320*480)，hdpi=240(480*800),xhdpi=320(720*1280),xxhdpi=480(1080*1980)  独立像素密度(密度无关像素 (dp)在定义 UI 布局时应使用的虚拟像素单位，用于以密度无关方式表示布局维度 或位置) 1ldpi:md">
@@ -421,6 +421,9 @@
 <li><p>单位转换</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">scale=getResources().getDisplayMetrics().density;</span><br><span class="line">px2dp: pxValue/scale+0.5f;</span><br><span class="line">dp2px: dpValue*scale+0.5f;</span><br><span class="line"></span><br><span class="line">fontScale=getResources().getDisplayMetrics().scaledDensity;</span><br><span class="line">px2sp: pxValue/fontScale+0.5f;</span><br><span class="line">sp2px: pxValue*fontScale+0.5f;</span><br><span class="line"></span><br><span class="line">TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,dp,</span><br><span class="line">getResource().getDisplayMetrics());</span><br></pre></td></tr></table></figure>
 </li>
+</ul>
+<a id="more"></a>
+<ul>
 <li><p>2D绘图</p>
 <ul>
 <li>setAntiAlias()//画笔锯齿</li>

@@ -88,12 +88,12 @@
 
 
 
-<meta name="description" content="Paint PorterDuffXfermode 两个图层交集区域显示方式,用的最多是DST_IN,SRC_IN显示圆形图片或圆角图片 圆角矩形 123456789101112private void drawRoundRect() &amp;#123;       ImageView roundRectIv = findViewById(R.id.roundRectIv);       Bitmap m">
+<meta name="description" content="Paint PorterDuffXfermode 两个图层交集区域显示方式,用的最多是DST_IN,SRC_IN显示圆形图片或圆角图片">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Notes(Paint Shader)">
 <meta property="og:url" content="http://willkernel.github.io/2018/03/07/Android-Notes-Paint-Shader/index.html">
 <meta property="og:site_name" content="willkernel">
-<meta property="og:description" content="Paint PorterDuffXfermode 两个图层交集区域显示方式,用的最多是DST_IN,SRC_IN显示圆形图片或圆角图片 圆角矩形 123456789101112private void drawRoundRect() &amp;#123;       ImageView roundRectIv = findViewById(R.id.roundRectIv);       Bitmap m">
+<meta property="og:description" content="Paint PorterDuffXfermode 两个图层交集区域显示方式,用的最多是DST_IN,SRC_IN显示圆形图片或圆角图片">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/porterduffxfermode.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/roundrectiv.png">
@@ -101,10 +101,10 @@
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/bitmapshader.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/reflect.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/patheffect.png">
-<meta property="og:updated_time" content="2018-03-14T13:50:58.569Z">
+<meta property="og:updated_time" content="2018-03-21T18:15:34.376Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Notes(Paint Shader)">
-<meta name="twitter:description" content="Paint PorterDuffXfermode 两个图层交集区域显示方式,用的最多是DST_IN,SRC_IN显示圆形图片或圆角图片 圆角矩形 123456789101112private void drawRoundRect() &amp;#123;       ImageView roundRectIv = findViewById(R.id.roundRectIv);       Bitmap m">
+<meta name="twitter:description" content="Paint PorterDuffXfermode 两个图层交集区域显示方式,用的最多是DST_IN,SRC_IN显示圆形图片或圆角图片">
 <meta name="twitter:image" content="http://p4n1d4izv.bkt.clouddn.com/images/porterduffxfermode.png">
 
 
@@ -413,7 +413,8 @@
 
       
         <h4 id="Paint"><a href="#Paint" class="headerlink" title="Paint"></a>Paint</h4><ul>
-<li>PorterDuffXfermode 两个图层交集区域显示方式,用的最多是DST_IN,SRC_IN显示圆形图片或圆角图片<img src="http://p4n1d4izv.bkt.clouddn.com/images/porterduffxfermode.png"></li>
+<li>PorterDuffXfermode 两个图层交集区域显示方式,用的最多是DST_IN,SRC_IN显示圆形图片或圆角图片<img src="http://p4n1d4izv.bkt.clouddn.com/images/porterduffxfermode.png">
+<a id="more"></a></li>
 <li><p>圆角矩形</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">private void drawRoundRect() &#123;</span><br><span class="line">       ImageView roundRectIv = findViewById(R.id.roundRectIv);</span><br><span class="line">       Bitmap mBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.car3);</span><br><span class="line">       Bitmap mOut = Bitmap.createBitmap(mBitmap.getWidth(), mBitmap.getHeight(), Bitmap.Config.ARGB_8888);</span><br><span class="line">       Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);</span><br><span class="line">       PorterDuffXfermode mXfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);</span><br><span class="line">       Canvas canvas = new Canvas(mOut);</span><br><span class="line">       canvas.drawRoundRect(0, 0, mBitmap.getWidth(), mBitmap.getHeight(), 100, 100, mPaint);</span><br><span class="line">       mPaint.setXfermode(mXfermode);</span><br><span class="line">       canvas.drawBitmap(mBitmap, 0, 0, mPaint);</span><br><span class="line">       roundRectIv.setImageBitmap(mOut);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <img src="http://p4n1d4izv.bkt.clouddn.com/images/roundrectiv.png"></li>

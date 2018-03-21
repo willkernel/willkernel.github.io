@@ -96,7 +96,7 @@
 <meta property="og:description" content="Activity，Activity调用栈  onCreate 创建基本元素 初始化资源，或在onPause中释放的资源 onPause/onStop 清除Activity资源，camera，sensor，receivers onDestory 清除线程 activity 在onSaveInstanceState()保存状态到Bundle，在onRestoreInstanceState(),onCr">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/activity_lifecycle.png">
-<meta property="og:updated_time" content="2018-03-14T13:51:28.527Z">
+<meta property="og:updated_time" content="2018-03-21T18:15:06.264Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Notes(Activity)">
 <meta name="twitter:description" content="Activity，Activity调用栈  onCreate 创建基本元素 初始化资源，或在onPause中释放的资源 onPause/onStop 清除Activity资源，camera，sensor，receivers onDestory 清除线程 activity 在onSaveInstanceState()保存状态到Bundle，在onRestoreInstanceState(),onCr">
@@ -413,20 +413,17 @@
 <li>初始化资源，或在onPause中释放的资源</li>
 <li>onPause/onStop 清除Activity资源，camera，sensor，receivers</li>
 <li>onDestory 清除线程</li>
-<li>activity 在onSaveInstanceState()保存状态到Bundle，在onRestoreInstanceState(),onCreate()恢复状态Bundle，已经默认实项了控件的状态保存</li>
-</ul>
+<li>activity 在onSaveInstanceState()保存状态到Bundle，在onRestoreInstanceState(),onCreate()恢复状态Bundle，已经默认实项了控件的状态保存<a id="more"></a>
 <ul>
-<li>Activity任务栈<ul>
+<li>Activity任务栈</li>
 <li>栈底元素是整个任务栈发起者</li>
 <li>一个任务栈Task,表示若干个Activity集合，可以来自不同的App，一个App的Activity也可以在不同的Task中</li>
 <li>LIFO 后进先出</li>
-<li>启动模式launchmode<ul>
+<li>启动模式launchmode</li>
 <li>standard<br>默认启动模式，每次都会创建新的实例</li>
 <li>singleTop<br>栈顶模式，如果栈顶是要启动的Activity，直接引用，如果不是创建新的Activity，例如qq接受多条消息，弹出的消息界面</li>
 <li>singleTask<br>单栈模式，要启动的Activity，如果栈中存在该Activity，将其置于栈顶，并将位于上方的Activity销毁，指同一个App中启动它的Activity，如果其他App以singleTask模式启动这个Activity，将会创建新的Activity。但是如果启动的Activity已经在一个任务栈中处于后台，那所在的任务栈会和要启动的Activity一起回到前台，当已经启动的Activity需要按返回键时，就会先返回Activity所在栈的元素<br>应用：将主Activity设置为singleTask，然后在要退出的Activity中启动主Activity，将他之上的Activity全部销毁,重写onNewIntent(),加上finish(),将最后一个主Activity结束</li>
 <li>singleInstanse<br>栈中只存在该一个Activity，共享实例，不需要重新创建，类似浏览器，电话</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>

@@ -97,7 +97,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mvp.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mvp-loader.png">
-<meta property="og:updated_time" content="2018-03-21T18:01:24.920Z">
+<meta property="og:updated_time" content="2018-03-21T18:14:18.003Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MVP(loader&#x2F;dagger&#x2F;rxjava2)">
 <meta name="twitter:description" content="MVP概念 View视图层,包含各种界面相关功能，例如Activity，Fragment，View,Adapter,专注于交互，一般持有Presenter的引用，或者通过依赖注入(Dagger)方式获得Presenter实例，将非UI逻辑操作委托给Presenter Presenter逻辑控制层，充当中间人，隔离View层，Model层，接收View层的数据请求，分发给Model层处理，监听Mod">
@@ -392,12 +392,10 @@
 <li>Model<br>封装网络数据请求，本地数据请求，对Presenter提供简单易用的接口</li>
 <li>MVP，MVC区别<ul>
 <li>MVP中Presenter和View，Model通过接口进行通信，通常Presenter与View是一一对应，复杂的可能有多个Presenter</li>
-<li>MVC中Model,View直接通信的，Controller基于行为，可以被多个View共享</li>
+<li>MVC中Model,View直接通信的，Controller基于行为，可以被多个View共享<a id="more"></a>
+(以下项目来自android-architecture-todoapp)<h5 id="mvp"><a href="#mvp" class="headerlink" title="mvp"></a>mvp</h5></li>
 </ul>
 </li>
-</ul>
-<p>(以下项目来自android-architecture-todoapp)</p>
-<h5 id="mvp"><a href="#mvp" class="headerlink" title="mvp"></a>mvp</h5><ul>
 <li><p>BaseView<t></t></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface BaseView&lt;T&gt; &#123;</span><br><span class="line">    void setPresenter(T presenter);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>

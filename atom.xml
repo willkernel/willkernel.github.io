@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://willkernel.github.io/"/>
-  <updated>2018-03-21T17:07:52.939Z</updated>
+  <updated>2018-03-21T18:07:17.577Z</updated>
   <id>http://willkernel.github.io/</id>
   
   <author>
@@ -21,17 +21,15 @@
     <link href="http://willkernel.github.io/2018/03/20/RxJava2/"/>
     <id>http://willkernel.github.io/2018/03/20/RxJava2/</id>
     <published>2018-03-20T07:14:00.000Z</published>
-    <updated>2018-03-21T17:07:52.939Z</updated>
+    <updated>2018-03-21T18:07:17.577Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h5 id=&quot;RxJava2&quot;&gt;&lt;a href=&quot;#RxJava2&quot; class=&quot;headerlink&quot; title=&quot;RxJava2&quot;&gt;&lt;/a&gt;RxJava2&lt;/h5&gt;&lt;p&gt;RxJava是Java
-        
-      
+      &lt;h5 id=&quot;RxJava2&quot;&gt;&lt;a href=&quot;#RxJava2&quot; class=&quot;headerlink&quot; title=&quot;RxJava2&quot;&gt;&lt;/a&gt;RxJava2&lt;/h5&gt;&lt;p&gt;RxJava是Java VM响应式编程扩展的实现，扩展了观察者模式，通过操作符对数据事件流操作，来编写异步和基于事件的程序，从而不用关心同步，线程安全并发等问题&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;app/build.gradle&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;implementation &amp;apos;io.reactivex.rxjava2:rxjava:2.1.9&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;implementation &amp;apos;io.reactivex.rxjava2:rxandroid:2.0.2&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//retrofit&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;implementation &amp;apos;com.squareup.retrofit2:retrofit:2.3.0&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//Gson converter&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;implementation &amp;apos;com.squareup.retrofit2:converter-gson:2.3.0&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//RxJava2 Adapter&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;implementation &amp;apos;com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//okhttp&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;implementation &amp;apos;com.squareup.okhttp3:okhttp:3.8.1&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;implementation &amp;apos;com.squareup.okhttp3:logging-interceptor:3.6.0&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -47,17 +45,19 @@
     <link href="http://willkernel.github.io/2018/03/16/Data-Binding/"/>
     <id>http://willkernel.github.io/2018/03/16/Data-Binding/</id>
     <published>2018-03-16T05:38:00.000Z</published>
-    <updated>2018-03-20T07:11:43.441Z</updated>
+    <updated>2018-03-21T18:10:19.922Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h5 id=&quot;Data-Binding-Library&quot;&gt;&lt;a href=&quot;#Data-Binding-Library&quot; class=&quot;headerlink&quot; title=&quot;Data Binding Library&quot;&gt;&lt;/a&gt;Data Binding
-        
-      
+      &lt;h5 id=&quot;Data-Binding-Library&quot;&gt;&lt;a href=&quot;#Data-Binding-Library&quot; class=&quot;headerlink&quot; title=&quot;Data Binding Library&quot;&gt;&lt;/a&gt;Data Binding Library&lt;/h5&gt;&lt;p&gt;数据绑定库编写声明式布局，尽量减少绑定应用程序逻辑和布局所需的代码，减少布局绑定相关代码&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;build environment&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;android&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     dataBinding &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        enabled = true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Data Binding Compiler V2&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;android.databinding.enableV2=true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;向后不兼容&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -71,17 +71,15 @@
     <link href="http://willkernel.github.io/2018/03/13/Dagger/"/>
     <id>http://willkernel.github.io/2018/03/13/Dagger/</id>
     <published>2018-03-12T16:12:00.000Z</published>
-    <updated>2018-03-20T11:30:05.399Z</updated>
+    <updated>2018-03-21T18:11:03.531Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h5 id=&quot;Dagger&quot;&gt;&lt;a href=&quot;#Dagger&quot; class=&quot;headerlink&quot; title=&quot;Dagger&quot;&gt;&lt;/a&gt;Dagger&lt;/h5&gt;&lt;p&gt;依赖注入（Dependency Injection），简称DI，又叫控制反转（Inversion of
-        
-      
+      &lt;h5 id=&quot;Dagger&quot;&gt;&lt;a href=&quot;#Dagger&quot; class=&quot;headerlink&quot; title=&quot;Dagger&quot;&gt;&lt;/a&gt;Dagger&lt;/h5&gt;&lt;p&gt;依赖注入（Dependency Injection），简称DI，又叫控制反转（Inversion of Control），简称IOC&lt;br&gt;当一个类的实例需要另一个类的实例，在传统的设计中，通常由调用者来创建被调用者的实例，然而依赖注入的方式，创建被调用者不再由调用者创建实例，创建被调用者的实例的工作由IOC容器来完成，然后注入到调用者。因此也被称为依赖注入&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;API&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public @interface Component &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Class&amp;lt;?&amp;gt;[] modules() default &amp;#123;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Class&amp;lt;?&amp;gt;[] dependencies() default &amp;#123;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    @Target(TYPE)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    @Documented&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    @interface Builder &amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public @interface Subcomponent &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Class&amp;lt;?&amp;gt;[] modules() default &amp;#123;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    @Target(TYPE)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    @Documented&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    @interface Builder &amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public @interface Module &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Class&amp;lt;?&amp;gt;[] includes() default &amp;#123;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    @Beta&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Class&amp;lt;?&amp;gt;[] subcomponents() default &amp;#123;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public @interface Provides &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public @interface MapKey &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    boolean unwrapValue() default true;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public interface Lazy&amp;lt;T&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    T get();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -120,40 +118,20 @@
     <link href="http://willkernel.github.io/2018/03/09/CoordinatorLayout/"/>
     <id>http://willkernel.github.io/2018/03/09/CoordinatorLayout/</id>
     <published>2018-03-09T02:33:00.000Z</published>
-    <updated>2018-03-20T07:12:27.960Z</updated>
+    <updated>2018-03-21T18:13:30.692Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h4 id=&quot;CoordinatorLayout&quot;&gt;&lt;a href=&quot;#CoordinatorLayout&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h4 id=&quot;CoordinatorLayout&quot;&gt;&lt;a href=&quot;#CoordinatorLayout&quot; class=&quot;headerlink&quot; title=&quot;CoordinatorLayout&quot;&gt;&lt;/a&gt;CoordinatorLayout&lt;/h4&gt;&lt;p&gt;Material风格布局，包含在support Library中，结合AppbarLayout,CollapsingToolbarLayout等可达到MD设计风格布局&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;build.gradle&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;def SUPPORT = &amp;quot;26.1.0&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dependencies &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  implementation &amp;apos;com.android.support:appcompat-v7:26.1.0&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    implementation &amp;apos;com.android.support.constraint:constraint-layout:1.0.2&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    implementation &amp;quot;com.android.support:design:$SUPPORT&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    implementation &amp;quot;com.android.support:cardview-v7:$SUPPORT&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    implementation &amp;quot;com.android.support:recyclerview-v7:$SUPPORT&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    implementation &amp;apos;de.hdodenhof:circleimageview:1.3.0&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
       <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>NDK</title>
-    <link href="http://willkernel.github.io/2018/03/09/NDK/"/>
-    <id>http://willkernel.github.io/2018/03/09/NDK/</id>
-    <published>2018-03-08T17:04:00.000Z</published>
-    <updated>2018-03-20T07:12:42.178Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-    
-      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
     
   </entry>
   
@@ -178,6 +156,24 @@
   </entry>
   
   <entry>
+    <title>NDK</title>
+    <link href="http://willkernel.github.io/2018/03/09/NDK/"/>
+    <id>http://willkernel.github.io/2018/03/09/NDK/</id>
+    <published>2018-03-08T17:04:00.000Z</published>
+    <updated>2018-03-20T07:12:42.178Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Kotlin</title>
     <link href="http://willkernel.github.io/2018/03/09/Kotlin/"/>
     <id>http://willkernel.github.io/2018/03/09/Kotlin/</id>
@@ -196,17 +192,17 @@
     <link href="http://willkernel.github.io/2018/03/09/MVP/"/>
     <id>http://willkernel.github.io/2018/03/09/MVP/</id>
     <published>2018-03-08T17:03:12.000Z</published>
-    <updated>2018-03-21T18:01:24.920Z</updated>
+    <updated>2018-03-21T18:14:18.003Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h5 id=&quot;MVP概念&quot;&gt;&lt;a href=&quot;#MVP概念&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h5 id=&quot;MVP概念&quot;&gt;&lt;a href=&quot;#MVP概念&quot; class=&quot;headerlink&quot; title=&quot;MVP概念&quot;&gt;&lt;/a&gt;MVP概念&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;View&lt;br&gt;视图层,包含各种界面相关功能，例如Activity，Fragment，View,Adapter,专注于交互，一般持有Presenter的引用，或者通过依赖注入(Dagger)方式获得Presenter实例，将非UI逻辑操作委托给Presenter&lt;/li&gt;
+&lt;li&gt;Presenter&lt;br&gt;逻辑控制层，充当中间人，隔离View层，Model层，接收View层的数据请求，分发给Model层处理，监听Model处理结果，将结果反馈给View，实项界面的刷新&lt;/li&gt;
+&lt;li&gt;Model&lt;br&gt;封装网络数据请求，本地数据请求，对Presenter提供简单易用的接口&lt;/li&gt;
+&lt;li&gt;MVP，MVC区别&lt;ul&gt;
+&lt;li&gt;MVP中Presenter和View，Model通过接口进行通信，通常Presenter与View是一一对应，复杂的可能有多个Presenter&lt;/li&gt;
+&lt;li&gt;MVC中Model,View直接通信的，Controller基于行为，可以被多个View共享
     
     </summary>
     
@@ -218,17 +214,15 @@
     <link href="http://willkernel.github.io/2018/03/09/MVVM/"/>
     <id>http://willkernel.github.io/2018/03/09/MVVM/</id>
     <published>2018-03-08T17:02:00.000Z</published>
-    <updated>2018-03-20T07:13:28.243Z</updated>
+    <updated>2018-03-21T18:14:36.744Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h5 id=&quot;Todo-mvvm-databinding&quot;&gt;&lt;a href=&quot;#Todo-mvvm-databinding&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h5 id=&quot;Todo-mvvm-databinding&quot;&gt;&lt;a href=&quot;#Todo-mvvm-databinding&quot; class=&quot;headerlink&quot; title=&quot;Todo-mvvm-databinding&quot;&gt;&lt;/a&gt;Todo-mvvm-databinding&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;Model: 内存，本地，网络数据的实现与获取&lt;/li&gt;
+&lt;li&gt;View: 对应Activity,Fragment,负责View的绘制，与用户交互，在xml中编写databinding对model层数据的引用绑定，&lt;code&gt;ViewModelHolder&amp;lt;VH&amp;gt;&lt;/code&gt;作为非UI的Fragment持有ViewModel，并绑定到Activity的生命周期&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ViewModel: databinding框架绑定ViewModel，ViewModel持有View中引用的变量observable fields，以及数据管理类TasksRepository，数据或属性发生变化时，databinding自动更新UI&lt;/p&gt;
+&lt;img src=&quot;http://p4n1d4izv.bkt.clouddn.com/images/mvvm-databinding.png&quot;&gt;
     
     </summary>
     
@@ -242,17 +236,18 @@
     <link href="http://willkernel.github.io/2018/03/08/Android-Notes-Performance/"/>
     <id>http://willkernel.github.io/2018/03/08/Android-Notes-Performance/</id>
     <published>2018-03-08T08:26:00.000Z</published>
-    <updated>2018-03-20T07:13:47.719Z</updated>
+    <updated>2018-03-21T18:14:46.099Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h4 id=&quot;Performance-optimization&quot;&gt;&lt;a href=&quot;#Performance-optimization&quot; class=&quot;headerlink&quot; title=&quot;Performance optimization&quot;&gt;&lt;/a&gt;Performance
-        
-      
+      &lt;h4 id=&quot;Performance-optimization&quot;&gt;&lt;a href=&quot;#Performance-optimization&quot; class=&quot;headerlink&quot; title=&quot;Performance optimization&quot;&gt;&lt;/a&gt;Performance optimization&lt;/h4&gt;&lt;h5 id=&quot;布局&quot;&gt;&lt;a href=&quot;#布局&quot; class=&quot;headerlink&quot; title=&quot;布局&quot;&gt;&lt;/a&gt;布局&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;人眼感觉流畅画面的帧数要达到40-60帧每秒&lt;/li&gt;
+&lt;li&gt;在Android中，系统通过VSYNC信号触发对UI的渲染，重绘，需要16ms,其实就是1000ms中显示60帧，1000/60=16.67.如果不能在16ms完成绘制，就会丢帧，例如绘制耗时20ms，在16ms有VSYNC信号时无法绘制，该帧被丢弃，等待下次信号才开始绘制，导致16*2ms 都显示同一帧画面&lt;/li&gt;
+&lt;li&gt;在开发者选项中有Profile GPU Rendering 选中On Screen as bars,中间的绿色横线代表VSYNC时间16ms柱状线包含3个部分&lt;ul&gt;
+&lt;li&gt;蓝色代表测量绘制Display List的时间&lt;/li&gt;
+&lt;li&gt;红色代表OpenGL渲染Display List的时间&lt;/li&gt;
+&lt;li&gt;黄色代表CPU等待GPU处理的时间&lt;br&gt;Android 6.0&lt;img src=&quot;http://p4n1d4izv.bkt.clouddn.com/images/gpurendering1.png&quot;&gt;
+&lt;img src=&quot;http://p4n1d4izv.bkt.clouddn.com/images/gpurendering2.png&quot;&gt;
     
     </summary>
     
@@ -266,17 +261,14 @@
     <link href="http://willkernel.github.io/2018/03/08/Android-Notes-System-Info-Manager-Safety/"/>
     <id>http://willkernel.github.io/2018/03/08/Android-Notes-System-Info-Manager-Safety/</id>
     <published>2018-03-07T17:29:00.000Z</published>
-    <updated>2018-03-14T14:02:00.779Z</updated>
+    <updated>2018-03-21T18:14:54.896Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h4 id=&quot;Android-System-Info&quot;&gt;&lt;a href=&quot;#Android-System-Info&quot; class=&quot;headerlink&quot; title=&quot;Android System Info&quot;&gt;&lt;/a&gt;Android System
-        
-      
+      &lt;h4 id=&quot;Android-System-Info&quot;&gt;&lt;a href=&quot;#Android-System-Info&quot; class=&quot;headerlink&quot; title=&quot;Android System Info&quot;&gt;&lt;/a&gt;Android System Info&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;android.os.Build&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Build.BOARD 主板&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.BRAND 系统定制商&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.SUPPORTED_ABIS CPU指令集&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.DEVICE 设备参数&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.DISPLAY 显示屏参数&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.FINGERPRINT 唯一编号&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.SERIAL 硬件序列号&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.ID 修订版本&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.MANUFACTURER 硬件制造商&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.MODEL 版本&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.HARDWARE 硬件名&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.PRODUCT 手机产品名&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.TAGS Build 标签&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.TYPE Build 类型&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.VERSION.CODENAME 开发代号&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.VERSION.INCREMENTAL 源码控制版本号&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.VERSION.RELEASE 版本字符串&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.VERSION.SDK_INT 版本号&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// The following properties only make sense for internal engineering builds.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.HOST Host值&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.USER User名&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.TIME 编译时间&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -290,17 +282,17 @@
     <link href="http://willkernel.github.io/2018/03/07/Android-Notes-Activity/"/>
     <id>http://willkernel.github.io/2018/03/07/Android-Notes-Activity/</id>
     <published>2018-03-07T14:53:00.000Z</published>
-    <updated>2018-03-14T13:51:28.527Z</updated>
+    <updated>2018-03-21T18:15:06.264Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h4 id=&quot;Activity，Activity调用栈&quot;&gt;&lt;a href=&quot;#Activity，Activity调用栈&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h4 id=&quot;Activity，Activity调用栈&quot;&gt;&lt;a href=&quot;#Activity，Activity调用栈&quot; class=&quot;headerlink&quot; title=&quot;Activity，Activity调用栈&quot;&gt;&lt;/a&gt;Activity，Activity调用栈&lt;/h4&gt;&lt;img src=&quot;http://p4n1d4izv.bkt.clouddn.com/images/activity_lifecycle.png&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;onCreate 创建基本元素&lt;/li&gt;
+&lt;li&gt;初始化资源，或在onPause中释放的资源&lt;/li&gt;
+&lt;li&gt;onPause/onStop 清除Activity资源，camera，sensor，receivers&lt;/li&gt;
+&lt;li&gt;onDestory 清除线程&lt;/li&gt;
+&lt;li&gt;activity 在onSaveInstanceState()保存状态到Bundle，在onRestoreInstanceState(),onCreate()恢复状态Bundle，已经默认实项了控件的状态保存
     
     </summary>
     
@@ -314,17 +306,14 @@
     <link href="http://willkernel.github.io/2018/03/07/Android-Notes-SurfaceView/"/>
     <id>http://willkernel.github.io/2018/03/07/Android-Notes-SurfaceView/</id>
     <published>2018-03-07T05:30:00.000Z</published>
-    <updated>2018-03-14T13:51:13.643Z</updated>
+    <updated>2018-03-21T18:15:23.751Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h4 id=&quot;SurfaceView&quot;&gt;&lt;a href=&quot;#SurfaceView&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h4 id=&quot;SurfaceView&quot;&gt;&lt;a href=&quot;#SurfaceView&quot; class=&quot;headerlink&quot; title=&quot;SurfaceView&quot;&gt;&lt;/a&gt;SurfaceView&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;View适用于主动刷新，SurfaceView适用于被动刷新，例如频繁刷新&lt;/li&gt;
+&lt;li&gt;View在主线程中对画面进行刷新，SurfaceView通常会在子线程进行页面刷新&lt;/li&gt;
+&lt;li&gt;View绘制时没有使用双缓冲机制，SurfaceView在底层机制中实项了双缓冲机制
     
     </summary>
     
@@ -338,18 +327,12 @@
     <link href="http://willkernel.github.io/2018/03/07/Android-Notes-Paint-Shader/"/>
     <id>http://willkernel.github.io/2018/03/07/Android-Notes-Paint-Shader/</id>
     <published>2018-03-06T16:17:00.000Z</published>
-    <updated>2018-03-14T13:50:58.569Z</updated>
+    <updated>2018-03-21T18:15:34.376Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h4 id=&quot;Paint&quot;&gt;&lt;a href=&quot;#Paint&quot; class=&quot;headerlink&quot; title=&quot;Paint&quot;&gt;&lt;/a&gt;Paint&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;PorterDuffXfermode
-        
-      
+      &lt;h4 id=&quot;Paint&quot;&gt;&lt;a href=&quot;#Paint&quot; class=&quot;headerlink&quot; title=&quot;Paint&quot;&gt;&lt;/a&gt;Paint&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;PorterDuffXfermode 两个图层交集区域显示方式,用的最多是DST_IN,SRC_IN显示圆形图片或圆角图片&lt;img src=&quot;http://p4n1d4izv.bkt.clouddn.com/images/porterduffxfermode.png&quot;&gt;
     
     </summary>
     
@@ -363,17 +346,21 @@
     <link href="http://willkernel.github.io/2018/03/05/Android-Notes-View/"/>
     <id>http://willkernel.github.io/2018/03/05/Android-Notes-View/</id>
     <published>2018-03-05T09:03:00.000Z</published>
-    <updated>2018-03-14T13:50:41.877Z</updated>
+    <updated>2018-03-21T18:15:55.159Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h4 id=&quot;Android-绘图机制处理&quot;&gt;&lt;a href=&quot;#Android-绘图机制处理&quot; class=&quot;headerlink&quot; title=&quot;Android 绘图机制处理&quot;&gt;&lt;/a&gt;Android
-        
-      
+      &lt;h4 id=&quot;Android-绘图机制处理&quot;&gt;&lt;a href=&quot;#Android-绘图机制处理&quot; class=&quot;headerlink&quot; title=&quot;Android 绘图机制处理&quot;&gt;&lt;/a&gt;Android 绘图机制处理&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;系统屏幕密度，密度值，分辨率对应关系&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ldpi=120(240*320),mdpi=160(320*480)，hdpi=240(480*800),xhdpi=320(720*1280),xxhdpi=480(1080*1980)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;独立像素密度(密度无关像素 (dp)在定义 UI 布局时应使用的虚拟像素单位，用于以密度无关方式表示布局维度 或位置)&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ldpi:mdpi:hdpi:xhdpi:xxhdpi=120:160:240:320:480=0.75px:1px:1.5px:2px:3px=3:4:6:8:12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;单位转换&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;scale=getResources().getDisplayMetrics().density;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;px2dp: pxValue/scale+0.5f;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dp2px: dpValue*scale+0.5f;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fontScale=getResources().getDisplayMetrics().scaledDensity;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;px2sp: pxValue/fontScale+0.5f;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sp2px: pxValue*fontScale+0.5f;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,dp,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;getResource().getDisplayMetrics());&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -387,17 +374,18 @@
     <link href="http://willkernel.github.io/2018/03/02/Android-Notes-ListView-Scroller/"/>
     <id>http://willkernel.github.io/2018/03/02/Android-Notes-ListView-Scroller/</id>
     <published>2018-03-01T16:32:00.000Z</published>
-    <updated>2018-03-14T13:50:25.262Z</updated>
+    <updated>2018-03-21T18:16:07.350Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h4 id=&quot;ListView使用技巧&quot;&gt;&lt;a href=&quot;#ListView使用技巧&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h4 id=&quot;ListView使用技巧&quot;&gt;&lt;a href=&quot;#ListView使用技巧&quot; class=&quot;headerlink&quot; title=&quot;ListView使用技巧&quot;&gt;&lt;/a&gt;ListView使用技巧&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;优化技巧&lt;ul&gt;
+&lt;li&gt;ViewHolder-ListView 视图缓存机制&lt;/li&gt;
+&lt;li&gt;设置分割线divider=”@null”透明&lt;/li&gt;
+&lt;li&gt;取消点击效果，listSelector&lt;/li&gt;
+&lt;li&gt;smoothScrollBy/ToPosition()&lt;/li&gt;
+&lt;li&gt;处理空ListView,listView.setEmptyView(ImageView)&lt;/li&gt;
+&lt;li&gt;滑动监听，onTouchListener,onScrollListener,GestureDetector手势识别,VelocityTracker滑动速度检测
     
     </summary>
     
@@ -411,18 +399,15 @@
     <link href="http://willkernel.github.io/2018/02/26/Docker-%E7%BC%96%E8%AF%91Android%E6%BA%90%E7%A0%81/"/>
     <id>http://willkernel.github.io/2018/02/26/Docker-编译Android源码/</id>
     <published>2018-02-26T02:50:00.000Z</published>
-    <updated>2018-03-02T13:02:11.944Z</updated>
+    <updated>2018-03-21T18:16:34.879Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://store.docker.com/editions/community/docker-ce-desktop-windows&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Windows
-        
-      
+      &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://store.docker.com/editions/community/docker-ce-desktop-windows&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Windows 安装Docker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/27273412/cannot-install-packages-inside-docker-ubuntu-image&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Cannot install packages inside docker Ubuntu image&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;It is because there is no package cache in the image, you need to run:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;apt-get -qq update&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;before installing packages, and if your command is in a Dockerfile, you&amp;apos;ll then need:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;apt-get -qq -y install curl&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Always combine RUN apt-get update with apt-get install in the same  RUN statement, for example&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;RUN apt-get update &amp;amp;&amp;amp; apt-get install -y package-bar&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -465,17 +450,48 @@
     <link href="http://willkernel.github.io/2018/02/25/Android-Notes/"/>
     <id>http://willkernel.github.io/2018/02/25/Android-Notes/</id>
     <published>2018-02-25T11:41:00.000Z</published>
-    <updated>2018-03-07T17:26:54.586Z</updated>
+    <updated>2018-03-21T18:16:57.990Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h4 id=&quot;Android系统架构&quot;&gt;&lt;a href=&quot;#Android系统架构&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h4 id=&quot;Android系统架构&quot;&gt;&lt;a href=&quot;#Android系统架构&quot; class=&quot;headerlink&quot; title=&quot;Android系统架构&quot;&gt;&lt;/a&gt;Android系统架构&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Android系统分四层：Linux内核层，库和运行时，Framework层和应用层。&lt;ul&gt;
+&lt;li&gt;Linux包括硬件驱动，进程管理，安全系统&lt;/li&gt;
+&lt;li&gt;Dalvik虚拟机，运行时编译；ART虚拟机安装时编译&lt;/li&gt;
+&lt;li&gt;Framework&lt;ul&gt;
+&lt;li&gt;ActivityManager&lt;/li&gt;
+&lt;li&gt;BackupManager&lt;/li&gt;
+&lt;li&gt;Bluetooth&lt;/li&gt;
+&lt;li&gt;ContentProviders&lt;/li&gt;
+&lt;li&gt;LocationManger&lt;/li&gt;
+&lt;li&gt;Map libraries&lt;/li&gt;
+&lt;li&gt;MediaPlayer&lt;/li&gt;
+&lt;li&gt;NotificationManager&lt;/li&gt;
+&lt;li&gt;PackageManager&lt;/li&gt;
+&lt;li&gt;ResourceManager&lt;/li&gt;
+&lt;li&gt;SearchManager&lt;/li&gt;
+&lt;li&gt;SharedPreference&lt;/li&gt;
+&lt;li&gt;TelephoneManager&lt;/li&gt;
+&lt;li&gt;WidgetProvider&lt;/li&gt;
+&lt;li&gt;WindowManager&lt;/li&gt;
+&lt;li&gt;ViewSystem&lt;/li&gt;
+&lt;li&gt;XMPPService&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;标准库&lt;ul&gt;
+&lt;li&gt;Apache HTTP&lt;/li&gt;
+&lt;li&gt;OpenGL ES&lt;/li&gt;
+&lt;li&gt;Open SSL&lt;/li&gt;
+&lt;li&gt;SQLite&lt;/li&gt;
+&lt;li&gt;Webkit&lt;/li&gt;
+&lt;li&gt;ICU&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Android NDK/SDK APP(解压后包含内容中有)&lt;ul&gt;
+&lt;li&gt;AndroidManifeset&lt;/li&gt;
+&lt;li&gt;Dalvik Classes&lt;/li&gt;
+&lt;li&gt;Resource bundle&lt;/li&gt;
+&lt;li&gt;NDK APP中包含JNI lib
     
     </summary>
     

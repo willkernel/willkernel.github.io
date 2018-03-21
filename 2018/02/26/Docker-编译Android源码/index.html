@@ -88,19 +88,19 @@
 
 
 
-<meta name="description" content="Windows 安装Docker Cannot install packages inside docker Ubuntu image  1234567891011It is because there is no package cache in the image, you need to run:apt-get -qq updatebefore installing packages, a">
+<meta name="description" content="Windows 安装Docker Cannot install packages inside docker Ubuntu image  12345678910It is because there is no package cache in the image, you need to run:apt-get -qq updatebefore installing packages, and">
 <meta name="keywords" content="Docker,源码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker 编译Android源码">
 <meta property="og:url" content="http://willkernel.github.io/2018/02/26/Docker-编译Android源码/index.html">
 <meta property="og:site_name" content="willkernel">
-<meta property="og:description" content="Windows 安装Docker Cannot install packages inside docker Ubuntu image  1234567891011It is because there is no package cache in the image, you need to run:apt-get -qq updatebefore installing packages, a">
+<meta property="og:description" content="Windows 安装Docker Cannot install packages inside docker Ubuntu image  12345678910It is because there is no package cache in the image, you need to run:apt-get -qq updatebefore installing packages, and">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/lunch.png">
-<meta property="og:updated_time" content="2018-03-02T13:02:11.944Z">
+<meta property="og:updated_time" content="2018-03-21T18:16:34.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 编译Android源码">
-<meta name="twitter:description" content="Windows 安装Docker Cannot install packages inside docker Ubuntu image  1234567891011It is because there is no package cache in the image, you need to run:apt-get -qq updatebefore installing packages, a">
+<meta name="twitter:description" content="Windows 安装Docker Cannot install packages inside docker Ubuntu image  12345678910It is because there is no package cache in the image, you need to run:apt-get -qq updatebefore installing packages, and">
 <meta name="twitter:image" content="http://p4n1d4izv.bkt.clouddn.com/images/lunch.png">
 
 
@@ -412,7 +412,8 @@
 <li><a href="https://store.docker.com/editions/community/docker-ce-desktop-windows" target="_blank" rel="noopener">Windows 安装Docker</a></li>
 <li><a href="https://stackoverflow.com/questions/27273412/cannot-install-packages-inside-docker-ubuntu-image" target="_blank" rel="noopener">Cannot install packages inside docker Ubuntu image</a></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">It is because there is no package cache in the image, you need to run:</span><br><span class="line"></span><br><span class="line">apt-get -qq update</span><br><span class="line">before installing packages, and if your command is in a Dockerfile, you&apos;ll then need:</span><br><span class="line"></span><br><span class="line">apt-get -qq -y install curl</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Always combine RUN apt-get update with apt-get install in the same  RUN statement, for example</span><br><span class="line"></span><br><span class="line">RUN apt-get update &amp;&amp; apt-get install -y package-bar</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">It is because there is no package cache in the image, you need to run:</span><br><span class="line"></span><br><span class="line">apt-get -qq update</span><br><span class="line">before installing packages, and if your command is in a Dockerfile, you&apos;ll then need:</span><br><span class="line"></span><br><span class="line">apt-get -qq -y install curl</span><br><span class="line"></span><br><span class="line">Always combine RUN apt-get update with apt-get install in the same  RUN statement, for example</span><br><span class="line"></span><br><span class="line">RUN apt-get update &amp;&amp; apt-get install -y package-bar</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <ul>
 <li><p>参考<a href="http://blog.csdn.net/godiors_163/article/details/59069108" target="_blank" rel="noopener">使用Docker编译Android系统源码</a></p>
 </li>

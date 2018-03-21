@@ -109,7 +109,7 @@
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mat3.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mat4.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mat5.png">
-<meta property="og:updated_time" content="2018-03-20T07:13:47.719Z">
+<meta property="og:updated_time" content="2018-03-21T18:14:46.099Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Notes(Performance)">
 <meta name="twitter:description" content="Performance optimization布局 人眼感觉流畅画面的帧数要达到40-60帧每秒 在Android中，系统通过VSYNC信号触发对UI的渲染，重绘，需要16ms,其实就是1000ms中显示60帧，1000/60=16.67.如果不能在16ms完成绘制，就会丢帧，例如绘制耗时20ms，在16ms有VSYNC信号时无法绘制，该帧被丢弃，等待下次信号才开始绘制，导致16*2ms 都显示">
@@ -423,13 +423,12 @@
         <h4 id="Performance-optimization"><a href="#Performance-optimization" class="headerlink" title="Performance optimization"></a>Performance optimization</h4><h5 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h5><ul>
 <li>人眼感觉流畅画面的帧数要达到40-60帧每秒</li>
 <li>在Android中，系统通过VSYNC信号触发对UI的渲染，重绘，需要16ms,其实就是1000ms中显示60帧，1000/60=16.67.如果不能在16ms完成绘制，就会丢帧，例如绘制耗时20ms，在16ms有VSYNC信号时无法绘制，该帧被丢弃，等待下次信号才开始绘制，导致16*2ms 都显示同一帧画面</li>
-<li><p>在开发者选项中有Profile GPU Rendering 选中On Screen as bars,中间的绿色横线代表VSYNC时间16ms柱状线包含3个部分</p>
-<ul>
+<li>在开发者选项中有Profile GPU Rendering 选中On Screen as bars,中间的绿色横线代表VSYNC时间16ms柱状线包含3个部分<ul>
 <li>蓝色代表测量绘制Display List的时间</li>
 <li>红色代表OpenGL渲染Display List的时间</li>
 <li>黄色代表CPU等待GPU处理的时间<br>Android 6.0<img src="http://p4n1d4izv.bkt.clouddn.com/images/gpurendering1.png">
 <img src="http://p4n1d4izv.bkt.clouddn.com/images/gpurendering2.png">
-</li>
+<a id="more"></a></li>
 </ul>
 </li>
 <li><p>Overdraw<br>Enable GPU Overdraw 查看当前区域绘制次数，增大蓝色区域，<a href="https://developer.android.com/topic/performance/rendering/overdraw.html" target="_blank" rel="noopener">减少红色区域</a></p>
