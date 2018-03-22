@@ -105,7 +105,8 @@
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/rebase1.gif">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/rebaseonto.gif">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/rebaseontohead.gif">
-<meta property="og:updated_time" content="2018-03-22T05:57:20.073Z">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/gitignore.png">
+<meta property="og:updated_time" content="2018-03-22T09:08:53.194Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git">
 <meta name="twitter:description" content="入门 .git 的隐藏目录是你的本地仓库（Local Repository） git log 查看历史  git log -p查看详细历史 git log --stat 查看简要统计 git show e66666/branch查看指定commit，加文件名看指定文件 git diff --staged/--cached查看当前工作目录与暂存区的不同，可以看到即将添加到暂存区的改动内容，git d">
@@ -368,18 +369,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/Git/" itemprop="url" rel="index">
+                  <a href="/categories/Git/" itemprop="url" rel="index">
                     <span itemprop="name">Git</span>
                   </a>
                 </span>
@@ -438,6 +428,7 @@
 </ul>
 </li>
 <li><code>git status</code><img src="http://p4n1d4izv.bkt.clouddn.com/images/gitstatus.png">
+<a id="more"></a>
 <ul>
 <li>untracked files （未追踪的文件）</li>
 </ul>
@@ -543,6 +534,51 @@
 </li>
 </ul>
 <img src="http://p4n1d4izv.bkt.clouddn.com/images/rebaseontohead.gif">
+<h4 id="push到远端仓库的commit错误"><a href="#push到远端仓库的commit错误" class="headerlink" title="push到远端仓库的commit错误"></a>push到远端仓库的commit错误</h4><ul>
+<li><p>出错的commit已经push到远端分支，需要修改或删除掉，重新修改后，push commit时会报错，因为远端包含本地没有的commit，所以需要忽略冲突，强制push</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin branch1 -f</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>出错的commite已经合并到master，不能修改后强制push，应该直接revert撤销commit,然后再push revert后的代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert HEAD^</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="reset"><a href="#reset" class="headerlink" title="reset"></a>reset</h4><ul>
+<li><p>撤销最新提交的commit,其实是重置HEAD，branch的commit位置到父commit</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以把HEAD，branch移动其他commit</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard branch2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>reset --hard</code>：重置工作目录,工作目录的修改也被撤销，无论是否已add到暂存区</p>
+</li>
+<li><code>reset --soft</code>：保留工作目录改动，并将文件的改动放到暂存区</li>
+<li>reset 不加参数：工作目录的修改、暂存区的内容以及由 reset 所导致的新的文件差异，都会被放进工作目录<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">修改了 git.txt 和 readme.md，</span><br><span class="line">并把 git.txt 放进了暂存区</span><br><span class="line">当前push的commit中新增了文件app.txt</span><br><span class="line">此时执行</span><br><span class="line">git reset HEAD^</span><br><span class="line">工作目录的内容都会保存，暂存区被清空</span><br><span class="line"></span><br><span class="line">git status</span><br><span class="line">changes not staged:</span><br><span class="line">modified git.txt</span><br><span class="line">modified readme.md</span><br><span class="line"></span><br><span class="line">untracked files:</span><br><span class="line">app.txt</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="checkout"><a href="#checkout" class="headerlink" title="checkout"></a>checkout</h4><ul>
+<li><p>切换分支<code>git checkout branch1</code>，也可以切换到指定的commit</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git checkout HEAD^^</span><br><span class="line">git checkout master~3</span><br><span class="line">git checkout 32d434</span><br><span class="line">git checkout 32d434^</span><br><span class="line"></span><br><span class="line">checkout -- 文件名 的格式来撤销指定文件的修改</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>reset</code> HEAD和branch一起移动，而<code>checkout</code>不会，HEAD会指向新的commit</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HEAD 和 branch 脱离而不移动 HEAD,HEAD直接指向commit</span><br><span class="line">git checkout --detach</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="stash"><a href="#stash" class="headerlink" title="stash"></a>stash</h4><ul>
+<li>将当前改动内容保存到本地其他地方，不会被删除或提交，这样就可以把工作目录的改动清空，所有的改动被保存，之后需要还原的statsh之前的内容，执行<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git stash pop</span><br><span class="line"></span><br><span class="line">Git会忽略未被追踪的文件，如果也要stash保存untracked文件，即没有add到缓存区的文件</span><br><span class="line">git stash -u</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="reflog-reference-log"><a href="#reflog-reference-log" class="headerlink" title="reflog(reference log)"></a>reflog(reference log)</h4><ul>
+<li>误删了branch1，可以查看HEAD的移动历史,找到删除之前的commit,切换回删除之前的commit，重新创建同名分支，注意reflog要及时，因为不再引用或间接指向的commit会被Git回收<br>查看其他引用的reflog，<code>git reflog master</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br><span class="line">git checkout ccdde32</span><br><span class="line">git checkout -b branch1</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="gitignore"><a href="#gitignore" class="headerlink" title="gitignore"></a>gitignore</h4><p>忽略不需要被管理的文件<br><img src="http://p4n1d4izv.bkt.clouddn.com/images/gitignore.png"></p>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
+<li>tag是一个和 branch 非常相似的概念，它和 branch 最大的区别是：tag 不能移动，tag 被用来在关键版本处打标记用</li>
+<li>cherry-pick 是一种特殊的合并操作，使用它可以点选一批 commits，按序合并</li>
+<li><a href="https://git-scm.com/docs" target="_blank" rel="noopener">git-docs</a></li>
+<li><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="noopener">Pro git</a></li>
+</ul>
+
       
     </div>
     
@@ -627,8 +663,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/09/NDK/" rel="next" title="NDK">
-                <i class="fa fa-chevron-left"></i> NDK
+              <a href="/2018/03/09/MVP/" rel="next" title="MVP(loader/dagger/rxjava2)">
+                <i class="fa fa-chevron-left"></i> MVP(loader/dagger/rxjava2)
               </a>
             
           </div>
@@ -637,8 +673,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/09/CoordinatorLayout/" rel="prev" title="CoordinatorLayout">
-                CoordinatorLayout <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/09/NDK/" rel="prev" title="NDK">
+                NDK <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -727,7 +763,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -738,7 +774,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 
               </div>
@@ -749,7 +785,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -863,7 +899,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#入门"><span class="nav-number">1.</span> <span class="nav-text">入门</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HEAD、master、branch"><span class="nav-number">2.</span> <span class="nav-text">HEAD、master、branch</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HEAD-当前-commit-的引用"><span class="nav-number">2.1.</span> <span class="nav-text">HEAD 当前 commit 的引用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#branch"><span class="nav-number">2.2.</span> <span class="nav-text">branch</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#push"><span class="nav-number">3.</span> <span class="nav-text">push</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#merge"><span class="nav-number">4.</span> <span class="nav-text">merge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Feature-Branching"><span class="nav-number">5.</span> <span class="nav-text">Feature Branching</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rebase-变基"><span class="nav-number">6.</span> <span class="nav-text">rebase 变基</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提交代码错误"><span class="nav-number">7.</span> <span class="nav-text">提交代码错误</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交互式-rebase"><span class="nav-number">8.</span> <span class="nav-text">交互式 rebase</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#丢弃重新提交"><span class="nav-number">9.</span> <span class="nav-text">丢弃重新提交</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#入门"><span class="nav-number">1.</span> <span class="nav-text">入门</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HEAD、master、branch"><span class="nav-number">2.</span> <span class="nav-text">HEAD、master、branch</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HEAD-当前-commit-的引用"><span class="nav-number">2.1.</span> <span class="nav-text">HEAD 当前 commit 的引用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#branch"><span class="nav-number">2.2.</span> <span class="nav-text">branch</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#push"><span class="nav-number">3.</span> <span class="nav-text">push</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#merge"><span class="nav-number">4.</span> <span class="nav-text">merge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Feature-Branching"><span class="nav-number">5.</span> <span class="nav-text">Feature Branching</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rebase-变基"><span class="nav-number">6.</span> <span class="nav-text">rebase 变基</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提交代码错误"><span class="nav-number">7.</span> <span class="nav-text">提交代码错误</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交互式-rebase"><span class="nav-number">8.</span> <span class="nav-text">交互式 rebase</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#丢弃重新提交"><span class="nav-number">9.</span> <span class="nav-text">丢弃重新提交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#push到远端仓库的commit错误"><span class="nav-number">10.</span> <span class="nav-text">push到远端仓库的commit错误</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reset"><span class="nav-number">11.</span> <span class="nav-text">reset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#checkout"><span class="nav-number">12.</span> <span class="nav-text">checkout</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#stash"><span class="nav-number">13.</span> <span class="nav-text">stash</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reflog-reference-log"><span class="nav-number">14.</span> <span class="nav-text">reflog(reference log)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gitignore"><span class="nav-number">15.</span> <span class="nav-text">gitignore</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-number">16.</span> <span class="nav-text">其他</span></a></li></ol></div>
             
 
           </div>

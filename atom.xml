@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://willkernel.github.io/"/>
-  <updated>2018-03-21T18:07:17.577Z</updated>
+  <updated>2018-03-22T19:20:13.741Z</updated>
   <id>http://willkernel.github.io/</id>
   
   <author>
@@ -15,6 +15,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Kotlin for Android (一)</title>
+    <link href="http://willkernel.github.io/2018/03/22/Kotlin-for-Android-%E4%B8%80/"/>
+    <id>http://willkernel.github.io/2018/03/22/Kotlin-for-Android-一/</id>
+    <published>2018-03-22T15:43:00.000Z</published>
+    <updated>2018-03-22T19:20:13.741Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;介绍Kotlin&quot;&gt;&lt;a href=&quot;#介绍Kotlin&quot; class=&quot;headerlink&quot; title=&quot;介绍Kotlin&quot;&gt;&lt;/a&gt;介绍Kotlin&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;编写代码量少&lt;/li&gt;
+&lt;li&gt;更加安全：Kotlin编译时期就处理了各种null的情况，避免了执行时异常。如果一个对象可以是null，则我们需要明确地指定它，然后在使用它之前检查它是否是null&lt;/li&gt;
+&lt;li&gt;它是函数式的：Kotlin是基于面向对象的语言，它使用了很多函数式编程的概念，比如，使用lambda表达式来更方便地解决问题。其中一个很棒的特性就是Collections的处理方式&lt;/li&gt;
+&lt;li&gt;它可以扩展函数：可以扩展类的更多的特性，甚至我们没有权限去访问这个类中的代码&lt;/li&gt;
+&lt;li&gt;它是高度互操作性的：你可以继续使用所有的你用Java写的代码和库，因为两个语言之间的互操作性是完美的。可以在一个项目中使用Kotlin和Java两种语言混合编程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;特性&quot;&gt;&lt;a href=&quot;#特性&quot; class=&quot;headerlink&quot; title=&quot;特性&quot;&gt;&lt;/a&gt;特性&lt;/h4&gt;&lt;h5 id=&quot;Expresiveness-可读性&quot;&gt;&lt;a href=&quot;#Expresiveness-可读性&quot; class=&quot;headerlink&quot; title=&quot;Expresiveness 可读性&quot;&gt;&lt;/a&gt;Expresiveness 可读性&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;POJO&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public class Artist &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;private long id;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;private String name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;private String url;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;private String mbid;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public long getId() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;return id;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public void setId(long id) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;this.id = id;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;···&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Kotlin中创建数据类Artist.kt,自动生成所有属性和访问器&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;data class Artist(var id: Long, var name: String, var url: String, var mbid: String)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;空安全&quot;&gt;&lt;a href=&quot;#空安全&quot; class=&quot;headerlink&quot; title=&quot;空安全&quot;&gt;&lt;/a&gt;空安全&lt;/h5&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt; //编译不通过，非空类不能为null&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; var artist:Artist=null&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; //安全调用操作符? 明确地指定一个对象是否能为空&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; var artist: Artist? = null&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 无法编译, artist可能是null，需要进行处理&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// artist.hashCode()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//在artist!=null时调用&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;artist?.hashCode()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 判空&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;if(artist!=null)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  artist.hashCode()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//给定在null时的替代者&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;val name=artist?.name?:&amp;quot;empty&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//确保artist不是null的情况下调用，否在抛异常KotlinNullPointerException&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;artist!!.hashCode()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+      <category term="Kotlin" scheme="http://willkernel.github.io/categories/Android/Kotlin/"/>
+    
+    
+      <category term="Android" scheme="http://willkernel.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="http://willkernel.github.io/tags/Kotlin/"/>
+    
+  </entry>
   
   <entry>
     <title>RxJava2</title>
@@ -136,36 +175,6 @@
   </entry>
   
   <entry>
-    <title>Git</title>
-    <link href="http://willkernel.github.io/2018/03/09/Git/"/>
-    <id>http://willkernel.github.io/2018/03/09/Git/</id>
-    <published>2018-03-08T17:04:00.000Z</published>
-    <updated>2018-03-22T05:57:20.073Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h4 id=&quot;入门&quot;&gt;&lt;a href=&quot;#入门&quot; class=&quot;headerlink&quot; title=&quot;入门&quot;&gt;&lt;/a&gt;入门&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;.git 的隐藏目录是你的本地仓库（Local Repository）&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;git
-        
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-      <category term="Git" scheme="http://willkernel.github.io/categories/Android/Git/"/>
-    
-    
-      <category term="Git" scheme="http://willkernel.github.io/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
     <title>NDK</title>
     <link href="http://willkernel.github.io/2018/03/09/NDK/"/>
     <id>http://willkernel.github.io/2018/03/09/NDK/</id>
@@ -184,16 +193,32 @@
   </entry>
   
   <entry>
-    <title>Kotlin</title>
-    <link href="http://willkernel.github.io/2018/03/09/Kotlin/"/>
-    <id>http://willkernel.github.io/2018/03/09/Kotlin/</id>
-    <published>2018-03-08T17:03:49.000Z</published>
-    <updated>2018-03-20T07:13:04.231Z</updated>
+    <title>Git</title>
+    <link href="http://willkernel.github.io/2018/03/09/Git/"/>
+    <id>http://willkernel.github.io/2018/03/09/Git/</id>
+    <published>2018-03-08T17:04:00.000Z</published>
+    <updated>2018-03-22T09:08:53.194Z</updated>
     
     <summary type="html">
     
+      &lt;h4 id=&quot;入门&quot;&gt;&lt;a href=&quot;#入门&quot; class=&quot;headerlink&quot; title=&quot;入门&quot;&gt;&lt;/a&gt;入门&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;.git 的隐藏目录是你的本地仓库（Local Repository）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git log&lt;/code&gt; 查看历史 &lt;img src=&quot;http://p4n1d4izv.bkt.clouddn.com/images/gitlog.png&quot;&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git log -p&lt;/code&gt;查看详细历史&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git log --stat&lt;/code&gt; 查看简要统计&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git show e66666/branch&lt;/code&gt;查看指定commit，加文件名看指定文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git diff --staged/--cached&lt;/code&gt;查看当前工作目录与暂存区的不同，可以看到即将添加到暂存区的改动内容，&lt;code&gt;git diff HEAD&lt;/code&gt;看到当前工作目录与上一个commit的不同&lt;ul&gt;
+&lt;li&gt;commit 的 SHA-1 校验和&lt;br&gt;&lt;code&gt;commit 8cf88cf35ce40cb91488e7d9b12cf46463fedc2f&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git status&lt;/code&gt;&lt;img src=&quot;http://p4n1d4izv.bkt.clouddn.com/images/gitstatus.png&quot;&gt;
+    
     </summary>
     
+      <category term="Git" scheme="http://willkernel.github.io/categories/Git/"/>
+    
+    
+      <category term="Git" scheme="http://willkernel.github.io/tags/Git/"/>
     
   </entry>
   
@@ -216,6 +241,38 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>Kotlin 入门</title>
+    <link href="http://willkernel.github.io/2018/03/09/Kotlin%E5%85%A5%E9%97%A8/"/>
+    <id>http://willkernel.github.io/2018/03/09/Kotlin入门/</id>
+    <published>2018-03-08T17:03:00.000Z</published>
+    <updated>2018-03-22T17:09:42.613Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;导入布局中所有控件属性&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+      <category term="Kotlin" scheme="http://willkernel.github.io/categories/Android/Kotlin/"/>
+    
+    
+      <category term="Android" scheme="http://willkernel.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="http://willkernel.github.io/tags/Kotlin/"/>
     
   </entry>
   
@@ -451,61 +508,6 @@
     </summary>
     
       <category term="C" scheme="http://willkernel.github.io/categories/C/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Android Notes (System ADB UI)</title>
-    <link href="http://willkernel.github.io/2018/02/25/Android-Notes/"/>
-    <id>http://willkernel.github.io/2018/02/25/Android-Notes/</id>
-    <published>2018-02-25T11:41:00.000Z</published>
-    <updated>2018-03-21T18:16:57.990Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;Android系统架构&quot;&gt;&lt;a href=&quot;#Android系统架构&quot; class=&quot;headerlink&quot; title=&quot;Android系统架构&quot;&gt;&lt;/a&gt;Android系统架构&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;Android系统分四层：Linux内核层，库和运行时，Framework层和应用层。&lt;ul&gt;
-&lt;li&gt;Linux包括硬件驱动，进程管理，安全系统&lt;/li&gt;
-&lt;li&gt;Dalvik虚拟机，运行时编译；ART虚拟机安装时编译&lt;/li&gt;
-&lt;li&gt;Framework&lt;ul&gt;
-&lt;li&gt;ActivityManager&lt;/li&gt;
-&lt;li&gt;BackupManager&lt;/li&gt;
-&lt;li&gt;Bluetooth&lt;/li&gt;
-&lt;li&gt;ContentProviders&lt;/li&gt;
-&lt;li&gt;LocationManger&lt;/li&gt;
-&lt;li&gt;Map libraries&lt;/li&gt;
-&lt;li&gt;MediaPlayer&lt;/li&gt;
-&lt;li&gt;NotificationManager&lt;/li&gt;
-&lt;li&gt;PackageManager&lt;/li&gt;
-&lt;li&gt;ResourceManager&lt;/li&gt;
-&lt;li&gt;SearchManager&lt;/li&gt;
-&lt;li&gt;SharedPreference&lt;/li&gt;
-&lt;li&gt;TelephoneManager&lt;/li&gt;
-&lt;li&gt;WidgetProvider&lt;/li&gt;
-&lt;li&gt;WindowManager&lt;/li&gt;
-&lt;li&gt;ViewSystem&lt;/li&gt;
-&lt;li&gt;XMPPService&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;标准库&lt;ul&gt;
-&lt;li&gt;Apache HTTP&lt;/li&gt;
-&lt;li&gt;OpenGL ES&lt;/li&gt;
-&lt;li&gt;Open SSL&lt;/li&gt;
-&lt;li&gt;SQLite&lt;/li&gt;
-&lt;li&gt;Webkit&lt;/li&gt;
-&lt;li&gt;ICU&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Android NDK/SDK APP(解压后包含内容中有)&lt;ul&gt;
-&lt;li&gt;AndroidManifeset&lt;/li&gt;
-&lt;li&gt;Dalvik Classes&lt;/li&gt;
-&lt;li&gt;Resource bundle&lt;/li&gt;
-&lt;li&gt;NDK APP中包含JNI lib
-    
-    </summary>
-    
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
     
     
   </entry>

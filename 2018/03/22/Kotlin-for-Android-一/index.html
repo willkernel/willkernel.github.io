@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hello, willkernel" />
+  <meta name="keywords" content="Android,Kotlin," />
 
 
 
@@ -88,32 +88,21 @@
 
 
 
-<meta name="description" content="Performance optimization布局 人眼感觉流畅画面的帧数要达到40-60帧每秒 在Android中，系统通过VSYNC信号触发对UI的渲染，重绘，需要16ms,其实就是1000ms中显示60帧，1000/60=16.67.如果不能在16ms完成绘制，就会丢帧，例如绘制耗时20ms，在16ms有VSYNC信号时无法绘制，该帧被丢弃，等待下次信号才开始绘制，导致16*2ms 都显示">
+<meta name="description" content="介绍Kotlin 编写代码量少 更加安全：Kotlin编译时期就处理了各种null的情况，避免了执行时异常。如果一个对象可以是null，则我们需要明确地指定它，然后在使用它之前检查它是否是null 它是函数式的：Kotlin是基于面向对象的语言，它使用了很多函数式编程的概念，比如，使用lambda表达式来更方便地解决问题。其中一个很棒的特性就是Collections的处理方式 它可以扩展函数：可以">
+<meta name="keywords" content="Android,Kotlin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android Notes(Performance)">
-<meta property="og:url" content="http://willkernel.github.io/2018/03/08/Android-Notes-Performance/index.html">
+<meta property="og:title" content="Kotlin for Android (一)">
+<meta property="og:url" content="http://willkernel.github.io/2018/03/22/Kotlin-for-Android-一/index.html">
 <meta property="og:site_name" content="willkernel">
-<meta property="og:description" content="Performance optimization布局 人眼感觉流畅画面的帧数要达到40-60帧每秒 在Android中，系统通过VSYNC信号触发对UI的渲染，重绘，需要16ms,其实就是1000ms中显示60帧，1000/60=16.67.如果不能在16ms完成绘制，就会丢帧，例如绘制耗时20ms，在16ms有VSYNC信号时无法绘制，该帧被丢弃，等待下次信号才开始绘制，导致16*2ms 都显示">
+<meta property="og:description" content="介绍Kotlin 编写代码量少 更加安全：Kotlin编译时期就处理了各种null的情况，避免了执行时异常。如果一个对象可以是null，则我们需要明确地指定它，然后在使用它之前检查它是否是null 它是函数式的：Kotlin是基于面向对象的语言，它使用了很多函数式编程的概念，比如，使用lambda表达式来更方便地解决问题。其中一个很棒的特性就是Collections的处理方式 它可以扩展函数：可以">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/gpurendering1.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/gpurendering2.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/overdraw1.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/hierarchyviewer1.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/hierarchyviewer2.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/hierarchyviewer3.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/hierarchyviewer4.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/traceview1.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/traceview2.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mat1.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mat2.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mat3.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mat4.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mat5.png">
-<meta property="og:updated_time" content="2018-03-21T18:14:46.099Z">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/convert2kotlin.png">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/kotlin-recyclerview.png">
+<meta property="og:updated_time" content="2018-03-22T19:20:13.741Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android Notes(Performance)">
-<meta name="twitter:description" content="Performance optimization布局 人眼感觉流畅画面的帧数要达到40-60帧每秒 在Android中，系统通过VSYNC信号触发对UI的渲染，重绘，需要16ms,其实就是1000ms中显示60帧，1000/60=16.67.如果不能在16ms完成绘制，就会丢帧，例如绘制耗时20ms，在16ms有VSYNC信号时无法绘制，该帧被丢弃，等待下次信号才开始绘制，导致16*2ms 都显示">
-<meta name="twitter:image" content="http://p4n1d4izv.bkt.clouddn.com/images/gpurendering1.png">
+<meta name="twitter:title" content="Kotlin for Android (一)">
+<meta name="twitter:description" content="介绍Kotlin 编写代码量少 更加安全：Kotlin编译时期就处理了各种null的情况，避免了执行时异常。如果一个对象可以是null，则我们需要明确地指定它，然后在使用它之前检查它是否是null 它是函数式的：Kotlin是基于面向对象的语言，它使用了很多函数式编程的概念，比如，使用lambda表达式来更方便地解决问题。其中一个很棒的特性就是Collections的处理方式 它可以扩展函数：可以">
+<meta name="twitter:image" content="http://p4n1d4izv.bkt.clouddn.com/images/convert2kotlin.png">
 
 
 
@@ -143,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://willkernel.github.io/2018/03/08/Android-Notes-Performance/"/>
+  <link rel="canonical" href="http://willkernel.github.io/2018/03/22/Kotlin-for-Android-一/"/>
 
 
 
 
 
-  <title>Android Notes(Performance) | willkernel</title>
+  <title>Kotlin for Android (一) | willkernel</title>
   
 
 
@@ -320,7 +309,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/08/Android-Notes-Performance/">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/22/Kotlin-for-Android-一/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="willkernel">
@@ -337,7 +326,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Android Notes(Performance)</h1>
+          <h1 class="post-title" itemprop="name headline">Kotlin for Android (一)</h1>
         
 
         <div class="post-meta">
@@ -349,8 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T16:26:00+08:00">
-                2018-03-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-22T23:43:00+08:00">
+                2018-03-22
               </time>
             
 
@@ -379,6 +368,17 @@
 
                 
                 
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/Kotlin/" itemprop="url" rel="index">
+                    <span itemprop="name">Kotlin</span>
+                  </a>
+                </span>
+
+                
+                
               
             </span>
           
@@ -389,7 +389,7 @@
 
           
           
-             <span id="/2018/03/08/Android-Notes-Performance/" class="leancloud_visitors" data-flag-title="Android Notes(Performance)">
+             <span id="/2018/03/22/Kotlin-for-Android-一/" class="leancloud_visitors" data-flag-title="Kotlin for Android (一)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -420,103 +420,72 @@
       
 
       
-        <h4 id="Performance-optimization"><a href="#Performance-optimization" class="headerlink" title="Performance optimization"></a>Performance optimization</h4><h5 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h5><ul>
-<li>人眼感觉流畅画面的帧数要达到40-60帧每秒</li>
-<li>在Android中，系统通过VSYNC信号触发对UI的渲染，重绘，需要16ms,其实就是1000ms中显示60帧，1000/60=16.67.如果不能在16ms完成绘制，就会丢帧，例如绘制耗时20ms，在16ms有VSYNC信号时无法绘制，该帧被丢弃，等待下次信号才开始绘制，导致16*2ms 都显示同一帧画面</li>
-<li>在开发者选项中有Profile GPU Rendering 选中On Screen as bars,中间的绿色横线代表VSYNC时间16ms柱状线包含3个部分<ul>
-<li>蓝色代表测量绘制Display List的时间</li>
-<li>红色代表OpenGL渲染Display List的时间</li>
-<li>黄色代表CPU等待GPU处理的时间<br>Android 6.0<img src="http://p4n1d4izv.bkt.clouddn.com/images/gpurendering1.png">
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/gpurendering2.png">
-<a id="more"></a></li>
+        <h4 id="介绍Kotlin"><a href="#介绍Kotlin" class="headerlink" title="介绍Kotlin"></a>介绍Kotlin</h4><ul>
+<li>编写代码量少</li>
+<li>更加安全：Kotlin编译时期就处理了各种null的情况，避免了执行时异常。如果一个对象可以是null，则我们需要明确地指定它，然后在使用它之前检查它是否是null</li>
+<li>它是函数式的：Kotlin是基于面向对象的语言，它使用了很多函数式编程的概念，比如，使用lambda表达式来更方便地解决问题。其中一个很棒的特性就是Collections的处理方式</li>
+<li>它可以扩展函数：可以扩展类的更多的特性，甚至我们没有权限去访问这个类中的代码</li>
+<li>它是高度互操作性的：你可以继续使用所有的你用Java写的代码和库，因为两个语言之间的互操作性是完美的。可以在一个项目中使用Kotlin和Java两种语言混合编程</li>
 </ul>
+<h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><h5 id="Expresiveness-可读性"><a href="#Expresiveness-可读性" class="headerlink" title="Expresiveness 可读性"></a>Expresiveness 可读性</h5><ul>
+<li><p>POJO</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Artist &#123;</span><br><span class="line">private long id;</span><br><span class="line">private String name;</span><br><span class="line">private String url;</span><br><span class="line">private String mbid;</span><br><span class="line">public long getId() &#123;</span><br><span class="line">return id;</span><br><span class="line">&#125;</span><br><span class="line">public void setId(long id) &#123;</span><br><span class="line">this.id = id;</span><br><span class="line">&#125;</span><br><span class="line">···</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Overdraw<br>Enable GPU Overdraw 查看当前区域绘制次数，增大蓝色区域，<a href="https://developer.android.com/topic/performance/rendering/overdraw.html" target="_blank" rel="noopener">减少红色区域</a></p>
+<li><p>Kotlin中创建数据类Artist.kt,自动生成所有属性和访问器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data class Artist(var id: Long, var name: String, var url: String, var mbid: String)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="空安全"><a href="#空安全" class="headerlink" title="空安全"></a>空安全</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> //编译不通过，非空类不能为null</span><br><span class="line"> var artist:Artist=null</span><br><span class="line"> </span><br><span class="line"> //安全调用操作符? 明确地指定一个对象是否能为空</span><br><span class="line"> var artist: Artist? = null</span><br><span class="line"> </span><br><span class="line">// 无法编译, artist可能是null，需要进行处理</span><br><span class="line">// artist.hashCode()</span><br><span class="line"></span><br><span class="line">//在artist!=null时调用</span><br><span class="line">artist?.hashCode()</span><br><span class="line"></span><br><span class="line">// 判空</span><br><span class="line">if(artist!=null)&#123;</span><br><span class="line">  artist.hashCode()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//给定在null时的替代者</span><br><span class="line">val name=artist?.name?:&quot;empty&quot;</span><br><span class="line"></span><br><span class="line">//确保artist不是null的情况下调用，否在抛异常KotlinNullPointerException</span><br><span class="line">artist!!.hashCode()</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h5 id="扩展方法"><a href="#扩展方法" class="headerlink" title="扩展方法"></a>扩展方法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val fragment= Fragment()</span><br><span class="line">fragment.toast(&quot;Hello&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fun Fragment.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) &#123;</span><br><span class="line">   Toast.makeText(this@MainActivity, message, duration).show()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="Lambda"><a href="#Lambda" class="headerlink" title="Lambda"></a>Lambda</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">textView.setOnClickListener &#123; toast(&quot;Kotlin&quot;) &#125;</span><br><span class="line">private fun toast(text: String) &#123;</span><br><span class="line">       val fragment = Fragment()</span><br><span class="line">       fragment.toast(text)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="创建一个项目"><a href="#创建一个项目" class="headerlink" title="创建一个项目"></a>创建一个项目</h4><ul>
+<li><p>Project/build.gradle</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    ext.kotlin_version = &apos;1.2.30&apos;</span><br><span class="line">    ext.support_version = &apos;26.1.0&apos;</span><br><span class="line">    ext.anko_version = &apos;0.10.4&apos;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath &apos;com.android.tools.build:gradle:3.0.1&apos;</span><br><span class="line">        classpath &quot;org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version&quot;</span><br><span class="line"></span><br><span class="line">        // NOTE: Do not place your application dependencies here; they belong</span><br><span class="line">        // in the individual module build.gradle files</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task clean(type: Delete) &#123;</span><br><span class="line">    delete rootProject.buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>app/build.gradle</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;com.android.application&apos;</span><br><span class="line">apply plugin: &apos;kotlin-android&apos;</span><br><span class="line">apply plugin: &apos;kotlin-android-extensions&apos;</span><br><span class="line"></span><br><span class="line">android &#123;</span><br><span class="line">    compileSdkVersion 26</span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        applicationId &quot;com.willkernel.app.kotlindemo&quot;</span><br><span class="line">        minSdkVersion 23</span><br><span class="line">        targetSdkVersion 26</span><br><span class="line">        versionCode 1</span><br><span class="line">        versionName &quot;1.0&quot;</span><br><span class="line">        testInstrumentationRunner &quot;android.support.test.runner.AndroidJUnitRunner&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            minifyEnabled false</span><br><span class="line">            proguardFiles getDefaultProguardFile(&apos;proguard-android.txt&apos;), &apos;proguard-rules.pro&apos;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    androidExtensions &#123;</span><br><span class="line">        experimental = true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation fileTree(dir: &apos;libs&apos;, include: [&apos;*.jar&apos;])</span><br><span class="line">    implementation &apos;com.android.support:appcompat-v7:26.1.0&apos;</span><br><span class="line">    implementation &quot;org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version&quot;</span><br><span class="line">    implementation &quot;org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version&quot;</span><br><span class="line">    implementation &quot;org.jetbrains.anko:anko-common:$anko_version&quot;</span><br><span class="line">    implementation &quot;org.jetbrains.anko:anko-sqlite:$anko_version&quot;</span><br><span class="line">    implementation &quot;org.jetbrains.anko:anko-coroutines:$anko_version&quot;</span><br><span class="line">    implementation &apos;com.android.support.constraint:constraint-layout:1.0.2&apos;</span><br><span class="line">    testImplementation &apos;junit:junit:4.12&apos;</span><br><span class="line">    androidTestImplementation &apos;com.android.support.test:runner:1.0.1&apos;</span><br><span class="line">    androidTestImplementation &apos;com.android.support.test.espresso:espresso-core:3.0.1&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>转换java到kotlin</p>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/convert2kotlin.png"></li>
+<li><p>导入布局属性<code>import kotlinx.android.synthetic.main.activity_main.*</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">textView.setText(R.string.app_name)</span><br><span class="line">textView.text = getString(R.string.app_name)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义类,有一个默认唯一的构造器,如果没有方法，只要名称，变量，可以省略大括号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Person(var name: String, var username: String) &#123;</span><br><span class="line">    /**构造函数函数体*/</span><br><span class="line">    init &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>任何类继承自Any(类似Object)可以继承其他类，所有类默认不可继承(final),所有只能继承那些声明open或者abstract的类,指定父类中的参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">open class Animal(name: String)</span><br><span class="line">class Person(name: String, surname: String) : Animal(name)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><ul>
+<li><p><code>fun</code> 关键字定义函数，没有指定返回值时，返回Unit类似void，但是Unit是一个对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fun onCreate(savedInstanceState: Bundle?) &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun add(x: Int, y: Int) : Int &#123;</span><br><span class="line">return x + y</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun add(x: Int,y: Int) : Int = x + y</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构造方法和函数参数</p>
 <ul>
-<li>移除不需要背景</li>
-<li><p>减少布局层级,降低view树高度，不应超过10层</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;include&gt; 布局中不设置宽高具体值(0dp)</span><br><span class="line">&lt;ViewStub&gt; 延时加载，可以使用setVisibility(),inflate()显示View，之后ViewStub就不存在了，被显示的layout代替，不能inflate两次，而View.GONE会在初始化布局的时候就已经添加在布局树中，相比之下ViewStub更有效率</span><br></pre></td></tr></table></figure>
+<li><p>指定参数默认值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> fun toast(message: String, length: Int = Toast.LENGTH_SHORT) &#123;</span><br><span class="line">Toast.makeText(this, message, length).show()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">避免重载函数，第二个参数可不传</span><br><span class="line">toast(&quot;Hello&quot;)</span><br><span class="line">toast(&quot;Hello&quot;, Toast.LENGTH_LONG)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>减少使用透明度alpha(会先绘制有颜色，再设置透明度)</p>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/overdraw1.png"></li>
-<li>hierarchy viewer</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;Tools&quot; menu &gt; Android &gt; Android Device Monitor</span><br><span class="line">In ADM: &quot;Window&quot; Menu &gt; Perspective</span><br><span class="line">Click on Hierarchy Viewer.</span><br><span class="line">Profile Node:Obtain layout times  at the top of the Tree View</span><br></pre></td></tr></table></figure>
+<li><p>三个参数，避免重载函数，string引用模板<code>[$className] $message</code>,<code>${user.name}</code></p>
 </li>
 </ul>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/hierarchyviewer1.png">
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/hierarchyviewer2.png">
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/hierarchyviewer3.png">
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/hierarchyviewer4.png">
-<h5 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h5><ul>
-<li>内存太低出发LMK(Low Memory Killer)</li>
-<li><p>手机内存指RAM，包括</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">寄存器(Registers)  位于处理器内部，速度最快，程序无法控制</span><br><span class="line">栈  存放基本类型的数据和对象的引用，对象本身不存放在栈中，而是存放在堆中</span><br><span class="line">堆  存放对象和数组，堆中分配的内存由Java虚拟机的回收器GC来管理</span><br><span class="line">静态存储区域  存放应用程序运行时一直存在的数据，如静态的数据变量</span><br><span class="line">常量池  常量的有序集合，包括基本类型，String和对其他类型，字段，方法的符合引用</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>当定义一个变量，会在栈中分配内存空间，作用域结束后，会立即被用作新的空间分配。当new一个变量，在堆中分配内存空间，该对象作用域结束后，内存也不会立即回收，等待系统GC回收，内存分析就是分析Heap中的内存状态</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ActivityManager am=getSystemService(Context.ACTIVITY_SERVICE);</span><br><span class="line">int heapSize=am.getLargeMemoryClass();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获取系统内存信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell dumpsys procstats</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>内存监视，Settings-Apps-Running</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell dumpsys meminfo</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Bitmap优化</p>
-<ul>
-<li>列表页面使用缩略图，低质量图片</li>
-<li>使用完Bitmap，使用bitmap.recycle()释放资源，Android3.0后Bitmap存放在堆内存中，内存由GC管理，不需要进行释放了</li>
-<li>使用内存缓存(LruCache)和硬盘缓存(DiskLruCache)可以更好使用Bitmap</li>
-</ul>
-</li>
-<li>代码优化<ul>
-<li>常量使用static修饰符</li>
-<li>静态方法比普通方法提高15%左右访问速度</li>
-<li>减少不必要的成员变量</li>
-<li>减少不必要的对象，使用基础类型比使用对象更加节省资源</li>
-<li>尽量不适应枚举，少使用迭代器</li>
-<li>对Cursor，Receiver,Sensor,File 非常注意对他们的创建，回收，注册，解注册</li>
-<li>避免使用IOC框架，IOC通常使用注解，反射实现</li>
-<li>使用RenderScript,OpenGL来进行非常复杂的绘图操作</li>
-<li>使用SurfaceView 来代替View进行大量的绘图操作</li>
-<li>尽量使用绘图缓存，而不是inflate()方法解析视图</li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private fun toast(message: CharSequence, tag: String = &quot;MainActivity&quot;, duration: Int = Toast.LENGTH_SHORT) &#123;</span><br><span class="line">        Toast.makeText(this, &quot;[$tag] $message&quot;, duration).show()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">toast(&quot;Hello&quot;)</span><br><span class="line">toast(&quot;Hello&quot;, &quot;MyTag&quot;)</span><br><span class="line">toast(&quot;Hello&quot;, &quot;MyTag&quot;, Toast.LENGTH_SHORT)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h5 id="工具分析优化"><a href="#工具分析优化" class="headerlink" title="工具分析优化"></a>工具分析优化</h5><ul>
-<li>Lint 工具优化代码</li>
-<li>Android Profile 监测CPU，Memory，Network</li>
-<li><p>TraceView 优化App</p>
-<ul>
-<li><p>Debug类开启TarceView</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;/&gt;</span><br><span class="line">onCreate()-&gt;Debug.startMethodTracing()</span><br><span class="line">onDestory()-&gt;Debug.stopMethodTracing()</span><br><span class="line">adb pull /sdcard/trace_log.trace/local/LOG</span><br></pre></td></tr></table></figure>
+<h4 id="创建一个layout"><a href="#创建一个layout" class="headerlink" title="创建一个layout"></a>创建一个layout</h4><ul>
+<li><p>列表使用recyclerview</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">implementation &quot;com.android.support:recyclerview-v7:$support_version&quot;</span><br><span class="line"> </span><br><span class="line">val forcastList = findViewById(R.id.recyclerView) as RecyclerView</span><br><span class="line"></span><br><span class="line">//通过属性赋值的方式设置LayoutManager(对象实例化没有使用new关键字)，而不是通过setter</span><br><span class="line">forcastList.layoutManager = LinearLayoutManager(this)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>TraceView日志</p>
-<ul>
-<li>Incl CPU Time 某方法占用CPU的时间</li>
-<li>Excl CPU Time 某方法本身不包括子方法占用CPU的时间</li>
-<li>Incl Real Time 某方法真正执行的时间</li>
-<li>Excl Real Time某方法本身不包括子方法执行的时间</li>
-<li>Calls+RecurCalls 调用次数+递归回调次数</li>
-<li><font color="#ff0000">从Incl CPU Time和Calls+RecurCalls开始进行分析，如果占用时间长，Calls+RecurCalls次数少，就可以是怀疑对象了</font><img src="http://p4n1d4izv.bkt.clouddn.com/images/traceview1.png">
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/traceview2.png"></li>
-</ul>
+<li><p>Recycler Adapter</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class ForcastListAdapter(val items: List&lt;String&gt;) : RecyclerView.Adapter&lt;ForcastListAdapter.VH&gt;() &#123;</span><br><span class="line">    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH &#123;</span><br><span class="line">        return VH(TextView(parent.context))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun getItemCount(): Int = items.size</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    override fun onBindViewHolder(holder: VH, position: Int) &#123;</span><br><span class="line">        holder.textView.text = items[position]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class VH(val textView: TextView) : RecyclerView.ViewHolder(textView)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><a href="http://mirror.math.princeton.edu/pub/eclipse//mat/1.7/rcp/MemoryAnalyzer-1.7.0.20170613-win32.win32.x86_64.zip" target="_blank" rel="noopener">MAT</a></p>
-<ul>
-<li>手动查看Heap,判断是否有内存泄漏小技巧：不停点击Cause GC,如果data object的total size有明显变化，就可能有内存泄漏<img src="http://p4n1d4izv.bkt.clouddn.com/images/mat1.png"></li>
-<li>点击Dump HPROF File,生成.hprof,然后再使用命令转换<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hprof-conv com.willkernel.app.audiobar.hprof heap.hprof</span><br></pre></td></tr></table></figure>
+<li><p>创建数据，设置Adapter，listOf 创建一个常量的List,它接收一个任何类型的 vararg （可变长的参数），它会自动推断出结果的类型。还有很多其它的函数可以选择，比如 setOf ， arrayListOf 或者 hashSetOf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//val forecastList = findViewById&lt;RecyclerView&gt;(R.id.recyclerView)</span><br><span class="line">recyclerView.layoutManager = LinearLayoutManager(this)</span><br><span class="line">val items = listOf(&quot;Mon 6/23 - Sunny - 31/17&quot;,</span><br><span class="line">             &quot;Tue 6/24 - Foggy - 21/8&quot;,</span><br><span class="line">             &quot;Wed 6/25 - Cloudy - 22/17&quot;,</span><br><span class="line">             &quot;Thurs 6/26 - Rainy - 18/11&quot;,</span><br><span class="line">             &quot;Fri 6/27 - Foggy - 21/10&quot;,</span><br><span class="line">             &quot;Sat 6/28 - TRAPPED IN WEATHERSTATION - 23/18&quot;,</span><br><span class="line">             &quot;Sun 6/29 - Sunny - 20/7&quot;)</span><br><span class="line">recyclerView.adapter = ForcastListAdapter(items)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/mat2.png">
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/mat3.png">
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/mat4.png">
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/mat5.png"></li>
-<li>Dumpsys分析系统状态<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">activity 显示所有Activity栈的信息</span><br><span class="line">meminfo 内存信息</span><br><span class="line">battery 电池信息</span><br><span class="line">package包信息</span><br><span class="line">wifi WiFi信息</span><br><span class="line">alarm alarm信息</span><br><span class="line">procstats 内存状态</span><br><span class="line">grep,find 在性能优化bug分析时有用</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/kotlin-recyclerview.png">
+<h4 id="变量和属性"><a href="#变量和属性" class="headerlink" title="变量和属性"></a>变量和属性</h4><h5 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h5>
       
     </div>
     
@@ -573,7 +542,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://willkernel.github.io/2018/03/08/Android-Notes-Performance/" title="Android Notes(Performance)">http://willkernel.github.io/2018/03/08/Android-Notes-Performance/</a>
+    <a href="http://willkernel.github.io/2018/03/22/Kotlin-for-Android-一/" title="Kotlin for Android (一)">http://willkernel.github.io/2018/03/22/Kotlin-for-Android-一/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -586,6 +555,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/Kotlin/" rel="tag"># Kotlin</a>
+          
+        </div>
+      
 
       
       
@@ -595,8 +572,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/08/Android-Notes-System-Info-Manager-Safety/" rel="next" title="Android Notes(System Info Manager Safety)">
-                <i class="fa fa-chevron-left"></i> Android Notes(System Info Manager Safety)
+              <a href="/2018/03/20/RxJava2/" rel="next" title="RxJava2">
+                <i class="fa fa-chevron-left"></i> RxJava2
               </a>
             
           </div>
@@ -604,10 +581,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/09/MVVM/" rel="prev" title="MVVM">
-                MVVM <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -831,7 +804,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Performance-optimization"><span class="nav-number">1.</span> <span class="nav-text">Performance optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#布局"><span class="nav-number">1.1.</span> <span class="nav-text">布局</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#内存"><span class="nav-number">1.2.</span> <span class="nav-text">内存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#工具分析优化"><span class="nav-number">1.3.</span> <span class="nav-text">工具分析优化</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#介绍Kotlin"><span class="nav-number">1.</span> <span class="nav-text">介绍Kotlin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特性"><span class="nav-number">2.</span> <span class="nav-text">特性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Expresiveness-可读性"><span class="nav-number">2.1.</span> <span class="nav-text">Expresiveness 可读性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#空安全"><span class="nav-number">2.2.</span> <span class="nav-text">空安全</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#扩展方法"><span class="nav-number">2.3.</span> <span class="nav-text">扩展方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Lambda"><span class="nav-number">2.4.</span> <span class="nav-text">Lambda</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建一个项目"><span class="nav-number">3.</span> <span class="nav-text">创建一个项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数"><span class="nav-number">4.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建一个layout"><span class="nav-number">5.</span> <span class="nav-text">创建一个layout</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量和属性"><span class="nav-number">6.</span> <span class="nav-text">变量和属性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本类型"><span class="nav-number">6.1.</span> <span class="nav-text">基本类型</span></a></li></ol></li></ol></div>
             
 
           </div>

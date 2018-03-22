@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://willkernel.github.io/2018/03/22/Kotlin-for-Android-%E4%B8%80/</loc>
+    
+    <lastmod>2018-03-22T19:20:13.741Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://willkernel.github.io/2018/03/09/Kotlin%E5%85%A5%E9%97%A8/</loc>
+    
+    <lastmod>2018-03-22T17:09:42.613Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://willkernel.github.io/2018/03/09/Git/</loc>
     
-    <lastmod>2018-03-22T05:57:20.073Z</lastmod>
+    <lastmod>2018-03-22T09:08:53.194Z</lastmod>
     
   </url>
   
@@ -124,13 +138,6 @@
     <loc>http://willkernel.github.io/2018/03/20/RxJava2/</loc>
     
     <lastmod>2018-03-21T18:07:17.577Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://willkernel.github.io/2018/03/09/Kotlin/</loc>
-    
-    <lastmod>2018-03-20T07:13:04.231Z</lastmod>
     
   </url>
   

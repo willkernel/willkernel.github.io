@@ -305,6 +305,189 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/22/Kotlin-for-Android-一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="willkernel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="willkernel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/22/Kotlin-for-Android-一/" itemprop="url">Kotlin for Android (一)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-22T23:43:00+08:00">
+                2018-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/Kotlin/" itemprop="url" rel="index">
+                    <span itemprop="name">Kotlin</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/22/Kotlin-for-Android-一/" class="leancloud_visitors" data-flag-title="Kotlin for Android (一)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="介绍Kotlin"><a href="#介绍Kotlin" class="headerlink" title="介绍Kotlin"></a>介绍Kotlin</h4><ul>
+<li>编写代码量少</li>
+<li>更加安全：Kotlin编译时期就处理了各种null的情况，避免了执行时异常。如果一个对象可以是null，则我们需要明确地指定它，然后在使用它之前检查它是否是null</li>
+<li>它是函数式的：Kotlin是基于面向对象的语言，它使用了很多函数式编程的概念，比如，使用lambda表达式来更方便地解决问题。其中一个很棒的特性就是Collections的处理方式</li>
+<li>它可以扩展函数：可以扩展类的更多的特性，甚至我们没有权限去访问这个类中的代码</li>
+<li>它是高度互操作性的：你可以继续使用所有的你用Java写的代码和库，因为两个语言之间的互操作性是完美的。可以在一个项目中使用Kotlin和Java两种语言混合编程</li>
+</ul>
+<h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><h5 id="Expresiveness-可读性"><a href="#Expresiveness-可读性" class="headerlink" title="Expresiveness 可读性"></a>Expresiveness 可读性</h5><ul>
+<li><p>POJO</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Artist &#123;</span><br><span class="line">private long id;</span><br><span class="line">private String name;</span><br><span class="line">private String url;</span><br><span class="line">private String mbid;</span><br><span class="line">public long getId() &#123;</span><br><span class="line">return id;</span><br><span class="line">&#125;</span><br><span class="line">public void setId(long id) &#123;</span><br><span class="line">this.id = id;</span><br><span class="line">&#125;</span><br><span class="line">···</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Kotlin中创建数据类Artist.kt,自动生成所有属性和访问器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data class Artist(var id: Long, var name: String, var url: String, var mbid: String)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="空安全"><a href="#空安全" class="headerlink" title="空安全"></a>空安全</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> //编译不通过，非空类不能为null</span><br><span class="line"> var artist:Artist=null</span><br><span class="line"> </span><br><span class="line"> //安全调用操作符? 明确地指定一个对象是否能为空</span><br><span class="line"> var artist: Artist? = null</span><br><span class="line"> </span><br><span class="line">// 无法编译, artist可能是null，需要进行处理</span><br><span class="line">// artist.hashCode()</span><br><span class="line"></span><br><span class="line">//在artist!=null时调用</span><br><span class="line">artist?.hashCode()</span><br><span class="line"></span><br><span class="line">// 判空</span><br><span class="line">if(artist!=null)&#123;</span><br><span class="line">  artist.hashCode()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//给定在null时的替代者</span><br><span class="line">val name=artist?.name?:&quot;empty&quot;</span><br><span class="line"></span><br><span class="line">//确保artist不是null的情况下调用，否在抛异常KotlinNullPointerException</span><br><span class="line">artist!!.hashCode()</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/22/Kotlin-for-Android-一/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/20/RxJava2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1117,284 +1300,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Git/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="willkernel">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="willkernel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/09/Git/" itemprop="url">Git</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:04:00+08:00">
-                2018-03-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/Git/" itemprop="url" rel="index">
-                    <span itemprop="name">Git</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/03/09/Git/" class="leancloud_visitors" data-flag-title="Git">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h4><ul>
-<li>.git 的隐藏目录是你的本地仓库（Local Repository）</li>
-<li><code>git log</code> 查看历史 <img src="http://p4n1d4izv.bkt.clouddn.com/images/gitlog.png"></li>
-<li><code>git log -p</code>查看详细历史</li>
-<li><code>git log --stat</code> 查看简要统计</li>
-<li><code>git show e66666/branch</code>查看指定commit，加文件名看指定文件</li>
-<li><code>git diff --staged/--cached</code>查看当前工作目录与暂存区的不同，可以看到即将添加到暂存区的改动内容，<code>git diff HEAD</code>看到当前工作目录与上一个commit的不同<ul>
-<li>commit 的 SHA-1 校验和<br><code>commit 8cf88cf35ce40cb91488e7d9b12cf46463fedc2f</code></li>
-</ul>
-</li>
-<li><code>git status</code><img src="http://p4n1d4izv.bkt.clouddn.com/images/gitstatus.png">
-<ul>
-<li>untracked files （未追踪的文件）</li>
-</ul>
-</li>
-<li>使用 <code>git add git.txt</code> 来开始追踪文件<img src="http://p4n1d4izv.bkt.clouddn.com/images/gitaddstatus.png">
-<ul>
-<li>从 “Untracked files” 变成了 “Changes to be commited”，该文件变成已暂存staged,被记录到 staging area（暂存区）</li>
-<li><code>git commit -m &quot;add git.txt&quot;</code>提交代码到本地仓库</li>
-</ul>
-</li>
-<li>缓存GitHub密码,在设置了SSH key后，<code>git config --global credential.helper wincred</code></li>
-<li><code>git push</code>到远端仓库</li>
-<li><code>git pull</code>将远端仓库代码同步到本地仓库</li>
-<li>push冲突，由于 GitHub 的远端仓库上含有本地仓库没有的内容，所以这次 push 被拒绝，解决办法：先用 pull 把远端仓库上的新内容取回到本地和本地合并，合并后的代码会自动提交，然后再把合并后的本地仓库向远端仓库推送</li>
-</ul>
-<h4 id="HEAD、master、branch"><a href="#HEAD、master、branch" class="headerlink" title="HEAD、master、branch"></a>HEAD、master、branch</h4><ul>
-<li>commit 后面括号里的 HEAD -&gt; master, origin/master, origin/HEAD ，是指向这个 commit 的引用,也可以使用SHA-1指代commit</li>
-</ul>
-<h5 id="HEAD-当前-commit-的引用"><a href="#HEAD-当前-commit-的引用" class="headerlink" title="HEAD 当前 commit 的引用"></a>HEAD 当前 commit 的引用</h5><ul>
-<li>当前工作目录对应的commit,checkout/reset会改变当前commit</li>
-</ul>
-<h5 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h5><ul>
-<li>HEAD 除了可以指向 commit，还可以指向一个 branch，HEAD指向分支master，间接指向对应的commit，当<code>git commit</code>有新的提交时，HEAD会和master一起指向新的commit</li>
-<li>master 默认的主分支，和其他分支平等，分支可以理解为初始commit到当前分支指向的commit的路径</li>
-<li>branch 的创建、切换和删除<ul>
-<li>创建 branch <code>git branch feature1</code></li>
-<li>切换分支<code>git checkout feature1</code> HEAD 就会指向新建的 branch，执行<code>git checkout -b feature1</code>是上述两个合并执行</li>
-<li>删除分支<code>git branch -d feature1</code>,HEAD 指向的 branch 不能删除。如果要删除 HEAD 指向的 branch，需要先用 checkout 把 HEAD 指向其他分支，没有被合并到 master 过的 branch 在删除时会失败，确认删除使用<code>git branch -D feature1</code></li>
-</ul>
-</li>
-</ul>
-<h4 id="push"><a href="#push" class="headerlink" title="push"></a>push</h4><ul>
-<li><code>git push</code>当前master分支，把该分支上的未上传的commit，以及当前master所指向的commit引用一并上传到远端</li>
-<li><p>切换到feature1,执行push,<code>origin feature1</code>参数代表目标仓库和目标分支</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout feature1</span><br><span class="line">git push origin feature1</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>git config push.default current</code> 推送到与当前分支相同的远端分支，参考<a href="https://git-scm.com/docs/git-config#git-config-pushdefault" target="_blank" rel="noopener">git config</a></p>
-</li>
-<li>HEAD指向默认分支master，在<code>git push</code>时，只会上传当前分支的指向，例如push后，本地feature1指向第5个commit，push后远端feature1分支指向第5个commit,而HEAD指向不会切换到feature1的指向，默认指向master分支的commit<h4 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h4><font color="#FF0000"><code>pull</code></font>执行了<code>fetch</code>拉取到本地， <code>merge</code>合并远端commit和本地commit</li>
-<li><code>git merge branch1</code> 把branch1分支合并到master分支，生成一个新的commit</li>
-<li><p>两个分支修改相同内容，造成合并冲突，可以删除冲突的内容重新合并</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add git.txt</span><br><span class="line">git commit</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>也可以取消合并<code>git merge --abort</code>,回到之前的commit状态</p>
-</li>
-<li>当HEAD领先于branch的commit，在同一路径上，merge 是空操作,不需要创建新的commit</li>
-<li>当HEAD落后于目标branch的commit，在同一路径上，merge会直接将HEAD指向目标commit,这个操作即是 <strong>fast-forward</strong> 快速前移，在本地仓库中commit落后于远端代码，造成本地HEAD落后与目标commit，<code>git pull</code>就会造成<strong>fast-forward</strong></li>
-<li><code>origin/master</code>和 <code>origin/HEAD</code> 是对远端仓库的 master 和 HEAD 的本地镜像，在 <code>git pull</code> 中的第一步<code>git fetch</code> 下载远端仓库内容时，这两个镜像引用得到了更新,<code>origin/master</code> 和 <code>origin/HEAD</code> 移动到了最新的 commit<h4 id="Feature-Branching"><a href="#Feature-Branching" class="headerlink" title="Feature Branching"></a>Feature Branching</h4></li>
-<li>任何新的功能（feature）或 bug 修复全都新建一个 branch</li>
-<li>branch 写完后，合并到 master，然后删掉这个 branch</li>
-<li><p>开发一个新的功能,创建新的分支</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b feature1</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>功能基本完成后，push到远端分支feature1</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin feature1</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>review 复审代码，通过后合并分支到master</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br><span class="line">git chekcout feature1</span><br><span class="line">···</span><br><span class="line">git checkout master</span><br><span class="line">git pull # merge 之前 pull 一下，让 master 更新到和远程仓库同步</span><br><span class="line">git merge feature1</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>合并后的结果push到远端仓库,并删除本地和远端分支feature1</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br><span class="line">git branch -d feature1</span><br><span class="line">git push origin -d feature1</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>也可以使用<strong>pull request</strong>,查看commit，然后合并分支</p>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/pullrequest.png">
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/mergepullrequest.png">
-<h4 id="rebase-变基"><a href="#rebase-变基" class="headerlink" title="rebase 变基"></a>rebase 变基</h4></li>
-<li><p>重新设置基础点，切换到branch1变基，防止远端仓库的commit被剔除</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout branch1</span><br><span class="line">git rebase master</span><br></pre></td></tr></table></figure>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/rebase.gif"></li>
-<li>回到master，将master移动到最新commit<img src="http://p4n1d4izv.bkt.clouddn.com/images/rebase1.gif">
-<h4 id="提交代码错误"><a href="#提交代码错误" class="headerlink" title="提交代码错误"></a>提交代码错误</h4></li>
-<li>对最新一条 commit 进行修正<code>git commit --amend</code>,替换原来的commit，生成新的一个commit<h4 id="交互式-rebase"><a href="#交互式-rebase" class="headerlink" title="交互式 rebase"></a>交互式 rebase</h4></li>
-<li><p><code>rebase -i</code>：交互式 rebase,是<code>rebase --interactive</code>缩写，指定某个commit进行修改</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD^^</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>偏移符合<code>^</code> 一个或多个这个符号往回偏移对应个数的commit</p>
-</li>
-<li>偏移符号<code>~n</code> 向前偏移n个commit</li>
-<li><p>编辑界面，选择commit和对应的操作,将需要编辑的commit的<code>pick</code>改为<code>edit</code>，然后修改需要修改的内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">edit beeee 修改...</span><br><span class="line">pick edddd 修改...</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>用 <code>commit --amend</code> 来把修正应用到当前的 commit</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add git.txt</span><br><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>继续rebase，把后面的commit直接应用上去</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --continue</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="丢弃重新提交"><a href="#丢弃重新提交" class="headerlink" title="丢弃重新提交"></a>丢弃重新提交</h4><ul>
-<li><p><code>git reset --hard HEAD^</code>撤销提交的commit，重新回到上一个commit</p>
-</li>
-<li><p>之前的提交需要丢弃</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD^^ 回到上个commit</span><br><span class="line">drop 删掉这个commit</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>git rebase 第3个commit</code> 会自动选择分岔点，并将4，5commit提交到3所在的路径</p>
-</li>
-<li><code>rebase --onto</code>额外指定起点,只想把 5 提交到 3 上，不想附带上 4<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --onto 第3个commit 第4个commit branch1</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/rebaseonto.gif">
-<ul>
-<li><code>rebase --onto</code>来撤销提交,起点不包含在rebase序列，下面的例子是丢弃HEAD^,branch1的commit<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --onto HEAD^^ HEAD^ branch1</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/rebaseontohead.gif">
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/NDK/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1547,7 +1452,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Kotlin/">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Git/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="willkernel">
@@ -1566,7 +1471,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/09/Kotlin/" itemprop="url">Kotlin</a></h1>
+                <a class="post-title-link" href="/2018/03/09/Git/" itemprop="url">Git</a></h1>
         
 
         <div class="post-meta">
@@ -1578,7 +1483,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:03:49+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:04:00+08:00">
                 2018-03-09
               </time>
             
@@ -1589,6 +1494,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1596,7 +1523,7 @@
 
           
           
-             <span id="/2018/03/09/Kotlin/" class="leancloud_visitors" data-flag-title="Kotlin">
+             <span id="/2018/03/09/Git/" class="leancloud_visitors" data-flag-title="Git">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1628,9 +1555,24 @@
 
       
         
-          
-            
-          
+          <h4 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h4><ul>
+<li>.git 的隐藏目录是你的本地仓库（Local Repository）</li>
+<li><code>git log</code> 查看历史 <img src="http://p4n1d4izv.bkt.clouddn.com/images/gitlog.png"></li>
+<li><code>git log -p</code>查看详细历史</li>
+<li><code>git log --stat</code> 查看简要统计</li>
+<li><code>git show e66666/branch</code>查看指定commit，加文件名看指定文件</li>
+<li><code>git diff --staged/--cached</code>查看当前工作目录与暂存区的不同，可以看到即将添加到暂存区的改动内容，<code>git diff HEAD</code>看到当前工作目录与上一个commit的不同<ul>
+<li>commit 的 SHA-1 校验和<br><code>commit 8cf88cf35ce40cb91488e7d9b12cf46463fedc2f</code></li>
+</ul>
+</li>
+<li><code>git status</code><img src="http://p4n1d4izv.bkt.clouddn.com/images/gitstatus.png">
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/09/Git/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1772,6 +1714,190 @@
             </a>
           </div>
           <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Kotlin入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="willkernel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="willkernel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/09/Kotlin入门/" itemprop="url">Kotlin 入门</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:03:00+08:00">
+                2018-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/Kotlin/" itemprop="url" rel="index">
+                    <span itemprop="name">Kotlin</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/09/Kotlin入门/" class="leancloud_visitors" data-flag-title="Kotlin 入门">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>导入布局中所有控件属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import kotlinx.android.synthetic.main.＜布局＞.*</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实验模式包含<code>LayoutContainer`</code>Parcelable`</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">androidExtensions &#123;</span><br><span class="line">   experimental = true</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">import kotlinx.android.extensions.LayoutContainer</span><br><span class="line"></span><br><span class="line">class ViewHolder(override val containerView: View) : ViewHolder(containerView), LayoutContainer &#123;</span><br><span class="line">    fun setup(title: String) &#123;</span><br><span class="line">        itemTitle.text = &quot;Hello World!&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>View缓存策略,默认为HASH_MAP,<code>findViewById()</code>被调用一次</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">androidExtensions &#123;</span><br><span class="line">  defaultCacheImplementation = &quot;HASH_MAP&quot; // also SPARSE_ARRAY, NONE</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">可以通过注解改变策略</span><br><span class="line">@ContainerOptions(cache = CacheImplementation.NO_CACHE)</span><br><span class="line">fun MyActivity.a() &#123; </span><br><span class="line">    // findViewById() will be called twice</span><br><span class="line">    textView.text = &quot;Hidden view&quot;</span><br><span class="line">    textView.visibility = View.INVISIBLE</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Parcelable</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import kotlinx.android.parcel.Parcelize</span><br><span class="line"></span><br><span class="line">@Parcelize</span><br><span class="line">class User(val firstName: String, val lastName: String, val age: Int): Parcelable</span><br><span class="line"></span><br><span class="line">序列化读写</span><br><span class="line">@Parcelize</span><br><span class="line">data class Value(val firstName: String, val lastName: String, val age: Int) : Parcelable &#123;</span><br><span class="line">    private companion object : Parceler&lt;User&gt; &#123;</span><br><span class="line">        override fun User.write(parcel: Parcel, flags: Int) &#123;</span><br><span class="line">            // Custom write implementation</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        override fun create(parcel: Parcel): User &#123;</span><br><span class="line">            // Custom read implementation</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>@Parcelize支持类型</p>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/kotlin-support-types.png"></li>
+<li><p>自定义序列号映射对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class ExternalClass(val value: Int)</span><br><span class="line"></span><br><span class="line">object ExternalClassParceler : Parceler&lt;ExternalClass&gt; &#123;</span><br><span class="line">    override fun create(parcel: Parcel) = ExternalClass(parcel.readInt())</span><br><span class="line"></span><br><span class="line">    override fun ExternalClass.write(parcel: Parcel, flags: Int) &#123;</span><br><span class="line">        parcel.writeInt(value)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>@TypeParceler @WriteWith</code>引用自定义序列号映射对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// Class-local parceler</span><br><span class="line">@Parcelable</span><br><span class="line">@TypeParceler&lt;ExternalClass, ExternalClassParceler&gt;()</span><br><span class="line">class MyClass(val external: ExternalClass)</span><br><span class="line"></span><br><span class="line">// Property-local parceler</span><br><span class="line">@Parcelable</span><br><span class="line">class MyClass(@TypeParceler&lt;ExternalClass, ExternalClassParceler&gt;() val external: ExternalClass)</span><br><span class="line"></span><br><span class="line">// Type-local parceler</span><br><span class="line">@Parcelable</span><br><span class="line">class MyClass(val external: @WriteWith&lt;ExternalClassParceler&gt;() ExternalClass)</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+          
         
       
     </div>
@@ -3416,200 +3542,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/02/25/Android-Notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="willkernel">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="willkernel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/25/Android-Notes/" itemprop="url">Android Notes (System ADB UI)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-25T19:41:00+08:00">
-                2018-02-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/02/25/Android-Notes/" class="leancloud_visitors" data-flag-title="Android Notes (System ADB UI)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="Android系统架构"><a href="#Android系统架构" class="headerlink" title="Android系统架构"></a>Android系统架构</h4><ul>
-<li>Android系统分四层：Linux内核层，库和运行时，Framework层和应用层。<ul>
-<li>Linux包括硬件驱动，进程管理，安全系统</li>
-<li>Dalvik虚拟机，运行时编译；ART虚拟机安装时编译</li>
-<li>Framework<ul>
-<li>ActivityManager</li>
-<li>BackupManager</li>
-<li>Bluetooth</li>
-<li>ContentProviders</li>
-<li>LocationManger</li>
-<li>Map libraries</li>
-<li>MediaPlayer</li>
-<li>NotificationManager</li>
-<li>PackageManager</li>
-<li>ResourceManager</li>
-<li>SearchManager</li>
-<li>SharedPreference</li>
-<li>TelephoneManager</li>
-<li>WidgetProvider</li>
-<li>WindowManager</li>
-<li>ViewSystem</li>
-<li>XMPPService</li>
-</ul>
-</li>
-<li>标准库<ul>
-<li>Apache HTTP</li>
-<li>OpenGL ES</li>
-<li>Open SSL</li>
-<li>SQLite</li>
-<li>Webkit</li>
-<li>ICU</li>
-</ul>
-</li>
-<li>Android NDK/SDK APP(解压后包含内容中有)<ul>
-<li>AndroidManifeset</li>
-<li>Dalvik Classes</li>
-<li>Resource bundle</li>
-<li>NDK APP中包含JNI lib
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/25/Android-Notes/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3666,7 +3598,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3677,7 +3609,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 
               </div>
@@ -3688,7 +3620,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
