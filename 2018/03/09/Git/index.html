@@ -88,21 +88,27 @@
 
 
 
-<meta name="description" content="入门 .git 的隐藏目录是你的本地仓库（Local Repository） git log  commit 的 SHA-1 校验和commit 8cf88cf35ce40cb91488e7d9b12cf46463fedc2f   git status  untracked files （未追踪的文件）   使用 git add git.txt 来开始追踪文件  从 “Untracked file">
+<meta name="description" content="入门 .git 的隐藏目录是你的本地仓库（Local Repository） git log 查看历史  git log -p查看详细历史 git log --stat 查看简要统计 git show e66666/branch查看指定commit，加文件名看指定文件 git diff --staged/--cached查看当前工作目录与暂存区的不同，可以看到即将添加到暂存区的改动内容，git d">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git">
 <meta property="og:url" content="http://willkernel.github.io/2018/03/09/Git/index.html">
 <meta property="og:site_name" content="willkernel">
-<meta property="og:description" content="入门 .git 的隐藏目录是你的本地仓库（Local Repository） git log  commit 的 SHA-1 校验和commit 8cf88cf35ce40cb91488e7d9b12cf46463fedc2f   git status  untracked files （未追踪的文件）   使用 git add git.txt 来开始追踪文件  从 “Untracked file">
+<meta property="og:description" content="入门 .git 的隐藏目录是你的本地仓库（Local Repository） git log 查看历史  git log -p查看详细历史 git log --stat 查看简要统计 git show e66666/branch查看指定commit，加文件名看指定文件 git diff --staged/--cached查看当前工作目录与暂存区的不同，可以看到即将添加到暂存区的改动内容，git d">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/gitlog.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/gitstatus.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/gitaddstatus.png">
-<meta property="og:updated_time" content="2018-03-21T20:22:06.788Z">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/pullrequest.png">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mergepullrequest.png">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/rebase.gif">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/rebase1.gif">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/rebaseonto.gif">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/rebaseontohead.gif">
+<meta property="og:updated_time" content="2018-03-22T05:57:20.073Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git">
-<meta name="twitter:description" content="入门 .git 的隐藏目录是你的本地仓库（Local Repository） git log  commit 的 SHA-1 校验和commit 8cf88cf35ce40cb91488e7d9b12cf46463fedc2f   git status  untracked files （未追踪的文件）   使用 git add git.txt 来开始追踪文件  从 “Untracked file">
+<meta name="twitter:description" content="入门 .git 的隐藏目录是你的本地仓库（Local Repository） git log 查看历史  git log -p查看详细历史 git log --stat 查看简要统计 git show e66666/branch查看指定commit，加文件名看指定文件 git diff --staged/--cached查看当前工作目录与暂存区的不同，可以看到即将添加到暂存区的改动内容，git d">
 <meta name="twitter:image" content="http://p4n1d4izv.bkt.clouddn.com/images/gitlog.png">
 
 
@@ -423,8 +429,11 @@
       
         <h4 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h4><ul>
 <li>.git 的隐藏目录是你的本地仓库（Local Repository）</li>
-<li><code>git log</code><img src="http://p4n1d4izv.bkt.clouddn.com/images/gitlog.png">
-<ul>
+<li><code>git log</code> 查看历史 <img src="http://p4n1d4izv.bkt.clouddn.com/images/gitlog.png"></li>
+<li><code>git log -p</code>查看详细历史</li>
+<li><code>git log --stat</code> 查看简要统计</li>
+<li><code>git show e66666/branch</code>查看指定commit，加文件名看指定文件</li>
+<li><code>git diff --staged/--cached</code>查看当前工作目录与暂存区的不同，可以看到即将添加到暂存区的改动内容，<code>git diff HEAD</code>看到当前工作目录与上一个commit的不同<ul>
 <li>commit 的 SHA-1 校验和<br><code>commit 8cf88cf35ce40cb91488e7d9b12cf46463fedc2f</code></li>
 </ul>
 </li>
@@ -460,7 +469,80 @@
 </ul>
 </li>
 </ul>
-<h4 id="push"><a href="#push" class="headerlink" title="push"></a>push</h4><h5 id="push：把-branch-上传到远端仓库"><a href="#push：把-branch-上传到远端仓库" class="headerlink" title="push：把 branch 上传到远端仓库"></a>push：把 branch 上传到远端仓库</h5>
+<h4 id="push"><a href="#push" class="headerlink" title="push"></a>push</h4><ul>
+<li><code>git push</code>当前master分支，把该分支上的未上传的commit，以及当前master所指向的commit引用一并上传到远端</li>
+<li><p>切换到feature1,执行push,<code>origin feature1</code>参数代表目标仓库和目标分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout feature1</span><br><span class="line">git push origin feature1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>git config push.default current</code> 推送到与当前分支相同的远端分支，参考<a href="https://git-scm.com/docs/git-config#git-config-pushdefault" target="_blank" rel="noopener">git config</a></p>
+</li>
+<li>HEAD指向默认分支master，在<code>git push</code>时，只会上传当前分支的指向，例如push后，本地feature1指向第5个commit，push后远端feature1分支指向第5个commit,而HEAD指向不会切换到feature1的指向，默认指向master分支的commit<h4 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h4><font color="#FF0000"><code>pull</code></font>执行了<code>fetch</code>拉取到本地， <code>merge</code>合并远端commit和本地commit</li>
+<li><code>git merge branch1</code> 把branch1分支合并到master分支，生成一个新的commit</li>
+<li><p>两个分支修改相同内容，造成合并冲突，可以删除冲突的内容重新合并</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add git.txt</span><br><span class="line">git commit</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>也可以取消合并<code>git merge --abort</code>,回到之前的commit状态</p>
+</li>
+<li>当HEAD领先于branch的commit，在同一路径上，merge 是空操作,不需要创建新的commit</li>
+<li>当HEAD落后于目标branch的commit，在同一路径上，merge会直接将HEAD指向目标commit,这个操作即是 <strong>fast-forward</strong> 快速前移，在本地仓库中commit落后于远端代码，造成本地HEAD落后与目标commit，<code>git pull</code>就会造成<strong>fast-forward</strong></li>
+<li><code>origin/master</code>和 <code>origin/HEAD</code> 是对远端仓库的 master 和 HEAD 的本地镜像，在 <code>git pull</code> 中的第一步<code>git fetch</code> 下载远端仓库内容时，这两个镜像引用得到了更新,<code>origin/master</code> 和 <code>origin/HEAD</code> 移动到了最新的 commit<h4 id="Feature-Branching"><a href="#Feature-Branching" class="headerlink" title="Feature Branching"></a>Feature Branching</h4></li>
+<li>任何新的功能（feature）或 bug 修复全都新建一个 branch</li>
+<li>branch 写完后，合并到 master，然后删掉这个 branch</li>
+<li><p>开发一个新的功能,创建新的分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b feature1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能基本完成后，push到远端分支feature1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin feature1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>review 复审代码，通过后合并分支到master</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br><span class="line">git chekcout feature1</span><br><span class="line">···</span><br><span class="line">git checkout master</span><br><span class="line">git pull # merge 之前 pull 一下，让 master 更新到和远程仓库同步</span><br><span class="line">git merge feature1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>合并后的结果push到远端仓库,并删除本地和远端分支feature1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br><span class="line">git branch -d feature1</span><br><span class="line">git push origin -d feature1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>也可以使用<strong>pull request</strong>,查看commit，然后合并分支</p>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/pullrequest.png">
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/mergepullrequest.png">
+<h4 id="rebase-变基"><a href="#rebase-变基" class="headerlink" title="rebase 变基"></a>rebase 变基</h4></li>
+<li><p>重新设置基础点，切换到branch1变基，防止远端仓库的commit被剔除</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout branch1</span><br><span class="line">git rebase master</span><br></pre></td></tr></table></figure>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/rebase.gif"></li>
+<li>回到master，将master移动到最新commit<img src="http://p4n1d4izv.bkt.clouddn.com/images/rebase1.gif">
+<h4 id="提交代码错误"><a href="#提交代码错误" class="headerlink" title="提交代码错误"></a>提交代码错误</h4></li>
+<li>对最新一条 commit 进行修正<code>git commit --amend</code>,替换原来的commit，生成新的一个commit<h4 id="交互式-rebase"><a href="#交互式-rebase" class="headerlink" title="交互式 rebase"></a>交互式 rebase</h4></li>
+<li><p><code>rebase -i</code>：交互式 rebase,是<code>rebase --interactive</code>缩写，指定某个commit进行修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD^^</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>偏移符合<code>^</code> 一个或多个这个符号往回偏移对应个数的commit</p>
+</li>
+<li>偏移符号<code>~n</code> 向前偏移n个commit</li>
+<li><p>编辑界面，选择commit和对应的操作,将需要编辑的commit的<code>pick</code>改为<code>edit</code>，然后修改需要修改的内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">edit beeee 修改...</span><br><span class="line">pick edddd 修改...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用 <code>commit --amend</code> 来把修正应用到当前的 commit</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add git.txt</span><br><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>继续rebase，把后面的commit直接应用上去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --continue</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="丢弃重新提交"><a href="#丢弃重新提交" class="headerlink" title="丢弃重新提交"></a>丢弃重新提交</h4><ul>
+<li><p><code>git reset --hard HEAD^</code>撤销提交的commit，重新回到上一个commit</p>
+</li>
+<li><p>之前的提交需要丢弃</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD^^ 回到上个commit</span><br><span class="line">drop 删掉这个commit</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>git rebase 第3个commit</code> 会自动选择分岔点，并将4，5commit提交到3所在的路径</p>
+</li>
+<li><code>rebase --onto</code>额外指定起点,只想把 5 提交到 3 上，不想附带上 4<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --onto 第3个commit 第4个commit branch1</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/rebaseonto.gif">
+<ul>
+<li><code>rebase --onto</code>来撤销提交,起点不包含在rebase序列，下面的例子是丢弃HEAD^,branch1的commit<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --onto HEAD^^ HEAD^ branch1</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/rebaseontohead.gif">
       
     </div>
     
@@ -545,8 +627,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/09/Kotlin/" rel="next" title="Kotlin">
-                <i class="fa fa-chevron-left"></i> Kotlin
+              <a href="/2018/03/09/NDK/" rel="next" title="NDK">
+                <i class="fa fa-chevron-left"></i> NDK
               </a>
             
           </div>
@@ -555,8 +637,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/09/NDK/" rel="prev" title="NDK">
-                NDK <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/09/CoordinatorLayout/" rel="prev" title="CoordinatorLayout">
+                CoordinatorLayout <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -781,7 +863,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#入门"><span class="nav-number">1.</span> <span class="nav-text">入门</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HEAD、master、branch"><span class="nav-number">2.</span> <span class="nav-text">HEAD、master、branch</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HEAD-当前-commit-的引用"><span class="nav-number">2.1.</span> <span class="nav-text">HEAD 当前 commit 的引用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#branch"><span class="nav-number">2.2.</span> <span class="nav-text">branch</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#push"><span class="nav-number">3.</span> <span class="nav-text">push</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#push：把-branch-上传到远端仓库"><span class="nav-number">3.1.</span> <span class="nav-text">push：把 branch 上传到远端仓库</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#入门"><span class="nav-number">1.</span> <span class="nav-text">入门</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HEAD、master、branch"><span class="nav-number">2.</span> <span class="nav-text">HEAD、master、branch</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HEAD-当前-commit-的引用"><span class="nav-number">2.1.</span> <span class="nav-text">HEAD 当前 commit 的引用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#branch"><span class="nav-number">2.2.</span> <span class="nav-text">branch</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#push"><span class="nav-number">3.</span> <span class="nav-text">push</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#merge"><span class="nav-number">4.</span> <span class="nav-text">merge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Feature-Branching"><span class="nav-number">5.</span> <span class="nav-text">Feature Branching</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rebase-变基"><span class="nav-number">6.</span> <span class="nav-text">rebase 变基</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提交代码错误"><span class="nav-number">7.</span> <span class="nav-text">提交代码错误</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交互式-rebase"><span class="nav-number">8.</span> <span class="nav-text">交互式 rebase</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#丢弃重新提交"><span class="nav-number">9.</span> <span class="nav-text">丢弃重新提交</span></a></li></ol></div>
             
 
           </div>
