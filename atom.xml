@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://willkernel.github.io/"/>
-  <updated>2018-03-23T05:51:06.928Z</updated>
+  <updated>2018-03-23T12:11:01.448Z</updated>
   <id>http://willkernel.github.io/</id>
   
   <author>
@@ -17,11 +17,61 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Kotlin for Android (四)</title>
+    <link href="http://willkernel.github.io/2018/03/23/kotlin-for-Android-%E5%9B%9B/"/>
+    <id>http://willkernel.github.io/2018/03/23/kotlin-for-Android-四/</id>
+    <published>2018-03-23T12:08:00.000Z</published>
+    <updated>2018-03-23T12:11:01.448Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;Application单例化和属性的Delegated&quot;&gt;&lt;a href=&quot;#Application单例化和属性的Delegated&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Kotlin" scheme="http://willkernel.github.io/categories/Kotlin/"/>
+    
+    
+      <category term="Android" scheme="http://willkernel.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="http://willkernel.github.io/tags/Kotlin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kotlin for Android (三)</title>
+    <link href="http://willkernel.github.io/2018/03/23/Kotlin-for-Android-%E4%B8%89/"/>
+    <id>http://willkernel.github.io/2018/03/23/Kotlin-for-Android-三/</id>
+    <published>2018-03-23T08:34:27.000Z</published>
+    <updated>2018-03-23T12:06:54.135Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;操作符&quot;&gt;&lt;a href=&quot;#操作符&quot; class=&quot;headerlink&quot; title=&quot;操作符&quot;&gt;&lt;/a&gt;操作符&lt;/h4&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Kotlin for Android (二)</title>
     <link href="http://willkernel.github.io/2018/03/23/Kotlin-for-Android-%E4%BA%8C/"/>
     <id>http://willkernel.github.io/2018/03/23/Kotlin-for-Android-二/</id>
     <published>2018-03-23T02:47:00.000Z</published>
-    <updated>2018-03-23T05:51:06.928Z</updated>
+    <updated>2018-03-23T08:33:33.257Z</updated>
     
     <summary type="html">
     
@@ -211,24 +261,6 @@
   </entry>
   
   <entry>
-    <title>NDK</title>
-    <link href="http://willkernel.github.io/2018/03/09/NDK/"/>
-    <id>http://willkernel.github.io/2018/03/09/NDK/</id>
-    <published>2018-03-08T17:04:00.000Z</published>
-    <updated>2018-03-20T07:12:42.178Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-    
-      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Git</title>
     <link href="http://willkernel.github.io/2018/03/09/Git/"/>
     <id>http://willkernel.github.io/2018/03/09/Git/</id>
@@ -255,6 +287,24 @@
     
     
       <category term="Git" scheme="http://willkernel.github.io/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NDK</title>
+    <link href="http://willkernel.github.io/2018/03/09/NDK/"/>
+    <id>http://willkernel.github.io/2018/03/09/NDK/</id>
+    <published>2018-03-08T17:04:00.000Z</published>
+    <updated>2018-03-20T07:12:42.178Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
     
   </entry>
   
@@ -467,57 +517,6 @@
     
       <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Android Notes (ListView Scroller)</title>
-    <link href="http://willkernel.github.io/2018/03/02/Android-Notes-ListView-Scroller/"/>
-    <id>http://willkernel.github.io/2018/03/02/Android-Notes-ListView-Scroller/</id>
-    <published>2018-03-01T16:32:00.000Z</published>
-    <updated>2018-03-21T18:16:07.350Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;ListView使用技巧&quot;&gt;&lt;a href=&quot;#ListView使用技巧&quot; class=&quot;headerlink&quot; title=&quot;ListView使用技巧&quot;&gt;&lt;/a&gt;ListView使用技巧&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;优化技巧&lt;ul&gt;
-&lt;li&gt;ViewHolder-ListView 视图缓存机制&lt;/li&gt;
-&lt;li&gt;设置分割线divider=”@null”透明&lt;/li&gt;
-&lt;li&gt;取消点击效果，listSelector&lt;/li&gt;
-&lt;li&gt;smoothScrollBy/ToPosition()&lt;/li&gt;
-&lt;li&gt;处理空ListView,listView.setEmptyView(ImageView)&lt;/li&gt;
-&lt;li&gt;滑动监听，onTouchListener,onScrollListener,GestureDetector手势识别,VelocityTracker滑动速度检测
-    
-    </summary>
-    
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Docker 编译Android源码</title>
-    <link href="http://willkernel.github.io/2018/02/26/Docker-%E7%BC%96%E8%AF%91Android%E6%BA%90%E7%A0%81/"/>
-    <id>http://willkernel.github.io/2018/02/26/Docker-编译Android源码/</id>
-    <published>2018-02-26T02:50:00.000Z</published>
-    <updated>2018-03-21T18:16:34.879Z</updated>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://store.docker.com/editions/community/docker-ce-desktop-windows&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Windows 安装Docker&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/27273412/cannot-install-packages-inside-docker-ubuntu-image&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Cannot install packages inside docker Ubuntu image&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;It is because there is no package cache in the image, you need to run:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;apt-get -qq update&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;before installing packages, and if your command is in a Dockerfile, you&amp;apos;ll then need:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;apt-get -qq -y install curl&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Always combine RUN apt-get update with apt-get install in the same  RUN statement, for example&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;RUN apt-get update &amp;amp;&amp;amp; apt-get install -y package-bar&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-    
-      <category term="Docker" scheme="http://willkernel.github.io/tags/Docker/"/>
-    
-      <category term="源码" scheme="http://willkernel.github.io/tags/%E6%BA%90%E7%A0%81/"/>
     
   </entry>
   

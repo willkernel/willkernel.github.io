@@ -96,10 +96,12 @@
 <meta property="og:site_name" content="willkernel">
 <meta property="og:description" content="Anko Anko Commons：一个轻量级的库，里面包含了intents，对话框，日志等帮助类 Anko Layouts：用于编写动态Android布局的快速且类型安全的方法 Anko SQLite：查询适用于Android SQLite的DSL和分析器集合 Anko Coroutines：基于kotlinx.coroutines库的实用程序 简化获取RecyclerView1val fore">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-23T05:51:06.928Z">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/commandforecast.png">
+<meta property="og:updated_time" content="2018-03-23T08:33:33.257Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kotlin for Android (二)">
 <meta name="twitter:description" content="Anko Anko Commons：一个轻量级的库，里面包含了intents，对话框，日志等帮助类 Anko Layouts：用于编写动态Android布局的快速且类型安全的方法 Anko SQLite：查询适用于Android SQLite的DSL和分析器集合 Anko Coroutines：基于kotlinx.coroutines库的实用程序 简化获取RecyclerView1val fore">
+<meta name="twitter:image" content="http://p4n1d4izv.bkt.clouddn.com/images/commandforecast.png">
 
 
 
@@ -456,7 +458,38 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Request(var zipCode: String) &#123;</span><br><span class="line">    companion object &#123;</span><br><span class="line">        private val APP_ID = &quot;15646a06818f61f7b8d7823ca833e1ce&quot;</span><br><span class="line">        private val URL = &quot;http://api.openweathermap.org/data/2.5/forecast/daily?mode=json&amp;units=metric&amp;cnt=7&quot;</span><br><span class="line">        private val COMPLETE_URL = &quot;$URL&amp;APPID=$APP_ID&amp;zip=&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public fun execute(): ForecastResult &#123;</span><br><span class="line">        //这个方法不推荐</span><br><span class="line">        val forecastJson = URL(COMPLETE_URL + zipCode).readText()</span><br><span class="line">        Log.e(javaClass.simpleName, forecastJson)</span><br><span class="line">        return Gson().fromJson(forecastJson, ForecastResult::class.java)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> val result = Request(94040).execute()</span><br><span class="line"> Log.e(tag, &quot;result &quot; + result.toString())</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="构建domain层"><a href="#构建domain层" class="headerlink" title="构建domain层"></a>构建domain层</h4>
+<h4 id="构建domain层"><a href="#构建domain层" class="headerlink" title="构建domain层"></a>构建domain层</h4><ul>
+<li><p>定义一个commnad，执行一个任务，返回泛型，一起Kotlin函数都有返回值，没有指定默认返回Unit，所以不返回数据可以指定类型会Unit</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface Command&lt;T&gt; &#123;</span><br><span class="line">    fun execute(): T</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>command需要去请求天气预报接口然后转换结果为domain类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public interface Command&lt;T&gt; &#123;</span><br><span class="line">    data class ForecastList(val city: String, val country: String,</span><br><span class="line">                            val dailyForecast: List&lt;Forecast&gt;)</span><br><span class="line"></span><br><span class="line">    data class Forecast(val date: String, val description: String,</span><br><span class="line">                        val high: Int, val low: Int)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数据映射到Domain,创建DataMapper</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class ForecastDataMapper &#123;</span><br><span class="line">fun convertFromDataModel(forecast: ForecastResult): Forecast</span><br><span class="line">List &#123;</span><br><span class="line">return ForecastList(forecast.city.name, forecast.city.co</span><br><span class="line">untry,</span><br><span class="line">convertForecastListToDomain(forecast.list))</span><br><span class="line">private fun convertForecastListToDomain(list: List&lt;Forecast&gt;)</span><br><span class="line">:</span><br><span class="line">List&lt;ModelForecast&gt; &#123;</span><br><span class="line">return list.map &#123; convertForecastItemToDomain(it) &#125;</span><br><span class="line">&#125;</span><br><span class="line">private fun convertForecastItemToDomain(forecast: Forecast):</span><br><span class="line">ModelForecast &#123;</span><br><span class="line">return ModelForecast(convertDate(forecast.dt),</span><br><span class="line">forecast.weather[0].description, forecast.temp.m</span><br><span class="line">ax.toInt(),</span><br><span class="line">forecast.temp.min.toInt())</span><br><span class="line">&#125;</span><br><span class="line">private fun convertDate(date: Long): String &#123;</span><br><span class="line">val df = DateFormat.getDateInstance(DateFormat.MEDIUM, L</span><br><span class="line">ocale.getDefault())</span><br><span class="line">return df.format(date * 1000)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当我们使用了两个相同名字的类，我们可以给其中一个指定一个别名，这样我们就不需要写完整的包名了：<code>import com.willkernel.app.kotlindemo.model.Forecast as ModelForecast</code>，从一个forecast list中转换为domain model <code>return list.map { convertForecastItemToDomain(it) }</code>循环这个集合并且返回一个转换后的新的List</p>
+<ul>
+<li><p>ForecastMapper</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> public class ForecastDataMapper &#123;</span><br><span class="line">    fun convertFromDataModel(forecast: ForecastResult): ForecastList &#123;</span><br><span class="line">        return ForecastList(forecast.city.name, forecast.city.country,</span><br><span class="line">                convertForecastListToDomain(forecast.list))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private fun convertForecastListToDomain(list: List&lt;Forecast&gt;)</span><br><span class="line">            : List&lt;ModelForecast&gt; &#123;</span><br><span class="line">        return list.map &#123; convertForecastItemToDomain(it) &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private fun convertForecastItemToDomain(forecast: Forecast):</span><br><span class="line">            ModelForecast &#123;</span><br><span class="line">        return ModelForecast(convertDate(forecast.dt),</span><br><span class="line">                forecast.weather[0].description, forecast.temp.max.toInt(),</span><br><span class="line">                forecast.temp.min.toInt())</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private fun convertDate(date: Long): String &#123;</span><br><span class="line">        val df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault())</span><br><span class="line">        return df.format(date * 1000)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编写网络请求命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class RequestForecastCommand(val zipCode: String) : Command&lt;ForecastList&gt; &#123;</span><br><span class="line">    override fun execute(): ForecastList &#123;</span><br><span class="line">        val forecastRequest = ForecastRequest(zipCode)</span><br><span class="line">        return ForecastDataMapper().convertFromDataModel(forecastRequest.execute())</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>修改Adapter,设置数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class ForecastListAdapter(val items: ForecastList) : RecyclerView.Adapter&lt;ForecastListAdapter.VH&gt;() &#123;</span><br><span class="line">    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH &#123;</span><br><span class="line">        return VH(TextView(parent.context))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun getItemCount(): Int = items.size</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    override fun onBindViewHolder(holder: VH, position: Int) &#123;</span><br><span class="line">        with(items.dailyForecast[position]) &#123;</span><br><span class="line">            holder.textView.text = &quot;$date - $description - $high - $low&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class VH(val textView: TextView) : RecyclerView.ViewHolder(textView)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">doAsync &#123;</span><br><span class="line">            val result = RequestForecastCommand(&quot;94043&quot;).execute()</span><br><span class="line">            Log.e(tag, &quot;result &quot; + result.toString())</span><br><span class="line">            uiThread &#123; recyclerView.adapter = ForecastListAdapter(result) </span><br><span class="line">            &#125;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/commandforecast.png">
+<ul>
+<li><code>with</code> 函数<blockquote>
+<p>with是一个非常有用的函数，它包含在Kotlin的标准库中。它接收一个对象<br>和一个扩展函数作为它的参数，然后使这个对象扩展这个函数。这表示所<br>有我们在括号中编写的代码都是作为对象（第一个参数）的一个扩展函<br>数，我们可以就像作为this一样使用所有它的public方法和属性。当我们针<br>对同一个对象做很多操作的时候这个非常有利于简化代码</p>
+</blockquote>
+</li>
+</ul>
+
       
     </div>
     
@@ -553,6 +586,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/03/23/Kotlin-for-Android-三/" rel="prev" title="Kotlin for Android (三)">
+                Kotlin for Android (三) <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -639,7 +676,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
