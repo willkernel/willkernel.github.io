@@ -98,7 +98,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/convert2kotlin.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/kotlin-recyclerview.png">
-<meta property="og:updated_time" content="2018-03-22T19:20:13.741Z">
+<meta property="og:updated_time" content="2018-03-23T02:49:12.143Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kotlin for Android (一)">
 <meta name="twitter:description" content="介绍Kotlin 编写代码量少 更加安全：Kotlin编译时期就处理了各种null的情况，避免了执行时异常。如果一个对象可以是null，则我们需要明确地指定它，然后在使用它之前检查它是否是null 它是函数式的：Kotlin是基于面向对象的语言，它使用了很多函数式编程的概念，比如，使用lambda表达式来更方便地解决问题。其中一个很棒的特性就是Collections的处理方式 它可以扩展函数：可以">
@@ -361,18 +361,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/Kotlin/" itemprop="url" rel="index">
+                  <a href="/categories/Kotlin/" itemprop="url" rel="index">
                     <span itemprop="name">Kotlin</span>
                   </a>
                 </span>
@@ -485,7 +474,33 @@
 </li>
 </ul>
 <img src="http://p4n1d4izv.bkt.clouddn.com/images/kotlin-recyclerview.png">
-<h4 id="变量和属性"><a href="#变量和属性" class="headerlink" title="变量和属性"></a>变量和属性</h4><h5 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h5>
+<h4 id="变量和属性"><a href="#变量和属性" class="headerlink" title="变量和属性"></a>变量和属性</h4><h5 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h5><ul>
+<li><p>数字类型不会自动转型，做一个明确的类型转换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val i:Int=7;</span><br><span class="line">val d:Double=i.toDouble()</span><br><span class="line">Log.e(tag, d.toString())</span><br><span class="line"></span><br><span class="line">E/MainActivity: 7.0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符char的数字值不能直接使用，需要转换为一个数字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">val c=&apos;c&apos;</span><br><span class="line">val i2:Int=c.toInt()</span><br><span class="line">Log.e(tag,i2.toString())</span><br><span class="line"> </span><br><span class="line">E/MainActivity: 99</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>仅适用Int Long的按位运算，包括</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">shl(bits) – signed shift left (Java&apos;s &lt;&lt;)</span><br><span class="line">shr(bits) – signed shift right (Java&apos;s &gt;&gt;)</span><br><span class="line">ushr(bits) – unsigned shift right (Java&apos;s &gt;&gt;&gt;)</span><br><span class="line">and(bits) – bitwise and</span><br><span class="line">or(bits) – bitwise or</span><br><span class="line">xor(bits) – bitwise xor</span><br><span class="line">inv() – bitwise inversion</span><br></pre></td></tr></table></figure>
+<ul>
+<li>示例<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">val FLAG1 = 8L</span><br><span class="line">val FLAG2 = 16L</span><br><span class="line">//按位运算，Int Long可用</span><br><span class="line">val bitwiseOr = FLAG1 or FLAG2</span><br><span class="line">val bitwiseAnd = FLAG1 and FLAG2</span><br><span class="line">Log.e(tag, bitwiseOr.toString())</span><br><span class="line">Log.e(tag, bitwiseAnd.toString())</span><br><span class="line">E/MainActivity: 24</span><br><span class="line">E/MainActivity: 0</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>string字符串的访问</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//string 可以像数组一样访问</span><br><span class="line">val s = &quot;Example&quot;</span><br><span class="line">val c1 = s[2]</span><br><span class="line">Log.e(tag, c1.toString())</span><br><span class="line">for (c in s) &#123;</span><br><span class="line">   Log.e(tag, &quot;item =$c&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">E/MainActivity: a</span><br><span class="line">E/MainActivity: item =E</span><br><span class="line">E/MainActivity: item =x</span><br><span class="line">E/MainActivity: item =a</span><br><span class="line">E/MainActivity: item =m</span><br><span class="line">E/MainActivity: item =p</span><br><span class="line">E/MainActivity: item =l</span><br><span class="line">E/MainActivity: item =e</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h5><ul>
+<li>变量可以很简单地定义成可变( var )和不可变（ val ）的变量，不可变对象也可以说是线程安全的，因为它们无法去改变，也不需要去定义访问控制，因为所有线程访问到的对象都是同一个，尽量使用<code>val</code>,自动从赋值语句判断变量类型<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">val actionBar = supportActionBar</span><br><span class="line">Log.e(tag, actionBar.toString())</span><br><span class="line">val a: Any = 23</span><br><span class="line">Log.e(tag, a.toString())</span><br><span class="line"></span><br><span class="line">val c: Context = this</span><br><span class="line">Log.e(tag, c.toString())</span><br><span class="line"></span><br><span class="line">E/MainActivity: android.support.v7.app.WindowDecorActionBar@2511c44</span><br><span class="line">E/MainActivity: 23</span><br><span class="line">E/MainActivity: com.willkernel.app.kotlindemo.MainActivity@b16dc5a</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h5><ul>
+<li>当操作Java代码的时候，Kotlin将允许使用属性的语法去访问在Java文件中定义的getter/setter方法。编译器会直接链接到它原始的getter/setter方法。所以当我们直接访问属性的时候不会有性能开销</li>
+<li>在getter和setter中访问这个属性自身的值，它需要创建一个 backingfield 。可以使用 field 这个预留字段来访问，它会被编译器找到正在使用的并自动创建。需要注意的是，如果我们直接调用了属性，那我们会使用setter和getter而不是直接访问这个属性。 backing field 只能在属性访问器内访问<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var nick: String = &quot;&quot;</span><br><span class="line">        get() = field.toUpperCase()</span><br><span class="line">        set(value) &#123;</span><br><span class="line">            field = &quot;Name: $nick&quot;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
       
     </div>
     
@@ -582,6 +597,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/03/23/Kotlin-for-Android-二/" rel="prev" title="Kotlin for Android (二)">
+                Kotlin for Android (二) <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -668,7 +687,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -804,7 +823,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#介绍Kotlin"><span class="nav-number">1.</span> <span class="nav-text">介绍Kotlin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特性"><span class="nav-number">2.</span> <span class="nav-text">特性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Expresiveness-可读性"><span class="nav-number">2.1.</span> <span class="nav-text">Expresiveness 可读性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#空安全"><span class="nav-number">2.2.</span> <span class="nav-text">空安全</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#扩展方法"><span class="nav-number">2.3.</span> <span class="nav-text">扩展方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Lambda"><span class="nav-number">2.4.</span> <span class="nav-text">Lambda</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建一个项目"><span class="nav-number">3.</span> <span class="nav-text">创建一个项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数"><span class="nav-number">4.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建一个layout"><span class="nav-number">5.</span> <span class="nav-text">创建一个layout</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量和属性"><span class="nav-number">6.</span> <span class="nav-text">变量和属性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本类型"><span class="nav-number">6.1.</span> <span class="nav-text">基本类型</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#介绍Kotlin"><span class="nav-number">1.</span> <span class="nav-text">介绍Kotlin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特性"><span class="nav-number">2.</span> <span class="nav-text">特性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Expresiveness-可读性"><span class="nav-number">2.1.</span> <span class="nav-text">Expresiveness 可读性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#空安全"><span class="nav-number">2.2.</span> <span class="nav-text">空安全</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#扩展方法"><span class="nav-number">2.3.</span> <span class="nav-text">扩展方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Lambda"><span class="nav-number">2.4.</span> <span class="nav-text">Lambda</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建一个项目"><span class="nav-number">3.</span> <span class="nav-text">创建一个项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数"><span class="nav-number">4.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建一个layout"><span class="nav-number">5.</span> <span class="nav-text">创建一个layout</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量和属性"><span class="nav-number">6.</span> <span class="nav-text">变量和属性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本类型"><span class="nav-number">6.1.</span> <span class="nav-text">基本类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#变量"><span class="nav-number">6.2.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#属性"><span class="nav-number">6.3.</span> <span class="nav-text">属性</span></a></li></ol></li></ol></div>
             
 
           </div>

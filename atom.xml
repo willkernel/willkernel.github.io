@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://willkernel.github.io/"/>
-  <updated>2018-03-22T19:20:13.741Z</updated>
+  <updated>2018-03-23T05:51:06.928Z</updated>
   <id>http://willkernel.github.io/</id>
   
   <author>
@@ -17,11 +17,49 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Kotlin for Android (二)</title>
+    <link href="http://willkernel.github.io/2018/03/23/Kotlin-for-Android-%E4%BA%8C/"/>
+    <id>http://willkernel.github.io/2018/03/23/Kotlin-for-Android-二/</id>
+    <published>2018-03-23T02:47:00.000Z</published>
+    <updated>2018-03-23T05:51:06.928Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;Anko&quot;&gt;&lt;a href=&quot;#Anko&quot; class=&quot;headerlink&quot; title=&quot;Anko&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/Kotlin/anko&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Anko&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Anko Commons：一个轻量级的库，里面包含了intents，对话框，日志等帮助类&lt;/li&gt;
+&lt;li&gt;Anko Layouts：用于编写动态Android布局的快速且类型安全的方法&lt;/li&gt;
+&lt;li&gt;Anko SQLite：查询适用于Android SQLite的DSL和分析器集合&lt;/li&gt;
+&lt;li&gt;Anko Coroutines：基于kotlinx.coroutines库的实用程序&lt;/li&gt;
+&lt;li&gt;简化获取RecyclerView&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;val forecastList: RecyclerView = find(R.id.recyclerView)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;扩展函数&quot;&gt;&lt;a href=&quot;#扩展函数&quot; class=&quot;headerlink&quot; title=&quot;扩展函数&quot;&gt;&lt;/a&gt;扩展函数&lt;/h4&gt;&lt;p&gt;扩展函数数是指在一个类上增加一种新的行为，甚至我们没有这个类代码的访问权&lt;br&gt;限。这是一个在缺少有用函数的类上扩展的方法。在Java中，通常会实现很多带有&lt;br&gt;static方法的工具类。Kotlin中扩展函数的一个优势是我们不需要在调用方法的时候&lt;br&gt;把整个对象当作参数传入。扩展函数表现得就像是属于这个类的一样，而且我们可&lt;br&gt;以使用 this 关键字和调用所有public方法&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;fun Context.toastF(message: CharSequence,duration: Int=Toast.LENGTH_SHORT)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   Toast.makeText(this, &amp;quot;$message&amp;quot;, duration).show()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Anko已经扩展toast函数，提供了CharSequence,(resource id)Int的函数&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;toast(R.string.app_name)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;longToast(&amp;quot;longToast&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;扩展函数并不是真正地修改了原来的类，它是以静态导入的方式来实现的。扩展函数可以被声明在任何文件中，通用的实践是把一系列有关的函数放在一个新建的文件里&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var TextView.text: CharSequence&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   get() = getText()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   set(v) = setText(v)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Kotlin" scheme="http://willkernel.github.io/categories/Kotlin/"/>
+    
+    
+      <category term="Android" scheme="http://willkernel.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="http://willkernel.github.io/tags/Kotlin/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Kotlin for Android (一)</title>
     <link href="http://willkernel.github.io/2018/03/22/Kotlin-for-Android-%E4%B8%80/"/>
     <id>http://willkernel.github.io/2018/03/22/Kotlin-for-Android-一/</id>
     <published>2018-03-22T15:43:00.000Z</published>
-    <updated>2018-03-22T19:20:13.741Z</updated>
+    <updated>2018-03-23T02:49:12.143Z</updated>
     
     <summary type="html">
     
@@ -44,9 +82,7 @@
     
     </summary>
     
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-      <category term="Kotlin" scheme="http://willkernel.github.io/categories/Android/Kotlin/"/>
+      <category term="Kotlin" scheme="http://willkernel.github.io/categories/Kotlin/"/>
     
     
       <category term="Android" scheme="http://willkernel.github.io/tags/Android/"/>
@@ -249,7 +285,7 @@
     <link href="http://willkernel.github.io/2018/03/09/Kotlin%E5%85%A5%E9%97%A8/"/>
     <id>http://willkernel.github.io/2018/03/09/Kotlin入门/</id>
     <published>2018-03-08T17:03:00.000Z</published>
-    <updated>2018-03-22T17:09:42.613Z</updated>
+    <updated>2018-03-23T02:50:36.286Z</updated>
     
     <summary type="html">
     
@@ -265,9 +301,7 @@
     
     </summary>
     
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-      <category term="Kotlin" scheme="http://willkernel.github.io/categories/Android/Kotlin/"/>
+      <category term="Kotlin" scheme="http://willkernel.github.io/categories/Kotlin/"/>
     
     
       <category term="Android" scheme="http://willkernel.github.io/tags/Android/"/>
@@ -484,31 +518,6 @@
       <category term="Docker" scheme="http://willkernel.github.io/tags/Docker/"/>
     
       <category term="源码" scheme="http://willkernel.github.io/tags/%E6%BA%90%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>算法 c++</title>
-    <link href="http://willkernel.github.io/2018/02/26/%E7%AE%97%E6%B3%95-c/"/>
-    <id>http://willkernel.github.io/2018/02/26/算法-c/</id>
-    <published>2018-02-25T18:40:00.000Z</published>
-    <updated>2018-03-01T17:13:16.497Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;排序算法&lt;/p&gt;
-
-        
-      
-    
-    </summary>
-    
-      <category term="C" scheme="http://willkernel.github.io/categories/C/"/>
-    
     
   </entry>
   
