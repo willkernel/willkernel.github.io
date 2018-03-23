@@ -305,6 +305,167 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/24/Kotlin-for-Android-五/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="willkernel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="willkernel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/24/Kotlin-for-Android-五/" itemprop="url">Kotlin for Android (五)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-24T01:18:00+08:00">
+                2018-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kotlin/" itemprop="url" rel="index">
+                    <span itemprop="name">Kotlin</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/24/Kotlin-for-Android-五/" class="leancloud_visitors" data-flag-title="Kotlin for Android (五)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="创建SQLiteHelper"><a href="#创建SQLiteHelper" class="headerlink" title="创建SQLiteHelper"></a>创建SQLiteHelper</h4><p>一般使用SqliteOpenHelper 去调用 getReadableDatabase() 或者 getWritableDatabase() ，然后我们可以执行我们的搜索并拿到结果。在这之后，我们不能忘记调用 close()</p>
+<h5 id="ManagedSqliteOpenHelper"><a href="#ManagedSqliteOpenHelper" class="headerlink" title="ManagedSqliteOpenHelper"></a>ManagedSqliteOpenHelper</h5><ul>
+<li>函数中，最后一行表示返回值。因为T没有任何的限制，所以我们可以返回任何对象。甚至如果我们不想返回任何值就使用 Unit,<code>try-finally</code>保证关闭数据库<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">val result = forecastDbHelper.use &#123;</span><br><span class="line">val queriedObject = ...</span><br><span class="line">queriedObject</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fun &lt;T&gt; use(f: SQLiteDatabase.() -&gt; T): T &#123;</span><br><span class="line">     try &#123;</span><br><span class="line">          return openDatabase().f()</span><br><span class="line">     &#125; finally &#123;</span><br><span class="line">          closeDatabase()</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="定义表"><a href="#定义表" class="headerlink" title="定义表"></a>定义表</h5><ul>
+<li>CityForecastTable 提供了表的名字还有需要列：一个id（这个城市的zipCode），城市的名称和所在国家,DayForecast天气信息<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">object CityForecastTable &#123;</span><br><span class="line">val NAME = &quot;CityForecast&quot;</span><br><span class="line">val ID = &quot;_id&quot;</span><br><span class="line">val CITY = &quot;city&quot;</span><br><span class="line">val COUNTRY = &quot;country&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">object DayForecastTable &#123;</span><br><span class="line">val NAME = &quot;DayForecast&quot;</span><br><span class="line">val ID = &quot;_id&quot;</span><br><span class="line">val DATE = &quot;date&quot;</span><br><span class="line">val DESCRIPTION = &quot;description&quot;</span><br><span class="line">val HIGH = &quot;high&quot;</span><br><span class="line">val LOW = &quot;low&quot;</span><br><span class="line">val ICON_URL = &quot;iconUrl&quot;</span><br><span class="line">val CITY_ID = &quot;cityId&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="实现SqliteOpenHelper"><a href="#实现SqliteOpenHelper" class="headerlink" title="实现SqliteOpenHelper"></a>实现SqliteOpenHelper</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class ForecastDbHelper(ctx: Context = App.instance) : ManagedSQLiteOpenHelper(App.instance,</span><br><span class="line">        ForecastDbHelper.DB_NAME, null, ForecastDbHelper.DB_VERSION) &#123;</span><br><span class="line">    override fun onCreate(db: SQLiteDatabase) &#123;</span><br><span class="line">        db.createTable(CityForecastTable.NAME, true,</span><br><span class="line">                CityForecastTable.ID to INTEGER + PRIMARY_KEY,</span><br><span class="line">                CityForecastTable.CITY to TEXT,</span><br><span class="line">                CityForecastTable.COUNTRY to TEXT)</span><br><span class="line"></span><br><span class="line">        db.createTable(DayForecastTable.NAME, true,</span><br><span class="line">                DayForecastTable.ID to INTEGER + PRIMARY_KEY,</span><br><span class="line">                DayForecastTable.DATE to INTEGER,</span><br><span class="line">                DayForecastTable.DESCRIPTION to TEXT,</span><br><span class="line">                DayForecastTable.HIGH to INTEGER,</span><br><span class="line">                DayForecastTable.LOW to INTEGER,</span><br><span class="line">                DayForecastTable.ICON_URL to TEXT,</span><br><span class="line">                DayForecastTable.CITY_ID to INTEGER)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) &#123;</span><br><span class="line">        db.dropTable(CityForecastTable.NAME, true)</span><br><span class="line">        db.dropTable(DayForecastTable.NAME, true)</span><br><span class="line">        onCreate(db)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    companion object &#123;</span><br><span class="line">        val DB_NAME = &quot;forecast.db&quot;</span><br><span class="line">        val DB_VERSION = 1</span><br><span class="line">        val instance: ForecastDbHelper by lazy &#123;</span><br><span class="line">            ForecastDbHelper()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/23/kotlin-for-Android-四/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -410,7 +571,56 @@
         
           
             <h4 id="Application单例化和属性的Delegated"><a href="#Application单例化和属性的Delegated" class="headerlink" title="Application单例化和属性的Delegated"></a>Application单例化和属性的Delegated</h4><p>需要有一个更简单的访问application context的方式</p>
-<h5 id="Application单例化"><a href="#Application单例化" class="headerlink" title="Application单例化"></a>Application单例化</h5>
+<h5 id="Application单例化"><a href="#Application单例化" class="headerlink" title="Application单例化"></a>Application单例化</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class App : Application() &#123;</span><br><span class="line">companion object &#123;</span><br><span class="line">private var instance: Application? = null</span><br><span class="line">fun instance() = instance!!</span><br><span class="line">&#125;</span><br><span class="line">override fun onCreate() &#123;</span><br><span class="line">super.onCreate()</span><br><span class="line">instance = this</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Android有一个问题，就是我们不能去控制很多类的构造函数。比如，我们不能初<br>始化一个非null属性，因为它的值需要在构造函数中去定义。所以我们需要一个可<br>null的变量，和一个返回非null值的函数。我们知道我们一直都有一个 App 实例，<br>但是在它调用 onCreate 之前我们不能去操作任何事情，所以我们为了安全性，我<br>们假设 instance() 函数将会总是返回一个非null的 app 实例。但是这个方案看起来有点不自然。我们需要定义个一个属性（已经有了getter和setter），然后通过一个函数来返回那个属性。我们有其他方法去达到相似的效果么？是的，我们可以通过委托这个属性的值给另外一个类。这个就是我们知道的委托属性</p>
+</blockquote>
+<h5 id="委托属性"><a href="#委托属性" class="headerlink" title="委托属性"></a>委托属性</h5><ul>
+<li><p>属性委托的结构如下：这个T是委托属性的类型。 getValue 函数接收一个类的引用和一个属性的元数据。 setValue 函数又接收了一个被设置的值。如果这个属性是不可修改(val)，就会只有一个 getValue 函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Delegate&lt;T&gt; : ReadWriteProperty&lt;Any?, T&gt; &#123;</span><br><span class="line">fun getValue(thisRef: Any?, property: KProperty&lt;*&gt;): T &#123;</span><br><span class="line">return ...</span><br><span class="line">&#125;</span><br><span class="line">fun setValue(thisRef: Any?, property: KProperty&lt;*&gt;, value: T)</span><br><span class="line">&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>示例属性委托怎么设置,by 这个关键字来指定一个委托对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Example &#123;</span><br><span class="line">var p: String by Delegate()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="标准委托"><a href="#标准委托" class="headerlink" title="标准委托"></a>标准委托</h5><ul>
+<li><p>Lazy<br>它包含一个lambda，当第一次执行 getValue 的时候这个lambda会被调用，所以<br>这个属性可以被延迟初始化。之后的调用都只会返回同一个值,当我们在它们第一次真正调用之前不是必须需要它们的时候。我们可以节省内存，在这些属性真正需要前不进行初始化，database并没有被真正初始化，直到第一次调用 onCreate 时。在那之后，我们才确保applicationContext存在，并且已经准备好可以被使用了。 lazy 操作符是线程安全的。如果你不担心多线程问题或者想提高更多的性能，你也可以使用lazy(LazyThreadSafeMode.NONE){ … }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class App : Application() &#123;</span><br><span class="line">val database: SQLiteOpenHelper by lazy &#123;</span><br><span class="line">MyDatabaseHelper(applicationContext)</span><br><span class="line">&#125;</span><br><span class="line">override fun onCreate() &#123;</span><br><span class="line">super.onCreate()</span><br><span class="line">val db = database.writableDatabase</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Observable这个委托会帮我们监测我们希望观察的属性的变化。当被观察属性的 set 方法被调用的时候，它就会自动执行我们指定的lambda表达式。所以一旦该属性被赋了新的值，我们就会接收到被委托的属性、旧值和新值,下面的示例是一些我们需要关心的ViewMode，每次值被修改了，就会保存它们到数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class ViewModel(val db: MyDatabase) &#123;</span><br><span class="line">var myProperty by Delegates.observable(&quot;&quot;) &#123;</span><br><span class="line">d, old, new -&gt;</span><br><span class="line">db.saveChanges(this, new)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Vetoable 这是一个特殊的 observable ，它让你决定是否这个值需要被保存。它可以被用于在真正保存之前进行一些条件判断,下面的示例，允许在新的值是正数的时候执行保存。在lambda中，最后一行表示返回值。你不需要使用return关键字（实质上不能被编译）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var positiveNumber = Delegates.vetoable(0) &#123;</span><br><span class="line">d, old, new -&gt;</span><br><span class="line">new &gt;= 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>NotNull 含有一个可null的变量并会在我们设置这个属性的时候分配一个真实的值。如果这个值在被获取之前没有被分配，它就会抛出一个异常</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class App : Application() &#123;</span><br><span class="line">companion object &#123;</span><br><span class="line">var instance: App by Delegates.notNull()</span><br><span class="line">&#125;</span><br><span class="line">override fun onCreate() &#123;</span><br><span class="line">super.onCreate()</span><br><span class="line">instance = this</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从Map中映射值 属性的值会从一个map中获取value，属性的名字对应这个map中的key,如果我们importkotlin.properties.getValue ，我们可以从构造函数映射到 val 属性来得到一个不可修改的map。如果我们想去修改map和属性，我们也可以import kotlin.properties.setValue 。类需要一个 MutableMap 作为构造函数的参数</p>
+</li>
+<li><p>想象我们从一个Json中加载了一个配置类，然后分配它们的key和value到一个map中。我们可以仅仅通过传入一个map的构造函数来创建一个实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import kotlin.properties.getValue</span><br><span class="line">class Configuration(map: Map&lt;String, Any?&gt;) &#123;</span><br><span class="line">val width: Int by map</span><br><span class="line">val height: Int by map</span><br><span class="line">val dp: Int by map</span><br><span class="line">val deviceName: String by map</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个map</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">conf = Configuration(mapOf(</span><br><span class="line">&quot;width&quot; to 1080,</span><br><span class="line">&quot;height&quot; to 720,</span><br><span class="line">&quot;dp&quot; to 240,</span><br><span class="line">&quot;deviceName&quot; to &quot;mydevice&quot;</span><br><span class="line">))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义委托 创建一个类然后继承 ReadWriteProperty ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">private class NotNullSingleValueVar&lt;T&gt;() : ReadWriteProperty&lt;Any</span><br><span class="line">?, T&gt; &#123;</span><br><span class="line">override fun getValue(thisRef: Any?, property: KProperty</span><br><span class="line">&lt;*&gt;): T &#123;</span><br><span class="line">throw UnsupportedOperationException()</span><br><span class="line">&#125;</span><br><span class="line">override fun setValue(thisRef: Any?, property: KProperty</span><br><span class="line">&lt;*&gt;, value: T) &#123;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这个委托可以作用在任何非null的类型。它接收任何类型的引用，然后像getter和setter那样使用T。现在我们需要去实现这些函数</p>
+<blockquote>
+<p>Getter函数 如果已经被初始化，则会返回一个值，否则会抛异常<br>Setter函数 如果仍然是null，则赋值，否则会抛异常</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">private class NotNullSingleValueVar&lt;T&gt;() : ReadWriteProperty&lt;Any</span><br><span class="line">?, T&gt; &#123;</span><br><span class="line">private var value: T? = null</span><br><span class="line">override fun getValue(thisRef: Any?, property: KProperty&lt;*&gt;)</span><br><span class="line">: T &#123;</span><br><span class="line">return value ?: throw IllegalStateException(&quot;$&#123;desc.name</span><br><span class="line">&#125; &quot; +</span><br><span class="line">&quot;not initialized&quot;)</span><br><span class="line">&#125;</span><br><span class="line">override fun setValue(thisRef: Any?, property: KProperty&lt;*&gt;,</span><br><span class="line">value: T) &#123;</span><br><span class="line">this.value = if (this.value == null) value</span><br><span class="line">else throw IllegalStateException(&quot;$&#123;desc.name&#125; already i</span><br><span class="line">nitialized&quot;)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>使用上述委托示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">object DelegatesExt &#123;</span><br><span class="line">fun notNullSingleValue&lt;T&gt;():</span><br><span class="line">ReadWriteProperty&lt;Any?, T&gt; = NotNullSingleValueVar()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>重新实现Application单例化,可以在app的任何地方去修改这个值，因为如果我们使用 Delegates.notNull() ，属性必须是var的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class App : Application() &#123;</span><br><span class="line">  companion object &#123;</span><br><span class="line">    var instance: App by Delegates.notNull()</span><br><span class="line">  &#125;</span><br><span class="line">  override fun onCreate() &#123;</span><br><span class="line">    super.onCreate()</span><br><span class="line">    instance = this</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">上述可以任何地方修改问题，解决办法使用下面的委托，只能修改一次</span><br><span class="line">companion object &#123;</span><br><span class="line">var instance: App by DelegatesExt.notNullSingleValue()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
           
         
       
@@ -1823,6 +2033,158 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/NDK/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="willkernel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="willkernel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/09/NDK/" itemprop="url">NDK</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:04:00+08:00">
+                2018-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/09/NDK/" class="leancloud_visitors" data-flag-title="NDK">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Git/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1944,158 +2306,6 @@
             </a>
           </div>
           <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/NDK/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="willkernel">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="willkernel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/09/NDK/" itemprop="url">NDK</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:04:00+08:00">
-                2018-03-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/03/09/NDK/" class="leancloud_visitors" data-flag-title="NDK">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
         
       
     </div>
@@ -3409,173 +3619,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/05/Android-Notes-View/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="willkernel">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="willkernel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/05/Android-Notes-View/" itemprop="url">Android Notes(View)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-05T17:03:00+08:00">
-                2018-03-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/03/05/Android-Notes-View/" class="leancloud_visitors" data-flag-title="Android Notes(View)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="Android-绘图机制处理"><a href="#Android-绘图机制处理" class="headerlink" title="Android 绘图机制处理"></a>Android 绘图机制处理</h4><ul>
-<li><p>系统屏幕密度，密度值，分辨率对应关系</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ldpi=120(240*320),mdpi=160(320*480)，hdpi=240(480*800),xhdpi=320(720*1280),xxhdpi=480(1080*1980)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>独立像素密度(密度无关像素 (dp)在定义 UI 布局时应使用的虚拟像素单位，用于以密度无关方式表示布局维度 或位置)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ldpi:mdpi:hdpi:xhdpi:xxhdpi=120:160:240:320:480=0.75px:1px:1.5px:2px:3px=3:4:6:8:12</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>单位转换</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">scale=getResources().getDisplayMetrics().density;</span><br><span class="line">px2dp: pxValue/scale+0.5f;</span><br><span class="line">dp2px: dpValue*scale+0.5f;</span><br><span class="line"></span><br><span class="line">fontScale=getResources().getDisplayMetrics().scaledDensity;</span><br><span class="line">px2sp: pxValue/fontScale+0.5f;</span><br><span class="line">sp2px: pxValue*fontScale+0.5f;</span><br><span class="line"></span><br><span class="line">TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,dp,</span><br><span class="line">getResource().getDisplayMetrics());</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/05/Android-Notes-View/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3632,7 +3675,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

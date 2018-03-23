@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://willkernel.github.io/"/>
-  <updated>2018-03-23T12:11:01.448Z</updated>
+  <updated>2018-03-23T17:52:47.759Z</updated>
   <id>http://willkernel.github.io/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Kotlin for Android (五)</title>
+    <link href="http://willkernel.github.io/2018/03/24/Kotlin-for-Android-%E4%BA%94/"/>
+    <id>http://willkernel.github.io/2018/03/24/Kotlin-for-Android-五/</id>
+    <published>2018-03-23T17:18:00.000Z</published>
+    <updated>2018-03-23T17:52:47.759Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;创建SQLiteHelper&quot;&gt;&lt;a href=&quot;#创建SQLiteHelper&quot; class=&quot;headerlink&quot; title=&quot;创建SQLiteHelper&quot;&gt;&lt;/a&gt;创建SQLiteHelper&lt;/h4&gt;&lt;p&gt;一般使用SqliteOpenHelper
+        
+      
+    
+    </summary>
+    
+      <category term="Kotlin" scheme="http://willkernel.github.io/categories/Kotlin/"/>
+    
+    
+      <category term="Android" scheme="http://willkernel.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="http://willkernel.github.io/tags/Kotlin/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Kotlin for Android (四)</title>
     <link href="http://willkernel.github.io/2018/03/23/kotlin-for-Android-%E5%9B%9B/"/>
     <id>http://willkernel.github.io/2018/03/23/kotlin-for-Android-四/</id>
     <published>2018-03-23T12:08:00.000Z</published>
-    <updated>2018-03-23T12:11:01.448Z</updated>
+    <updated>2018-03-23T17:18:10.630Z</updated>
     
     <summary type="html">
     
@@ -261,6 +289,24 @@
   </entry>
   
   <entry>
+    <title>NDK</title>
+    <link href="http://willkernel.github.io/2018/03/09/NDK/"/>
+    <id>http://willkernel.github.io/2018/03/09/NDK/</id>
+    <published>2018-03-08T17:04:00.000Z</published>
+    <updated>2018-03-20T07:12:42.178Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Git</title>
     <link href="http://willkernel.github.io/2018/03/09/Git/"/>
     <id>http://willkernel.github.io/2018/03/09/Git/</id>
@@ -287,24 +333,6 @@
     
     
       <category term="Git" scheme="http://willkernel.github.io/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NDK</title>
-    <link href="http://willkernel.github.io/2018/03/09/NDK/"/>
-    <id>http://willkernel.github.io/2018/03/09/NDK/</id>
-    <published>2018-03-08T17:04:00.000Z</published>
-    <updated>2018-03-20T07:12:42.178Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-    
-      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
     
   </entry>
   
@@ -484,34 +512,6 @@
     
       &lt;h4 id=&quot;Paint&quot;&gt;&lt;a href=&quot;#Paint&quot; class=&quot;headerlink&quot; title=&quot;Paint&quot;&gt;&lt;/a&gt;Paint&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;PorterDuffXfermode 两个图层交集区域显示方式,用的最多是DST_IN,SRC_IN显示圆形图片或圆角图片&lt;img src=&quot;http://p4n1d4izv.bkt.clouddn.com/images/porterduffxfermode.png&quot;&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Android Notes(View)</title>
-    <link href="http://willkernel.github.io/2018/03/05/Android-Notes-View/"/>
-    <id>http://willkernel.github.io/2018/03/05/Android-Notes-View/</id>
-    <published>2018-03-05T09:03:00.000Z</published>
-    <updated>2018-03-21T18:15:55.159Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;Android-绘图机制处理&quot;&gt;&lt;a href=&quot;#Android-绘图机制处理&quot; class=&quot;headerlink&quot; title=&quot;Android 绘图机制处理&quot;&gt;&lt;/a&gt;Android 绘图机制处理&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;系统屏幕密度，密度值，分辨率对应关系&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ldpi=120(240*320),mdpi=160(320*480)，hdpi=240(480*800),xhdpi=320(720*1280),xxhdpi=480(1080*1980)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;独立像素密度(密度无关像素 (dp)在定义 UI 布局时应使用的虚拟像素单位，用于以密度无关方式表示布局维度 或位置)&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ldpi:mdpi:hdpi:xhdpi:xxhdpi=120:160:240:320:480=0.75px:1px:1.5px:2px:3px=3:4:6:8:12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;单位转换&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;scale=getResources().getDisplayMetrics().density;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;px2dp: pxValue/scale+0.5f;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dp2px: dpValue*scale+0.5f;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fontScale=getResources().getDisplayMetrics().scaledDensity;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;px2sp: pxValue/fontScale+0.5f;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sp2px: pxValue*fontScale+0.5f;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,dp,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;getResource().getDisplayMetrics());&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
     
     </summary>
     
