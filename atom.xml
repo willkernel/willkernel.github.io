@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://willkernel.github.io/"/>
-  <updated>2018-03-23T17:52:47.759Z</updated>
+  <updated>2018-03-24T05:45:48.366Z</updated>
   <id>http://willkernel.github.io/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Kotlin for Android(六)</title>
+    <link href="http://willkernel.github.io/2018/03/24/otlin-for-Android-%E5%85%AD/"/>
+    <id>http://willkernel.github.io/2018/03/24/otlin-for-Android-六/</id>
+    <published>2018-03-24T05:45:00.000Z</published>
+    <updated>2018-03-24T05:45:48.366Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;Kotlin中的null安全&quot;&gt;&lt;a href=&quot;#Kotlin中的null安全&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="http://willkernel.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="http://willkernel.github.io/tags/Kotlin/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Kotlin for Android (五)</title>
     <link href="http://willkernel.github.io/2018/03/24/Kotlin-for-Android-%E4%BA%94/"/>
     <id>http://willkernel.github.io/2018/03/24/Kotlin-for-Android-五/</id>
     <published>2018-03-23T17:18:00.000Z</published>
-    <updated>2018-03-23T17:52:47.759Z</updated>
+    <updated>2018-03-24T05:44:30.006Z</updated>
     
     <summary type="html">
     
@@ -289,24 +315,6 @@
   </entry>
   
   <entry>
-    <title>NDK</title>
-    <link href="http://willkernel.github.io/2018/03/09/NDK/"/>
-    <id>http://willkernel.github.io/2018/03/09/NDK/</id>
-    <published>2018-03-08T17:04:00.000Z</published>
-    <updated>2018-03-20T07:12:42.178Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-    
-      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Git</title>
     <link href="http://willkernel.github.io/2018/03/09/Git/"/>
     <id>http://willkernel.github.io/2018/03/09/Git/</id>
@@ -333,6 +341,24 @@
     
     
       <category term="Git" scheme="http://willkernel.github.io/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NDK</title>
+    <link href="http://willkernel.github.io/2018/03/09/NDK/"/>
+    <id>http://willkernel.github.io/2018/03/09/NDK/</id>
+    <published>2018-03-08T17:04:00.000Z</published>
+    <updated>2018-03-20T07:12:42.178Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
     
   </entry>
   
@@ -493,25 +519,6 @@
 &lt;li&gt;View适用于主动刷新，SurfaceView适用于被动刷新，例如频繁刷新&lt;/li&gt;
 &lt;li&gt;View在主线程中对画面进行刷新，SurfaceView通常会在子线程进行页面刷新&lt;/li&gt;
 &lt;li&gt;View绘制时没有使用双缓冲机制，SurfaceView在底层机制中实项了双缓冲机制
-    
-    </summary>
-    
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Android Notes(Paint Shader)</title>
-    <link href="http://willkernel.github.io/2018/03/07/Android-Notes-Paint-Shader/"/>
-    <id>http://willkernel.github.io/2018/03/07/Android-Notes-Paint-Shader/</id>
-    <published>2018-03-06T16:17:00.000Z</published>
-    <updated>2018-03-21T18:15:34.376Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;Paint&quot;&gt;&lt;a href=&quot;#Paint&quot; class=&quot;headerlink&quot; title=&quot;Paint&quot;&gt;&lt;/a&gt;Paint&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;PorterDuffXfermode 两个图层交集区域显示方式,用的最多是DST_IN,SRC_IN显示圆形图片或圆角图片&lt;img src=&quot;http://p4n1d4izv.bkt.clouddn.com/images/porterduffxfermode.png&quot;&gt;
     
     </summary>
     
