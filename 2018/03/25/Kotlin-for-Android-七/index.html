@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hello, willkernel" />
+  <meta name="keywords" content="Android,Kotlin," />
 
 
 
@@ -88,21 +88,18 @@
 
 
 
-<meta name="description" content="Android System Info android.os.Build12345678910111213141516171819202122Build.BOARD 主板Build.BRAND 系统定制商Build.SUPPORTED_ABIS CPU指令集Build.DEVICE 设备参数Build.DISPLAY 显示屏参数Build.FINGERPRINT 唯一编号Build.SERIAL">
+<meta name="description" content="创建业务逻辑访问数据 从数据库获取数据检查是否存在对应星期的数据如果有，返回UI并且渲染如果没有，请求服务器获取数据结果被保存在数据库中并且返回UI渲染   数据源应该是一个具体的实现，这样就可以被容易地修改，所以增加一些额外的代码，然后把 command 从数据访问中抽象出来听 1234interface ForecastDataSource &amp;#123;fun requestForecastB">
+<meta name="keywords" content="Android,Kotlin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android Notes(System Info Manager Safety)">
-<meta property="og:url" content="http://willkernel.github.io/2018/03/08/Android-Notes-System-Info-Manager-Safety/index.html">
+<meta property="og:title" content="Kotlin for Android(七)">
+<meta property="og:url" content="http://willkernel.github.io/2018/03/25/Kotlin-for-Android-七/index.html">
 <meta property="og:site_name" content="willkernel">
-<meta property="og:description" content="Android System Info android.os.Build12345678910111213141516171819202122Build.BOARD 主板Build.BRAND 系统定制商Build.SUPPORTED_ABIS CPU指令集Build.DEVICE 设备参数Build.DISPLAY 显示屏参数Build.FINGERPRINT 唯一编号Build.SERIAL">
+<meta property="og:description" content="创建业务逻辑访问数据 从数据库获取数据检查是否存在对应星期的数据如果有，返回UI并且渲染如果没有，请求服务器获取数据结果被保存在数据库中并且返回UI渲染   数据源应该是一个具体的实现，这样就可以被容易地修改，所以增加一些额外的代码，然后把 command 从数据访问中抽象出来听 1234interface ForecastDataSource &amp;#123;fun requestForecastB">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/packagemanager.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/packagesxml1.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/packagesxml2.png">
-<meta property="og:updated_time" content="2018-03-21T18:14:54.896Z">
+<meta property="og:updated_time" content="2018-03-25T10:52:03.839Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android Notes(System Info Manager Safety)">
-<meta name="twitter:description" content="Android System Info android.os.Build12345678910111213141516171819202122Build.BOARD 主板Build.BRAND 系统定制商Build.SUPPORTED_ABIS CPU指令集Build.DEVICE 设备参数Build.DISPLAY 显示屏参数Build.FINGERPRINT 唯一编号Build.SERIAL">
-<meta name="twitter:image" content="http://p4n1d4izv.bkt.clouddn.com/images/packagemanager.png">
+<meta name="twitter:title" content="Kotlin for Android(七)">
+<meta name="twitter:description" content="创建业务逻辑访问数据 从数据库获取数据检查是否存在对应星期的数据如果有，返回UI并且渲染如果没有，请求服务器获取数据结果被保存在数据库中并且返回UI渲染   数据源应该是一个具体的实现，这样就可以被容易地修改，所以增加一些额外的代码，然后把 command 从数据访问中抽象出来听 1234interface ForecastDataSource &amp;#123;fun requestForecastB">
 
 
 
@@ -132,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://willkernel.github.io/2018/03/08/Android-Notes-System-Info-Manager-Safety/"/>
+  <link rel="canonical" href="http://willkernel.github.io/2018/03/25/Kotlin-for-Android-七/"/>
 
 
 
 
 
-  <title>Android Notes(System Info Manager Safety) | willkernel</title>
+  <title>Kotlin for Android(七) | willkernel</title>
   
 
 
@@ -309,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/08/Android-Notes-System-Info-Manager-Safety/">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/25/Kotlin-for-Android-七/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="willkernel">
@@ -326,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Android Notes(System Info Manager Safety)</h1>
+          <h1 class="post-title" itemprop="name headline">Kotlin for Android(七)</h1>
         
 
         <div class="post-meta">
@@ -338,8 +335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T01:29:00+08:00">
-                2018-03-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-25T12:08:00+08:00">
+                2018-03-25
               </time>
             
 
@@ -361,8 +358,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/Kotlin/" itemprop="url" rel="index">
+                    <span itemprop="name">Kotlin</span>
                   </a>
                 </span>
 
@@ -378,7 +375,7 @@
 
           
           
-             <span id="/2018/03/08/Android-Notes-System-Info-Manager-Safety/" class="leancloud_visitors" data-flag-title="Android Notes(System Info Manager Safety)">
+             <span id="/2018/03/25/Kotlin-for-Android-七/" class="leancloud_visitors" data-flag-title="Kotlin for Android(七)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -409,66 +406,90 @@
       
 
       
-        <h4 id="Android-System-Info"><a href="#Android-System-Info" class="headerlink" title="Android System Info"></a>Android System Info</h4><ul>
-<li>android.os.Build<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Build.BOARD 主板</span><br><span class="line">Build.BRAND 系统定制商</span><br><span class="line">Build.SUPPORTED_ABIS CPU指令集</span><br><span class="line">Build.DEVICE 设备参数</span><br><span class="line">Build.DISPLAY 显示屏参数</span><br><span class="line">Build.FINGERPRINT 唯一编号</span><br><span class="line">Build.SERIAL 硬件序列号</span><br><span class="line">Build.ID 修订版本</span><br><span class="line">Build.MANUFACTURER 硬件制造商</span><br><span class="line">Build.MODEL 版本</span><br><span class="line">Build.HARDWARE 硬件名</span><br><span class="line">Build.PRODUCT 手机产品名</span><br><span class="line">Build.TAGS Build 标签</span><br><span class="line">Build.TYPE Build 类型</span><br><span class="line">Build.VERSION.CODENAME 开发代号</span><br><span class="line">Build.VERSION.INCREMENTAL 源码控制版本号</span><br><span class="line">Build.VERSION.RELEASE 版本字符串</span><br><span class="line">Build.VERSION.SDK_INT 版本号</span><br><span class="line">// The following properties only make sense for internal engineering builds.</span><br><span class="line">Build.HOST Host值</span><br><span class="line">Build.USER User名</span><br><span class="line">Build.TIME 编译时间</span><br></pre></td></tr></table></figure>
+        <h4 id="创建业务逻辑访问数据"><a href="#创建业务逻辑访问数据" class="headerlink" title="创建业务逻辑访问数据"></a>创建业务逻辑访问数据</h4><blockquote>
+<p>从数据库获取数据<br>检查是否存在对应星期的数据<br>如果有，返回UI并且渲染<br>如果没有，请求服务器获取数据<br>结果被保存在数据库中并且返回UI渲染</p>
+</blockquote>
+<ul>
+<li><p>数据源应该是一个具体的实现，这样就可以被容易地修改，所以增加一些额外的代码，然后把 command 从数据访问中抽象出来听</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">interface ForecastDataSource &#123;</span><br><span class="line">fun requestForecastByZipCode(zipCode: Long, date: Long): For</span><br><span class="line">ecastList?</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用数据库的数据源和服务端数据源。顺序是很重要的，因为它会根据顺序去遍历这个sources，然后一旦获取到有效的返回值就会停止查询。逻辑顺序是先在本地查询（本地数据库中），然后再通过API查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class ForecastProvider(private val source: List&lt;ForecastDataSource&gt; = ForecastProvider.SOURCES) &#123;</span><br><span class="line">    companion object &#123;</span><br><span class="line">        val DAY_IN_MILLIS = 1000 * 60 * 60 * 24</span><br><span class="line">        val SOURCES = listOf(ForecastDb(), ForecastServer())</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fun requestByZipCode(zipCode: Long, days: Int): ForecastList = source.firstResult &#123;</span><br><span class="line">        requestSource(it, days, zipCode)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private fun requestSource(source: ForecastDataSource, days: Int, zipCode: Long): ForecastList? &#123;</span><br><span class="line">        val res = source.requestForecastByZipCode(zipCode, todayTimeSpan())</span><br><span class="line">        return if (res != null &amp;&amp; res.size &gt;= days) res else null</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private fun todayTimeSpan() = System.currentTimeMillis() / DAY_IN_MILLIS * DAY_IN_MILLIS</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <a id="more"></a>
 <ul>
-<li><p>SystemProperty</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">String getProperty</span><br><span class="line">os.version os版本</span><br><span class="line">os.name os名称</span><br><span class="line">os.arch os架构</span><br><span class="line">user.home Home属性</span><br><span class="line">user.name Name属性</span><br><span class="line">user.dir Dir属性</span><br><span class="line">user.timezone 时区</span><br><span class="line">path.separator 路径分隔符</span><br><span class="line">line.separator 行分隔符</span><br><span class="line">file.separator 文件分隔符</span><br><span class="line">java.vendor.url Java vendor url属性</span><br><span class="line">java.class.path Java Class属性</span><br><span class="line">java.class.version Java Class版本</span><br><span class="line">java.vendor Java vendor属性</span><br><span class="line">java.version Java版本</span><br><span class="line">java.home Java Home属性</span><br></pre></td></tr></table></figure>
+<li><p>该函数接收一个断言函数，它接收一个 T 类型的对象然后返回一个 R? 类型的值。这表示 predicate 可以返回null类型，但是我们的 firstResult 不能返回null</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">inline fun &lt;T, R : Any&gt; Iterable&lt;T&gt;.firstResult(predicate: (T) -</span><br><span class="line">&gt; R?) : R &#123;</span><br><span class="line">for (element in this)&#123;</span><br><span class="line">val result = predicate(element)</span><br><span class="line">if (result != null) return result</span><br><span class="line">&#125;</span><br><span class="line">throw NoSuchElementException(&quot;No element matching predicate</span><br><span class="line">was found.&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>应用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">String board=Build.BOARD</span><br><span class="line">String brand=Build.BRAND</span><br><span class="line"></span><br><span class="line">String os_version=System.getProperty(&quot;os.version&quot;)</span><br><span class="line">String os_name=System.getProperty(&quot;os.name&quot;)</span><br><span class="line"></span><br><span class="line">cd system/</span><br><span class="line">cat build.prop 查看build信息</span><br><span class="line"></span><br><span class="line">getprop ro.build.id 获取对应属性值</span><br><span class="line">MRA58K</span><br><span class="line"></span><br><span class="line">cd proc/</span><br><span class="line">ls -al 查看文件详细信息</span><br><span class="line">cat cpuinfo 查看cpu信息</span><br></pre></td></tr></table></figure>
+<li><p>请求服务端数据，ForecastDb保存数据到数据库，被重写的方法用来请求服务器，转换结果到 domain objects 并保存它们到数据库。它最后查询数据库返回数据，这是因为我们需要使用到插入到数据库中的字增长id</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class ForecastServer(private val dataMapper: ServerDataMapper = ServerDataMapper(),</span><br><span class="line">                     private val forecastDb: ForecastDb = ForecastDb()) : ForecastDataSource &#123;</span><br><span class="line"></span><br><span class="line">    override fun requestDayForecast(id: Long) = throw UnsupportedOperationException()</span><br><span class="line"></span><br><span class="line">    override fun requestForecastByZipCode(zipCode: Long, date: Long): ForecastList? &#123;</span><br><span class="line">        val result = ForecastRequest(zipCode.toString()).execute()</span><br><span class="line">        val converted = dataMapper.convertToDomain(zipCode, result)</span><br><span class="line">        forecastDb.saveForecast(converted)</span><br><span class="line">        return forecastDb.requestForecastByZipCode(zipCode, date)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<h4 id="PackageManager-应用包信息"><a href="#PackageManager-应用包信息" class="headerlink" title="PackageManager(应用包信息)"></a>PackageManager(应用包信息)</h4><img src="http://p4n1d4izv.bkt.clouddn.com/images/packagemanager.png">
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">getPackageManager 返回PackageManager对象</span><br><span class="line">getApplicationInfo 返回指定包名的ApplicationInfo</span><br><span class="line">getApplicationIcon 返回指定包名的Icon</span><br><span class="line">getInstalledApplication 以ApplicationInfo形式返回安装的应用</span><br><span class="line">getInstalledPackages 以PackageInfo形式返回安装的应用</span><br><span class="line">queryIntentActivities 返回指定intent的ResolveInfo对象，Activity集合</span><br><span class="line">queryIntentServices 返回指定intent的ResolveInfo对象，Service集合</span><br><span class="line">resolveActivity 返回指定intent的Activity</span><br><span class="line">resolveService 返回指定intent的Service</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>判断APP类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  app.flags&amp;ApplicationInfo.FLAG_SYSTEM!=0为系统应用</span><br><span class="line">  app.flags&amp;ApplicationInfo.FLAG_SYSTEM&lt;=0则为第三方应用</span><br><span class="line">  特殊情况，系统应用升级后也成为第三方应用 app.flags&amp;ApplicationInfo.FLAG_UPDATED_SYSTEM_APP!=0</span><br><span class="line">  app.flags&amp;ApplicationInfo.FLAG_EXTERNAL_STORAGE!=0为安装在SDCard应用</span><br><span class="line">List&lt;ApplicationInfo&gt; list=pm.getInstalledApplications(PackManager.GET_UNINSTALLED_PACKAGES/MATCH_UNINSTALLED_PACKAGES);</span><br></pre></td></tr></table></figure>
+<li><p><code>ServerDataMapper</code>服务的返回的数据模型，映射为本地需要的data.model.Forecast</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class ServerDataMapper &#123;</span><br><span class="line">    fun convertToDomain(zipCode: Long, result: ForecastResult) = with(result) &#123;</span><br><span class="line">        ForecastList(zipCode, city.name, city.country, convertForecastListToDomain(list))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private fun convertForecastListToDomain(list: List&lt;Forecast&gt;): List&lt;ModelForecast&gt; &#123;</span><br><span class="line">        return list.mapIndexed &#123; index, forecast -&gt;</span><br><span class="line">            val dt = Calendar.getInstance().timeInMillis + TimeUnit.DAYS.toMillis(index.toLong())</span><br><span class="line">            convertForecastItemToDomain(forecast.copy(dt = dt))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private fun convertForecastItemToDomain(forecast: Forecast) = with(forecast) &#123;</span><br><span class="line">        ModelForecast(-1, dt, weather[0].description, temp.max.toInt(),</span><br><span class="line">                temp.min.toInt(), generateIconUrl(weather[0].icon))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private fun generateIconUrl(iconCode: String) = &quot;http://openweathermap.org/img/w/$iconCode.png&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<h4 id="ActivityManager-运行应用程序信息"><a href="#ActivityManager-运行应用程序信息" class="headerlink" title="ActivityManager(运行应用程序信息)"></a>ActivityManager(运行应用程序信息)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">ActivityManager.MemoryInfo 全局内存使用信息</span><br><span class="line">availMem 系统可用内存</span><br><span class="line">totalMem 总内存</span><br><span class="line">threshold 低内存的阈值</span><br><span class="line">lowMemory 是否处于低内存</span><br><span class="line"></span><br><span class="line">Debug.MemoryInfo 进程下的内存信息</span><br><span class="line"></span><br><span class="line">RunningAppProcessInfo</span><br><span class="line">processName 进程名</span><br><span class="line">pid 进程pid</span><br><span class="line">uid 进程uid</span><br><span class="line">pkgList 该进程下所有包</span><br><span class="line"></span><br><span class="line">RunningServiceInfo</span><br><span class="line">activeSince 第一次激活的时间，方式</span><br><span class="line">foreground 服务是否在前台运行</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">List&lt;RunningAppProcessInfo&gt; list=am.getRunningAppProcess();</span><br><span class="line">Debug.MemoryInfo[] getProcessMemoryInfo(int[] pids)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>查看packages.xml获取系统信息<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb pull data/system/packages.xml</span><br></pre></td></tr></table></figure>
+<li><p>ForecastCommand 不会再直接与服务端交互，也不会转换数据到 domain model</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">RequestForecastCommand(val zipCode: Long,</span><br><span class="line">val forecastProvider: ForecastProvider = ForecastProvide</span><br><span class="line">r()) :</span><br><span class="line">Command&lt;ForecastList&gt; &#123;</span><br><span class="line">companion object &#123;</span><br><span class="line">val DAYS = 7</span><br><span class="line">&#125;</span><br><span class="line">override fun execute(): ForecastList &#123;</span><br><span class="line">return forecastProvider.requestByZipCode(zipCode, DAYS)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/packagesxml1.png">
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/packagesxml2.png">
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">codepath apk安装路径</span><br><span class="line">system/app 存放系统或厂商定制apk</span><br><span class="line">data/app 存放第三方apk</span><br></pre></td></tr></table></figure>
-<h4 id="Android安全"><a href="#Android安全" class="headerlink" title="Android安全"></a>Android安全</h4><ul>
-<li>代码混淆proguard，混淆代码，替换命名，压缩代码，优化编译后的字节码</li>
-<li><p>AndroidManifest 权限声明，权限检查</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">检测操作者权限</span><br><span class="line">判断permission名称，如果为空，直接返回DENIED</span><br><span class="line">判断UID，如果为0，则为Root权限，不做权限控制；如果为system server的uid，不做权限控制；如果uid与参数中的请求uid不同，则返回DENIED</span><br><span class="line">PackageManagerService.checkUidPermission()判断uid是否有相应的权限，系统级的platform.xml中进行查找</span><br></pre></td></tr></table></figure>
+<h4 id="FlowControl-ranges"><a href="#FlowControl-ranges" class="headerlink" title="FlowControl ranges"></a>FlowControl ranges</h4><ul>
+<li><p>If表达式  if 表达式总是返回一个value。如果一个分支返回了Unit，那整个表达式也将返回Unit，它是可以被忽略的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">val z = if (condition) x else y</span><br><span class="line"></span><br><span class="line">val z1 = if (v1 &gt; 3 &amp;&amp; v1 &lt; 7) v1 else 0</span><br><span class="line">val z1 = if (v1 in 4..6) v1 else 0</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>数字证书，APP签名文件</p>
+<li><p>When表达式 对于默认的选项，我们可以增加一个 else 分支，它会在前面没有任何条件匹配时再执行。条件匹配成功后执行的代码也可以是代码块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">when (x)&#123;</span><br><span class="line">  1 -&gt; print(&quot;x == 1&quot;)</span><br><span class="line">  2 -&gt; print(&quot;x == 2&quot;)</span><br><span class="line">  else -&gt; &#123;</span><br><span class="line">     print(&quot;I&apos;m a block&quot;)</span><br><span class="line">     print(&quot;x is neither 1 nor 2&quot;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">也可以返回一个值，条件可以被逗号分割</span><br><span class="line">val result = when (x) &#123;</span><br><span class="line">0, 1 -&gt; &quot;binary&quot;</span><br><span class="line">else -&gt; &quot;error&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li>Linux内核访问权限控制，System，root用户才有权限访问系统文件</li>
-<li>虚拟机沙箱隔离，每个APP有与之对应的UID</li>
-<li><p>隐患</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">代码漏洞:LaunchAnyWhere,FakeID Bug</span><br><span class="line">Root风险</span><br><span class="line">安全机制不健全</span><br></pre></td></tr></table></figure>
+<li><p>检测参数类型并进行判断,参数会被自动转型，所以你不需要去明确地做类型转换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">when (view) &#123;</span><br><span class="line">            is TextView -&gt; view.setText(&quot;I&apos;m a TextView&quot;)</span><br><span class="line">            is EditText -&gt; toast(&quot;EditText value: $&#123;view.getText()&#125;&quot;)</span><br><span class="line">            is ViewGroup -&gt; toast(&quot;Number of children: $&#123;view.childCount&#125; &quot;)</span><br><span class="line">            else -&gt; textView.visibility = View.GONE</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>反编译工具</p>
-<ul>
-<li><p>apktool</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">反编译 apktool.jar d test.apk</span><br><span class="line">生成test文件夹</span><br><span class="line">重新打包 apktool.jar b test.apk</span><br><span class="line">生成重新打包的apk，在dist文件夹中</span><br></pre></td></tr></table></figure>
+<li><p>检测参数范围</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val cost = when(x) &#123;</span><br><span class="line">in 1..10 -&gt; &quot;cheap&quot;</span><br><span class="line">in 10..100 -&gt; &quot;regular&quot;</span><br><span class="line">in 100..1000 -&gt; &quot;expensive&quot;</span><br><span class="line">in specialValues -&gt; &quot;special value!&quot;</span><br><span class="line">else -&gt; &quot;not rated&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>Dex2jar,jd-gui</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dex2jar.bat classes.dex</span><br><span class="line">生成classes.jar文件</span><br><span class="line">使用jd-gui查看源码</span><br></pre></td></tr></table></figure>
+<li><p>合并使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">valres=when&#123;</span><br><span class="line">x in 1..10 -&gt; &quot;cheap&quot;</span><br><span class="line">s.contains(&quot;hello&quot;) -&gt; &quot;it&apos;s a welcome!&quot;</span><br><span class="line">v is ViewGroup -&gt; &quot;child count: $&#123;v.getChildCount()&#125;&quot;</span><br><span class="line">else -&gt; &quot;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>apk加密</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">buildTypes &#123;</span><br><span class="line">  release&#123;</span><br><span class="line">  minifyEnabled false //以前属性名是runProguard</span><br><span class="line">  proguardFiles getDefaultProguardFile(&apos;proguard-android.txt&apos;), //系统默认</span><br><span class="line">  &apos;proguard-rules.pro&apos; // 项目自定义</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>For循环</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">for (item in collection) &#123;</span><br><span class="line">print(item)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">for (index in 0..viewGroup.getChildCount() - 1) &#123;</span><br><span class="line">val view = viewGroup.getChildAt(index)</span><br><span class="line">view.visibility = View.VISIBLE</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">for (i in array.indices)</span><br><span class="line">print(array[i])</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>加固</p>
-<ul>
-<li><a href="jaq.alibaba.com/">阿里聚安全</a></li>
-<li><a href="www.qcloud.com/product/cr">腾讯云应用乐固</a></li>
-<li><a href="jiagu.360.cn/">360加固保</a></li>
-</ul>
+<li><p>While do/while</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">while(x &gt; 0)&#123;</span><br><span class="line">x--</span><br><span class="line">&#125;</span><br><span class="line">do&#123;</span><br><span class="line">val y = retrieveData()</span><br><span class="line">&#125; while (y != null) // y在这里是可见的!</span><br><span class="line">While和do/while循环</span><br><span class="line">156</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Range 表达式使用一个 .. 操作符，它是被定义实现了一个 RangTo 方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">        if(i &gt;= 0 &amp;&amp; i &lt;= 10)</span><br><span class="line">            println(i)</span><br><span class="line"></span><br><span class="line">        if (i in 0..10)</span><br><span class="line">            println(i)</span><br><span class="line"></span><br><span class="line">        for (i in 0..10)</span><br><span class="line">            println(i)</span><br><span class="line"></span><br><span class="line">//        Ranges 默认会自增长，所以如果像以下的代码</span><br><span class="line">        for (i in 10..0)</span><br><span class="line">            println(i)</span><br><span class="line"></span><br><span class="line">//        可以使用 downTo 函数</span><br><span class="line">        for(i in 10 downTo 0)</span><br><span class="line">            println(i)</span><br><span class="line"></span><br><span class="line">//        在 range 中使用 step 来定义一个从1到一个值的不同的空隙</span><br><span class="line">        for (i in 1..4 step 2) println(i)</span><br><span class="line">        for (i in 4 downTo 1 step 2) println(i)</span><br><span class="line"></span><br><span class="line">//        创建一个open range（不包含最后一项，译者注：类似数学中的开区间），你可以使用 until 函数</span><br><span class="line">//        使用 (i in 0 until list.size) 比 (i in 0..list.size - 1) 更加容易理解</span><br><span class="line">        for (i in 0 until 4) println(i)</span><br><span class="line"></span><br><span class="line">//        val views = (0..viewGroup.childCount - 1).map &#123; viewGroup.getChildAt(it) &#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<h4 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h4><ul>
+<li><p>创建一个指定泛型类,这个类现在可以使用任何的类型初始化，并且参数也会使用定义的类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class TypedClass&lt;T&gt;(parameter: T) &#123;</span><br><span class="line">val value: T = parameter</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">val t1 = TypedClass(&quot;Hello World!&quot;)</span><br><span class="line">val t2 = TypedClass(25)</span><br><span class="line">val t3 = TypedClass&lt;String?&gt;(null) 接收一个null引用，那仍然还是需要指定它的类型</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>限制上一个类中为非null类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class TypedClass&lt;T : Any&gt;(parameter: T) &#123;</span><br><span class="line">val value: T = parameter</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果我们只希望使用 Context 的子类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class TypedClass&lt;T : Context&gt;(parameter: T) &#123;</span><br><span class="line">val value: T = parameter</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构建泛型函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fun &lt;T&gt; typedFunction(item: T): List&lt;T&gt; &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="其它概念"><a href="#其它概念" class="headerlink" title="其它概念"></a>其它概念</h4><ul>
+<li><p>内部类  如果它是一个通常的类，它不能去访问外部类的成员，如果需要访问外部类的成员，我们需要用 inner 声明这个类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Outer1&#123;</span><br><span class="line">        private val bar:Int=1</span><br><span class="line">            class Nested&#123;</span><br><span class="line">                fun foo()=2</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">   val d1=Outer1.Nested().foo()</span><br><span class="line">   </span><br><span class="line">class Outer2&#123;</span><br><span class="line">         private val bar:Int=1</span><br><span class="line">            inner class Nested&#123;</span><br><span class="line">                fun foo()=bar</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">   val d2=Outer2().Nested().foo()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>枚举 可以带参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">enum class Day &#123;</span><br><span class="line">SUNDAY, MONDAY, TUESDAY, WEDNESDAY,</span><br><span class="line">THURSDAY, FRIDAY, SATURDAY</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">enum class Icon(val res: Int) &#123;</span><br><span class="line">UP(R.drawable.ic_up),</span><br><span class="line">SEARCH(R.drawable.ic_search),</span><br><span class="line">CAST(R.drawable.ic_cast)</span><br><span class="line">&#125;</span><br><span class="line">val searchIconRes = Icon.SEARCH.res</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">枚举可以通过 String 匹配名字来获取，我们也可以获取包含所有枚举</span><br><span class="line">的 Array ，所以我们可以遍历它</span><br><span class="line">val search: Icon = Icon.valueOf(&quot;SEARCH&quot;)</span><br><span class="line">val iconList: Array&lt;Icon&gt; = Icon.values()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">而且每一个枚举都有一些函数来获取它的名字、声明的位置</span><br><span class="line">val searchName: String = Icon.SEARCH.name()</span><br><span class="line">val searchPosition: Int = Icon.SEARCH.ordinal()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>密封（Sealed）类 类似Scala中的 Option 类：这种类型可以防止null的使用，当对象包含一个值时返回 Some 类，当对象为空时则返回 None</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sealed class Option&lt;out T&gt; &#123;</span><br><span class="line">class Some&lt;out T&gt; : Option&lt;T&gt;()</span><br><span class="line">object None : Option&lt;Nothing&gt;()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>有一件关于密封类很不错的事情是当我们使用 when 表达式时，我们可以匹配所有选项而不使用 else 分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">val result = when (option) &#123;</span><br><span class="line">is Option.Some&lt;*&gt; -&gt; &quot;Contains a value&quot;</span><br><span class="line">is Option.None -&gt; &quot;Empty&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>异常 在Kotlin中，所有的 Exception 都是实现了 Throwable ，含有一个 message 且未经检查。这表示我们不会强迫我们在任何地方使用 try/catch 。这与Java中不太一样，比如在抛出 IOException 的方法，我们需要使用 try-catch 包围代码块。通过检查exception来处理显示并不是一个好的方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">抛出异常的方式与Java很类似：</span><br><span class="line">throw MyException(&quot;Exception message&quot;)</span><br><span class="line">try 表达式也是相同的：</span><br><span class="line">try&#123;</span><br><span class="line">// 一些代码</span><br><span class="line">&#125;</span><br><span class="line">catch (e: SomeException) &#123;</span><br><span class="line">// 处理</span><br><span class="line">&#125;</span><br><span class="line">finally &#123;</span><br><span class="line">// 可选的finally块</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在Kotlin中，throw和try都是表达式，这意味着它们可以被赋值给一个变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> val s = when(x)&#123;</span><br><span class="line">is Int -&gt; &quot;Int instance&quot;</span><br><span class="line">is String -&gt; &quot;String instance&quot;</span><br><span class="line">else -&gt; throw UnsupportedOperationException(&quot;Not valid type&quot;</span><br><span class="line">)</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> val s = try &#123; x as String &#125; catch(e: ClassCastException) &#123; null</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
@@ -527,7 +548,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://willkernel.github.io/2018/03/08/Android-Notes-System-Info-Manager-Safety/" title="Android Notes(System Info Manager Safety)">http://willkernel.github.io/2018/03/08/Android-Notes-System-Info-Manager-Safety/</a>
+    <a href="http://willkernel.github.io/2018/03/25/Kotlin-for-Android-七/" title="Kotlin for Android(七)">http://willkernel.github.io/2018/03/25/Kotlin-for-Android-七/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -540,6 +561,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/Kotlin/" rel="tag"># Kotlin</a>
+          
+        </div>
+      
 
       
       
@@ -549,8 +578,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/07/Android-Notes-Activity/" rel="next" title="Android Notes(Activity)">
-                <i class="fa fa-chevron-left"></i> Android Notes(Activity)
+              <a href="/2018/03/24/Kotlin-for-Android-六/" rel="next" title="Kotlin for Android(六)">
+                <i class="fa fa-chevron-left"></i> Kotlin for Android(六)
               </a>
             
           </div>
@@ -558,10 +587,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/08/Android-Notes-Performance/" rel="prev" title="Android Notes(Performance)">
-                Android Notes(Performance) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -785,7 +810,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Android-System-Info"><span class="nav-number">1.</span> <span class="nav-text">Android System Info</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PackageManager-应用包信息"><span class="nav-number">2.</span> <span class="nav-text">PackageManager(应用包信息)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ActivityManager-运行应用程序信息"><span class="nav-number">3.</span> <span class="nav-text">ActivityManager(运行应用程序信息)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android安全"><span class="nav-number">4.</span> <span class="nav-text">Android安全</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建业务逻辑访问数据"><span class="nav-number">1.</span> <span class="nav-text">创建业务逻辑访问数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FlowControl-ranges"><span class="nav-number">2.</span> <span class="nav-text">FlowControl ranges</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#泛型"><span class="nav-number">3.</span> <span class="nav-text">泛型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其它概念"><span class="nav-number">4.</span> <span class="nav-text">其它概念</span></a></li></ol></div>
             
 
           </div>

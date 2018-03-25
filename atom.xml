@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://willkernel.github.io/"/>
-  <updated>2018-03-25T03:48:57.586Z</updated>
+  <updated>2018-03-25T10:52:03.839Z</updated>
   <id>http://willkernel.github.io/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Kotlin for Android(七)</title>
+    <link href="http://willkernel.github.io/2018/03/25/Kotlin-for-Android-%E4%B8%83/"/>
+    <id>http://willkernel.github.io/2018/03/25/Kotlin-for-Android-七/</id>
+    <published>2018-03-25T04:08:00.000Z</published>
+    <updated>2018-03-25T10:52:03.839Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;创建业务逻辑访问数据&quot;&gt;&lt;a href=&quot;#创建业务逻辑访问数据&quot; class=&quot;headerlink&quot; title=&quot;创建业务逻辑访问数据&quot;&gt;&lt;/a&gt;创建业务逻辑访问数据&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;从数据库获取数据&lt;br&gt;检查是否存在对应星期的数据&lt;br&gt;如果有，返回UI并且渲染&lt;br&gt;如果没有，请求服务器获取数据&lt;br&gt;结果被保存在数据库中并且返回UI渲染&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;数据源应该是一个具体的实现，这样就可以被容易地修改，所以增加一些额外的代码，然后把 command 从数据访问中抽象出来听&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;interface ForecastDataSource &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fun requestForecastByZipCode(zipCode: Long, date: Long): For&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ecastList?&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用数据库的数据源和服务端数据源。顺序是很重要的，因为它会根据顺序去遍历这个sources，然后一旦获取到有效的返回值就会停止查询。逻辑顺序是先在本地查询（本地数据库中），然后再通过API查询&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;class ForecastProvider(private val source: List&amp;lt;ForecastDataSource&amp;gt; = ForecastProvider.SOURCES) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    companion object &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        val DAY_IN_MILLIS = 1000 * 60 * 60 * 24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        val SOURCES = listOf(ForecastDb(), ForecastServer())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    fun requestByZipCode(zipCode: Long, days: Int): ForecastList = source.firstResult &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        requestSource(it, days, zipCode)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    private fun requestSource(source: ForecastDataSource, days: Int, zipCode: Long): ForecastList? &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        val res = source.requestForecastByZipCode(zipCode, todayTimeSpan())&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        return if (res != null &amp;amp;&amp;amp; res.size &amp;gt;= days) res else null&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    private fun todayTimeSpan() = System.currentTimeMillis() / DAY_IN_MILLIS * DAY_IN_MILLIS&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Kotlin" scheme="http://willkernel.github.io/categories/Kotlin/"/>
+    
+    
+      <category term="Android" scheme="http://willkernel.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="http://willkernel.github.io/tags/Kotlin/"/>
+    
+  </entry>
   
   <entry>
     <title>Kotlin for Android(六)</title>
@@ -500,27 +532,6 @@
 &lt;li&gt;onPause/onStop 清除Activity资源，camera，sensor，receivers&lt;/li&gt;
 &lt;li&gt;onDestory 清除线程&lt;/li&gt;
 &lt;li&gt;activity 在onSaveInstanceState()保存状态到Bundle，在onRestoreInstanceState(),onCreate()恢复状态Bundle，已经默认实项了控件的状态保存
-    
-    </summary>
-    
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Android Notes(SurfaceView)</title>
-    <link href="http://willkernel.github.io/2018/03/07/Android-Notes-SurfaceView/"/>
-    <id>http://willkernel.github.io/2018/03/07/Android-Notes-SurfaceView/</id>
-    <published>2018-03-07T05:30:00.000Z</published>
-    <updated>2018-03-21T18:15:23.751Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;SurfaceView&quot;&gt;&lt;a href=&quot;#SurfaceView&quot; class=&quot;headerlink&quot; title=&quot;SurfaceView&quot;&gt;&lt;/a&gt;SurfaceView&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;View适用于主动刷新，SurfaceView适用于被动刷新，例如频繁刷新&lt;/li&gt;
-&lt;li&gt;View在主线程中对画面进行刷新，SurfaceView通常会在子线程进行页面刷新&lt;/li&gt;
-&lt;li&gt;View绘制时没有使用双缓冲机制，SurfaceView在底层机制中实项了双缓冲机制
     
     </summary>
     
