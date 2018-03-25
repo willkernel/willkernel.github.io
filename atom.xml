@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://willkernel.github.io/"/>
-  <updated>2018-03-24T05:48:07.975Z</updated>
+  <updated>2018-03-25T03:48:57.586Z</updated>
   <id>http://willkernel.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://willkernel.github.io/2018/03/24/Kotlin-for-Android-%E5%85%AD/"/>
     <id>http://willkernel.github.io/2018/03/24/Kotlin-for-Android-六/</id>
     <published>2018-03-24T05:45:00.000Z</published>
-    <updated>2018-03-24T05:48:07.975Z</updated>
+    <updated>2018-03-25T03:48:57.586Z</updated>
     
     <summary type="html">
     
@@ -35,10 +35,12 @@
     
     </summary>
     
+      <category term="Kotlin" scheme="http://willkernel.github.io/categories/Kotlin/"/>
     
-      <category term="Kotlin" scheme="http://willkernel.github.io/tags/Kotlin/"/>
     
       <category term="Android" scheme="http://willkernel.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="http://willkernel.github.io/tags/Kotlin/"/>
     
   </entry>
   
@@ -64,9 +66,9 @@
       <category term="Kotlin" scheme="http://willkernel.github.io/categories/Kotlin/"/>
     
     
-      <category term="Kotlin" scheme="http://willkernel.github.io/tags/Kotlin/"/>
-    
       <category term="Android" scheme="http://willkernel.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="http://willkernel.github.io/tags/Kotlin/"/>
     
   </entry>
   
@@ -92,9 +94,9 @@
       <category term="Kotlin" scheme="http://willkernel.github.io/categories/Kotlin/"/>
     
     
-      <category term="Kotlin" scheme="http://willkernel.github.io/tags/Kotlin/"/>
-    
       <category term="Android" scheme="http://willkernel.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="http://willkernel.github.io/tags/Kotlin/"/>
     
   </entry>
   
@@ -152,9 +154,9 @@
       <category term="Kotlin" scheme="http://willkernel.github.io/categories/Kotlin/"/>
     
     
-      <category term="Kotlin" scheme="http://willkernel.github.io/tags/Kotlin/"/>
-    
       <category term="Android" scheme="http://willkernel.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="http://willkernel.github.io/tags/Kotlin/"/>
     
   </entry>
   
@@ -189,9 +191,9 @@
       <category term="Kotlin" scheme="http://willkernel.github.io/categories/Kotlin/"/>
     
     
-      <category term="Kotlin" scheme="http://willkernel.github.io/tags/Kotlin/"/>
-    
       <category term="Android" scheme="http://willkernel.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="http://willkernel.github.io/tags/Kotlin/"/>
     
   </entry>
   
@@ -315,24 +317,6 @@
   </entry>
   
   <entry>
-    <title>NDK</title>
-    <link href="http://willkernel.github.io/2018/03/09/NDK/"/>
-    <id>http://willkernel.github.io/2018/03/09/NDK/</id>
-    <published>2018-03-08T17:04:00.000Z</published>
-    <updated>2018-03-20T07:12:42.178Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-    
-      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Git</title>
     <link href="http://willkernel.github.io/2018/03/09/Git/"/>
     <id>http://willkernel.github.io/2018/03/09/Git/</id>
@@ -359,6 +343,24 @@
     
     
       <category term="Git" scheme="http://willkernel.github.io/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NDK</title>
+    <link href="http://willkernel.github.io/2018/03/09/NDK/"/>
+    <id>http://willkernel.github.io/2018/03/09/NDK/</id>
+    <published>2018-03-08T17:04:00.000Z</published>
+    <updated>2018-03-20T07:12:42.178Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
     
   </entry>
   
@@ -408,9 +410,9 @@
       <category term="Kotlin" scheme="http://willkernel.github.io/categories/Kotlin/"/>
     
     
-      <category term="Kotlin" scheme="http://willkernel.github.io/tags/Kotlin/"/>
-    
       <category term="Android" scheme="http://willkernel.github.io/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="http://willkernel.github.io/tags/Kotlin/"/>
     
   </entry>
   
