@@ -96,7 +96,7 @@
 <meta property="og:description" content="Todo-mvvm-databinding Model: 内存，本地，网络数据的实现与获取 View: 对应Activity,Fragment,负责View的绘制，与用户交互，在xml中编写databinding对model层数据的引用绑定，ViewModelHolder&amp;lt;VH&amp;gt;作为非UI的Fragment持有ViewModel，并绑定到Activity的生命周期 ViewModel:">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mvvm-databinding.png">
-<meta property="og:updated_time" content="2018-03-21T18:14:36.744Z">
+<meta property="og:updated_time" content="2018-03-30T16:53:17.094Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MVVM">
 <meta name="twitter:description" content="Todo-mvvm-databinding Model: 内存，本地，网络数据的实现与获取 View: 对应Activity,Fragment,负责View的绘制，与用户交互，在xml中编写databinding对model层数据的引用绑定，ViewModelHolder&amp;lt;VH&amp;gt;作为非UI的Fragment持有ViewModel，并绑定到Activity的生命周期 ViewModel:">
@@ -410,11 +410,13 @@
         <h5 id="Todo-mvvm-databinding"><a href="#Todo-mvvm-databinding" class="headerlink" title="Todo-mvvm-databinding"></a>Todo-mvvm-databinding</h5><ul>
 <li>Model: 内存，本地，网络数据的实现与获取</li>
 <li>View: 对应Activity,Fragment,负责View的绘制，与用户交互，在xml中编写databinding对model层数据的引用绑定，<code>ViewModelHolder&lt;VH&gt;</code>作为非UI的Fragment持有ViewModel，并绑定到Activity的生命周期</li>
-<li><p>ViewModel: databinding框架绑定ViewModel，ViewModel持有View中引用的变量observable fields，以及数据管理类TasksRepository，数据或属性发生变化时，databinding自动更新UI</p>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/mvvm-databinding.png">
-<a id="more"></a>
-<h5 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h5><p>TasksActivity,绑定TasksFragment以及ViewModelHolder(持有ViewModel的非UI的Fragment,绑定到Activity的生命周期)</p>
+<li>ViewModel: databinding框架绑定ViewModel，ViewModel持有View中引用的变量observable fields，以及数据管理类TasksRepository，数据或属性发生变化时，databinding自动更新UI</li>
+<li><p>优缺点</p>
 <ul>
+<li>低耦合，ViewModel的逻辑代码可重用性，解决MVP中，View，Presenter相互持有问题，响应界面操作无需由View传递，数据变换也无需Presenter调用View实现,开发人员可以专注于业务逻辑和数据的开发（ViewModel），设计人员可以专注于页面设计。可测试,界面素来是比较难于测试的，而现在测试可以针对ViewModel来写</li>
+<li>ViewModel存在Model的依赖，databinding不方便调试<img src="http://p4n1d4izv.bkt.clouddn.com/images/mvvm-databinding.png">
+<a id="more"></a>
+<h5 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h5>TasksActivity,绑定TasksFragment以及ViewModelHolder(持有ViewModel的非UI的Fragment,绑定到Activity的生命周期)</li>
 <li><p>获取TasksViewModel,并绑定到Activity</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">private TasksViewModel findOrCreateViewModel() &#123;</span><br><span class="line">       @SuppressWarnings(&quot;unchecked&quot;)</span><br><span class="line">       ViewModelHolder&lt;TasksViewModel&gt; retainedViewModel =</span><br><span class="line">               (ViewModelHolder&lt;TasksViewModel&gt;) getSupportFragmentManager()</span><br><span class="line">                       .findFragmentByTag(TASKS_VIEWMODEL_TAG);</span><br><span class="line"></span><br><span class="line">       if (retainedViewModel != null &amp;&amp; retainedViewModel.getViewmodel() != null) &#123;</span><br><span class="line">           // If the model was retained, return it.</span><br><span class="line">           return retainedViewModel.getViewmodel();</span><br><span class="line">       &#125; else &#123;</span><br><span class="line">           // There is no ViewModel yet, create it.</span><br><span class="line">           TasksViewModel viewModel = new TasksViewModel(</span><br><span class="line">                   Injection.provideTasksRepository(getApplicationContext()),</span><br><span class="line">                   getApplicationContext());</span><br><span class="line">           // and bind it to this Activity&apos;s lifecycle using the Fragment Manager.</span><br><span class="line">           ActivityUtils.addFragmentToActivity(</span><br><span class="line">                   getSupportFragmentManager(),</span><br><span class="line">                   ViewModelHolder.createContainer(viewModel),</span><br><span class="line">                   TASKS_VIEWMODEL_TAG);</span><br><span class="line">           return viewModel;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 </li>

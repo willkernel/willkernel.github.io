@@ -97,7 +97,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mvp.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/mvp-loader.png">
-<meta property="og:updated_time" content="2018-03-21T18:14:18.003Z">
+<meta property="og:updated_time" content="2018-03-30T16:35:23.243Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MVP(loader&#x2F;dagger&#x2F;rxjava2)">
 <meta name="twitter:description" content="MVP概念 View视图层,包含各种界面相关功能，例如Activity，Fragment，View,Adapter,专注于交互，一般持有Presenter的引用，或者通过依赖注入(Dagger)方式获得Presenter实例，将非UI逻辑操作委托给Presenter Presenter逻辑控制层，充当中间人，隔离View层，Model层，接收View层的数据请求，分发给Model层处理，监听Mod">
@@ -391,8 +391,13 @@
 <li>Presenter<br>逻辑控制层，充当中间人，隔离View层，Model层，接收View层的数据请求，分发给Model层处理，监听Model处理结果，将结果反馈给View，实项界面的刷新</li>
 <li>Model<br>封装网络数据请求，本地数据请求，对Presenter提供简单易用的接口</li>
 <li>MVP，MVC区别<ul>
-<li>MVP中Presenter和View，Model通过接口进行通信，通常Presenter与View是一一对应，复杂的可能有多个Presenter</li>
-<li>MVC中Model,View直接通信的，Controller基于行为，可以被多个View共享<a id="more"></a>
+<li>MVP<blockquote>
+<p>1、模型与视图完全分离，我们可以修改视图而不影响模型<br>2、可以更高效地使用模型，因为所有的交互都发生在一个地方——Presenter内部<br>3、我们可以将一个Presenter用于多个视图，而不需要改变Presenter的逻辑。这个特性非常的有用，因为视图的变化总是比模型的变化频繁<br>4、如果我们把逻辑放在Presenter中，那么我们就可以脱离用户接口来测试这些逻辑（单元测试）</p>
+</blockquote>
+</li>
+<li>MVP优缺点 可以Mock一个实现了接口Contract.View的View对象便于测试，业务逻辑代码与View的隔离解耦  缺点：View中持有Presenter，Presenter中持有View，增加了复杂度，复杂业务中Presenter的代码会臃肿</li>
+<li>MVC中Model和View直接通信的，View中会包含业务逻辑代码，Controller控制层通常在Activity中实现业务逻辑代理，操作Model，但是不操作View，对View无知，Model数据更新完对视图进行更新，用户得到反馈</li>
+<li>MVC优缺点，逻辑代码在Controller中，模块化，业务逻辑代码更改后，不需要更新View，Model；测试困难，Activity包含业务代码，成为了Controller层，Model,View之间存在耦合<a id="more"></a>
 (以下项目来自android-architecture-todoapp)<h5 id="mvp"><a href="#mvp" class="headerlink" title="mvp"></a>mvp</h5></li>
 </ul>
 </li>

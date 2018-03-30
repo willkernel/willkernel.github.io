@@ -98,7 +98,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-1.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-2.png">
-<meta property="og:updated_time" content="2018-03-30T10:56:23.252Z">
+<meta property="og:updated_time" content="2018-03-30T17:21:49.522Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQLite(一)">
 <meta name="twitter:description" content="简介SQLite特点：无服务器、零配置、事务性的 SQL 数据库引擎，SQLite 引擎不是一个独立的进程，可以按应用程序需求进行静态或动态连接；非常小轻量级，兼容ACID原则，是进程或线程安全的  ACID是一组强调高可靠性的数据库系统设计原则，在软件崩溃甚至是硬件故障的情况下，数据也不会损坏。当你需要依赖兼容ACID原则的业务时，你不必重复造轮子去实现一致性检查和崩溃恢复机制。如果你有额外的安">
@@ -427,8 +427,7 @@
 </blockquote>
 <ul>
 <li>安装<a href="http://www.sqlite.org/download.html" target="_blank" rel="noopener">sqlite3</a>，设置PATH，cmd运行sqlite3</li>
-<li><p>SQLite点命令</p>
-<ul>
+<li>SQLite点命令<ul>
 <li>.help 获取帮助<img src="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-1.png">
 <img src="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-2.png"></li>
 <li>.show 命令查看 SQLite 命令提示符的默认设置,下面是修改默认设置属性<blockquote>
@@ -439,9 +438,9 @@
 </li>
 </ul>
 </li>
-<li><p>[SQLite3练习] (<a href="http://www.sqlitetutorial.net/" target="_blank" rel="noopener">http://www.sqlitetutorial.net/</a>)</p>
-</li>
-<li>SQLite语法，不区分大小写，但是有些命令大小写敏感，GLOB和glob在SQLite不同<blockquote>
+</ul>
+<h4 id="SQLite语法"><a href="#SQLite语法" class="headerlink" title="SQLite语法"></a>SQLite语法</h4><ul>
+<li>不区分大小写，但是有些命令大小写敏感，GLOB和glob在SQLite不同   <a href="http://www.sqlitetutorial.net/" target="_blank" rel="noopener">SQLite3练习</a><blockquote>
 <p>The GLOB operator is similar to LIKE but uses the Unix file globbing syntax for its wildcards. Also, GLOB is case sensitive, unlike LIKE<br>The glob(X,Y) function is equivalent to the expression “Y GLOB X”</p>
 </blockquote>
 </li>
@@ -449,9 +448,99 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line"> trackid,</span><br><span class="line"> name</span><br><span class="line">FROM</span><br><span class="line"> tracks</span><br><span class="line">WHERE</span><br><span class="line"> name GLOB &apos;Man*&apos;;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>注释<code>sqlite&gt;.help -- This is a single line comment</code></li>
-<li>SELECT、INSERT、UPDATE、DELETE、ALTER、DROP 等，所有的语句以分号（;）结束</li>
+<li>SELECT、INSERT、UPDATE、DELETE、ALTER、DROP 等，所有的语句以分号<code>;</code>结束</li>
+<li><p>SELECT</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2....columnN</span><br><span class="line">FROM   table_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ANALYZE</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ANALYZE;</span><br><span class="line">or</span><br><span class="line">ANALYZE database_name;</span><br><span class="line">or</span><br><span class="line">ANALYZE database_name.table_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>AND/OR</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2....columnN</span><br><span class="line">FROM   table_name</span><br><span class="line">WHERE  CONDITION-1 &#123;AND|OR&#125; CONDITION-2;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ALTER TABLE (RENAME TO)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE table_name ADD COLUMN column_def...;</span><br><span class="line"></span><br><span class="line">ALTER TABLE table_name RENAME TO new_table_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ATTACH DATABASE</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ATTACH DATABASE &apos;DatabaseName&apos; As &apos;Alias-Name&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>DETACH DATABASE</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DETACH DATABASE &apos;Alias-Name&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>BEGIN TRANSACTION</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BEGIN;</span><br><span class="line">or</span><br><span class="line">BEGIN EXCLUSIVE TRANSACTION;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>BETWEEN</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2....columnN</span><br><span class="line">FROM   table_name</span><br><span class="line">WHERE  column_name BETWEEN val-1 AND val-2;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CREATE (UNIQUE) INDEX</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX index_name</span><br><span class="line">ON table_name ( column_name COLLATE NOCASE );</span><br><span class="line"></span><br><span class="line">CREATE UNIQUE INDEX index_name</span><br><span class="line">ON table_name ( column1, column2,...columnN);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ROLLBACK：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ROLLBACK;</span><br><span class="line">or</span><br><span class="line">ROLLBACK TO SAVEPOINT savepoint_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>SAVEPOINT</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SAVEPOINT savepoint_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CREATE TABLE</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE table_name(</span><br><span class="line">   column1 datatype,</span><br><span class="line">   column2 datatype,</span><br><span class="line">   column3 datatype,</span><br><span class="line">   .....</span><br><span class="line">   columnN datatype,</span><br><span class="line">   PRIMARY KEY( one or more columns )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CREATE TRIGGER</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TRIGGER database_name.trigger_name </span><br><span class="line">BEFORE INSERT ON table_name FOR EACH ROW</span><br><span class="line">BEGIN </span><br><span class="line">   stmt1; </span><br><span class="line">   stmt2;</span><br><span class="line">   ....</span><br><span class="line">END;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CREATE VIEW</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE VIEW database_name.view_name  AS</span><br><span class="line">SELECT statement....;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CREATE VIRTUAL TABLE</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE VIRTUAL TABLE database_name.table_name USING weblog( access.log );</span><br><span class="line">or</span><br><span class="line">CREATE VIRTUAL TABLE database_name.table_name USING fts3( );</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>COUNT</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT COUNT(column_name)</span><br><span class="line">FROM   table_name</span><br><span class="line">WHERE  CONDITION;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>DELETE</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM table_name</span><br><span class="line">WHERE  &#123;CONDITION&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>DISTINCT</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT DISTINCT column1, column2....columnN</span><br><span class="line">FROM   table_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>DROP TABLE/INDEX</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE/INDEX database_name.table_name/index_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>DROP VIEW/TRIGGER </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP VIEW/TRIGGER  view_name/trigger_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>EXISTS </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2....columnN</span><br><span class="line">FROM   table_name</span><br><span class="line">WHERE  column_name EXISTS (SELECT * FROM   table_name )</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>GLOB</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2....columnN</span><br><span class="line">FROM   table_name</span><br><span class="line">WHERE  column_name GLOB &#123; PATTERN &#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>GROUP BY </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT SUM(column_name)</span><br><span class="line">FROM   table_name</span><br><span class="line">WHERE  CONDITION</span><br><span class="line">GROUP BY column_name;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>HAVING</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT SUM(column_name)</span><br><span class="line">FROM   table_name</span><br><span class="line">WHERE  CONDITION</span><br><span class="line">GROUP BY column_name</span><br><span class="line">HAVING (arithematic function condition);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>WHERE</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2....columnN</span><br><span class="line">FROM   table_name</span><br><span class="line">WHERE  CONDITION;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>UPDATE</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UPDATE table_name</span><br><span class="line">SET column1 = value1, column2 = value2....columnN=valueN</span><br><span class="line">[ WHERE  CONDITION ];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>INSERT INTO</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO table_name( column1, column2....columnN)</span><br><span class="line">VALUES ( value1, value2....valueN);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>IN/NOT IN</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2....columnN</span><br><span class="line">FROM   table_name</span><br><span class="line">WHERE  column_name IN/NOT IN (val-1, val-2,...val-N);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Like</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2....columnN</span><br><span class="line">FROM   table_name</span><br><span class="line">WHERE  column_name LIKE &#123; PATTERN &#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ORDER BY</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2....columnN</span><br><span class="line">FROM   table_name</span><br><span class="line">WHERE  CONDITION</span><br><span class="line">ORDER BY column_name &#123;ASC|DESC&#125;;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-
+<h4 id="SQLite数据类型"><a href="#SQLite数据类型" class="headerlink" title="SQLite数据类型"></a>SQLite数据类型</h4>
       
     </div>
     
@@ -768,7 +857,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQLite语法"><span class="nav-number">2.</span> <span class="nav-text">SQLite语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQLite数据类型"><span class="nav-number">3.</span> <span class="nav-text">SQLite数据类型</span></a></li></ol></div>
             
 
           </div>
