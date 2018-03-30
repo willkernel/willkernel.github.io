@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Android,Kotlin," />
+  <meta name="keywords" content="SQLite," />
 
 
 
@@ -88,20 +88,21 @@
 
 
 
-<meta name="description" content="Anko Anko Commons：一个轻量级的库，里面包含了intents，对话框，日志等帮助类 Anko Layouts：用于编写动态Android布局的快速且类型安全的方法 Anko SQLite：查询适用于Android SQLite的DSL和分析器集合 Anko Coroutines：基于kotlinx.coroutines库的实用程序 简化获取RecyclerView1val fore">
-<meta name="keywords" content="Android,Kotlin">
+<meta name="description" content="简介SQLite特点：无服务器、零配置、事务性的 SQL 数据库引擎，SQLite 引擎不是一个独立的进程，可以按应用程序需求进行静态或动态连接；非常小轻量级，兼容ACID原则，是进程或线程安全的  ACID是一组强调高可靠性的数据库系统设计原则，在软件崩溃甚至是硬件故障的情况下，数据也不会损坏。当你需要依赖兼容ACID原则的业务时，你不必重复造轮子去实现一致性检查和崩溃恢复机制。如果你有额外的安">
+<meta name="keywords" content="SQLite">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kotlin for Android (二)">
-<meta property="og:url" content="http://willkernel.github.io/2018/03/23/Kotlin-for-Android-二/index.html">
+<meta property="og:title" content="SQLite(一)">
+<meta property="og:url" content="http://willkernel.github.io/2018/03/30/SQLite-一/index.html">
 <meta property="og:site_name" content="willkernel">
-<meta property="og:description" content="Anko Anko Commons：一个轻量级的库，里面包含了intents，对话框，日志等帮助类 Anko Layouts：用于编写动态Android布局的快速且类型安全的方法 Anko SQLite：查询适用于Android SQLite的DSL和分析器集合 Anko Coroutines：基于kotlinx.coroutines库的实用程序 简化获取RecyclerView1val fore">
+<meta property="og:description" content="简介SQLite特点：无服务器、零配置、事务性的 SQL 数据库引擎，SQLite 引擎不是一个独立的进程，可以按应用程序需求进行静态或动态连接；非常小轻量级，兼容ACID原则，是进程或线程安全的  ACID是一组强调高可靠性的数据库系统设计原则，在软件崩溃甚至是硬件故障的情况下，数据也不会损坏。当你需要依赖兼容ACID原则的业务时，你不必重复造轮子去实现一致性检查和崩溃恢复机制。如果你有额外的安">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/commandforecast.png">
-<meta property="og:updated_time" content="2018-03-23T08:33:33.257Z">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-1.png">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-2.png">
+<meta property="og:updated_time" content="2018-03-30T10:56:23.252Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kotlin for Android (二)">
-<meta name="twitter:description" content="Anko Anko Commons：一个轻量级的库，里面包含了intents，对话框，日志等帮助类 Anko Layouts：用于编写动态Android布局的快速且类型安全的方法 Anko SQLite：查询适用于Android SQLite的DSL和分析器集合 Anko Coroutines：基于kotlinx.coroutines库的实用程序 简化获取RecyclerView1val fore">
-<meta name="twitter:image" content="http://p4n1d4izv.bkt.clouddn.com/images/commandforecast.png">
+<meta name="twitter:title" content="SQLite(一)">
+<meta name="twitter:description" content="简介SQLite特点：无服务器、零配置、事务性的 SQL 数据库引擎，SQLite 引擎不是一个独立的进程，可以按应用程序需求进行静态或动态连接；非常小轻量级，兼容ACID原则，是进程或线程安全的  ACID是一组强调高可靠性的数据库系统设计原则，在软件崩溃甚至是硬件故障的情况下，数据也不会损坏。当你需要依赖兼容ACID原则的业务时，你不必重复造轮子去实现一致性检查和崩溃恢复机制。如果你有额外的安">
+<meta name="twitter:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-1.png">
 
 
 
@@ -131,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://willkernel.github.io/2018/03/23/Kotlin-for-Android-二/"/>
+  <link rel="canonical" href="http://willkernel.github.io/2018/03/30/SQLite-一/"/>
 
 
 
 
 
-  <title>Kotlin for Android (二) | willkernel</title>
+  <title>SQLite(一) | willkernel</title>
   
 
 
@@ -308,7 +309,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/23/Kotlin-for-Android-二/">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/30/SQLite-一/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="willkernel">
@@ -325,7 +326,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Kotlin for Android (二)</h1>
+          <h1 class="post-title" itemprop="name headline">SQLite(一)</h1>
         
 
         <div class="post-meta">
@@ -337,8 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-23T10:47:00+08:00">
-                2018-03-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T15:56:00+08:00">
+                2018-03-30
               </time>
             
 
@@ -360,8 +361,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Kotlin/" itemprop="url" rel="index">
-                    <span itemprop="name">Kotlin</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
                   </a>
                 </span>
 
@@ -377,7 +378,7 @@
 
           
           
-             <span id="/2018/03/23/Kotlin-for-Android-二/" class="leancloud_visitors" data-flag-title="Kotlin for Android (二)">
+             <span id="/2018/03/30/SQLite-一/" class="leancloud_visitors" data-flag-title="SQLite(一)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -408,86 +409,47 @@
       
 
       
-        <h4 id="Anko"><a href="#Anko" class="headerlink" title="Anko"></a><a href="https://github.com/Kotlin/anko" target="_blank" rel="noopener">Anko</a></h4><ul>
-<li>Anko Commons：一个轻量级的库，里面包含了intents，对话框，日志等帮助类</li>
-<li>Anko Layouts：用于编写动态Android布局的快速且类型安全的方法</li>
-<li>Anko SQLite：查询适用于Android SQLite的DSL和分析器集合</li>
-<li>Anko Coroutines：基于kotlinx.coroutines库的实用程序</li>
-<li>简化获取RecyclerView<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val forecastList: RecyclerView = find(R.id.recyclerView)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="扩展函数"><a href="#扩展函数" class="headerlink" title="扩展函数"></a>扩展函数</h4><p>扩展函数数是指在一个类上增加一种新的行为，甚至我们没有这个类代码的访问权<br>限。这是一个在缺少有用函数的类上扩展的方法。在Java中，通常会实现很多带有<br>static方法的工具类。Kotlin中扩展函数的一个优势是我们不需要在调用方法的时候<br>把整个对象当作参数传入。扩展函数表现得就像是属于这个类的一样，而且我们可<br>以使用 this 关键字和调用所有public方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fun Context.toastF(message: CharSequence,duration: Int=Toast.LENGTH_SHORT)&#123;</span><br><span class="line">   Toast.makeText(this, &quot;$message&quot;, duration).show()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>SQLite特点：无服务器、零配置、事务性的 SQL 数据库引擎，SQLite 引擎不是一个独立的进程，可以按应用程序需求进行静态或动态连接；非常小轻量级，兼容ACID原则，是进程或线程安全的</p>
+<blockquote>
+<p>ACID是一组强调高可靠性的数据库系统设计原则，在软件崩溃甚至是硬件故障的情况下，数据也不会损坏。当你需要依赖兼容ACID原则的业务时，你不必重复造轮子去实现一致性检查和崩溃恢复机制。如果你有额外的安全保证机制，可以调整牺牲掉ACID的一些可靠性换取更高的性能和数据吞吐量<br>A: atomicity (原子性)<br>C: consistency (一致性)<br>I: isolation （隔离性）<br>D: durability （持久性）<br>SQL92 不支持的特性如下所示：</p>
+</blockquote>
+<blockquote>
+<p>特性    描述<br>RIGHT OUTER JOIN    只实现了 LEFT OUTER JOIN<br>FULL OUTER JOIN       只实现了 LEFT OUTER JOIN<br>ALTER TABLE          支持 RENAME TABLE 和 ALTER TABLE 的 ADD COLUMN variants 命令，不支持 DROP COLUMN、ALTER COLUMN、ADD CONSTRAINT<br>Trigger         支持 FOR EACH ROW 触发器，但不支持 FOR EACH STATEMENT 触发器<br>VIEWs          在 SQLite 中，视图是只读的,不可以在视图上执行 DELETE、INSERT 或 UPDATE 语句<br>GRANT 和 REVOKE    可以应用的唯一的访问权限是底层操作系统的正常文件访问权限</p>
+</blockquote>
+<blockquote>
+<p>DDL 数据定义语言<br>CREATE    创建一个新的表，一个表的视图，或者数据库中的其他对象<br>ALTER    修改数据库中的某个已有的数据库对象，比如一个表<br>DROP    删除整个表，或者表的视图，或者数据库中的其他对象</p>
+</blockquote>
+<blockquote>
+<p>DML 数据操作语言<br>INSERT    创建一条记录<br>UPDATE    修改记录<br>DELETE    删除记录</p>
+</blockquote>
+<blockquote>
+<p>DQL 数据库查询语言<br>SELECT    从一个或多个表中检索某些记录</p>
+</blockquote>
 <ul>
-<li><p>Anko已经扩展toast函数，提供了CharSequence,(resource id)Int的函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">toast(R.string.app_name)</span><br><span class="line">longToast(&quot;longToast&quot;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>扩展函数并不是真正地修改了原来的类，它是以静态导入的方式来实现的。扩展函数可以被声明在任何文件中，通用的实践是把一系列有关的函数放在一个新建的文件里</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var TextView.text: CharSequence</span><br><span class="line">   get() = getText()</span><br><span class="line">   set(v) = setText(v)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<a id="more"></a>
-<h4 id="网络请求"><a href="#网络请求" class="headerlink" title="网络请求"></a>网络请求</h4><ul>
-<li><p>网络请求类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class Request(var url: String) &#123;</span><br><span class="line">    public fun run() &#123;</span><br><span class="line">        //这个方法不推荐</span><br><span class="line">        val forcastJson = URL(url).readText()</span><br><span class="line">        Log.e(javaClass.simpleName, forcastJson)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行异步请求，async用于其他线程执行请求，uiThread回到主线程，UIThread 是可以依赖于调用者如果它是被一个Activity 调用的，那么如果 activity.isFinishing() 返回true，则 uiThread 不会执行，在Activity销毁的时候避免程序崩溃</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">doAsync &#123;</span><br><span class="line">            val url=&quot;http://samples.openweathermap.org/data/2.5/weather?id=2172797&amp;appid=b6907d289e10d714a6e88b30761fae22&quot;</span><br><span class="line">            Request(url).run()</span><br><span class="line">            </span><br><span class="line">            uiThread &#123; longToast(&quot;Request Performed&quot;) &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>数据类,属性访问，以及其他函数</p>
+<li>安装<a href="http://www.sqlite.org/download.html" target="_blank" rel="noopener">sqlite3</a>，设置PATH，cmd运行sqlite3</li>
+<li><p>SQLite点命令</p>
 <ul>
-<li>equals(): 它可以比较两个对象的属性来确保他们是相同的</li>
-<li>hashCode(): 我们可以得到一个hash值，也是从属性中计算出来的</li>
-<li>copy(): 你可以拷贝一个对象，可以根据你的需要去修改里面的属性</li>
-<li>一系列可以映射对象到变量中的函数<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data class Forecast(val date: Date, val temperature: Float, val</span><br><span class="line">details: String)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>复制一个数据类，修改某个属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val f1 = Forecast(Date(), 23f, &quot;Sunny&quot;)</span><br><span class="line">Log.e(tag, f1.toString())</span><br><span class="line">val f2 = f1.copy(temperature = 30f)</span><br><span class="line">Log.e(tag, f2.toString())</span><br><span class="line"></span><br><span class="line">E/MainActivity: Forecast(date=Fri Mar 23 00:22:42 EDT 2018, temperature=23.0, details=Sunny)</span><br><span class="line">E/MainActivity: Forecast(date=Fri Mar 23 00:22:42 EDT 2018, temperature=30.0, details=Sunny)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>映射对象到变量中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//映射对象到变量中,多声明</span><br><span class="line">val (date, temp, details) = f1</span><br><span class="line">Log.e(tag, &quot;date &quot; + date.toString())</span><br><span class="line">Log.e(tag, &quot;temp &quot; + temp.toString())</span><br><span class="line">Log.e(tag, &quot;details $details&quot;)</span><br><span class="line">//        上面的多声明会编译成下面的代码</span><br><span class="line">//        val date = f1.component1()</span><br><span class="line">//        val temperature = f1.component2()</span><br><span class="line">//        val details = f1.component3()</span><br><span class="line"></span><br><span class="line">E/MainActivity: date Fri Mar 23 00:33:41 EDT 2018</span><br><span class="line">E/MainActivity: temp 23.0</span><br><span class="line">E/MainActivity: details Sunny</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Map 类含有一些扩展函数的实现，允许它在迭代时使用key和value</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">val map = mutableListOf(f1,f2)</span><br><span class="line">for ((key, value) in map) &#123;</span><br><span class="line">Log.d(&quot;map&quot;, &quot;key:$key, value:$value&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">E/map: key:Fri Mar 23 00:41:25 EDT 2018, value:23.0</span><br><span class="line">E/map: key:Fri Mar 23 00:41:25 EDT 2018, value:30.0</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>转换josn到数据类,这里有个插件JsonToKotlinClass，转换json to kotlin data class</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">data class ForecastResult(</span><br><span class="line">		val city: City,</span><br><span class="line">		val cod: String,</span><br><span class="line">		val message: Double,</span><br><span class="line">		val cnt: Int,</span><br><span class="line">		val list: List&lt;Item8&gt;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">data class City(</span><br><span class="line">		val id: Int,</span><br><span class="line">		val name: String,</span><br><span class="line">		val coord: Coord,</span><br><span class="line">		val country: String,</span><br><span class="line">		val population: Int</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">data class Coord(</span><br><span class="line">		val lon: Double,</span><br><span class="line">		val lat: Double</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">data class Item8(</span><br><span class="line">		val dt: Int,</span><br><span class="line">		val temp: Temp,</span><br><span class="line">		val pressure: Double,</span><br><span class="line">		val humidity: Int,</span><br><span class="line">		val weather: List&lt;Weather&gt;,</span><br><span class="line">		val speed: Double,</span><br><span class="line">		val deg: Int,</span><br><span class="line">		val clouds: Int</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">data class Temp(</span><br><span class="line">		val day: Double,</span><br><span class="line">		val min: Double,</span><br><span class="line">		val max: Double,</span><br><span class="line">		val night: Double,</span><br><span class="line">		val eve: Double,</span><br><span class="line">		val morn: Double</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">data class Weather(</span><br><span class="line">		val id: Int,</span><br><span class="line">		val main: String,</span><br><span class="line">		val description: String,</span><br><span class="line">		val icon: String</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Companion objects (伴随对象)Kotlin允许我们去定义一些行为与静态对象一样的对象。尽管这些对象可以用众所周知的模式来实现，比如容易实现的单例模式。我们需要一个类里面有一些静态的属性、常量或者函数，我们可以使用 companion objecvt 。这个对象被这个类的所有对象所共享，就像Java中的静态属性或者方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Request(var zipCode: String) &#123;</span><br><span class="line">    companion object &#123;</span><br><span class="line">        private val APP_ID = &quot;15646a06818f61f7b8d7823ca833e1ce&quot;</span><br><span class="line">        private val URL = &quot;http://api.openweathermap.org/data/2.5/forecast/daily?mode=json&amp;units=metric&amp;cnt=7&quot;</span><br><span class="line">        private val COMPLETE_URL = &quot;$URL&amp;APPID=$APP_ID&amp;zip=&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public fun execute(): ForecastResult &#123;</span><br><span class="line">        //这个方法不推荐</span><br><span class="line">        val forecastJson = URL(COMPLETE_URL + zipCode).readText()</span><br><span class="line">        Log.e(javaClass.simpleName, forecastJson)</span><br><span class="line">        return Gson().fromJson(forecastJson, ForecastResult::class.java)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> val result = Request(94040).execute()</span><br><span class="line"> Log.e(tag, &quot;result &quot; + result.toString())</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="构建domain层"><a href="#构建domain层" class="headerlink" title="构建domain层"></a>构建domain层</h4><ul>
-<li><p>定义一个commnad，执行一个任务，返回泛型，一起Kotlin函数都有返回值，没有指定默认返回Unit，所以不返回数据可以指定类型会Unit</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface Command&lt;T&gt; &#123;</span><br><span class="line">    fun execute(): T</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>command需要去请求天气预报接口然后转换结果为domain类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public interface Command&lt;T&gt; &#123;</span><br><span class="line">    data class ForecastList(val city: String, val country: String,</span><br><span class="line">                            val dailyForecast: List&lt;Forecast&gt;)</span><br><span class="line"></span><br><span class="line">    data class Forecast(val date: String, val description: String,</span><br><span class="line">                        val high: Int, val low: Int)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>数据映射到Domain,创建DataMapper</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class ForecastDataMapper &#123;</span><br><span class="line">fun convertFromDataModel(forecast: ForecastResult): Forecast</span><br><span class="line">List &#123;</span><br><span class="line">return ForecastList(forecast.city.name, forecast.city.co</span><br><span class="line">untry,</span><br><span class="line">convertForecastListToDomain(forecast.list))</span><br><span class="line">private fun convertForecastListToDomain(list: List&lt;Forecast&gt;)</span><br><span class="line">:</span><br><span class="line">List&lt;ModelForecast&gt; &#123;</span><br><span class="line">return list.map &#123; convertForecastItemToDomain(it) &#125;</span><br><span class="line">&#125;</span><br><span class="line">private fun convertForecastItemToDomain(forecast: Forecast):</span><br><span class="line">ModelForecast &#123;</span><br><span class="line">return ModelForecast(convertDate(forecast.dt),</span><br><span class="line">forecast.weather[0].description, forecast.temp.m</span><br><span class="line">ax.toInt(),</span><br><span class="line">forecast.temp.min.toInt())</span><br><span class="line">&#125;</span><br><span class="line">private fun convertDate(date: Long): String &#123;</span><br><span class="line">val df = DateFormat.getDateInstance(DateFormat.MEDIUM, L</span><br><span class="line">ocale.getDefault())</span><br><span class="line">return df.format(date * 1000)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>当我们使用了两个相同名字的类，我们可以给其中一个指定一个别名，这样我们就不需要写完整的包名了：<code>import com.willkernel.app.kotlindemo.model.Forecast as ModelForecast</code>，从一个forecast list中转换为domain model <code>return list.map { convertForecastItemToDomain(it) }</code>循环这个集合并且返回一个转换后的新的List</p>
-<ul>
-<li><p>ForecastMapper</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> public class ForecastDataMapper &#123;</span><br><span class="line">    fun convertFromDataModel(forecast: ForecastResult): ForecastList &#123;</span><br><span class="line">        return ForecastList(forecast.city.name, forecast.city.country,</span><br><span class="line">                convertForecastListToDomain(forecast.list))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private fun convertForecastListToDomain(list: List&lt;Forecast&gt;)</span><br><span class="line">            : List&lt;ModelForecast&gt; &#123;</span><br><span class="line">        return list.map &#123; convertForecastItemToDomain(it) &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private fun convertForecastItemToDomain(forecast: Forecast):</span><br><span class="line">            ModelForecast &#123;</span><br><span class="line">        return ModelForecast(convertDate(forecast.dt),</span><br><span class="line">                forecast.weather[0].description, forecast.temp.max.toInt(),</span><br><span class="line">                forecast.temp.min.toInt())</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private fun convertDate(date: Long): String &#123;</span><br><span class="line">        val df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault())</span><br><span class="line">        return df.format(date * 1000)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编写网络请求命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class RequestForecastCommand(val zipCode: String) : Command&lt;ForecastList&gt; &#123;</span><br><span class="line">    override fun execute(): ForecastList &#123;</span><br><span class="line">        val forecastRequest = ForecastRequest(zipCode)</span><br><span class="line">        return ForecastDataMapper().convertFromDataModel(forecastRequest.execute())</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>修改Adapter,设置数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class ForecastListAdapter(val items: ForecastList) : RecyclerView.Adapter&lt;ForecastListAdapter.VH&gt;() &#123;</span><br><span class="line">    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH &#123;</span><br><span class="line">        return VH(TextView(parent.context))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun getItemCount(): Int = items.size</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    override fun onBindViewHolder(holder: VH, position: Int) &#123;</span><br><span class="line">        with(items.dailyForecast[position]) &#123;</span><br><span class="line">            holder.textView.text = &quot;$date - $description - $high - $low&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class VH(val textView: TextView) : RecyclerView.ViewHolder(textView)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">doAsync &#123;</span><br><span class="line">            val result = RequestForecastCommand(&quot;94043&quot;).execute()</span><br><span class="line">            Log.e(tag, &quot;result &quot; + result.toString())</span><br><span class="line">            uiThread &#123; recyclerView.adapter = ForecastListAdapter(result) </span><br><span class="line">            &#125;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/commandforecast.png">
-<ul>
-<li><code>with</code> 函数<blockquote>
-<p>with是一个非常有用的函数，它包含在Kotlin的标准库中。它接收一个对象<br>和一个扩展函数作为它的参数，然后使这个对象扩展这个函数。这表示所<br>有我们在括号中编写的代码都是作为对象（第一个参数）的一个扩展函<br>数，我们可以就像作为this一样使用所有它的public方法和属性。当我们针<br>对同一个对象做很多操作的时候这个非常有利于简化代码</p>
+<li>.help 获取帮助<img src="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-1.png">
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-2.png"></li>
+<li>.show 命令查看 SQLite 命令提示符的默认设置,下面是修改默认设置属性<blockquote>
+<p>sqlite&gt;.header on<br>sqlite&gt;.mode column<br>sqlite&gt;.timer on</p>
 </blockquote>
 </li>
+<li>sqlite_master 主表中保存数据库表的关键信息，并把它命名为 sqlite_master，如要查看表概要<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> CREATE TABLE sqlite_master (</span><br><span class="line">  type text,</span><br><span class="line">  name text,</span><br><span class="line">  tbl_name text,</span><br><span class="line">  rootpage integer,</span><br><span class="line">  sql text</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>[SQLite3练习] (<a href="http://www.sqlitetutorial.net/" target="_blank" rel="noopener">http://www.sqlitetutorial.net/</a>)</p>
+</li>
+<li>SQLite语法，不区分大小写，但是有些命令大小写敏感，GLOB和glob在SQLite不同<blockquote>
+<p>The GLOB operator is similar to LIKE but uses the Unix file globbing syntax for its wildcards. Also, GLOB is case sensitive, unlike LIKE<br>The glob(X,Y) function is equivalent to the expression “Y GLOB X”</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line"> trackid,</span><br><span class="line"> name</span><br><span class="line">FROM</span><br><span class="line"> tracks</span><br><span class="line">WHERE</span><br><span class="line"> name GLOB &apos;Man*&apos;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>注释<code>sqlite&gt;.help -- This is a single line comment</code></li>
+<li>SELECT、INSERT、UPDATE、DELETE、ALTER、DROP 等，所有的语句以分号（;）结束</li>
 </ul>
 
       
@@ -546,7 +508,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://willkernel.github.io/2018/03/23/Kotlin-for-Android-二/" title="Kotlin for Android (二)">http://willkernel.github.io/2018/03/23/Kotlin-for-Android-二/</a>
+    <a href="http://willkernel.github.io/2018/03/30/SQLite-一/" title="SQLite(一)">http://willkernel.github.io/2018/03/30/SQLite-一/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -561,9 +523,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android/" rel="tag"># Android</a>
-          
-            <a href="/tags/Kotlin/" rel="tag"># Kotlin</a>
+            <a href="/tags/SQLite/" rel="tag"># SQLite</a>
           
         </div>
       
@@ -576,8 +536,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/22/Kotlin-for-Android-一/" rel="next" title="Kotlin for Android (一)">
-                <i class="fa fa-chevron-left"></i> Kotlin for Android (一)
+              <a href="/2018/03/25/Kotlin-for-Android-七/" rel="next" title="Kotlin for Android(七)">
+                <i class="fa fa-chevron-left"></i> Kotlin for Android(七)
               </a>
             
           </div>
@@ -585,10 +545,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/23/Kotlin-for-Android-三/" rel="prev" title="Kotlin for Android (三)">
-                Kotlin for Android (三) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -812,7 +768,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Anko"><span class="nav-number">1.</span> <span class="nav-text">Anko</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扩展函数"><span class="nav-number">2.</span> <span class="nav-text">扩展函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络请求"><span class="nav-number">3.</span> <span class="nav-text">网络请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构建domain层"><span class="nav-number">4.</span> <span class="nav-text">构建domain层</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li></ol></div>
             
 
           </div>
