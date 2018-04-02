@@ -88,22 +88,23 @@
 
 
 
-<meta name="description" content="sh-demo 直接执行命令123datewho 创建变量，如果是字符串的话，有空格的一定要用双引号，否则会被解析成命令123NDK=10text=&amp;quot;i love you&amp;quot; 命令的执行结果作为变量的值，例如以当前时间作为文件名123text1=datetext2=$(who) 输出1234567echo $NDKecho $textecho $text1echo $text2">
+<meta name="description" content="数据库操作 创建 1sqlite3 DatabaseName.db  查看数据库列表 1.databases  导出完整的数据库到一个文本文件 1234sqlite3 DatabaseName.db .dump &amp;gt; DatabaseName.sql恢复数据库sqlite3 DatabaseName.db &amp;lt; DatabaseName.sql  SQLite 的 ATTACH DATAB">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sh 简单程序">
-<meta property="og:url" content="http://willkernel.github.io/2018/02/24/sh-简单程序/index.html">
+<meta property="og:title" content="SQLite(二)">
+<meta property="og:url" content="http://willkernel.github.io/2018/04/02/SQLite-二/index.html">
 <meta property="og:site_name" content="willkernel">
-<meta property="og:description" content="sh-demo 直接执行命令123datewho 创建变量，如果是字符串的话，有空格的一定要用双引号，否则会被解析成命令123NDK=10text=&amp;quot;i love you&amp;quot; 命令的执行结果作为变量的值，例如以当前时间作为文件名123text1=datetext2=$(who) 输出1234567echo $NDKecho $textecho $text1echo $text2">
+<meta property="og:description" content="数据库操作 创建 1sqlite3 DatabaseName.db  查看数据库列表 1.databases  导出完整的数据库到一个文本文件 1234sqlite3 DatabaseName.db .dump &amp;gt; DatabaseName.sql恢复数据库sqlite3 DatabaseName.db &amp;lt; DatabaseName.sql  SQLite 的 ATTACH DATAB">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sh1.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sh2.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sh3.png">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sh4.png">
-<meta property="og:updated_time" content="2018-03-21T18:17:12.163Z">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/createtable.png">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/selectfrom.png">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sqlite-compare.png">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sqlite-logic.png">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sqlite-bit.png">
+<meta property="og:updated_time" content="2018-04-02T06:49:41.477Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sh 简单程序">
-<meta name="twitter:description" content="sh-demo 直接执行命令123datewho 创建变量，如果是字符串的话，有空格的一定要用双引号，否则会被解析成命令123NDK=10text=&amp;quot;i love you&amp;quot; 命令的执行结果作为变量的值，例如以当前时间作为文件名123text1=datetext2=$(who) 输出1234567echo $NDKecho $textecho $text1echo $text2">
-<meta name="twitter:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sh1.png">
+<meta name="twitter:title" content="SQLite(二)">
+<meta name="twitter:description" content="数据库操作 创建 1sqlite3 DatabaseName.db  查看数据库列表 1.databases  导出完整的数据库到一个文本文件 1234sqlite3 DatabaseName.db .dump &amp;gt; DatabaseName.sql恢复数据库sqlite3 DatabaseName.db &amp;lt; DatabaseName.sql  SQLite 的 ATTACH DATAB">
+<meta name="twitter:image" content="http://p4n1d4izv.bkt.clouddn.com/images/createtable.png">
 
 
 
@@ -133,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://willkernel.github.io/2018/02/24/sh-简单程序/"/>
+  <link rel="canonical" href="http://willkernel.github.io/2018/04/02/SQLite-二/"/>
 
 
 
 
 
-  <title>sh 简单程序 | willkernel</title>
+  <title>SQLite(二) | willkernel</title>
   
 
 
@@ -310,7 +311,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/02/24/sh-简单程序/">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/04/02/SQLite-二/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="willkernel">
@@ -327,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">sh 简单程序</h1>
+          <h1 class="post-title" itemprop="name headline">SQLite(二)</h1>
         
 
         <div class="post-meta">
@@ -339,8 +340,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-24T17:09:00+08:00">
-                2018-02-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-02T12:08:00+08:00">
+                2018-04-02
               </time>
             
 
@@ -362,8 +363,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
                   </a>
                 </span>
 
@@ -379,7 +380,7 @@
 
           
           
-             <span id="/2018/02/24/sh-简单程序/" class="leancloud_visitors" data-flag-title="sh 简单程序">
+             <span id="/2018/04/02/SQLite-二/" class="leancloud_visitors" data-flag-title="SQLite(二)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -410,139 +411,58 @@
       
 
       
-        <p><a href="https://github.com/willkernel/sh-demo" target="_blank" rel="noopener">sh-demo</a></p>
-<p>直接执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">date</span><br><span class="line"></span><br><span class="line">who</span><br></pre></td></tr></table></figure></p>
-<p>创建变量，如果是字符串的话，有空格的一定要用双引号，否则会被解析成命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NDK=10</span><br><span class="line"></span><br><span class="line">text=&quot;i love you&quot;</span><br></pre></td></tr></table></figure></p>
-<p>命令的执行结果作为变量的值，例如以当前时间作为文件名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">text1=date</span><br><span class="line"></span><br><span class="line">text2=$(who)</span><br></pre></td></tr></table></figure></p>
-<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">echo $NDK</span><br><span class="line"></span><br><span class="line">echo $text</span><br><span class="line"></span><br><span class="line">echo $text1</span><br><span class="line"></span><br><span class="line">echo $text2</span><br></pre></td></tr></table></figure></p>
-<p>字符串拼接，同理：有空格需要用双引号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;$text very much&quot;</span><br></pre></td></tr></table></figure></p>
-<p>如果需要输出$的话，需要使用转义字符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;$&quot;</span><br></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>运行两种方式</p>
-<p>1  ./bash.sh</p>
-<p>2  sh bash.sh</p>
-<p>如果sh command not found 或者 sh cannot open file</p>
-<p>程序中的/r/n 换行符限制</p>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/sh1.png">
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/sh2.png">
-<p>命令退出的状态</p>
-<p>命令执行退出的状态：</p>
-<ol>
-<li>0 成功</li>
-<li>127 没有找到命令</li>
-<li>1 未知错误</li>
-<li>126 命令不可执行</li>
-</ol>
-<p>查看与退出状态指定：</p>
-<p>查看上一次命令的执行状态echo $?在shell脚本中，自己指定退出的状态exit 状态码</p>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/sh3.png">
-<p>grep命令是查找命令，例如查找test文本在test.txt中所在的行数：grep -n test test.txt</p>
-<p>可以结合test命令，如果条件成立，test命令以状态为0退出，if条件成立。</p>
-<p>test命令简单形式，用中括号，注意空格要加上</p>
-<p> a -gt b 要加上空格,程序才能运行</p>
-<p>比较大小：</p>
-<pre><code>#!/bin/bash
-
-a=10b=5
-
-test命令简单形式
-
-if [ a -gt b ]
-
-then    
-
-    echo &quot;a  greater than  b&quot;
-
-else    
-
-    echo &quot;a  smaller  than  b&quot;
-
-fi
-</code></pre><p>test数值比较：</p>
-<ol>
-<li>-gt 大于</li>
-<li>-eq 等于</li>
-<li>-le 小于</li>
-<li>-ne 不等于</li>
-</ol>
-<p>判空：</p>
-<p>#!/bin/bash</p>
-<p>str1=””if [ str1 = “” ]                                                           </p>
-<p>then    </p>
-<pre><code>echo &quot;有内容&quot;else    echo &quot;没内容&quot;fi
-</code></pre><p>test字符串比较：</p>
-<ol>
-<li>str1 == str2</li>
-<li>str1 != str2</li>
-<li>str1 &lt; str2</li>
-<li>-n str1 长度是否非0</li>
-<li>-z str1 长度是否为0</li>
-</ol>
-<p>检查目录是否存在：</p>
-<pre><code>#!/bin/bash
-
-mydir=/usr/jason
-
--d检查目录是否存在
-
-if [ -d $mydir ]
-
-then    
-
-    echo &quot;$mydir exist&quot;    
-
-    cd $mydir    
-
-    ls
-
-else    echo &quot;mydir not exist&quot;
-
-fi
-</code></pre><p>test文件比较：</p>
-<ol>
-<li>-d 检查是否存在，并且是一个目录</li>
-<li>-e 检查file是否存在</li>
-<li>-f 检查是否存在，并且是一个文件</li>
-<li>-r 检查是否存在，并且可读，余此类推：-w、-x</li>
-<li>file1 -nt file2 file1比file2新</li>
-<li>file1 -ot file2 file1比file2旧</li>
-</ol>
-<p>case语句</p>
-<p>基本格式是：</p>
-<p>case命令case 变量 inpattern1) 命令;;pattern2) 命令;;*) 默认命令;;esac</p>
-<p>例子：</p>
-<pre><code>#!/bin/bash
-
-testuser=rose
-
-case $testuser in
-
-rose)    echo &quot;hi,$testuser&quot;;;
-
-ricky)    echo &quot;hello, ricky&quot;;;
-
-*)    echo &quot;defaults&quot;;;
-
-esac
-</code></pre><img src="http://p4n1d4izv.bkt.clouddn.com/images/sh4.png">
-<p>While循环</p>
-<p>基本格式：</p>
-<p>while test command（或者[]）do    命令done</p>
-<p>例子：</p>
-<pre><code>#!/bin/bash
-
-a=10
-
-while [ $a -gt 0 ]
-
-do    
-
-    echo &quot;num:$a&quot;    
-
-    赋值不用使用$符号    
-
-    a=[ a - 1 ]done
-</code></pre>
+        <h4 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h4><ul>
+<li><p>创建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlite3 DatabaseName.db</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看数据库列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.databases</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>导出完整的数据库到一个文本文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sqlite3 DatabaseName.db .dump &gt; DatabaseName.sql</span><br><span class="line"></span><br><span class="line">恢复数据库</span><br><span class="line">sqlite3 DatabaseName.db &lt; DatabaseName.sql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>SQLite 的 ATTACH DATABASE 语句是用来选择一个特定的数据库，使用该命令后，所有的 SQLite 语句将在附加的数据库下执行</p>
+<blockquote>
+<p>如果数据库尚未被创建，将创建一个数据库，如果数据库已存在，则把数据库文件名称与逻辑数据库 ‘Alias-Name’ 绑定在一起</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ATTACH DATABASE &apos;DatabaseName&apos; As &apos;Alias-Name&apos;;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>DETACH DTABASE 分离数据库，上述附件数据库的反操作，DETACH 命令将只断开给定名称的连接，而其余的仍然有效，无法分离 main 或 temp 数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DETACH DATABASE &apos;Alias-Name&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建表  <code>CREATE TABLE</code>创建表 <code>.tables</code> 命令来验证表是否已成功创建  <code>.schema</code>命令得到表的完整信息</p>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/createtable.png"></li>
+<li>删除表 <code>DROP TABLE database_name.table_name;</code></li>
+<li><p>INSERT 添加新的记录，新的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO TABLE_NAME [(column1, column2, column3,...columnN)]  </span><br><span class="line">VALUES (value1, value2, value3,...valueN);</span><br><span class="line"></span><br><span class="line">省略列名，保证顺序一致</span><br><span class="line">INSERT INTO TABLE_NAME VALUES (value1,value2,value3,...valueN);</span><br><span class="line"></span><br><span class="line">INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY)</span><br><span class="line">VALUES (6, &apos;Kim&apos;, 22, &apos;South-Hall&apos;, 45000.00 );</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将第二个表数据添加到第一个表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO first_table_name [(column1, column2, ... columnN)] </span><br><span class="line">   SELECT column1, column2, ...columnN </span><br><span class="line">   FROM second_table_name</span><br><span class="line">   [WHERE condition];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>SELECT 获取表中数据，返回结果集</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2, columnN FROM table_name;</span><br><span class="line"></span><br><span class="line">SELECT * FROM table_name;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">.header on</span><br><span class="line">.mode column</span><br><span class="line">.width 10, 20, 10</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/selectfrom.png">
+<ul>
+<li>Schema 信息<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">列出所有在数据库中创建的表</span><br><span class="line">SELECT tbl_name FROM sqlite_master WHERE type = &apos;table&apos;;</span><br><span class="line">产生以下结果：</span><br><span class="line"></span><br><span class="line">tbl_name</span><br><span class="line">----------</span><br><span class="line">COMPANY</span><br><span class="line"></span><br><span class="line">列出关于 COMPANY 表的完整信息</span><br><span class="line">SELECT sql FROM sqlite_master WHERE type = &apos;table&apos; AND tbl_name = &apos;COMPANY&apos;;</span><br><span class="line">假设在 testDB.db 中已经存在唯一的 COMPANY 表，产生以下结果：</span><br><span class="line"></span><br><span class="line">CREATE TABLE COMPANY(</span><br><span class="line">   ID INT PRIMARY KEY     NOT NULL,</span><br><span class="line">   NAME           TEXT    NOT NULL,</span><br><span class="line">   AGE            INT     NOT NULL,</span><br><span class="line">   ADDRESS        CHAR(50),</span><br><span class="line">   SALARY         REAL</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><ul>
+<li><p>算术运算符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sqlite&gt; select 10+20;</span><br><span class="line">30</span><br><span class="line">sqlite&gt; .mode line</span><br><span class="line">sqlite&gt; select 10-20;</span><br><span class="line">10-20 = -10</span><br><span class="line">sqlite&gt; select 1/3;</span><br><span class="line">  1/3 = 0</span><br><span class="line">sqlite&gt; select 12%5;</span><br><span class="line"> 12%5 = 2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>比较运算符</p>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/sqlite-compare.png"></li>
+<li><p>逻辑运算符</p>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/sqlite-logic.png">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">WHERE AGE &gt;= 25 AND/OR SALARY &gt;= 65000;</span><br><span class="line">WHERE AGE IS NOT NULL</span><br><span class="line">WHERE NAME LIKE &apos;Ki%&apos;;</span><br><span class="line">WHERE NAME GLOB &apos;Ki*&apos;;</span><br><span class="line">WHERE AGE NOT IN ( 25, 27 );</span><br><span class="line">WHERE AGE BETWEEN 25 AND 27;</span><br><span class="line"></span><br><span class="line">SQL 子查询，子查询查找 SALARY &gt; 65000 的带有 AGE 字段的所有记录，后边的 WHERE 子句与 EXISTS 运算符一起使用</span><br><span class="line"> SELECT AGE FROM COMPANY WHERE EXISTS (SELECT AGE FROM COMPANY WHERE SALARY &gt; 65000);</span><br><span class="line"></span><br><span class="line">AGE</span><br><span class="line">----------</span><br><span class="line">25</span><br><span class="line">23</span><br><span class="line">25</span><br><span class="line"></span><br><span class="line">SELECT * FROM COMPANY WHERE AGE &gt; (SELECT AGE FROM COMPANY WHERE SALARY &gt; 65000);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>位运算符  A=60， B=13</p>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/sqlite-bit.png">
+</li>
+</ul>
+<h4 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h4>
       
     </div>
     
@@ -599,7 +519,7 @@ do
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://willkernel.github.io/2018/02/24/sh-简单程序/" title="sh 简单程序">http://willkernel.github.io/2018/02/24/sh-简单程序/</a>
+    <a href="http://willkernel.github.io/2018/04/02/SQLite-二/" title="SQLite(二)">http://willkernel.github.io/2018/04/02/SQLite-二/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -621,8 +541,8 @@ do
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/24/Linux-常用快捷键/" rel="next" title="Linux 常用快捷键 命令 设置等操作">
-                <i class="fa fa-chevron-left"></i> Linux 常用快捷键 命令 设置等操作
+              <a href="/2018/03/30/SQLite-一/" rel="next" title="SQLite(一)">
+                <i class="fa fa-chevron-left"></i> SQLite(一)
               </a>
             
           </div>
@@ -630,10 +550,6 @@ do
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/25/Android-Notes/" rel="prev" title="Android Notes (System ADB UI)">
-                Android Notes (System ADB UI) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -692,8 +608,17 @@ do
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -838,6 +763,22 @@ do
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库操作"><span class="nav-number">1.</span> <span class="nav-text">数据库操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符"><span class="nav-number">2.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#表达式"><span class="nav-number">3.</span> <span class="nav-text">表达式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

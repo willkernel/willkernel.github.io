@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://willkernel.github.io/"/>
-  <updated>2018-03-30T17:21:49.522Z</updated>
+  <updated>2018-04-02T06:49:41.477Z</updated>
   <id>http://willkernel.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>SQLite(一)</title>
-    <link href="http://willkernel.github.io/2018/03/30/SQLite-%E4%B8%80/"/>
-    <id>http://willkernel.github.io/2018/03/30/SQLite-一/</id>
-    <published>2018-03-30T07:56:00.000Z</published>
-    <updated>2018-03-30T17:21:49.522Z</updated>
+    <title>SQLite(二)</title>
+    <link href="http://willkernel.github.io/2018/04/02/SQLite-%E4%BA%8C/"/>
+    <id>http://willkernel.github.io/2018/04/02/SQLite-二/</id>
+    <published>2018-04-02T04:08:00.000Z</published>
+    <updated>2018-04-02T06:49:41.477Z</updated>
     
     <summary type="html">
     
@@ -29,9 +29,35 @@
       
         
         
-          &lt;h4 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h4&gt;&lt;p&gt;SQLite特点：无服务器、零配置、事务性的 SQL 数据库引擎，SQLite
+          &lt;h4 id=&quot;数据库操作&quot;&gt;&lt;a href=&quot;#数据库操作&quot; class=&quot;headerlink&quot; title=&quot;数据库操作&quot;&gt;&lt;/a&gt;数据库操作&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;创建&lt;/p&gt;
+&lt;figure class=&quot;highlight
         
       
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SQLite(一)</title>
+    <link href="http://willkernel.github.io/2018/03/30/SQLite-%E4%B8%80/"/>
+    <id>http://willkernel.github.io/2018/03/30/SQLite-一/</id>
+    <published>2018-03-30T07:56:00.000Z</published>
+    <updated>2018-04-02T04:06:25.882Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h4&gt;&lt;p&gt;SQLite特点：无服务器、零配置、事务性的 SQL 数据库引擎，SQLite 引擎不是一个独立的进程，可以按应用程序需求进行静态或动态连接；非常小轻量级，兼容ACID原则，是进程或线程安全的&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ACID是一组强调高可靠性的数据库系统设计原则，在软件崩溃甚至是硬件故障的情况下，数据也不会损坏。当你需要依赖兼容ACID原则的业务时，你不必重复造轮子去实现一致性检查和崩溃恢复机制。如果你有额外的安全保证机制，可以调整牺牲掉ACID的一些可靠性换取更高的性能和数据吞吐量&lt;br&gt;A: atomicity (原子性)&lt;br&gt;C: consistency (一致性)&lt;br&gt;I: isolation （隔离性）&lt;br&gt;D: durability （持久性）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;SQL92 不支持的特性如下&lt;br&gt;RIGHT OUTER JOIN    只实现了 LEFT OUTER JOIN&lt;br&gt;FULL OUTER JOIN       只实现了 LEFT OUTER JOIN&lt;br&gt;ALTER TABLE          支持 RENAME TABLE 和 ALTER TABLE 的 ADD COLUMN variants 命令，不支持 DROP COLUMN、ALTER COLUMN、ADD CONSTRAINT&lt;br&gt;Trigger         支持 FOR EACH ROW 触发器，但不支持 FOR EACH STATEMENT 触发器&lt;br&gt;VIEWs          在 SQLite 中，视图是只读的,不可以在视图上执行 DELETE、INSERT 或 UPDATE 语句&lt;br&gt;GRANT 和 REVOKE    可以应用的唯一的访问权限是底层操作系统的正常文件访问权限&lt;/p&gt;
+&lt;/blockquote&gt;
     
     </summary>
     
@@ -375,24 +401,6 @@
   </entry>
   
   <entry>
-    <title>NDK</title>
-    <link href="http://willkernel.github.io/2018/03/09/NDK/"/>
-    <id>http://willkernel.github.io/2018/03/09/NDK/</id>
-    <published>2018-03-08T17:04:00.000Z</published>
-    <updated>2018-03-20T07:12:42.178Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-    
-      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Git</title>
     <link href="http://willkernel.github.io/2018/03/09/Git/"/>
     <id>http://willkernel.github.io/2018/03/09/Git/</id>
@@ -419,6 +427,24 @@
     
     
       <category term="Git" scheme="http://willkernel.github.io/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NDK</title>
+    <link href="http://willkernel.github.io/2018/03/09/NDK/"/>
+    <id>http://willkernel.github.io/2018/03/09/NDK/</id>
+    <published>2018-03-08T17:04:00.000Z</published>
+    <updated>2018-03-20T07:12:42.178Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
     
   </entry>
   
@@ -521,27 +547,6 @@
 &lt;li&gt;红色代表OpenGL渲染Display List的时间&lt;/li&gt;
 &lt;li&gt;黄色代表CPU等待GPU处理的时间&lt;br&gt;Android 6.0&lt;img src=&quot;http://p4n1d4izv.bkt.clouddn.com/images/gpurendering1.png&quot;&gt;
 &lt;img src=&quot;http://p4n1d4izv.bkt.clouddn.com/images/gpurendering2.png&quot;&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Android Notes(System Info Manager Safety)</title>
-    <link href="http://willkernel.github.io/2018/03/08/Android-Notes-System-Info-Manager-Safety/"/>
-    <id>http://willkernel.github.io/2018/03/08/Android-Notes-System-Info-Manager-Safety/</id>
-    <published>2018-03-07T17:29:00.000Z</published>
-    <updated>2018-03-21T18:14:54.896Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;Android-System-Info&quot;&gt;&lt;a href=&quot;#Android-System-Info&quot; class=&quot;headerlink&quot; title=&quot;Android System Info&quot;&gt;&lt;/a&gt;Android System Info&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;android.os.Build&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Build.BOARD 主板&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.BRAND 系统定制商&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.SUPPORTED_ABIS CPU指令集&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.DEVICE 设备参数&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.DISPLAY 显示屏参数&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.FINGERPRINT 唯一编号&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.SERIAL 硬件序列号&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.ID 修订版本&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.MANUFACTURER 硬件制造商&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.MODEL 版本&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.HARDWARE 硬件名&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.PRODUCT 手机产品名&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.TAGS Build 标签&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.TYPE Build 类型&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.VERSION.CODENAME 开发代号&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.VERSION.INCREMENTAL 源码控制版本号&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.VERSION.RELEASE 版本字符串&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.VERSION.SDK_INT 版本号&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// The following properties only make sense for internal engineering builds.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.HOST Host值&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.USER User名&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build.TIME 编译时间&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
     
     </summary>
     

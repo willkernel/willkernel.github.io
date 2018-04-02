@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="willkernel">
 <meta property="og:description" content="常用快捷键 Ctrl+Alt+T 打开终端 Ctrl+L 清空屏幕(功能相当于命令clear) Ctrl+U 剪切文本直到行的起始(可以用于清空行) Ctrl+K 剪切文本直到行的末尾 Ctrl+Y 粘贴最近剪切的文本 Ctrl+C 杀死当前进程(也可以用来清空当前行) Ctrl+D 退出当前Shell(功能相当于命令exit) 或者 删除当前的字符 Ctrl+A 行首 Ctrl+E 行尾 Hom">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-21T18:17:30.298Z">
+<meta property="og:updated_time" content="2018-04-02T01:29:09.111Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 常用快捷键 命令 设置等操作">
 <meta name="twitter:description" content="常用快捷键 Ctrl+Alt+T 打开终端 Ctrl+L 清空屏幕(功能相当于命令clear) Ctrl+U 剪切文本直到行的起始(可以用于清空行) Ctrl+K 剪切文本直到行的末尾 Ctrl+Y 粘贴最近剪切的文本 Ctrl+C 杀死当前进程(也可以用来清空当前行) Ctrl+D 退出当前Shell(功能相当于命令exit) 或者 删除当前的字符 Ctrl+A 行首 Ctrl+E 行尾 Hom">
@@ -442,7 +442,11 @@
 <h4 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">vim .bashrc</span><br><span class="line">   echo $PATH (列出所有环境变量)</span><br><span class="line">   echo $JAVA_HOME （列出某个环境变量值）</span><br><span class="line">   source .bashrc (保存并且生效)</span><br><span class="line">   </span><br><span class="line">   NDKROOT=&apos;/home/willkernel/Downloads/android-ndk-r15c&apos;</span><br><span class="line">export NDKROOT</span><br><span class="line">export PATH=$NDKROOT:$PATH</span><br><span class="line"></span><br><span class="line">ANDROID=&apos;/home/willkernel/Downloads/android-studio/bin&apos;</span><br><span class="line">export ANDROID</span><br><span class="line">export PATH=$ANDROID:$PATH</span><br><span class="line"></span><br><span class="line">FFMPEG=&apos;/home/willkernel/Downloads/ffmpeg-2.6.9&apos;</span><br><span class="line">export FFMPEG</span><br><span class="line">export PATH=$FFMPEG:$PATH</span><br></pre></td></tr></table></figure>
 <h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><p><a href="https://www.thegeekstuff.com/2010/11/50-linux-commands/" target="_blank" rel="noopener">50 Most Frequently Used UNIX / Linux Commands (With Examples)</a><br><a href="https://gywbd.github.io/posts/2014/8/50-linux-commands.html" target="_blank" rel="noopener">50个最常用的Unix/Linux命令</a></p>
 <h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
-<li>install lantern in Ubuntu and launch lantern<br><code>sudo dpkg -i lantern *.deb</code></li>
+<li><p>install lantern in Ubuntu and launch lantern</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i lantern *.deb</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>卸载程序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dpkg --list 已列出安装软件</span><br><span class="line">sudo apt-get --purge remove &lt;programname&gt;  删除程序和配置文件</span><br><span class="line">sudo apt-get remove &lt;programname&gt;  删除程序保留配置文件</span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
@@ -625,7 +629,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

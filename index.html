@@ -305,6 +305,209 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/04/02/SQLite-二/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="willkernel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="willkernel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/02/SQLite-二/" itemprop="url">SQLite(二)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-02T12:08:00+08:00">
+                2018-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/04/02/SQLite-二/" class="leancloud_visitors" data-flag-title="SQLite(二)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h4><ul>
+<li><p>创建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlite3 DatabaseName.db</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看数据库列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.databases</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>导出完整的数据库到一个文本文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sqlite3 DatabaseName.db .dump &gt; DatabaseName.sql</span><br><span class="line"></span><br><span class="line">恢复数据库</span><br><span class="line">sqlite3 DatabaseName.db &lt; DatabaseName.sql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>SQLite 的 ATTACH DATABASE 语句是用来选择一个特定的数据库，使用该命令后，所有的 SQLite 语句将在附加的数据库下执行</p>
+<blockquote>
+<p>如果数据库尚未被创建，将创建一个数据库，如果数据库已存在，则把数据库文件名称与逻辑数据库 ‘Alias-Name’ 绑定在一起</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ATTACH DATABASE &apos;DatabaseName&apos; As &apos;Alias-Name&apos;;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>DETACH DTABASE 分离数据库，上述附件数据库的反操作，DETACH 命令将只断开给定名称的连接，而其余的仍然有效，无法分离 main 或 temp 数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DETACH DATABASE &apos;Alias-Name&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建表  <code>CREATE TABLE</code>创建表 <code>.tables</code> 命令来验证表是否已成功创建  <code>.schema</code>命令得到表的完整信息</p>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/createtable.png"></li>
+<li>删除表 <code>DROP TABLE database_name.table_name;</code></li>
+<li><p>INSERT 添加新的记录，新的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO TABLE_NAME [(column1, column2, column3,...columnN)]  </span><br><span class="line">VALUES (value1, value2, value3,...valueN);</span><br><span class="line"></span><br><span class="line">省略列名，保证顺序一致</span><br><span class="line">INSERT INTO TABLE_NAME VALUES (value1,value2,value3,...valueN);</span><br><span class="line"></span><br><span class="line">INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY)</span><br><span class="line">VALUES (6, &apos;Kim&apos;, 22, &apos;South-Hall&apos;, 45000.00 );</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将第二个表数据添加到第一个表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO first_table_name [(column1, column2, ... columnN)] </span><br><span class="line">   SELECT column1, column2, ...columnN </span><br><span class="line">   FROM second_table_name</span><br><span class="line">   [WHERE condition];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>SELECT 获取表中数据，返回结果集</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2, columnN FROM table_name;</span><br><span class="line"></span><br><span class="line">SELECT * FROM table_name;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">.header on</span><br><span class="line">.mode column</span><br><span class="line">.width 10, 20, 10</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/selectfrom.png">
+<ul>
+<li>Schema 信息<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">列出所有在数据库中创建的表</span><br><span class="line">SELECT tbl_name FROM sqlite_master WHERE type = &apos;table&apos;;</span><br><span class="line">产生以下结果：</span><br><span class="line"></span><br><span class="line">tbl_name</span><br><span class="line">----------</span><br><span class="line">COMPANY</span><br><span class="line"></span><br><span class="line">列出关于 COMPANY 表的完整信息</span><br><span class="line">SELECT sql FROM sqlite_master WHERE type = &apos;table&apos; AND tbl_name = &apos;COMPANY&apos;;</span><br><span class="line">假设在 testDB.db 中已经存在唯一的 COMPANY 表，产生以下结果：</span><br><span class="line"></span><br><span class="line">CREATE TABLE COMPANY(</span><br><span class="line">   ID INT PRIMARY KEY     NOT NULL,</span><br><span class="line">   NAME           TEXT    NOT NULL,</span><br><span class="line">   AGE            INT     NOT NULL,</span><br><span class="line">   ADDRESS        CHAR(50),</span><br><span class="line">   SALARY         REAL</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><ul>
+<li><p>算术运算符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sqlite&gt; select 10+20;</span><br><span class="line">30</span><br><span class="line">sqlite&gt; .mode line</span><br><span class="line">sqlite&gt; select 10-20;</span><br><span class="line">10-20 = -10</span><br><span class="line">sqlite&gt; select 1/3;</span><br><span class="line">  1/3 = 0</span><br><span class="line">sqlite&gt; select 12%5;</span><br><span class="line"> 12%5 = 2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>比较运算符</p>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/sqlite-compare.png"></li>
+<li><p>逻辑运算符</p>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/sqlite-logic.png">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">WHERE AGE &gt;= 25 AND/OR SALARY &gt;= 65000;</span><br><span class="line">WHERE AGE IS NOT NULL</span><br><span class="line">WHERE NAME LIKE &apos;Ki%&apos;;</span><br><span class="line">WHERE NAME GLOB &apos;Ki*&apos;;</span><br><span class="line">WHERE AGE NOT IN ( 25, 27 );</span><br><span class="line">WHERE AGE BETWEEN 25 AND 27;</span><br><span class="line"></span><br><span class="line">SQL 子查询，子查询查找 SALARY &gt; 65000 的带有 AGE 字段的所有记录，后边的 WHERE 子句与 EXISTS 运算符一起使用</span><br><span class="line"> SELECT AGE FROM COMPANY WHERE EXISTS (SELECT AGE FROM COMPANY WHERE SALARY &gt; 65000);</span><br><span class="line"></span><br><span class="line">AGE</span><br><span class="line">----------</span><br><span class="line">25</span><br><span class="line">23</span><br><span class="line">25</span><br><span class="line"></span><br><span class="line">SELECT * FROM COMPANY WHERE AGE &gt; (SELECT AGE FROM COMPANY WHERE SALARY &gt; 65000);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>位运算符  A=60， B=13</p>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/sqlite-bit.png">
+</li>
+</ul>
+<h4 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h4>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/30/SQLite-一/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -408,140 +611,20 @@
 
       
         
-          
-            <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>SQLite特点：无服务器、零配置、事务性的 SQL 数据库引擎，SQLite 引擎不是一个独立的进程，可以按应用程序需求进行静态或动态连接；非常小轻量级，兼容ACID原则，是进程或线程安全的</p>
+          <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>SQLite特点：无服务器、零配置、事务性的 SQL 数据库引擎，SQLite 引擎不是一个独立的进程，可以按应用程序需求进行静态或动态连接；非常小轻量级，兼容ACID原则，是进程或线程安全的</p>
 <blockquote>
-<p>ACID是一组强调高可靠性的数据库系统设计原则，在软件崩溃甚至是硬件故障的情况下，数据也不会损坏。当你需要依赖兼容ACID原则的业务时，你不必重复造轮子去实现一致性检查和崩溃恢复机制。如果你有额外的安全保证机制，可以调整牺牲掉ACID的一些可靠性换取更高的性能和数据吞吐量<br>A: atomicity (原子性)<br>C: consistency (一致性)<br>I: isolation （隔离性）<br>D: durability （持久性）<br>SQL92 不支持的特性如下所示：</p>
-</blockquote>
-<blockquote>
-<p>特性    描述<br>RIGHT OUTER JOIN    只实现了 LEFT OUTER JOIN<br>FULL OUTER JOIN       只实现了 LEFT OUTER JOIN<br>ALTER TABLE          支持 RENAME TABLE 和 ALTER TABLE 的 ADD COLUMN variants 命令，不支持 DROP COLUMN、ALTER COLUMN、ADD CONSTRAINT<br>Trigger         支持 FOR EACH ROW 触发器，但不支持 FOR EACH STATEMENT 触发器<br>VIEWs          在 SQLite 中，视图是只读的,不可以在视图上执行 DELETE、INSERT 或 UPDATE 语句<br>GRANT 和 REVOKE    可以应用的唯一的访问权限是底层操作系统的正常文件访问权限</p>
+<p>ACID是一组强调高可靠性的数据库系统设计原则，在软件崩溃甚至是硬件故障的情况下，数据也不会损坏。当你需要依赖兼容ACID原则的业务时，你不必重复造轮子去实现一致性检查和崩溃恢复机制。如果你有额外的安全保证机制，可以调整牺牲掉ACID的一些可靠性换取更高的性能和数据吞吐量<br>A: atomicity (原子性)<br>C: consistency (一致性)<br>I: isolation （隔离性）<br>D: durability （持久性）</p>
 </blockquote>
 <blockquote>
-<p>DDL 数据定义语言<br>CREATE    创建一个新的表，一个表的视图，或者数据库中的其他对象<br>ALTER    修改数据库中的某个已有的数据库对象，比如一个表<br>DROP    删除整个表，或者表的视图，或者数据库中的其他对象</p>
+<p>SQL92 不支持的特性如下<br>RIGHT OUTER JOIN    只实现了 LEFT OUTER JOIN<br>FULL OUTER JOIN       只实现了 LEFT OUTER JOIN<br>ALTER TABLE          支持 RENAME TABLE 和 ALTER TABLE 的 ADD COLUMN variants 命令，不支持 DROP COLUMN、ALTER COLUMN、ADD CONSTRAINT<br>Trigger         支持 FOR EACH ROW 触发器，但不支持 FOR EACH STATEMENT 触发器<br>VIEWs          在 SQLite 中，视图是只读的,不可以在视图上执行 DELETE、INSERT 或 UPDATE 语句<br>GRANT 和 REVOKE    可以应用的唯一的访问权限是底层操作系统的正常文件访问权限</p>
 </blockquote>
-<blockquote>
-<p>DML 数据操作语言<br>INSERT    创建一条记录<br>UPDATE    修改记录<br>DELETE    删除记录</p>
-</blockquote>
-<blockquote>
-<p>DQL 数据库查询语言<br>SELECT    从一个或多个表中检索某些记录</p>
-</blockquote>
-<ul>
-<li>安装<a href="http://www.sqlite.org/download.html" target="_blank" rel="noopener">sqlite3</a>，设置PATH，cmd运行sqlite3</li>
-<li>SQLite点命令<ul>
-<li>.help 获取帮助<img src="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-1.png">
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-2.png"></li>
-<li>.show 命令查看 SQLite 命令提示符的默认设置,下面是修改默认设置属性<blockquote>
-<p>sqlite&gt;.header on<br>sqlite&gt;.mode column<br>sqlite&gt;.timer on</p>
-</blockquote>
-</li>
-<li>sqlite_master 主表中保存数据库表的关键信息，并把它命名为 sqlite_master，如要查看表概要<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> CREATE TABLE sqlite_master (</span><br><span class="line">  type text,</span><br><span class="line">  name text,</span><br><span class="line">  tbl_name text,</span><br><span class="line">  rootpage integer,</span><br><span class="line">  sql text</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="SQLite语法"><a href="#SQLite语法" class="headerlink" title="SQLite语法"></a>SQLite语法</h4><ul>
-<li>不区分大小写，但是有些命令大小写敏感，GLOB和glob在SQLite不同   <a href="http://www.sqlitetutorial.net/" target="_blank" rel="noopener">SQLite3练习</a><blockquote>
-<p>The GLOB operator is similar to LIKE but uses the Unix file globbing syntax for its wildcards. Also, GLOB is case sensitive, unlike LIKE<br>The glob(X,Y) function is equivalent to the expression “Y GLOB X”</p>
-</blockquote>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line"> trackid,</span><br><span class="line"> name</span><br><span class="line">FROM</span><br><span class="line"> tracks</span><br><span class="line">WHERE</span><br><span class="line"> name GLOB &apos;Man*&apos;;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>注释<code>sqlite&gt;.help -- This is a single line comment</code></li>
-<li>SELECT、INSERT、UPDATE、DELETE、ALTER、DROP 等，所有的语句以分号<code>;</code>结束</li>
-<li><p>SELECT</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2....columnN</span><br><span class="line">FROM   table_name;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>ANALYZE</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ANALYZE;</span><br><span class="line">or</span><br><span class="line">ANALYZE database_name;</span><br><span class="line">or</span><br><span class="line">ANALYZE database_name.table_name;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>AND/OR</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2....columnN</span><br><span class="line">FROM   table_name</span><br><span class="line">WHERE  CONDITION-1 &#123;AND|OR&#125; CONDITION-2;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>ALTER TABLE (RENAME TO)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE table_name ADD COLUMN column_def...;</span><br><span class="line"></span><br><span class="line">ALTER TABLE table_name RENAME TO new_table_name;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>ATTACH DATABASE</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ATTACH DATABASE &apos;DatabaseName&apos; As &apos;Alias-Name&apos;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>DETACH DATABASE</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DETACH DATABASE &apos;Alias-Name&apos;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>BEGIN TRANSACTION</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BEGIN;</span><br><span class="line">or</span><br><span class="line">BEGIN EXCLUSIVE TRANSACTION;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>BETWEEN</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2....columnN</span><br><span class="line">FROM   table_name</span><br><span class="line">WHERE  column_name BETWEEN val-1 AND val-2;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>CREATE (UNIQUE) INDEX</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX index_name</span><br><span class="line">ON table_name ( column_name COLLATE NOCASE );</span><br><span class="line"></span><br><span class="line">CREATE UNIQUE INDEX index_name</span><br><span class="line">ON table_name ( column1, column2,...columnN);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>ROLLBACK：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ROLLBACK;</span><br><span class="line">or</span><br><span class="line">ROLLBACK TO SAVEPOINT savepoint_name;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>SAVEPOINT</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SAVEPOINT savepoint_name;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>CREATE TABLE</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE table_name(</span><br><span class="line">   column1 datatype,</span><br><span class="line">   column2 datatype,</span><br><span class="line">   column3 datatype,</span><br><span class="line">   .....</span><br><span class="line">   columnN datatype,</span><br><span class="line">   PRIMARY KEY( one or more columns )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>CREATE TRIGGER</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TRIGGER database_name.trigger_name </span><br><span class="line">BEFORE INSERT ON table_name FOR EACH ROW</span><br><span class="line">BEGIN </span><br><span class="line">   stmt1; </span><br><span class="line">   stmt2;</span><br><span class="line">   ....</span><br><span class="line">END;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>CREATE VIEW</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE VIEW database_name.view_name  AS</span><br><span class="line">SELECT statement....;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>CREATE VIRTUAL TABLE</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE VIRTUAL TABLE database_name.table_name USING weblog( access.log );</span><br><span class="line">or</span><br><span class="line">CREATE VIRTUAL TABLE database_name.table_name USING fts3( );</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>COUNT</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT COUNT(column_name)</span><br><span class="line">FROM   table_name</span><br><span class="line">WHERE  CONDITION;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>DELETE</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM table_name</span><br><span class="line">WHERE  &#123;CONDITION&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>DISTINCT</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT DISTINCT column1, column2....columnN</span><br><span class="line">FROM   table_name;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>DROP TABLE/INDEX</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE/INDEX database_name.table_name/index_name;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>DROP VIEW/TRIGGER </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP VIEW/TRIGGER  view_name/trigger_name;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>EXISTS </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2....columnN</span><br><span class="line">FROM   table_name</span><br><span class="line">WHERE  column_name EXISTS (SELECT * FROM   table_name )</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>GLOB</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2....columnN</span><br><span class="line">FROM   table_name</span><br><span class="line">WHERE  column_name GLOB &#123; PATTERN &#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>GROUP BY </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT SUM(column_name)</span><br><span class="line">FROM   table_name</span><br><span class="line">WHERE  CONDITION</span><br><span class="line">GROUP BY column_name;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>HAVING</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT SUM(column_name)</span><br><span class="line">FROM   table_name</span><br><span class="line">WHERE  CONDITION</span><br><span class="line">GROUP BY column_name</span><br><span class="line">HAVING (arithematic function condition);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>WHERE</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2....columnN</span><br><span class="line">FROM   table_name</span><br><span class="line">WHERE  CONDITION;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>UPDATE</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UPDATE table_name</span><br><span class="line">SET column1 = value1, column2 = value2....columnN=valueN</span><br><span class="line">[ WHERE  CONDITION ];</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>INSERT INTO</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO table_name( column1, column2....columnN)</span><br><span class="line">VALUES ( value1, value2....valueN);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>IN/NOT IN</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2....columnN</span><br><span class="line">FROM   table_name</span><br><span class="line">WHERE  column_name IN/NOT IN (val-1, val-2,...val-N);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Like</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2....columnN</span><br><span class="line">FROM   table_name</span><br><span class="line">WHERE  column_name LIKE &#123; PATTERN &#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>ORDER BY</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2....columnN</span><br><span class="line">FROM   table_name</span><br><span class="line">WHERE  CONDITION</span><br><span class="line">ORDER BY column_name &#123;ASC|DESC&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="SQLite数据类型"><a href="#SQLite数据类型" class="headerlink" title="SQLite数据类型"></a>SQLite数据类型</h4>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/30/SQLite-一/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2763,158 +2846,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/NDK/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="willkernel">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="willkernel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/09/NDK/" itemprop="url">NDK</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:04:00+08:00">
-                2018-03-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/03/09/NDK/" class="leancloud_visitors" data-flag-title="NDK">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Git/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3036,6 +2967,158 @@
             </a>
           </div>
           <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/NDK/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="willkernel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="willkernel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/09/NDK/" itemprop="url">NDK</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:04:00+08:00">
+                2018-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/09/NDK/" class="leancloud_visitors" data-flag-title="NDK">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
         
       
     </div>
@@ -3716,166 +3799,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/08/Android-Notes-System-Info-Manager-Safety/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="willkernel">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="willkernel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/08/Android-Notes-System-Info-Manager-Safety/" itemprop="url">Android Notes(System Info Manager Safety)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T01:29:00+08:00">
-                2018-03-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/03/08/Android-Notes-System-Info-Manager-Safety/" class="leancloud_visitors" data-flag-title="Android Notes(System Info Manager Safety)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="Android-System-Info"><a href="#Android-System-Info" class="headerlink" title="Android System Info"></a>Android System Info</h4><ul>
-<li>android.os.Build<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Build.BOARD 主板</span><br><span class="line">Build.BRAND 系统定制商</span><br><span class="line">Build.SUPPORTED_ABIS CPU指令集</span><br><span class="line">Build.DEVICE 设备参数</span><br><span class="line">Build.DISPLAY 显示屏参数</span><br><span class="line">Build.FINGERPRINT 唯一编号</span><br><span class="line">Build.SERIAL 硬件序列号</span><br><span class="line">Build.ID 修订版本</span><br><span class="line">Build.MANUFACTURER 硬件制造商</span><br><span class="line">Build.MODEL 版本</span><br><span class="line">Build.HARDWARE 硬件名</span><br><span class="line">Build.PRODUCT 手机产品名</span><br><span class="line">Build.TAGS Build 标签</span><br><span class="line">Build.TYPE Build 类型</span><br><span class="line">Build.VERSION.CODENAME 开发代号</span><br><span class="line">Build.VERSION.INCREMENTAL 源码控制版本号</span><br><span class="line">Build.VERSION.RELEASE 版本字符串</span><br><span class="line">Build.VERSION.SDK_INT 版本号</span><br><span class="line">// The following properties only make sense for internal engineering builds.</span><br><span class="line">Build.HOST Host值</span><br><span class="line">Build.USER User名</span><br><span class="line">Build.TIME 编译时间</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/08/Android-Notes-System-Info-Manager-Safety/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3932,7 +3855,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

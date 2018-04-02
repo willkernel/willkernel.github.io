@@ -98,7 +98,9 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-1.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-2.png">
-<meta property="og:updated_time" content="2018-03-30T17:21:49.522Z">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-affinity1.png">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-affinity2.png">
+<meta property="og:updated_time" content="2018-04-02T04:06:25.882Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQLite(一)">
 <meta name="twitter:description" content="简介SQLite特点：无服务器、零配置、事务性的 SQL 数据库引擎，SQLite 引擎不是一个独立的进程，可以按应用程序需求进行静态或动态连接；非常小轻量级，兼容ACID原则，是进程或线程安全的  ACID是一组强调高可靠性的数据库系统设计原则，在软件崩溃甚至是硬件故障的情况下，数据也不会损坏。当你需要依赖兼容ACID原则的业务时，你不必重复造轮子去实现一致性检查和崩溃恢复机制。如果你有额外的安">
@@ -411,11 +413,12 @@
       
         <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>SQLite特点：无服务器、零配置、事务性的 SQL 数据库引擎，SQLite 引擎不是一个独立的进程，可以按应用程序需求进行静态或动态连接；非常小轻量级，兼容ACID原则，是进程或线程安全的</p>
 <blockquote>
-<p>ACID是一组强调高可靠性的数据库系统设计原则，在软件崩溃甚至是硬件故障的情况下，数据也不会损坏。当你需要依赖兼容ACID原则的业务时，你不必重复造轮子去实现一致性检查和崩溃恢复机制。如果你有额外的安全保证机制，可以调整牺牲掉ACID的一些可靠性换取更高的性能和数据吞吐量<br>A: atomicity (原子性)<br>C: consistency (一致性)<br>I: isolation （隔离性）<br>D: durability （持久性）<br>SQL92 不支持的特性如下所示：</p>
+<p>ACID是一组强调高可靠性的数据库系统设计原则，在软件崩溃甚至是硬件故障的情况下，数据也不会损坏。当你需要依赖兼容ACID原则的业务时，你不必重复造轮子去实现一致性检查和崩溃恢复机制。如果你有额外的安全保证机制，可以调整牺牲掉ACID的一些可靠性换取更高的性能和数据吞吐量<br>A: atomicity (原子性)<br>C: consistency (一致性)<br>I: isolation （隔离性）<br>D: durability （持久性）</p>
 </blockquote>
 <blockquote>
-<p>特性    描述<br>RIGHT OUTER JOIN    只实现了 LEFT OUTER JOIN<br>FULL OUTER JOIN       只实现了 LEFT OUTER JOIN<br>ALTER TABLE          支持 RENAME TABLE 和 ALTER TABLE 的 ADD COLUMN variants 命令，不支持 DROP COLUMN、ALTER COLUMN、ADD CONSTRAINT<br>Trigger         支持 FOR EACH ROW 触发器，但不支持 FOR EACH STATEMENT 触发器<br>VIEWs          在 SQLite 中，视图是只读的,不可以在视图上执行 DELETE、INSERT 或 UPDATE 语句<br>GRANT 和 REVOKE    可以应用的唯一的访问权限是底层操作系统的正常文件访问权限</p>
+<p>SQL92 不支持的特性如下<br>RIGHT OUTER JOIN    只实现了 LEFT OUTER JOIN<br>FULL OUTER JOIN       只实现了 LEFT OUTER JOIN<br>ALTER TABLE          支持 RENAME TABLE 和 ALTER TABLE 的 ADD COLUMN variants 命令，不支持 DROP COLUMN、ALTER COLUMN、ADD CONSTRAINT<br>Trigger         支持 FOR EACH ROW 触发器，但不支持 FOR EACH STATEMENT 触发器<br>VIEWs          在 SQLite 中，视图是只读的,不可以在视图上执行 DELETE、INSERT 或 UPDATE 语句<br>GRANT 和 REVOKE    可以应用的唯一的访问权限是底层操作系统的正常文件访问权限</p>
 </blockquote>
+<a id="more"></a>
 <blockquote>
 <p>DDL 数据定义语言<br>CREATE    创建一个新的表，一个表的视图，或者数据库中的其他对象<br>ALTER    修改数据库中的某个已有的数据库对象，比如一个表<br>DROP    删除整个表，或者表的视图，或者数据库中的其他对象</p>
 </blockquote>
@@ -540,7 +543,25 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2....columnN</span><br><span class="line">FROM   table_name</span><br><span class="line">WHERE  CONDITION</span><br><span class="line">ORDER BY column_name &#123;ASC|DESC&#125;;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="SQLite数据类型"><a href="#SQLite数据类型" class="headerlink" title="SQLite数据类型"></a>SQLite数据类型</h4>
+<h4 id="SQLite数据类型"><a href="#SQLite数据类型" class="headerlink" title="SQLite数据类型"></a>SQLite数据类型</h4><ul>
+<li>存储类<blockquote>
+<p>NULL    值是一个 NULL 值<br>INTEGER    值是一个带符号的整数，根据值的大小存储在 1、2、3、4、6 或 8 字节中<br>REAL    值是一个浮点值，存储为 8 字节的浮点数字<br>TEXT    值是一个文本字符串，使用数据库编码（UTF-8、UTF-16BE 或 UTF-16LE）存储<br>BLOB    值是一个 blob 数据，完全根据它的输入存储</p>
+</blockquote>
+</li>
+<li>亲和类 该字段的数据将会优先采用亲缘类型作为该值的存储方式<blockquote>
+<p>TEXT    数值型数据在被插入之前，需要先被转换为文本格式，之后再插入到目标字段中<br>NUMERIC    当文本数据被插入到亲缘性为NUMERIC的字段中时，如果转换操作不会导致数据信息丢失以及完全可逆，那么SQLite就会将该文本数据转换为INTEGER或REAL类型的数据，如果转换失败，SQLite仍会以TEXT方式存储该数据。对于NULL或BLOB类型的新数据，SQLite将不做任何转换，直接以NULL或BLOB的方式存储该数据。需要额外说明的是，对于浮点格式的常量文本，如”30000.0”，如果该值可以转换为INTEGER同时又不会丢失数值信息，那么SQLite就会将其转换为INTEGER的存储方式<br>INTEGER    对于亲缘类型为INTEGER的字段，其规则等同于NUMERIC，唯一差别是在执行CAST表达式时<br>REAL    其规则基本等同于NUMERIC，唯一的差别是不会将”30000.0”这样的文本数据转换为INTEGER存储方式<br>NONE    不做任何的转换，直接以该数据所属的数据类型进行存储</p>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-affinity1.png">
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-affinity2.png"></blockquote>
+</li>
+<li><p>Boolean数据类型  SQLite 没有单独的 Boolean 存储类。相反，布尔值被存储为整数 0（false）和 1（true）</p>
+</li>
+<li><p>Date 与 Time 数据类型  SQLite 没有一个单独的用于存储日期和/或时间的存储类，但 SQLite 能够把日期和时间存储为 TEXT、REAL 或 INTEGER 值，并且可以使用内置的日期和时间函数来自由转换不同格式</p>
+<blockquote>
+<p>TEXT    格式为 “YYYY-MM-DD HH:MM:SS.SSS” 的日期<br>REAL    从公元前 4714 年 11 月 24 日格林尼治时间的正午开始算起的天数<br>INTEGER    从 1970-01-01 00:00:00 UTC 算起的秒数</p>
+</blockquote>
+</li>
+</ul>
+
       
     </div>
     
@@ -635,6 +656,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/04/02/SQLite-二/" rel="prev" title="SQLite(二)">
+                SQLite(二) <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -721,7 +746,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
