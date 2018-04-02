@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://willkernel.github.io/"/>
-  <updated>2018-04-02T06:49:41.477Z</updated>
+  <updated>2018-04-02T16:31:31.061Z</updated>
   <id>http://willkernel.github.io/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java 小知识</title>
+    <link href="http://willkernel.github.io/2018/04/02/Java-%E5%B0%8F%E7%9F%A5%E8%AF%86/"/>
+    <id>http://willkernel.github.io/2018/04/02/Java-小知识/</id>
+    <published>2018-04-02T15:53:00.000Z</published>
+    <updated>2018-04-02T16:31:31.061Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;transient&lt;/code&gt; vs
+        
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="http://willkernel.github.io/categories/Java/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Window和WindowManager</title>
+    <link href="http://willkernel.github.io/2018/04/02/Window%E5%92%8CWindowManager/"/>
+    <id>http://willkernel.github.io/2018/04/02/Window和WindowManager/</id>
+    <published>2018-04-02T15:17:00.000Z</published>
+    <updated>2018-04-02T18:02:20.763Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Window和WindowManager&lt;br&gt;Window表示一个窗口，可以实现在桌面上显示悬浮窗，Window是一个抽象类，具体实现是PhoneWindow。通过WindowManager创建Window，WindowManager是外界访问Windo
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>SQLite(二)</title>
@@ -502,56 +552,6 @@
       <category term="Android" scheme="http://willkernel.github.io/tags/Android/"/>
     
       <category term="Kotlin" scheme="http://willkernel.github.io/tags/Kotlin/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MVVM</title>
-    <link href="http://willkernel.github.io/2018/03/09/MVVM/"/>
-    <id>http://willkernel.github.io/2018/03/09/MVVM/</id>
-    <published>2018-03-08T17:02:00.000Z</published>
-    <updated>2018-03-30T16:53:17.094Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h5 id=&quot;Todo-mvvm-databinding&quot;&gt;&lt;a href=&quot;#Todo-mvvm-databinding&quot; class=&quot;headerlink&quot; title=&quot;Todo-mvvm-databinding&quot;&gt;&lt;/a&gt;Todo-mvvm-databinding&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;Model: 内存，本地，网络数据的实现与获取&lt;/li&gt;
-&lt;li&gt;View: 对应Activity,Fragment,负责View的绘制，与用户交互，在xml中编写databinding对model层数据的引用绑定，&lt;code&gt;ViewModelHolder&amp;lt;VH&amp;gt;&lt;/code&gt;作为非UI的Fragment持有ViewModel，并绑定到Activity的生命周期&lt;/li&gt;
-&lt;li&gt;ViewModel: databinding框架绑定ViewModel，ViewModel持有View中引用的变量observable fields，以及数据管理类TasksRepository，数据或属性发生变化时，databinding自动更新UI&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;优缺点&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;低耦合，ViewModel的逻辑代码可重用性，解决MVP中，View，Presenter相互持有问题，响应界面操作无需由View传递，数据变换也无需Presenter调用View实现,开发人员可以专注于业务逻辑和数据的开发（ViewModel），设计人员可以专注于页面设计。可测试,界面素来是比较难于测试的，而现在测试可以针对ViewModel来写&lt;/li&gt;
-&lt;li&gt;ViewModel存在Model的依赖，databinding不方便调试&lt;img src=&quot;http://p4n1d4izv.bkt.clouddn.com/images/mvvm-databinding.png&quot;&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Android Notes(Performance)</title>
-    <link href="http://willkernel.github.io/2018/03/08/Android-Notes-Performance/"/>
-    <id>http://willkernel.github.io/2018/03/08/Android-Notes-Performance/</id>
-    <published>2018-03-08T08:26:00.000Z</published>
-    <updated>2018-03-21T18:14:46.099Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;Performance-optimization&quot;&gt;&lt;a href=&quot;#Performance-optimization&quot; class=&quot;headerlink&quot; title=&quot;Performance optimization&quot;&gt;&lt;/a&gt;Performance optimization&lt;/h4&gt;&lt;h5 id=&quot;布局&quot;&gt;&lt;a href=&quot;#布局&quot; class=&quot;headerlink&quot; title=&quot;布局&quot;&gt;&lt;/a&gt;布局&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;人眼感觉流畅画面的帧数要达到40-60帧每秒&lt;/li&gt;
-&lt;li&gt;在Android中，系统通过VSYNC信号触发对UI的渲染，重绘，需要16ms,其实就是1000ms中显示60帧，1000/60=16.67.如果不能在16ms完成绘制，就会丢帧，例如绘制耗时20ms，在16ms有VSYNC信号时无法绘制，该帧被丢弃，等待下次信号才开始绘制，导致16*2ms 都显示同一帧画面&lt;/li&gt;
-&lt;li&gt;在开发者选项中有Profile GPU Rendering 选中On Screen as bars,中间的绿色横线代表VSYNC时间16ms柱状线包含3个部分&lt;ul&gt;
-&lt;li&gt;蓝色代表测量绘制Display List的时间&lt;/li&gt;
-&lt;li&gt;红色代表OpenGL渲染Display List的时间&lt;/li&gt;
-&lt;li&gt;黄色代表CPU等待GPU处理的时间&lt;br&gt;Android 6.0&lt;img src=&quot;http://p4n1d4izv.bkt.clouddn.com/images/gpurendering1.png&quot;&gt;
-&lt;img src=&quot;http://p4n1d4izv.bkt.clouddn.com/images/gpurendering2.png&quot;&gt;
-    
-    </summary>
-    
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
     
   </entry>
   

@@ -305,6 +305,334 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/MVVM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="willkernel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="willkernel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/09/MVVM/" itemprop="url">MVVM</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:02:00+08:00">
+                2018-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/09/MVVM/" class="leancloud_visitors" data-flag-title="MVVM">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h5 id="Todo-mvvm-databinding"><a href="#Todo-mvvm-databinding" class="headerlink" title="Todo-mvvm-databinding"></a>Todo-mvvm-databinding</h5><ul>
+<li>Model: 内存，本地，网络数据的实现与获取</li>
+<li>View: 对应Activity,Fragment,负责View的绘制，与用户交互，在xml中编写databinding对model层数据的引用绑定，<code>ViewModelHolder&lt;VH&gt;</code>作为非UI的Fragment持有ViewModel，并绑定到Activity的生命周期</li>
+<li>ViewModel: databinding框架绑定ViewModel，ViewModel持有View中引用的变量observable fields，以及数据管理类TasksRepository，数据或属性发生变化时，databinding自动更新UI</li>
+<li><p>优缺点</p>
+<ul>
+<li>低耦合，ViewModel的逻辑代码可重用性，解决MVP中，View，Presenter相互持有问题，响应界面操作无需由View传递，数据变换也无需Presenter调用View实现,开发人员可以专注于业务逻辑和数据的开发（ViewModel），设计人员可以专注于页面设计。可测试,界面素来是比较难于测试的，而现在测试可以针对ViewModel来写</li>
+<li>ViewModel存在Model的依赖，databinding不方便调试<img src="http://p4n1d4izv.bkt.clouddn.com/images/mvvm-databinding.png">
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/09/MVVM/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/08/Android-Notes-Performance/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="willkernel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="willkernel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/08/Android-Notes-Performance/" itemprop="url">Android Notes(Performance)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T16:26:00+08:00">
+                2018-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/08/Android-Notes-Performance/" class="leancloud_visitors" data-flag-title="Android Notes(Performance)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="Performance-optimization"><a href="#Performance-optimization" class="headerlink" title="Performance optimization"></a>Performance optimization</h4><h5 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h5><ul>
+<li>人眼感觉流畅画面的帧数要达到40-60帧每秒</li>
+<li>在Android中，系统通过VSYNC信号触发对UI的渲染，重绘，需要16ms,其实就是1000ms中显示60帧，1000/60=16.67.如果不能在16ms完成绘制，就会丢帧，例如绘制耗时20ms，在16ms有VSYNC信号时无法绘制，该帧被丢弃，等待下次信号才开始绘制，导致16*2ms 都显示同一帧画面</li>
+<li>在开发者选项中有Profile GPU Rendering 选中On Screen as bars,中间的绿色横线代表VSYNC时间16ms柱状线包含3个部分<ul>
+<li>蓝色代表测量绘制Display List的时间</li>
+<li>红色代表OpenGL渲染Display List的时间</li>
+<li>黄色代表CPU等待GPU处理的时间<br>Android 6.0<img src="http://p4n1d4izv.bkt.clouddn.com/images/gpurendering1.png">
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/gpurendering2.png">
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/08/Android-Notes-Performance/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/08/Android-Notes-System-Info-Manager-Safety/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2166,7 +2494,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2177,7 +2505,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 
               </div>

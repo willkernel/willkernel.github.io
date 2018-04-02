@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://willkernel.github.io/2018/04/02/Window%E5%92%8CWindowManager/</loc>
+    
+    <lastmod>2018-04-02T18:02:20.763Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://willkernel.github.io/categories/index.html</loc>
+    
+    <lastmod>2018-04-02T16:33:30.222Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://willkernel.github.io/2018/04/02/Java-%E5%B0%8F%E7%9F%A5%E8%AF%86/</loc>
+    
+    <lastmod>2018-04-02T16:31:31.061Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://willkernel.github.io/2018/04/02/SQLite-%E4%BA%8C/</loc>
     
     <lastmod>2018-04-02T06:49:41.477Z</lastmod>
@@ -82,13 +103,6 @@
     <loc>http://willkernel.github.io/2018/03/23/Kotlin-for-Android-%E4%BA%8C/</loc>
     
     <lastmod>2018-03-23T08:33:33.257Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://willkernel.github.io/categories/index.html</loc>
-    
-    <lastmod>2018-03-23T02:51:28.025Z</lastmod>
     
   </url>
   

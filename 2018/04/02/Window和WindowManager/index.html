@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Docker,源码," />
+  <meta name="keywords" content="Hello, willkernel" />
 
 
 
@@ -88,20 +88,17 @@
 
 
 
-<meta name="description" content="Windows 安装Docker Cannot install packages inside docker Ubuntu image  12345678910It is because there is no package cache in the image, you need to run:apt-get -qq updatebefore installing packages, and">
-<meta name="keywords" content="Docker,源码">
+<meta name="description" content="Window和WindowManagerWindow表示一个窗口，可以实现在桌面上显示悬浮窗，Window是一个抽象类，具体实现是PhoneWindow。通过WindowManager创建Window，WindowManager是外界访问Window的入口，Window的具体实现位于WindowManagerService，WindowManager和WindowManagerService交互">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker 编译Android源码">
-<meta property="og:url" content="http://willkernel.github.io/2018/02/26/Docker-编译Android源码/index.html">
+<meta property="og:title" content="Window和WindowManager">
+<meta property="og:url" content="http://willkernel.github.io/2018/04/02/Window和WindowManager/index.html">
 <meta property="og:site_name" content="willkernel">
-<meta property="og:description" content="Windows 安装Docker Cannot install packages inside docker Ubuntu image  12345678910It is because there is no package cache in the image, you need to run:apt-get -qq updatebefore installing packages, and">
+<meta property="og:description" content="Window和WindowManagerWindow表示一个窗口，可以实现在桌面上显示悬浮窗，Window是一个抽象类，具体实现是PhoneWindow。通过WindowManager创建Window，WindowManager是外界访问Window的入口，Window的具体实现位于WindowManagerService，WindowManager和WindowManagerService交互">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/lunch.png">
-<meta property="og:updated_time" content="2018-04-02T02:21:38.751Z">
+<meta property="og:updated_time" content="2018-04-02T18:02:20.763Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker 编译Android源码">
-<meta name="twitter:description" content="Windows 安装Docker Cannot install packages inside docker Ubuntu image  12345678910It is because there is no package cache in the image, you need to run:apt-get -qq updatebefore installing packages, and">
-<meta name="twitter:image" content="http://p4n1d4izv.bkt.clouddn.com/images/lunch.png">
+<meta name="twitter:title" content="Window和WindowManager">
+<meta name="twitter:description" content="Window和WindowManagerWindow表示一个窗口，可以实现在桌面上显示悬浮窗，Window是一个抽象类，具体实现是PhoneWindow。通过WindowManager创建Window，WindowManager是外界访问Window的入口，Window的具体实现位于WindowManagerService，WindowManager和WindowManagerService交互">
 
 
 
@@ -131,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://willkernel.github.io/2018/02/26/Docker-编译Android源码/"/>
+  <link rel="canonical" href="http://willkernel.github.io/2018/04/02/Window和WindowManager/"/>
 
 
 
 
 
-  <title>Docker 编译Android源码 | willkernel</title>
+  <title>Window和WindowManager | willkernel</title>
   
 
 
@@ -308,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/02/26/Docker-编译Android源码/">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/04/02/Window和WindowManager/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="willkernel">
@@ -325,7 +322,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Docker 编译Android源码</h1>
+          <h1 class="post-title" itemprop="name headline">Window和WindowManager</h1>
         
 
         <div class="post-meta">
@@ -337,8 +334,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-26T10:50:00+08:00">
-                2018-02-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-02T23:17:00+08:00">
+                2018-04-02
               </time>
             
 
@@ -377,7 +374,7 @@
 
           
           
-             <span id="/2018/02/26/Docker-编译Android源码/" class="leancloud_visitors" data-flag-title="Docker 编译Android源码">
+             <span id="/2018/04/02/Window和WindowManager/" class="leancloud_visitors" data-flag-title="Window和WindowManager">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -409,71 +406,19 @@
 
       
         <ul>
-<li><a href="https://store.docker.com/editions/community/docker-ce-desktop-windows" target="_blank" rel="noopener">Windows 安装Docker</a></li>
-<li><a href="https://stackoverflow.com/questions/27273412/cannot-install-packages-inside-docker-ubuntu-image" target="_blank" rel="noopener">Cannot install packages inside docker Ubuntu image</a></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">It is because there is no package cache in the image, you need to run:</span><br><span class="line"></span><br><span class="line">apt-get -qq update</span><br><span class="line">before installing packages, and if your command is in a Dockerfile, you&apos;ll then need:</span><br><span class="line"></span><br><span class="line">apt-get -qq -y install curl</span><br><span class="line"></span><br><span class="line">Always combine RUN apt-get update with apt-get install in the same  RUN statement, for example</span><br><span class="line"></span><br><span class="line">RUN apt-get update &amp;&amp; apt-get install -y package-bar</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<ul>
-<li><p>参考<a href="http://blog.csdn.net/godiors_163/article/details/59069108" target="_blank" rel="noopener">使用Docker编译Android系统源码</a></p>
+<li><p>Window和WindowManager<br>Window表示一个窗口，可以实现在桌面上显示悬浮窗，Window是一个抽象类，具体实现是PhoneWindow。通过WindowManager创建Window，WindowManager是外界访问Window的入口，Window的具体实现位于WindowManagerService，WindowManager和WindowManagerService交互是一个IPC过程，Window实际是View的直接管理者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=&quot;android.permission.SYSTEM_ALERT_WINDOW&quot;/&gt;</span><br><span class="line"> </span><br><span class="line">val btn = Button(baseContext)</span><br><span class="line">        btn.text = &quot;button&quot;</span><br><span class="line">        btn.setOnClickListener &#123; toast(&quot;Window Demo&quot;) &#125;</span><br><span class="line">        val layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT,</span><br><span class="line">                LayoutParams.WRAP_CONTENT, 0, 0, PixelFormat.TRANSLUCENT)</span><br><span class="line">        layoutParams.type = LayoutParams.TYPE_SYSTEM_OVERLAY/TYPE_SYSTEM_ERROR/TYPE_SYSTEM_OVERLAY/TYPE_APPLICATION_PANEL</span><br><span class="line">        //不需要获取焦点，不需要接收各种输入事件</span><br><span class="line">        layoutParams.flags = LayoutParams.FLAG_NOT_FOCUSABLE</span><br><span class="line">                //window 区域以为的单击事件传递给底层window，当前window区域以内的自己处理，否则其他window无法收到单击事件</span><br><span class="line">                .or(LayoutParams.FLAG_NOT_TOUCH_MODAL)</span><br><span class="line">                //window 显示在锁屏上</span><br><span class="line">                .or(LayoutParams.FLAG_SHOW_WHEN_LOCKED)</span><br><span class="line">        layoutParams.gravity = Gravity.LEFT.or(Gravity.TOP)</span><br><span class="line">        layoutParams.x = 100</span><br><span class="line">        layoutParams.y = 300</span><br><span class="line">        windowManager.addView(btn, layoutParams)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><a href="http://blog.csdn.net/chouretang/article/details/43769839" target="_blank" rel="noopener">Ubuntu14.10 编译 Android5.0 源码</a></p>
+<li><p>public interface WindowManager extends ViewManager</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public interface ViewManager</span><br><span class="line">&#123;</span><br><span class="line">    /**</span><br><span class="line">     * Assign the passed LayoutParams to the passed View and add the view to the window.</span><br><span class="line">     * &lt;p&gt;Throws &#123;@link android.view.WindowManager.BadTokenException&#125; for certain programming</span><br><span class="line">     * errors, such as adding a second view to a window without removing the first view.</span><br><span class="line">     * &lt;p&gt;Throws &#123;@link android.view.WindowManager.InvalidDisplayException&#125; if the window is on a</span><br><span class="line">     * secondary &#123;@link Display&#125; and the specified display can&apos;t be found</span><br><span class="line">     * (see &#123;@link android.app.Presentation&#125;).</span><br><span class="line">     * @param view The view to be added to this window.</span><br><span class="line">     * @param params The LayoutParams to assign to view.</span><br><span class="line">     */</span><br><span class="line">    public void addView(View view, ViewGroup.LayoutParams params);</span><br><span class="line">    public void updateViewLayout(View view, ViewGroup.LayoutParams params);</span><br><span class="line">    public void removeView(View view);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><a href="https://mirrors.aliyun.com/help/ubuntu" target="_blank" rel="noopener">更换系统镜像源</a></p>
-</li>
-<li>apt-get install wget<ul>
-<li>wget 网址<br>而要让档案自动储存到指令的目录下，则需要借用-P这个参数，可以使用以下的指令</li>
-<li>wget -P 目录 网址<br>举例来说，如果你要放到/root底下，你可以打下列的指令：<br>wget -P /root 网址</li>
-</ul>
+<li><p>添加触摸事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">val btn = Button(baseContext)</span><br><span class="line">        btn.isClickable = true</span><br><span class="line">        btn.text = &quot;button&quot;</span><br><span class="line"></span><br><span class="line">//        btn.setOnClickListener &#123; toast(&quot;Window Demo&quot;) &#125;</span><br><span class="line">        val layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT,</span><br><span class="line">                LayoutParams.WRAP_CONTENT, 0, 0, PixelFormat.TRANSLUCENT)</span><br><span class="line">//        layoutParams.type = LayoutParams.TYPE_SYSTEM_OVERLAY</span><br><span class="line">        layoutParams.type =LayoutParams.TYPE_APPLICATION_PANEL</span><br><span class="line">        layoutParams.flags =</span><br><span class="line">                //不需要获取焦点，不需要接收各种输入事件</span><br><span class="line">                LayoutParams.FLAG_NOT_FOCUSABLE</span><br><span class="line">                        //window 区域以为的单击事件传递给底层window，当前window区域以内的自己处理，否则其他window无法收到单击事件</span><br><span class="line">                        .or(LayoutParams.FLAG_NOT_TOUCH_MODAL)</span><br><span class="line">                        //window 显示在锁屏上</span><br><span class="line">                        .or(LayoutParams.FLAG_SHOW_WHEN_LOCKED)</span><br><span class="line">        layoutParams.gravity = Gravity.LEFT.or(Gravity.TOP)</span><br><span class="line">        layoutParams.x = 100</span><br><span class="line">        layoutParams.y = 300</span><br><span class="line">        btn.setOnTouchListener &#123; v, event -&gt;</span><br><span class="line">            when (event.action) &#123;</span><br><span class="line">                MotionEvent.ACTION_MOVE -&gt; &#123;</span><br><span class="line">                    layoutParams.x = event.rawX.toInt()</span><br><span class="line">                    layoutParams.y = event.rawY.toInt()</span><br><span class="line">                    windowManager.updateViewLayout(btn, layoutParams)</span><br><span class="line">                &#125;</span><br><span class="line">                else -&gt; &#123;</span><br><span class="line">                    Log.i(&quot;touch&quot;, &quot;else&quot;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            return@setOnTouchListener false</span><br><span class="line">        &#125;</span><br><span class="line">        windowManager.addView(btn, layoutParams)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<h4 id="Window内部机制"><a href="#Window内部机制" class="headerlink" title="Window内部机制"></a>Window内部机制</h4><p>Window是抽象概念，每一个Window对应一个View和ViewRootImpl，以View的形式存在</p>
 <ul>
-<li>安装配置<a href="http://openjdk.java.net/install/" target="_blank" rel="noopener">openjdk-7-jre</a><br>ubuntu 16 无法安装jdk7解决办法</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:openjdk-r/ppa  </span><br><span class="line">sudo apt-get update   </span><br><span class="line">sudo apt-get install openjdk-7-jdk</span><br><span class="line"></span><br><span class="line">vim/gedit ~/.bashrc</span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64</span><br><span class="line">export JRE_HOME=$JAVA_HOME/jre</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:$JAVA_HOME/bin/tools.jar:$JRE_HOME/bin</span><br><span class="line">export ANDROID_JAVA_HOME=$JAVA_HOME</span><br><span class="line"></span><br><span class="line">export USE_CCACHE=1</span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
-<ul>
-<li>安装其他工具</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">dpkg --print-architecture     # 若支持，输出 amd64</span><br><span class="line">dpkg --print-foreign-architectures    # 若支持，输出 i386</span><br><span class="line">//手动开启支持</span><br><span class="line">dpkg --add-architecture i386</span><br><span class="line">apt-get update</span><br><span class="line"></span><br><span class="line">sudo apt-get install gcc-multilib g++-multilib build-essential</span><br><span class="line">sudo apt-get install git-core gnupg bison flex gperf pngcrush bc zip curl lzop</span><br><span class="line">sudo apt-get install schedtool libxml2 libxml2-utils xsltproc squashfs-tools</span><br><span class="line">sudo apt-get install libesd0-dev libsdl1.2-dev libwxgtk2.8-dev libswitch-perl</span><br><span class="line">sudo apt-get install libssl1.0.0 libssl-dev lib32readline-gplv2-dev libncurses5-dev</span><br><span class="line"></span><br><span class="line">cd /AOSP</span><br><span class="line">export USE_CCACHE=1</span><br><span class="line">export CCACHE_DIR=/&lt;path_of_your_choice&gt;/.ccache</span><br><span class="line">prebuilts/misc/linux-x86/ccache/ccache -M 50G</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>windows 上创建/androidsource</p>
-<ul>
-<li>git clone <a href="https://aosp.tuna.tsinghua.edu.cn/platform/manifest.git" target="_blank" rel="noopener">https://aosp.tuna.tsinghua.edu.cn/platform/manifest.git</a><br>输入命令，切换到manifest目录</li>
-<li>cd manifest</li>
-<li>Git tag 列出android各个<a href="https://source.android.com/setup/build-numbers#source-code-tags-and-builds" target="_blank" rel="noopener">分支版本</a><br>下载android-android-5.1.1_r9<br>git checkout android-5.1.1_r9</li>
-<li>运行 python download-src.py</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import xml.dom.minidom  </span><br><span class="line">import os  </span><br><span class="line">from subprocess import call  </span><br><span class="line"></span><br><span class="line">#downloaded source path  </span><br><span class="line">rootdir = &quot;E:/androidsource&quot;  </span><br><span class="line"></span><br><span class="line">#git program path  </span><br><span class="line">git = &quot;D:/Git/bin/git.exe&quot;</span><br><span class="line">dom = xml.dom.minidom.parse(&quot;E:/androidsource/manifest/default.xml&quot;)  </span><br><span class="line">root = dom.documentElement</span><br><span class="line"></span><br><span class="line">prefix = git + &quot; clone https://aosp.tuna.tsinghua.edu.cn/&quot;  </span><br><span class="line">suffix = &quot;.git&quot;  </span><br><span class="line"></span><br><span class="line">if not os.path.exists(rootdir):  </span><br><span class="line">    os.mkdir(rootdir)  </span><br><span class="line">  </span><br><span class="line">for node in root.getElementsByTagName(&quot;project&quot;):  </span><br><span class="line">    os.chdir(rootdir)  </span><br><span class="line">    d = node.getAttribute(&quot;path&quot;)  </span><br><span class="line">    last = d.rfind(&quot;/&quot;)  </span><br><span class="line">    if last != -1:  </span><br><span class="line">        d = rootdir + &quot;/&quot; + d[:last]  </span><br><span class="line">        if not os.path.exists(d):  </span><br><span class="line">            os.makedirs(d)  </span><br><span class="line">        os.chdir(d)  </span><br><span class="line">    cmd = prefix + node.getAttribute(&quot;name&quot;) + suffix  </span><br><span class="line">    call(cmd)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>出现 curl: (22) The requested URL returned error: 404 Not Found Server does not provide clone.bundle; ignoring. 怎么办？无视即可</li>
-</ul>
-<ul>
-<li>Linux下载repo</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/bin</span><br><span class="line">PATH=~/bin:$PATH</span><br><span class="line">curl https://mirrors.tuna.tsinghua.edu.cn/git/git-repo -o repo</span><br><span class="line">(或者下面的地址)</span><br><span class="line">curl https://storage.googleapis.com/git-repo-downloads/repo &gt; repo</span><br><span class="line">chmod a+x repo</span><br><span class="line"></span><br><span class="line">repo的运行过程中会尝试访问官方的git源更新自己，</span><br><span class="line">如果想可以使用[tuna的镜像](https://mirrors.tuna.tsinghua.edu.cn/help/git-repo/)源进行更新，</span><br><span class="line">可以将如下内容复制到你的~/.bashrc里</span><br><span class="line">export REPO_URL=&apos;https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/&apos;</span><br><span class="line">并重启终端模拟器</span><br><span class="line"></span><br><span class="line">cd /AOSP</span><br><span class="line">初始化同步repo</span><br><span class="line">repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-5.1.1_r9</span><br><span class="line"></span><br><span class="line">repo sync -f -j4</span><br><span class="line">AOSP 未下完成是不显示文件，.repo是隐藏文件夹，ctrl+h显示</span><br><span class="line">有问题时删除缓存文件</span><br><span class="line">rm -rf * -R</span><br></pre></td></tr></table></figure>
-<ul>
-<li>设置repo环境变量</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br><span class="line">export PATH=~/bin:$PATH</span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
-<ul>
-<li><a href="https://mirror.tuna.tsinghua.edu.cn/help/AOSP/" target="_blank" rel="noopener">Ubuntu 下载源码</a></li>
-<li><a href="https://stackoverflow.com/questions/17903705/is-it-possible-to-start-a-shell-session-in-a-running-container-without-ssh" target="_blank" rel="noopener">start a shell session in a running container</a></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it 98e0b4f60ec3 bash</span><br><span class="line"></span><br><span class="line">$ sudo docker attach 665b4a1e17b6 #by ID or</span><br><span class="line">$ sudo docker attach loving_heisenberg #by Name</span><br><span class="line">$ root@665b4a1e17b6:/#</span><br></pre></td></tr></table></figure>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=lI-HwfRZqqs" target="_blank" rel="noopener">Windows mount shared folder to Ubuntu</a></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">In Window Host:-</span><br><span class="line">1. Create a folder &quot;aosp&quot;  -- Window</span><br><span class="line">2. Right Click on &quot;nandan&quot;  -- Properties -- sharing -- Advance Sharing</span><br><span class="line">3. Check option &quot;share this folder&quot; - permission -remove Group or Username &quot;Everyone&quot;.</span><br><span class="line">4. Add User - select your user account from List</span><br><span class="line">5. Check Full Control,Read,Change</span><br><span class="line">6. Applu- Ok - Exit</span><br><span class="line">7. open cmd - ipconfig - copy ipv4 for Wireless lan Adapter  incase if you are using WIFI</span><br><span class="line">----------------</span><br><span class="line">In Ubuntu VM :-</span><br><span class="line">1. Open terminal.. </span><br><span class="line">2. become root</span><br><span class="line">   $sudo su-</span><br><span class="line">3. apt-cache search cifs</span><br><span class="line">4. if cifs utils not present then install </span><br><span class="line">   $ sudo apt-get install cifs-utils</span><br><span class="line">5. df -h</span><br><span class="line">6. $sudo mkdir /media/test</span><br><span class="line">7. $sudo mount.cifs-o username= window_username  //window_ip_address/window_share_folder_name /media/test</span><br><span class="line"></span><br><span class="line">复制win共享文件夹到Ubuntu</span><br><span class="line">cp -r aosp(win shared folder) AOSP</span><br></pre></td></tr></table></figure>
-<p><a href="https://www.jianshu.com/p/aeaceda41798" target="_blank" rel="noopener">Android系统源代码的下载与编译</a></p>
-<ul>
-<li><p>初始化源码所需环境变量和参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source build/envsetup.sh</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>lunch 命令选择编译目标</p>
-<img src="http://p4n1d4izv.bkt.clouddn.com/images/lunch.png"></li>
-<li>make -j16 (nproc 查看cpus)</li>
+<li>接口<code>WindowManager</code>实现类<code>WindowManagerImpl</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void addView(@NonNull View view, @NonNull ViewGroup.LayoutParams params) &#123;</span><br><span class="line">       applyDefaultToken(params);</span><br><span class="line">       mGlobal.addView(view, params, mContext.getDisplay(), mParentWindow);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public void updateViewLayout(@NonNull View view, @NonNull ViewGroup.LayoutParams params) &#123;</span><br><span class="line">       applyDefaultToken(params);</span><br><span class="line">       mGlobal.updateViewLayout(view, params);</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line">@Override</span><br><span class="line">public void removeView(View view) &#123;</span><br><span class="line">       mGlobal.removeView(view, false);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
@@ -532,7 +477,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://willkernel.github.io/2018/02/26/Docker-编译Android源码/" title="Docker 编译Android源码">http://willkernel.github.io/2018/02/26/Docker-编译Android源码/</a>
+    <a href="http://willkernel.github.io/2018/04/02/Window和WindowManager/" title="Window和WindowManager">http://willkernel.github.io/2018/04/02/Window和WindowManager/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -545,14 +490,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Docker/" rel="tag"># Docker</a>
-          
-            <a href="/tags/源码/" rel="tag"># 源码</a>
-          
-        </div>
-      
 
       
       
@@ -562,8 +499,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/26/算法-c/" rel="next" title="算法 c++">
-                <i class="fa fa-chevron-left"></i> 算法 c++
+              <a href="/2018/04/02/SQLite-二/" rel="next" title="SQLite(二)">
+                <i class="fa fa-chevron-left"></i> SQLite(二)
               </a>
             
           </div>
@@ -572,8 +509,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/02/Android-Notes-ListView-Scroller/" rel="prev" title="Android Notes (ListView Scroller)">
-                Android Notes (ListView Scroller) <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/02/Java-小知识/" rel="prev" title="Java 小知识">
+                Java 小知识 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -633,8 +570,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -779,6 +725,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Window内部机制"><span class="nav-number">1.</span> <span class="nav-text">Window内部机制</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
