@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hello, willkernel" />
+  <meta name="keywords" content="SQLite," />
 
 
 
@@ -88,23 +88,27 @@
 
 
 
-<meta name="description" content="数据库操作 创建 1sqlite3 DatabaseName.db  查看数据库列表 1.databases  导出完整的数据库到一个文本文件 1234sqlite3 DatabaseName.db .dump &amp;gt; DatabaseName.sql恢复数据库sqlite3 DatabaseName.db &amp;lt; DatabaseName.sql  SQLite 的 ATTACH DATAB">
+<meta name="description" content="数据库操作 创建 1sqlite3 DatabaseName.db  查看数据库列表 1.databases     导出完整的数据库到一个文本文件 1234sqlite3 DatabaseName.db .dump &amp;gt; DatabaseName.sql恢复数据库sqlite3 DatabaseName.db &amp;lt; DatabaseName.sql  SQLite 的 ATTACH DA">
+<meta name="keywords" content="SQLite">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQLite(二)">
 <meta property="og:url" content="http://willkernel.github.io/2018/04/02/SQLite-二/index.html">
 <meta property="og:site_name" content="willkernel">
-<meta property="og:description" content="数据库操作 创建 1sqlite3 DatabaseName.db  查看数据库列表 1.databases  导出完整的数据库到一个文本文件 1234sqlite3 DatabaseName.db .dump &amp;gt; DatabaseName.sql恢复数据库sqlite3 DatabaseName.db &amp;lt; DatabaseName.sql  SQLite 的 ATTACH DATAB">
+<meta property="og:description" content="数据库操作 创建 1sqlite3 DatabaseName.db  查看数据库列表 1.databases     导出完整的数据库到一个文本文件 1234sqlite3 DatabaseName.db .dump &amp;gt; DatabaseName.sql恢复数据库sqlite3 DatabaseName.db &amp;lt; DatabaseName.sql  SQLite 的 ATTACH DA">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-db.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/createtable.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/selectfrom.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sqlite-compare.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sqlite-logic.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sqlite-bit.png">
-<meta property="og:updated_time" content="2018-04-02T06:49:41.477Z">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-like.png">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-glob.png">
+<meta property="og:updated_time" content="2018-04-07T16:07:56.843Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQLite(二)">
-<meta name="twitter:description" content="数据库操作 创建 1sqlite3 DatabaseName.db  查看数据库列表 1.databases  导出完整的数据库到一个文本文件 1234sqlite3 DatabaseName.db .dump &amp;gt; DatabaseName.sql恢复数据库sqlite3 DatabaseName.db &amp;lt; DatabaseName.sql  SQLite 的 ATTACH DATAB">
-<meta name="twitter:image" content="http://p4n1d4izv.bkt.clouddn.com/images/createtable.png">
+<meta name="twitter:description" content="数据库操作 创建 1sqlite3 DatabaseName.db  查看数据库列表 1.databases     导出完整的数据库到一个文本文件 1234sqlite3 DatabaseName.db .dump &amp;gt; DatabaseName.sql恢复数据库sqlite3 DatabaseName.db &amp;lt; DatabaseName.sql  SQLite 的 ATTACH DA">
+<meta name="twitter:image" content="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-db.png">
 
 
 
@@ -418,6 +422,9 @@
 <li><p>查看数据库列表</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.databases</span><br></pre></td></tr></table></figure>
 </li>
+</ul>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-db.png">
+<ul>
 <li><p>导出完整的数据库到一个文本文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sqlite3 DatabaseName.db .dump &gt; DatabaseName.sql</span><br><span class="line"></span><br><span class="line">恢复数据库</span><br><span class="line">sqlite3 DatabaseName.db &lt; DatabaseName.sql</span><br></pre></td></tr></table></figure>
 </li>
@@ -462,7 +469,55 @@
 <img src="http://p4n1d4izv.bkt.clouddn.com/images/sqlite-bit.png">
 </li>
 </ul>
-<h4 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h4>
+<h4 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h4><ul>
+<li><p>布尔表达式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM COMPANY WHERE SALARY = 10000;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数值表达式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT COUNT(*) AS &quot;RECORDS&quot; FROM COMPANY; </span><br><span class="line">RECORDS = 7</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>日期表达式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select CURRENT_TIMESTAMP;</span><br><span class="line">CURRENT_TIMESTAMP</span><br><span class="line">-------------------</span><br><span class="line">2018-04-07 15:36:11</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Where子句"><a href="#Where子句" class="headerlink" title="Where子句"></a>Where子句</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM COMPANY WHERE AGE BETWEEN 25 AND 27;</span><br><span class="line"></span><br><span class="line">SELECT AGE FROM COMPANY </span><br><span class="line">        WHERE EXISTS (SELECT AGE FROM COMPANY WHERE SALARY &gt; 65000);</span><br><span class="line">        </span><br><span class="line">SELECT * FROM COMPANY </span><br><span class="line">        WHERE AGE &gt; (SELECT AGE FROM COMPANY WHERE SALARY &gt; 65000);</span><br></pre></td></tr></table></figure>
+<h4 id="AND-OR"><a href="#AND-OR" class="headerlink" title="AND/OR"></a>AND/OR</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM COMPANY WHERE AGE &gt;= 25 AND SALARY &gt;= 65000;</span><br><span class="line"></span><br><span class="line">SELECT * FROM COMPANY WHERE AGE &gt;= 25 OR SALARY &gt;= 65000;</span><br></pre></td></tr></table></figure>
+<h4 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UPDATE COMPANY SET ADDRESS = &apos;Texas&apos; WHERE ID = 6;</span><br><span class="line"></span><br><span class="line">UPDATE COMPANY SET ADDRESS = &apos;Texas&apos;, SALARY = 20000.00;</span><br></pre></td></tr></table></figure>
+<h4 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM COMPANY WHERE ID = 7;</span><br><span class="line">DELETE FROM COMPANY;</span><br></pre></td></tr></table></figure>
+<h4 id="Like"><a href="#Like" class="headerlink" title="Like"></a>Like</h4><blockquote>
+<p>通配符 百分号（%）代表零个、一个或多个数字或字符。下划线（_）代表一个单一的数字或字符</p>
+</blockquote>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-like.png">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">AGE 以 2 开头的所有记录</span><br><span class="line">SELECT * FROM COMPANY WHERE AGE  LIKE &apos;2%&apos;;</span><br><span class="line"></span><br><span class="line">ADDRESS 文本里包含一个连字符（-）的所有记录</span><br><span class="line">SELECT * FROM COMPANY WHERE ADDRESS  LIKE &apos;%-%&apos;;</span><br></pre></td></tr></table></figure>
+<h4 id="Glob"><a href="#Glob" class="headerlink" title="Glob"></a>Glob</h4><blockquote>
+<p>星号（*）代表零个、一个或多个数字或字符。问号（?）代表一个单一的数字或字符,大小写敏感</p>
+</blockquote>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/sqlite3-glob.png">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM COMPANY WHERE AGE  GLOB &apos;2*&apos;;</span><br></pre></td></tr></table></figure>
+<h4 id="Limit"><a href="#Limit" class="headerlink" title="Limit"></a>Limit</h4><ul>
+<li><p>限制返回数据数量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM COMPANY LIMIT 6;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>特定的偏移开始提取记录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM COMPANY LIMIT 3 OFFSET 2;</span><br><span class="line"></span><br><span class="line">ID          NAME        AGE         ADDRESS     SALARY</span><br><span class="line">----------   ----------   ----------      ----------    ----------</span><br><span class="line">3           Teddy       23          Norway      20000.0</span><br><span class="line">4           Mark        25          Rich-Mond   65000.0</span><br><span class="line">5           David       27          Texas       85000.0</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Order-By"><a href="#Order-By" class="headerlink" title="Order By"></a>Order By</h4><ul>
+<li>按 NAME 和 SALARY 升序降序排序<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM COMPANY ORDER BY NAME, SALARY [ASC|DESC];</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Group-By"><a href="#Group-By" class="headerlink" title="Group By"></a>Group By</h4><ul>
+<li>对相同的数据进行分组,在 SELECT 语句中，GROUP BY 子句放在 WHERE 子句之后，放在 ORDER BY 子句之前<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">查找名称，薪资总和数据，以名称分组</span><br><span class="line">SELECT NAME, SUM(SALARY) FROM COMPANY GROUP BY NAME;</span><br><span class="line">SELECT NAME, SUM(SALARY) FROM COMPANY GROUP BY NAME ORDER BY NAME;</span><br><span class="line"></span><br><span class="line">NAME        SUM(SALARY)</span><br><span class="line">----------  -----------</span><br><span class="line">Allen       15000.0</span><br><span class="line">David       85000.0</span><br><span class="line">James       10000.0</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Having"><a href="#Having" class="headerlink" title="Having"></a>Having</h4><ul>
+<li>过滤分组数据<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SELECT column1, column2</span><br><span class="line">FROM table1, table2</span><br><span class="line">WHERE [ conditions ]</span><br><span class="line">GROUP BY column1, column2</span><br><span class="line">HAVING [ conditions ]</span><br><span class="line">ORDER BY column1, column2</span><br><span class="line"></span><br><span class="line">名称出现2次的数据</span><br><span class="line">SELECT * FROM COMPANY GROUP BY name HAVING count(name) &gt; 2;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Distinct"><a href="#Distinct" class="headerlink" title="Distinct"></a>Distinct</h4><ul>
+<li>获取重复记录中的唯一一次记录<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT DISTINCT column1, column2,.....columnN </span><br><span class="line">FROM table_name</span><br><span class="line">WHERE [condition]</span><br><span class="line"></span><br><span class="line">去掉重复名称</span><br><span class="line">SELECT DISTINCT name FROM COMPANY;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
       
     </div>
     
@@ -531,6 +586,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SQLite/" rel="tag"># SQLite</a>
+          
+        </div>
       
 
       
@@ -641,7 +702,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -652,7 +713,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 
               </div>
@@ -663,7 +724,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -777,7 +838,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库操作"><span class="nav-number">1.</span> <span class="nav-text">数据库操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符"><span class="nav-number">2.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#表达式"><span class="nav-number">3.</span> <span class="nav-text">表达式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库操作"><span class="nav-number">1.</span> <span class="nav-text">数据库操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符"><span class="nav-number">2.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#表达式"><span class="nav-number">3.</span> <span class="nav-text">表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Where子句"><span class="nav-number">4.</span> <span class="nav-text">Where子句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AND-OR"><span class="nav-number">5.</span> <span class="nav-text">AND/OR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Update"><span class="nav-number">6.</span> <span class="nav-text">Update</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Delete"><span class="nav-number">7.</span> <span class="nav-text">Delete</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Like"><span class="nav-number">8.</span> <span class="nav-text">Like</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Glob"><span class="nav-number">9.</span> <span class="nav-text">Glob</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Limit"><span class="nav-number">10.</span> <span class="nav-text">Limit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Order-By"><span class="nav-number">11.</span> <span class="nav-text">Order By</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Group-By"><span class="nav-number">12.</span> <span class="nav-text">Group By</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Having"><span class="nav-number">13.</span> <span class="nav-text">Having</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Distinct"><span class="nav-number">14.</span> <span class="nav-text">Distinct</span></a></li></ol></div>
             
 
           </div>

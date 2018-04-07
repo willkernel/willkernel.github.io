@@ -305,6 +305,325 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/MVP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="willkernel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="willkernel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/09/MVP/" itemprop="url">MVP(loader/dagger/rxjava2)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:03:12+08:00">
+                2018-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/09/MVP/" class="leancloud_visitors" data-flag-title="MVP(loader/dagger/rxjava2)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h5 id="MVP概念"><a href="#MVP概念" class="headerlink" title="MVP概念"></a>MVP概念</h5><ul>
+<li>View<br>视图层,包含各种界面相关功能，例如Activity，Fragment，View,Adapter,专注于交互，一般持有Presenter的引用，或者通过依赖注入(Dagger)方式获得Presenter实例，将非UI逻辑操作委托给Presenter</li>
+<li>Presenter<br>逻辑控制层，充当中间人，隔离View层，Model层，接收View层的数据请求，分发给Model层处理，监听Model处理结果，将结果反馈给View，实项界面的刷新</li>
+<li>Model<br>封装网络数据请求，本地数据请求，对Presenter提供简单易用的接口</li>
+<li>MVP，MVC区别<ul>
+<li>MVP<blockquote>
+<p>1、模型与视图完全分离，我们可以修改视图而不影响模型<br>2、可以更高效地使用模型，因为所有的交互都发生在一个地方——Presenter内部<br>3、我们可以将一个Presenter用于多个视图，而不需要改变Presenter的逻辑。这个特性非常的有用，因为视图的变化总是比模型的变化频繁<br>4、如果我们把逻辑放在Presenter中，那么我们就可以脱离用户接口来测试这些逻辑（单元测试）</p>
+</blockquote>
+</li>
+<li>MVP优缺点 可以Mock一个实现了接口Contract.View的View对象便于测试，业务逻辑代码与View的隔离解耦  缺点：View中持有Presenter，Presenter中持有View，增加了复杂度，复杂业务中Presenter的代码会臃肿</li>
+<li>MVC中Model和View直接通信的，View中会包含业务逻辑代码，Controller控制层通常在Activity中实现业务逻辑代理，操作Model，但是不操作View，对View无知，Model数据更新完对视图进行更新，用户得到反馈</li>
+<li>MVC优缺点，逻辑代码在Controller中，模块化，业务逻辑代码更改后，不需要更新View，Model；测试困难，Activity包含业务代码，成为了Controller层，Model,View之间存在耦合
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/09/MVP/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/Kotlin入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="willkernel">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="willkernel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/09/Kotlin入门/" itemprop="url">Kotlin 入门</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-09T01:03:00+08:00">
+                2018-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Kotlin/" itemprop="url" rel="index">
+                    <span itemprop="name">Kotlin</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/03/09/Kotlin入门/" class="leancloud_visitors" data-flag-title="Kotlin 入门">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>导入布局中所有控件属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import kotlinx.android.synthetic.main.＜布局＞.*</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实验模式包含<code>LayoutContainer`</code>Parcelable`</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">androidExtensions &#123;</span><br><span class="line">   experimental = true</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">import kotlinx.android.extensions.LayoutContainer</span><br><span class="line"></span><br><span class="line">class ViewHolder(override val containerView: View) : ViewHolder(containerView), LayoutContainer &#123;</span><br><span class="line">    fun setup(title: String) &#123;</span><br><span class="line">        itemTitle.text = &quot;Hello World!&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>View缓存策略,默认为HASH_MAP,<code>findViewById()</code>被调用一次</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">androidExtensions &#123;</span><br><span class="line">  defaultCacheImplementation = &quot;HASH_MAP&quot; // also SPARSE_ARRAY, NONE</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">可以通过注解改变策略</span><br><span class="line">@ContainerOptions(cache = CacheImplementation.NO_CACHE)</span><br><span class="line">fun MyActivity.a() &#123; </span><br><span class="line">    // findViewById() will be called twice</span><br><span class="line">    textView.text = &quot;Hidden view&quot;</span><br><span class="line">    textView.visibility = View.INVISIBLE</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Parcelable</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import kotlinx.android.parcel.Parcelize</span><br><span class="line"></span><br><span class="line">@Parcelize</span><br><span class="line">class User(val firstName: String, val lastName: String, val age: Int): Parcelable</span><br><span class="line"></span><br><span class="line">序列化读写</span><br><span class="line">@Parcelize</span><br><span class="line">data class Value(val firstName: String, val lastName: String, val age: Int) : Parcelable &#123;</span><br><span class="line">    private companion object : Parceler&lt;User&gt; &#123;</span><br><span class="line">        override fun User.write(parcel: Parcel, flags: Int) &#123;</span><br><span class="line">            // Custom write implementation</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        override fun create(parcel: Parcel): User &#123;</span><br><span class="line">            // Custom read implementation</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>@Parcelize支持类型</p>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/kotlin-support-types.png"></li>
+<li><p>自定义序列号映射对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class ExternalClass(val value: Int)</span><br><span class="line"></span><br><span class="line">object ExternalClassParceler : Parceler&lt;ExternalClass&gt; &#123;</span><br><span class="line">    override fun create(parcel: Parcel) = ExternalClass(parcel.readInt())</span><br><span class="line"></span><br><span class="line">    override fun ExternalClass.write(parcel: Parcel, flags: Int) &#123;</span><br><span class="line">        parcel.writeInt(value)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>@TypeParceler @WriteWith</code>引用自定义序列号映射对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// Class-local parceler</span><br><span class="line">@Parcelable</span><br><span class="line">@TypeParceler&lt;ExternalClass, ExternalClassParceler&gt;()</span><br><span class="line">class MyClass(val external: ExternalClass)</span><br><span class="line"></span><br><span class="line">// Property-local parceler</span><br><span class="line">@Parcelable</span><br><span class="line">class MyClass(@TypeParceler&lt;ExternalClass, ExternalClassParceler&gt;() val external: ExternalClass)</span><br><span class="line"></span><br><span class="line">// Type-local parceler</span><br><span class="line">@Parcelable</span><br><span class="line">class MyClass(val external: @WriteWith&lt;ExternalClassParceler&gt;() ExternalClass)</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://willkernel.github.io/2018/03/09/MVVM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2494,7 +2813,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2505,7 +2824,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 
               </div>
@@ -2516,7 +2835,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

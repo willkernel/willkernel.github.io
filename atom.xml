@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://willkernel.github.io/"/>
-  <updated>2018-04-02T16:31:31.061Z</updated>
+  <updated>2018-04-07T16:08:11.257Z</updated>
   <id>http://willkernel.github.io/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SQLite(三)</title>
+    <link href="http://willkernel.github.io/2018/04/08/SQLite-%E4%B8%89/"/>
+    <id>http://willkernel.github.io/2018/04/08/SQLite-三/</id>
+    <published>2018-04-07T16:07:00.000Z</published>
+    <updated>2018-04-07T16:08:11.257Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;SQLite-Java&quot;&gt;&lt;a href=&quot;#SQLite-Java&quot; class=&quot;headerlink&quot; title=&quot;SQLite Java&quot;&gt;&lt;/a&gt;SQLite
+        
+      
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+      <category term="SQLite" scheme="http://willkernel.github.io/tags/SQLite/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Source Insight 使用</title>
+    <link href="http://willkernel.github.io/2018/04/07/Source-Insight-%E4%BD%BF%E7%94%A8/"/>
+    <id>http://willkernel.github.io/2018/04/07/Source-Insight-使用/</id>
+    <published>2018-04-07T13:36:00.000Z</published>
+    <updated>2018-04-07T14:45:48.622Z</updated>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;New project&lt;img src=&quot;http://p4n1d4izv.bkt.clouddn.com/images/srcinsight-1.png&quot;&gt;&lt;/li&gt;
+&lt;li&gt;Add all&lt;img src=&quot;http://p4n1d4izv.bkt.clouddn.com/images/srcinsight-2.png&quot;&gt;
+&lt;img src=&quot;http://p4n1d4izv.bkt.clouddn.com/images/srcinsight-3.png&quot;&gt;&lt;/li&gt;
+&lt;li&gt;close&lt;img src=&quot;http://p4n1d4izv.bkt.clouddn.com/images/srcinsight-4.png&quot;&gt;
+    
+    </summary>
+    
+      <category term="Tools" scheme="http://willkernel.github.io/categories/Tools/"/>
+    
+    
+      <category term="Source Insight" scheme="http://willkernel.github.io/tags/Source-Insight/"/>
+    
+  </entry>
   
   <entry>
     <title>Java 小知识</title>
@@ -71,7 +121,7 @@
     <link href="http://willkernel.github.io/2018/04/02/SQLite-%E4%BA%8C/"/>
     <id>http://willkernel.github.io/2018/04/02/SQLite-二/</id>
     <published>2018-04-02T04:08:00.000Z</published>
-    <updated>2018-04-02T06:49:41.477Z</updated>
+    <updated>2018-04-07T16:07:56.843Z</updated>
     
     <summary type="html">
     
@@ -89,6 +139,8 @@
     
       <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
     
+    
+      <category term="SQLite" scheme="http://willkernel.github.io/tags/SQLite/"/>
     
   </entry>
   
@@ -183,7 +235,7 @@
     <link href="http://willkernel.github.io/2018/03/24/Kotlin-for-Android-%E4%BA%94/"/>
     <id>http://willkernel.github.io/2018/03/24/Kotlin-for-Android-五/</id>
     <published>2018-03-23T17:18:00.000Z</published>
-    <updated>2018-03-24T05:44:30.006Z</updated>
+    <updated>2018-04-03T01:56:24.193Z</updated>
     
     <summary type="html">
     
@@ -451,6 +503,24 @@
   </entry>
   
   <entry>
+    <title>NDK</title>
+    <link href="http://willkernel.github.io/2018/03/09/NDK/"/>
+    <id>http://willkernel.github.io/2018/03/09/NDK/</id>
+    <published>2018-03-08T17:04:00.000Z</published>
+    <updated>2018-03-20T07:12:42.178Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
+    
+    
+      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Git</title>
     <link href="http://willkernel.github.io/2018/03/09/Git/"/>
     <id>http://willkernel.github.io/2018/03/09/Git/</id>
@@ -477,81 +547,6 @@
     
     
       <category term="Git" scheme="http://willkernel.github.io/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NDK</title>
-    <link href="http://willkernel.github.io/2018/03/09/NDK/"/>
-    <id>http://willkernel.github.io/2018/03/09/NDK/</id>
-    <published>2018-03-08T17:04:00.000Z</published>
-    <updated>2018-03-20T07:12:42.178Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
-    
-    
-      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MVP(loader/dagger/rxjava2)</title>
-    <link href="http://willkernel.github.io/2018/03/09/MVP/"/>
-    <id>http://willkernel.github.io/2018/03/09/MVP/</id>
-    <published>2018-03-08T17:03:12.000Z</published>
-    <updated>2018-03-30T16:35:23.243Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h5 id=&quot;MVP概念&quot;&gt;&lt;a href=&quot;#MVP概念&quot; class=&quot;headerlink&quot; title=&quot;MVP概念&quot;&gt;&lt;/a&gt;MVP概念&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;View&lt;br&gt;视图层,包含各种界面相关功能，例如Activity，Fragment，View,Adapter,专注于交互，一般持有Presenter的引用，或者通过依赖注入(Dagger)方式获得Presenter实例，将非UI逻辑操作委托给Presenter&lt;/li&gt;
-&lt;li&gt;Presenter&lt;br&gt;逻辑控制层，充当中间人，隔离View层，Model层，接收View层的数据请求，分发给Model层处理，监听Model处理结果，将结果反馈给View，实项界面的刷新&lt;/li&gt;
-&lt;li&gt;Model&lt;br&gt;封装网络数据请求，本地数据请求，对Presenter提供简单易用的接口&lt;/li&gt;
-&lt;li&gt;MVP，MVC区别&lt;ul&gt;
-&lt;li&gt;MVP&lt;blockquote&gt;
-&lt;p&gt;1、模型与视图完全分离，我们可以修改视图而不影响模型&lt;br&gt;2、可以更高效地使用模型，因为所有的交互都发生在一个地方——Presenter内部&lt;br&gt;3、我们可以将一个Presenter用于多个视图，而不需要改变Presenter的逻辑。这个特性非常的有用，因为视图的变化总是比模型的变化频繁&lt;br&gt;4、如果我们把逻辑放在Presenter中，那么我们就可以脱离用户接口来测试这些逻辑（单元测试）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;MVP优缺点 可以Mock一个实现了接口Contract.View的View对象便于测试，业务逻辑代码与View的隔离解耦  缺点：View中持有Presenter，Presenter中持有View，增加了复杂度，复杂业务中Presenter的代码会臃肿&lt;/li&gt;
-&lt;li&gt;MVC中Model和View直接通信的，View中会包含业务逻辑代码，Controller控制层通常在Activity中实现业务逻辑代理，操作Model，但是不操作View，对View无知，Model数据更新完对视图进行更新，用户得到反馈&lt;/li&gt;
-&lt;li&gt;MVC优缺点，逻辑代码在Controller中，模块化，业务逻辑代码更改后，不需要更新View，Model；测试困难，Activity包含业务代码，成为了Controller层，Model,View之间存在耦合
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Kotlin 入门</title>
-    <link href="http://willkernel.github.io/2018/03/09/Kotlin%E5%85%A5%E9%97%A8/"/>
-    <id>http://willkernel.github.io/2018/03/09/Kotlin入门/</id>
-    <published>2018-03-08T17:03:00.000Z</published>
-    <updated>2018-03-23T02:50:36.286Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;导入布局中所有控件属性&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
-        
-      
-    
-    </summary>
-    
-      <category term="Kotlin" scheme="http://willkernel.github.io/categories/Kotlin/"/>
-    
-    
-      <category term="Android" scheme="http://willkernel.github.io/tags/Android/"/>
-    
-      <category term="Kotlin" scheme="http://willkernel.github.io/tags/Kotlin/"/>
     
   </entry>
   
