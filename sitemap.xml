@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://willkernel.github.io/2018/04/08/CPP-%E4%B8%80/</loc>
+    
+    <lastmod>2018-04-08T04:22:25.833Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://willkernel.github.io/categories/index.html</loc>
+    
+    <lastmod>2018-04-08T00:28:03.974Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://willkernel.github.io/2018/04/08/SQLite-%E4%B8%89/</loc>
     
     <lastmod>2018-04-07T16:08:11.257Z</lastmod>
@@ -12,13 +26,6 @@
     <loc>http://willkernel.github.io/2018/04/02/SQLite-%E4%BA%8C/</loc>
     
     <lastmod>2018-04-07T16:07:56.843Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://willkernel.github.io/categories/index.html</loc>
-    
-    <lastmod>2018-04-07T14:47:21.419Z</lastmod>
     
   </url>
   
@@ -243,13 +250,6 @@
     <loc>http://willkernel.github.io/2018/03/10/ConstraintLayout/</loc>
     
     <lastmod>2018-03-20T07:12:15.997Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://willkernel.github.io/2018/02/26/%E7%AE%97%E6%B3%95-c/</loc>
-    
-    <lastmod>2018-03-01T17:13:16.497Z</lastmod>
     
   </url>
   
