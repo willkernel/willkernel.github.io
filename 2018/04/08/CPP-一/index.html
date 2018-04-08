@@ -99,7 +99,10 @@
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/cpp-datatype.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/cpp-vartype.png">
 <meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/cpp-charzy.png">
-<meta property="og:updated_time" content="2018-04-08T04:22:25.833Z">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/cpp-bit.png">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/cpp-assign.png">
+<meta property="og:image" content="http://p4n1d4izv.bkt.clouddn.com/images/cpp-priority.png">
+<meta property="og:updated_time" content="2018-04-08T16:07:44.086Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++(一)">
 <meta name="twitter:description" content="简介 C++ 是一种静态类型的、编译式的、通用的、大小写敏感的、不规则的编程语言，支持过程化编程、面向对象编程和泛型编程C++ 被认为是一种中级语言，它综合了高级语言和低级语言的特点C++ 是由 Bjarne Stroustrup 于 1979 年在贝尔实验室开始设计开发的。C++ 进一步扩充和完善C,是 C 的一个超集，事实上，任何合法的 C 程序都是合法的 C++ 程序注意：使用静态类型的编程">
@@ -543,6 +546,15 @@
 <li><p>static 存储类指示编译器在程序的生命周期内保持局部变量的存在，而不需要在每次它进入和离开作用域时进行创建和销毁。因此，使用 static 修饰局部变量可以在函数调用之间保持局部变量的值。static 修饰符也可以应用于全局变量。当 static 修饰全局变量时，会使变量的作用域限制在声明它的文件内。在 C++ 中，当 static 用在类数据成员上时，会导致仅有一个该成员的副本被类的所有对象共享</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">// 函数声明 </span><br><span class="line">void func(void);</span><br><span class="line">static int count = 10; /* 全局变量 */</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    while(count--)</span><br><span class="line">    &#123;</span><br><span class="line">       func();</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">// 函数定义</span><br><span class="line">void func( void )</span><br><span class="line">&#123;</span><br><span class="line">    static int i = 5; // 局部静态变量</span><br><span class="line">    i++;</span><br><span class="line">    std::cout &lt;&lt; &quot;变量 i 为 &quot; &lt;&lt; i ;</span><br><span class="line">    std::cout &lt;&lt; &quot; , 变量 count 为 &quot; &lt;&lt; count &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">变量 i 为 6 , 变量 count 为 9</span><br><span class="line">变量 i 为 7 , 变量 count 为 8</span><br><span class="line">变量 i 为 8 , 变量 count 为 7</span><br><span class="line">变量 i 为 9 , 变量 count 为 6</span><br><span class="line">变量 i 为 10 , 变量 count 为 5</span><br><span class="line">变量 i 为 11 , 变量 count 为 4</span><br><span class="line">变量 i 为 12 , 变量 count 为 3</span><br><span class="line">变量 i 为 13 , 变量 count 为 2</span><br><span class="line">变量 i 为 14 , 变量 count 为 1</span><br><span class="line">变量 i 为 15 , 变量 count 为 0</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>std standard标准的缩写，标准库函数使用的命名空间，cin 用于从控制台获取用户输入，cout 用于将数据输出到控制台。cin 是输入流对象，cout 是输出流对象，它们分别可以用 &gt;&gt; 和 &lt;&lt;，是因为分别在其类中对相应运算符进行了重载,头文件 <code>&lt;iostream&gt;</code> 在这个命名空间内声明了 <code>istream</code> 与 <code>ostream</code> 等 IO 类，同时在 std 内声明了 <code>istream cin;</code> 与 <code>ostream cout;</code> </p>
+</li>
+<li>静态局部变量有以下特点：<ul>
+<li>该变量在全局数据区分配内存；</li>
+<li>静态局部变量在程序执行到该对象的声明处时被首次初始化，即以后的函数调用不再进行初始化；</li>
+<li>静态局部变量一般在声明处初始化，如果没有显式初始化，会被程序自动初始化为0；</li>
+<li>它始终驻留在全局数据区，直到程序运行结束。但其作用域为局部作用域，当定义它的函数或语句块结束时，其作用域随之结束</li>
+</ul>
+</li>
 <li><p>extern 修饰符通常用于当有两个或多个文件共享相同的全局变量或函数的时候，如下所示：</p>
 <ul>
 <li><p>第一个文件：main.cpp</p>
@@ -560,7 +572,41 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">thread_local int x;  // 命名空间下的全局变量</span><br><span class="line">class X</span><br><span class="line">&#123;</span><br><span class="line">    static thread_local std::string s; // 类的static成员变量</span><br><span class="line">&#125;;</span><br><span class="line">static thread_local std::string X::s;  // X::s 是需要定义的</span><br><span class="line"> </span><br><span class="line">void foo()</span><br><span class="line">&#123;</span><br><span class="line">    thread_local std::vector&lt;int&gt; v;  // 本地变量</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4>
+<h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><ul>
+<li>算术运算符 <code>+ - * / % ++ --</code></li>
+<li>关系运算符 <code>== != &gt; &lt; &gt;= &lt;=</code></li>
+<li>逻辑运算符 <code>&amp;&amp; || !</code></li>
+<li>位运算符<img src="http://p4n1d4izv.bkt.clouddn.com/images/cpp-bit.png"></li>
+<li>赋值运算符,先运算再赋值<img src="http://p4n1d4izv.bkt.clouddn.com/images/cpp-assign.png"></li>
+<li><p>杂项运算符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sizeof 返回变量的大小</span><br><span class="line">Condition ? X : Y	条件运算符,Condition 为真 ? 则值为 X : 否则值为 Y</span><br><span class="line">， 逗号运算符，var = (count=19, incr=10, count+1); 赋值以最后一个表达式运算的结果，var=20</span><br><span class="line">. 和 -&gt;  成员运算符，引用类，结构，共用体的成员</span><br><span class="line">Cast  强制转换运算符</span><br><span class="line">&amp;   指针运算符，返回变量的地址，&amp;a 给出变量的实际地址</span><br><span class="line">*   指针运算符，指向一个变量，*var 指向变量var</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运算符优先级,由高到低</p>
+<img src="http://p4n1d4izv.bkt.clouddn.com/images/cpp-priority.png">
+<blockquote>
+<p> if(i&lt;j&lt;k) 和 if(i&lt;j &amp;&amp; j&lt;k)第一个i&lt;j或者为0或者为1，只要k大于1，表达式就为true第二个必须i&lt;j且j&lt;k表达式才为true区分 if(val) 和 if(val == true)第一个只要val非零则表达式为true,val为0则表达式为false第二个只有val为1表达式为true,val非1则表达式为false</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int val = 2;</span><br><span class="line">if(val==true)&#123;              //不会进入if</span><br><span class="line">  cout&lt;&lt;&quot;val==true&quot;&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>多个赋值操作符中，各对象必须具有相同的数据类型，或者具有可转换为同一类型的数据类型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int ival; int *pval;</span><br><span class="line">ival = pval = 0;  //error 尽管ival和pval都可以赋值为0</span><br><span class="line">string s1,s2;</span><br><span class="line">s1 = s2 = &quot;OK&quot;    //ok</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>如果指针指向不是用new分配的内存地址，则在该指针上使用delete是不合法的<br>通常编译器不能断定一个指针是否指向动态对象，因此尽管这样做是错误的，但在大部分编译器上仍能运行通过，但是会产生运行时错误。整形提升<br>对于所有比int小的整形(char, signed char, unsigned char, short, unsigned short)，如过该类型所有可能值都包含在int中，他们会被提升为int型，否则，他们将被提升为unsigned int<br>对于包含signed和unsigned int型的表达式，表达式中的signed型整数会被转换为unsigned型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int i = -5;</span><br><span class="line">unsigned int ii = 1;</span><br><span class="line">cout &lt;&lt; (i &gt; ii) &lt;&lt; endl; //输出1，原因是int型的i转换为unsigned int型</span><br><span class="line">short s = -5;</span><br><span class="line">unsigned short ss = 1;</span><br><span class="line">cout &lt;&lt; (s &gt; ss) &lt;&lt; endl; //输出0 比较时short和unsigned short都提升为int型</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h4><ul>
+<li><code>while for do...while</code> 嵌套循环</li>
+<li><code>break</code> 终止；<code>continue</code> 跳过主体剩余代码，重新开始下个条件；<code>goto</code> 跳转到被标记的语句，不建议使用</li>
+<li>无限循环,表达式留空，假设为真<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for( ; ; )</span><br><span class="line">&#123;</span><br><span class="line">  printf(&quot;This loop will run forever.\n&quot;);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="判断"><a href="#判断" class="headerlink" title="判断"></a>判断</h4><ul>
+<li><code>if  if...else  嵌套if  switch  嵌套switch</code></li>
+<li><code>?:</code> 条件运算符<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4></li>
+</ul>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="http://www.runoob.com/cplusplus/cpp-tutorial.html" target="_blank" rel="noopener">菜鸟教程</a></p>
+
       
     </div>
     
@@ -871,7 +917,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#语法"><span class="nav-number">2.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据类型"><span class="nav-number">3.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量"><span class="nav-number">4.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常量"><span class="nav-number">5.</span> <span class="nav-text">常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修饰符"><span class="nav-number">6.</span> <span class="nav-text">修饰符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存储类"><span class="nav-number">7.</span> <span class="nav-text">存储类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符"><span class="nav-number">8.</span> <span class="nav-text">运算符</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#语法"><span class="nav-number">2.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据类型"><span class="nav-number">3.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量"><span class="nav-number">4.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常量"><span class="nav-number">5.</span> <span class="nav-text">常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修饰符"><span class="nav-number">6.</span> <span class="nav-text">修饰符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存储类"><span class="nav-number">7.</span> <span class="nav-text">存储类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符"><span class="nav-number">8.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环"><span class="nav-number">9.</span> <span class="nav-text">循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#判断"><span class="nav-number">10.</span> <span class="nav-text">判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数"><span class="nav-number">11.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">12.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
