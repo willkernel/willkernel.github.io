@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://willkernel.github.io/"/>
-  <updated>2018-04-08T16:07:44.086Z</updated>
+  <updated>2018-04-10T10:06:58.146Z</updated>
   <id>http://willkernel.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://willkernel.github.io/2018/04/08/CPP-%E4%B8%80/"/>
     <id>http://willkernel.github.io/2018/04/08/CPP-一/</id>
     <published>2018-04-08T00:16:00.000Z</published>
-    <updated>2018-04-08T16:07:44.086Z</updated>
+    <updated>2018-04-10T10:06:58.146Z</updated>
     
     <summary type="html">
     
@@ -528,32 +528,20 @@
   </entry>
   
   <entry>
-    <title>Git</title>
-    <link href="http://willkernel.github.io/2018/03/09/Git/"/>
-    <id>http://willkernel.github.io/2018/03/09/Git/</id>
+    <title>NDK</title>
+    <link href="http://willkernel.github.io/2018/03/09/NDK/"/>
+    <id>http://willkernel.github.io/2018/03/09/NDK/</id>
     <published>2018-03-08T17:04:00.000Z</published>
-    <updated>2018-03-22T09:08:53.194Z</updated>
+    <updated>2018-03-20T07:12:42.178Z</updated>
     
     <summary type="html">
     
-      &lt;h4 id=&quot;入门&quot;&gt;&lt;a href=&quot;#入门&quot; class=&quot;headerlink&quot; title=&quot;入门&quot;&gt;&lt;/a&gt;入门&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;.git 的隐藏目录是你的本地仓库（Local Repository）&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;git log&lt;/code&gt; 查看历史 &lt;img src=&quot;http://p4n1d4izv.bkt.clouddn.com/images/gitlog.png&quot;&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;git log -p&lt;/code&gt;查看详细历史&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;git log --stat&lt;/code&gt; 查看简要统计&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;git show e66666/branch&lt;/code&gt;查看指定commit，加文件名看指定文件&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;git diff --staged/--cached&lt;/code&gt;查看当前工作目录与暂存区的不同，可以看到即将添加到暂存区的改动内容，&lt;code&gt;git diff HEAD&lt;/code&gt;看到当前工作目录与上一个commit的不同&lt;ul&gt;
-&lt;li&gt;commit 的 SHA-1 校验和&lt;br&gt;&lt;code&gt;commit 8cf88cf35ce40cb91488e7d9b12cf46463fedc2f&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;git status&lt;/code&gt;&lt;img src=&quot;http://p4n1d4izv.bkt.clouddn.com/images/gitstatus.png&quot;&gt;
-    
     </summary>
     
-      <category term="Git" scheme="http://willkernel.github.io/categories/Git/"/>
+      <category term="Android" scheme="http://willkernel.github.io/categories/Android/"/>
     
     
-      <category term="Git" scheme="http://willkernel.github.io/tags/Git/"/>
+      <category term="NDK" scheme="http://willkernel.github.io/tags/NDK/"/>
     
   </entry>
   
