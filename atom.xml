@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://willkernel.github.io/"/>
-  <updated>2018-04-10T10:06:58.146Z</updated>
+  <updated>2018-04-10T16:30:47.301Z</updated>
   <id>http://willkernel.github.io/</id>
   
   <author>
@@ -21,18 +21,35 @@
     <link href="http://willkernel.github.io/2018/04/08/CPP-%E4%B8%80/"/>
     <id>http://willkernel.github.io/2018/04/08/CPP-一/</id>
     <published>2018-04-08T00:16:00.000Z</published>
-    <updated>2018-04-10T10:06:58.146Z</updated>
+    <updated>2018-04-10T16:30:47.301Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h4 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;C++
-        
-      
+      &lt;h4 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h4&gt;&lt;blockquote&gt;
+&lt;p&gt;C++ 是一种静态类型的、编译式的、通用的、大小写敏感的、不规则的编程语言，支持过程化编程、面向对象编程和泛型编程&lt;br&gt;C++ 被认为是一种中级语言，它综合了高级语言和低级语言的特点&lt;br&gt;C++ 是由 Bjarne Stroustrup 于 1979 年在贝尔实验室开始设计开发的。C++ 进一步扩充和完善C,是 C 的一个超集，事实上，任何合法的 C 程序都是合法的 C++ 程序&lt;br&gt;注意：使用静态类型的编程语言是在编译时执行类型检查，而不是在运行时执行类型检查&lt;br&gt;2014    ISO/IEC 14882:2014    C++14    第四个C++标准&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;C++ 完全支持面向对象的程序设计，包括面向对象开发的四大特性：&lt;br&gt;封装&lt;br&gt;抽象&lt;br&gt;继承&lt;br&gt;多态&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;标准库&lt;br&gt;标准的 C++ 由三个重要部分组成：&lt;br&gt;核心语言，提供了所有构件块，包括变量、数据类型和常量，等等。&lt;br&gt;C++ 标准库，提供了大量的函数，用于操作文件、字符串等。&lt;br&gt;标准模板库（STL），提供了大量的方法，用于操作数据结构等&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://sourceforge.net/projects/mingw/files/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;MinGW&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;语法&quot;&gt;&lt;a href=&quot;#语法&quot; class=&quot;headerlink&quot; title=&quot;语法&quot;&gt;&lt;/a&gt;语法&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;程序结构&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;using namespace std;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// main() 是程序开始执行的地方 ，单行注释&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;int main()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   cout &amp;lt;&amp;lt; &amp;quot;Hello World&amp;quot;; // 输出 Hello World&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   return 0;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;包含头文件&lt;code&gt;&amp;lt;iostream&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;using namespace std;&lt;/code&gt;使用std命名空间&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;int main()&lt;/code&gt;主函数，程序从这里开始执行&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;return 0&lt;/code&gt; 终止main()函数，返回0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;编译执行&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ touch hello.cpp&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ g++ hello.cpp&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ ./a.exe&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Hello World&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
